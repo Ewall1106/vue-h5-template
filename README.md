@@ -18,4 +18,37 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+文本
+------
+# 普通文本
+这里是普通文本
+
+# 单行文本
+	这里是单行文本
+
+# 换行
+直接回车不能换行，  
+这样就可以换行了
+
+# 文本块
+1、
+
+	这里是文本块
+    这里是文本块
+    这里是文本块
+
+2、
+
+```
+这里是文本块
+这里是文本块
+这里是文本块
+```
+
+# 代码高亮
+```javascript
+document.getElementById('test').innerText="hello world";
+```
+
+# 文字高亮
+`html`    `css`    `js`
