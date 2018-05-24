@@ -10,4 +10,5 @@
 - [什么是编程式路由](https://www.jianshu.com/p/0b91e9a05694)
 
 ### 交流扯谈
-![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")
+------
+![weixin:Ewall1106](https://wx3.sinaimg.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg "微信")
