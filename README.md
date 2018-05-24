@@ -11,4 +11,5 @@
 
 ### 交流扯谈
 ------
-![weixin:Ewall1106](https://wx3.q.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg =250x250)
+![weixin:Ewall1106](https://wx3.q.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg){: width="250px" height="250px"}
+
