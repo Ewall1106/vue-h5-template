@@ -12,4 +12,4 @@
 ### 交流扯谈
 ------
 <!-- ![weixin:Ewall1106](https://wx3.q.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg){: width="250px" height="250px"} -->
-<img src="https://wx3.q.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg" width="250px" height="250px" alt="weixin:Ewall1106"/>
+<img src="https://wx3.sinaimg.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg" width="250px" height="250px" alt="weixin:Ewall1106"/>
