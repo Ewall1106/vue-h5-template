@@ -11,4 +11,4 @@
 
 ### 交流扯谈
 ------
-![weixin:Ewall1106](https://wx3.sinaimg.cn/square/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg "微信")
+![weixin:Ewall1106](https://wx3.q.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg "微信"){:height="50%" width="50%"}
