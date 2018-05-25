@@ -1,14 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Test from '@/view/test'
+import Title1 from '@/view/title1'
+import Title2 from '@/view/title2'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
-    path: '/test/:testId',
+    path: '/test',
     name: 'test',
     component: Test,
+    children: [{
+    	path: 'title1',
+    	name: 'title1',
+    	component: Title1
+    },
+    {
+    	path: 'title2',
+    	name: 'title2',
+    	component: Title2
+    }]
   }]
 })
