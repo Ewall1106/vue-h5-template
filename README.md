@@ -6,8 +6,11 @@
 
 ### v-router的讲解
 - [什么是动态路由](https://www.jianshu.com/p/f499d9f64958)
-- [什么是嵌套路由]()
-- [什么是编程式路由]()
+- [什么是嵌套路由](https://www.jianshu.com/p/3036137769da)
+- [什么是编程式路由](https://www.jianshu.com/p/81ed5a90bb10)
+- [什么是路由和命名视图](https://www.jianshu.com/p/004b73f3f589)
+
+### 组件及运用
 
 ### 交流扯谈
 <img src="https://wx3.sinaimg.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg" width="250px" height="250px" alt="weixin:Ewall1106"/>
