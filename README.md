@@ -1,1 +1,1 @@
-reset.css的引入及1px边框问题解决
+手机适配问题之rem和lib-flexible
