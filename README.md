@@ -35,8 +35,15 @@
 - [组件及运用组件创建一个头部组件](https://www.jianshu.com/p/aa6d64994379)
 - [轮播图组件及swiper的引入]
 - [商品推荐列表及flex布局]
-- [axios的使用与数据的mock]
 
+### 数据mock
+- [axios的使用与数据的mock 1]
+- [axios的使用与数据的mock 2]
+
+### MongoDB
+- MongoDB的安装
+- MongoDB服务的配置
+- MongoDB基本语法
 
 ### 交流扯谈
 <img src="https://wx3.sinaimg.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg" width="250px" height="250px" alt="weixin:Ewall1106"/>
