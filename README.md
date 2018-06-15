@@ -1,6 +1,6 @@
 # 手把手教你用vue+node+mongodb搭建一个小商城
 
-# 分支说明
+### 分支说明
 - chapter3 什么是动态路由  
 - chapter4 什么是嵌套路由
 - chapter5 什么是编程式路由
