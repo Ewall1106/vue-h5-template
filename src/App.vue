@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <span class="iconfont">&#xe6b8;</span>
     <router-view/>
   </div>
 </template>
