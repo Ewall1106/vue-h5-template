@@ -17,8 +17,8 @@
 
 
 ### 前期准备
-- [git的学习](https://www.jianshu.com/p/6deca2cfc37a)
 - [用vue-cli脚手架搭建一个新的vue项目](https://www.jianshu.com/p/0b91e9a05694)
+- [git的学习](https://www.jianshu.com/p/6deca2cfc37a)
 
 ### v-router的讲解
 - [什么是动态路由](https://www.jianshu.com/p/f499d9f64958)
