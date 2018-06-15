@@ -1,38 +1,52 @@
 <template>
   <div class="myHeader">
-    <img class="logo" src="@/assets/logo.png" />
-    <h3 class="title">Hxx-Luxury Store</h3>
+    <div class="left">
+      <img class="logo" src="@/assets/logo.png" />
+      <span class="title">Hxx-Luxury Store</span>
+    </div>
+    <div class="right">
+      <span class="iconfont">&#xe6b8;</span>
+    </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: "myHeader",
-    data() {
-      return {
-        msg: "Welcome to Your Vue.js App"
-      };
-    }
-  };
+export default {
+  name: "myHeader",
+  data() {
+    return {
+      msg: "Welcome to Your Vue.js App"
+    };
+  }
+};
 </script>
 
 <style lang="less" scoped>
 .myHeader {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  background: rgba(0, 0, 0, 0.15);
-  .logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    margin-left: 5px;
+  height: 1.066667rem;
+  padding: 0 .133333rem;
+  .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .logo {
+      width: .8rem;
+      height: .8rem;
+    }
+    .title {
+      padding-left: .133333rem;
+      font-size: .4rem;
+      color: #8e8e8e;
+    }
   }
-  .title {
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    color: #fff;
+  .right {
+    span {
+      font-size: .5rem;
+    }
   }
 }
 </style>
