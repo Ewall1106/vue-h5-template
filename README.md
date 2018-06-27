@@ -8,12 +8,15 @@
 - chapter7 reset.css的引入及1px边框问题解决
 - chapter8 手机适配问题之rem和lib-flexible
 - chapter9 阿里巴巴矢量图库icon-font的运用
-- chapter10 写个首页头部组件并引入less
+- chapter10 less的引用及公共变量的抽离
 - chapter11 组件入门及写个首页头部组件
 - chapter12 vue-awsome-swiper与轮播图组件
-- chapter13 分类组件及flex布局
-- chapter14 商品推荐列表
-- chapter15 axios的使用与数据的mock
+- chapter13 优化轮播图组件与vue深度处理器
+- chapter14 商品推荐等模块及flex布局
+- chapter15 axios的使用与数据的mock（1）
+- chapter16 axios的使用与数据的mock（2）
+- chapter17 将mock数据渲染到组件
+- chapter18 首页图片懒加载及better-scroll的运用
 
 
 ### 前期准备
@@ -34,8 +37,9 @@
 
 ### 组件
 - [组件及运用组件创建一个头部组件](https://www.jianshu.com/p/aa6d64994379)
-- [轮播图组件及swiper的引入]
-- [商品推荐列表及flex布局]
+- [轮播图组件及swiper的引入](https://www.jianshu.com/p/4f92c4461e3d)
+- [优化轮播图组件与vue深度处理器](https://www.jianshu.com/p/4f92c4461e3d)
+- [商品推荐列表及flex布局](https://www.jianshu.com/p/d58bdcb54529)
 
 ### 数据mock
 - [axios的使用与数据的mock 1]
