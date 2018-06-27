@@ -29,6 +29,7 @@ export default {
   align-items: center;
   height: 1.066667rem;
   padding: 0 .133333rem;
+  background: #fff;
   .left {
     display: flex;
     flex-direction: row;
