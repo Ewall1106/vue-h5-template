@@ -74,6 +74,7 @@
 <script>
 import MyHeader from "@/components/myHeader";
 import Carousel from "@/components/carousel";
+import axios from 'axios';
 
 export default {
   name: "home",
@@ -84,8 +85,16 @@ export default {
   data() {
     return {};
   },
-  mounted() {},
-  methods: {}
+  mounted() {
+    this.getIndexData();
+  },
+  methods: {
+    getIndexData() {
+      axios.get("/api/index.json").then(res => {
+        console.log(res.data);
+      })
+    }
+  }
 };
 </script>
 <style lang="less" scoped>
