@@ -74,14 +74,12 @@
 <script>
 import MyHeader from "@/components/myHeader";
 import Carousel from "@/components/carousel";
-import Classification from "@/components/classification";
 
 export default {
   name: "home",
   components: {
     MyHeader,
-    Carousel,
-    Classification
+    Carousel
   },
   data() {
     return {};
