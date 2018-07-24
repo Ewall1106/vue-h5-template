@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import VueResource from 'vue-resource'
+import VueLazyload from 'vue-lazyload'
 import 'styles/reset.css'
 import 'styles/border.css'
 import 'styles/iconfont.css'
 import 'lib-flexible/flexible.js'
 
-Vue.use(VueResource)
+Vue.use(VueLazyload, {
+  loading: '/static/images/loading.gif'
+})
 
 Vue.config.productionTip = false
 
