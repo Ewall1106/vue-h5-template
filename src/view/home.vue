@@ -1,34 +1,34 @@
 <template>
-    <div class="home">
-        <my-header></my-header>
-        <carousel :swiperData='swiperData'></carousel>
-        <!-- 分类 -->
-        <div class="classification">
-            <div class="class_top">
-                <div class="item" v-for="(item,index) in classifiData.up" :key="index">
-                    <img :src="item" alt="">
-                </div>
-            </div>
-            <div class="class_bottom">
-                <div class="item" v-for="(item,index) in classifiData.down" :key="index">
-                    <img :src="item" alt="">
-                </div>
-            </div>
+  <div class="home">
+    <my-header></my-header>
+    <carousel :swiperData='swiperData'></carousel>
+    <!-- 分类 -->
+    <div class="classification">
+      <div class="class_top">
+        <div class="item" v-for="(item,index) in classifiData.up" :key="index">
+          <img :src="item" alt="">
         </div>
-        <!-- 推荐 -->
-        <div class="recommend">
-            <div class="title">今日推荐</div>
-            <div class="content">
-                <div class="item" v-for="(item,index) in recommendData" :key="index">
-                    <img :src="item.imgurl" alt="">
-                    <div class="item_text">
-                        <span>{{item.title}}</span>
-                        <span>剩 {{item.endtime}} 天</span>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="class_bottom">
+        <div class="item" v-for="(item,index) in classifiData.down" :key="index">
+          <img :src="item" alt="">
         </div>
+      </div>
     </div>
+    <!-- 推荐 -->
+    <div class="recommend">
+      <div class="title">今日推荐</div>
+      <div class="content">
+        <div class="item" v-for="(item,index) in recommendData" :key="index">
+          <img v-lazy="item.imgurl" alt="">
+          <div class="item_text">
+            <span>{{item.title}}</span>
+            <span>剩 {{item.endtime}} 天</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import MyHeader from "@/components/myHeader";
@@ -102,6 +102,12 @@ export default {
           width: 100%;
           height: 4.8rem;
           display: block;
+        }
+        img[lazy="loading"] {
+          display: block;
+          width: 50px;
+          height: 50px;
+          margin: 0 auto;
         }
         .item_text {
           box-sizing: border-box;
