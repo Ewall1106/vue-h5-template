@@ -6,12 +6,12 @@
     <div class="classification">
       <div class="class_top">
         <div class="item" v-for="(item,index) in classifiData.up" :key="index">
-          <img :src="item" alt="">
+          <img :src="item.img" @click="gotoClassify(item.id)">
         </div>
       </div>
       <div class="class_bottom">
         <div class="item" v-for="(item,index) in classifiData.down" :key="index">
-          <img :src="item" alt="">
+          <img :src="item.img" @click="gotoClassify(item.id)">
         </div>
       </div>
     </div>
@@ -60,6 +60,14 @@ export default {
         this.swiperData = res.data.swiper;
         this.classifiData = res.data.classifiData;
         this.recommendData = res.data.recommendData;
+      });
+    },
+    gotoClassify(id) {
+      this.$router.push({
+        path: "/classify",
+        query: {
+          id: id
+        }
       });
     }
   }
