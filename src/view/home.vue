@@ -56,7 +56,6 @@ export default {
   methods: {
     getIndexData() {
       axios.get("/api/index.json").then(res => {
-        console.log(res.data);
         this.swiperData = res.data.swiper;
         this.classifiData = res.data.classifiData;
         this.recommendData = res.data.recommendData;
