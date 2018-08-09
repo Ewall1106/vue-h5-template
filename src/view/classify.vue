@@ -10,13 +10,7 @@
     <div class="main" :style="{height:mainHeight}">
       <!-- 主体左侧 -->
       <div class="mainLeft">
-        <div class="item">为你推荐</div>
-        <div class="item">男装</div>
-        <div class="item item_on">女装</div>
-        <div class="item">男鞋</div>
-        <div class="item">女鞋</div>
-        <div class="item">手势配饰</div>
-        <div class="item">个人护理</div>
+        <div class="item" v-for="item in navTitle" :key="item.id">{{item.name}}</div>
       </div>
       <!-- 主体右侧 -->
       <div class="mainRight">
@@ -38,21 +32,31 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "classify",
   components: {},
   data() {
     return {
-      mainHeight: ""
+      mainHeight: "",
+      navTitle: ""
     };
   },
   created() {
     this.mainHeight = window.innerHeight - 45 + "px";
   },
-  mounted() {},
+  mounted() {
+    this.getClassify();
+  },
   watch: {},
   computed: {},
   methods: {
+    getClassify() {
+      axios.get("/api/classify.json").then(res => {
+        this.navTitle = res.data.navTitle;
+      });
+    },
     // 回退
     goBack() {
       this.$router.go(-1);
@@ -60,8 +64,8 @@ export default {
     // 回到首页
     goHome() {
       this.$router.push({
-        path:'/'
-      })
+        path: "/"
+      });
     }
   }
 };
@@ -128,13 +132,13 @@ export default {
       height: 100%;
       background: #fff;
       .container {
-        padding: 0 .373333rem;
+        padding: 0 0.373333rem;
         .display_img {
           img {
             display: block;
             width: 100%;
             height: 2.72rem;
-            margin-top: .373333rem;
+            margin-top: 0.373333rem;
           }
         }
         .title {
@@ -150,7 +154,7 @@ export default {
           border-bottom: 1px solid @bgColor;
 
           .content_item {
-           padding: 0 .066667rem;
+            padding: 0 0.066667rem;
             img {
               display: block;
               width: 1.653333rem;
