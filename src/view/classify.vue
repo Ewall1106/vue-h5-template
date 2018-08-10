@@ -10,19 +10,21 @@
     <div class="main" :style="{height:mainHeight}">
       <!-- 主体左侧 -->
       <div class="mainLeft">
-        <div class="item" v-for="item in navTitle" :key="item.id">{{item.name}}</div>
+        <div class="item" :class="currentIndex == index ? 'item_on' : ''" v-for="(item,index) in menuTitle" :key="item.id" @click="menuClick(index)">{{item.name}}</div>
       </div>
       <!-- 主体右侧 -->
       <div class="mainRight">
-        <div class="container" v-for="(item,index) in [1]" :key="index">
-          <div class="display_img">
-            <img src="//a.vpimg2.com/upload/flow/2018/08/06/42/15335484131961.jpg" alt="">
-          </div>
-          <div class="title">人气美衣</div>
+        <!-- 顶部图 -->
+        <div class="display_img">
+          <img :src="menuDetail.topImg" />
+        </div>
+        <!-- 内容 -->
+        <div class="container" v-for="(item,index) in menuDetail.details" :key="index">
+          <div class="title">{{item.title}}</div>
           <div class="content">
-            <div class="content_item" v-for="(item,index) in [1,2,3,4,5,6,7]" :key="index">
-              <img src="//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/04/25/92/15246482342239_200x375_80.jpg!75.webp" alt="">
-              <div class="txt">连衣裙</div>
+            <div class="content_item" v-for="(item,index) in item.icon" :key="index">
+              <img :src="item.iconImg">
+              <div class="txt">{{item.name}}</div>
             </div>
           </div>
         </div>
@@ -40,7 +42,11 @@ export default {
   data() {
     return {
       mainHeight: "",
-      navTitle: ""
+      // 左侧菜单栏
+      menuTitle: "",
+      // 右侧菜单详情
+      menuDetail: "",
+      currentIndex: 0
     };
   },
   created() {
@@ -54,7 +60,9 @@ export default {
   methods: {
     getClassify() {
       axios.get("/api/classify.json").then(res => {
-        this.navTitle = res.data.navTitle;
+        console.log(res.data.content);
+        this.menuTitle = res.data.navTitle;
+        this.menuDetail = res.data.content;
       });
     },
     // 回退
@@ -66,6 +74,9 @@ export default {
       this.$router.push({
         path: "/"
       });
+    },
+    menuClick(idx) {
+      this.currentIndex = idx;
     }
   }
 };
@@ -131,16 +142,17 @@ export default {
       width: 7.52rem;
       height: 100%;
       background: #fff;
+      .display_img {
+        img {
+          box-sizing: border-box;
+          display: block;
+          width: 100%;
+          height: 2.72rem;
+          padding: 0.373333rem 0.373333rem 0 0.373333rem;
+        }
+      }
       .container {
         padding: 0 0.373333rem;
-        .display_img {
-          img {
-            display: block;
-            width: 100%;
-            height: 2.72rem;
-            margin-top: 0.373333rem;
-          }
-        }
         .title {
           box-sizing: border-box;
           font-size: @sizeS;
