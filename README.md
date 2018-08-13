@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 手把手教你用vue+node+mongodb搭建一个小商城
 
 
@@ -86,3 +87,6 @@
 
 
 
+=======
+分类详情页之better-scroll实现滚动
+>>>>>>> chapter21
