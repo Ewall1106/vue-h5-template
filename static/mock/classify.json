@@ -1,0 +1,157 @@
+{
+    "code": 200,
+    "msg": "",
+    "navTitle": [
+        {
+            "id": 4,
+            "name": "为你推荐"
+        },
+        {
+            "id": 0,
+            "name": "女装"
+        },
+        {
+            "id": 2,
+            "name": "男装"
+        },
+        {
+            "id": 7,
+            "name": "男女内衣"
+        },
+        {
+            "id": 12,
+            "name": "女鞋"
+        },
+        {
+            "id": 9,
+            "name": "男鞋"
+        },
+        {
+            "id": 5,
+            "name": "箱包皮具"
+        },
+        {
+            "id": 10,
+            "name": "手表配饰"
+        },
+        {
+            "id": 1,
+            "name": "护肤彩妆"
+        },
+        {
+            "id": 11,
+            "name": "个人护理"
+        },
+        {
+            "id": 3,
+            "name": "母婴"
+        },
+        {
+            "id": 6,
+            "name": "运动户外"
+        },
+        {
+            "id": 8,
+            "name": "超市"
+        },
+        {
+            "id": 13,
+            "name": "图书"
+        },
+        {
+            "id": 14,
+            "name": "家用电器"
+        },
+        {
+            "id": 15,
+            "name": "手机数码"
+        }
+    ],
+    "content": {
+        "topImg": "//a.vpimg3.com/upload/flow/2018/08/03/143/15333024199924.jpg",
+        "details": [
+            {
+                "title": "人气美衣",
+                "icon": [
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/04/25/92/15246482342239_200x375_80.jpg!75.webp",
+                        "name": "连衣裙"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/03/06/162/15202998439847_200x375_80.png!75.webp",
+                        "name": "T恤"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/04/25/120/15246483648144_200x375_80.png!75.webp",
+                        "name": "衬衫"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/04/25/175/15246483854406_200x375_80.png!75.webp",
+                        "name": "套装"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/08/02/66/15331749404077_200x375_80.png!75.webp",
+                        "name": "半身裙"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/07/13/187/15314768565659_200x375_80.png!75.webp",
+                        "name": "卫衣"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/07/13/142/15314757239317_200x375_80.png!75.webp",
+                        "name": "外套"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/04/25/57/15246482576945_200x375_80.jpg!75.webp",
+                        "name": "风衣"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/07/13/152/15314774727187_200x375_80.png!75.webp",
+                        "name": "休闲裤"
+                    }
+                ]
+            },
+            {
+                "title": "百搭上衣",
+                "icon": [
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/06/19/79/15293796345836_200x375_80.png",
+                        "name": "衬衫"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/06/19/53/15293814458968_200x375_80.png",
+                        "name": "白色T恤"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/04/25/120/15246483648144_200x375_80.png!75.webp",
+                        "name": "衬衫"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/04/25/175/15246483854406_200x375_80.png!75.webp",
+                        "name": "套装"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/08/02/66/15331749404077_200x375_80.png!75.webp",
+                        "name": "半身裙"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/07/13/187/15314768565659_200x375_80.png!75.webp",
+                        "name": "卫衣"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/07/13/142/15314757239317_200x375_80.png!75.webp",
+                        "name": "外套"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/04/25/57/15246482576945_200x375_80.jpg!75.webp",
+                        "name": "风衣"
+                    },
+                    {
+                        "iconImg": "//h2.appsimg.com/a.appsimg.com/upload/goadmin/2018/07/13/152/15314774727187_200x375_80.png!75.webp",
+                        "name": "休闲裤"
+                    }
+                ]
+            }
+        ]
+    }
+}

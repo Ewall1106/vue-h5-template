@@ -1,7 +1,7 @@
 <template>
   <div class="myHeader">
     <div class="left">
-      <img class="logo" src="@/assets/logo.png" />
+      <img class="logo" src="@/assets/images/logo.png" />
       <span class="title">Hxx-Luxury Store</span>
     </div>
     <div class="right">
