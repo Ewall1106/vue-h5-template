@@ -9,22 +9,26 @@
     <!-- 主体 -->
     <div class="main" :style="{height:mainHeight}">
       <!-- 主体左侧 -->
-      <div class="mainLeft">
-        <div class="item" :class="currentIndex == index ? 'item_on' : ''" v-for="(item,index) in menuTitle" :key="item.id" @click="menuClick(index)">{{item.name}}</div>
+      <div class="mainLeft wrapper" ref="wrapper">
+        <div class="content">
+          <div class="item" :class="currentIndex == index ? 'item_on' : ''" v-for="(item,index) in menuTitle" :key="item.id" @click="menuClick(index)">{{item.name}}</div>
+        </div>
       </div>
       <!-- 主体右侧 -->
-      <div class="mainRight">
-        <!-- 顶部图 -->
-        <div class="display_img">
-          <img :src="menuDetail.topImg" />
-        </div>
-        <!-- 内容 -->
-        <div class="container" v-for="(item,index) in menuDetail.details" :key="index">
-          <div class="title">{{item.title}}</div>
-          <div class="content">
-            <div class="content_item" v-for="(item,index) in item.icon" :key="index">
-              <img :src="item.iconImg">
-              <div class="txt">{{item.name}}</div>
+      <div class="mainRight wrapper" ref="wrapper">
+        <div class="content">
+          <!-- 顶部图 -->
+          <div class="display_img">
+            <img :src="menuDetail.topImg" />
+          </div>
+          <!-- 内容 -->
+          <div class="container" v-for="(item,index) in menuDetail.details" :key="index">
+            <div class="title">{{item.title}}</div>
+            <div class="content">
+              <div class="content_item" v-for="(item,index) in item.icon" :key="index">
+                <img :src="item.iconImg">
+                <div class="txt">{{item.name}}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -35,6 +39,7 @@
 
 <script>
 import axios from "axios";
+import BScroll from "better-scroll";
 
 export default {
   name: "classify",
@@ -54,6 +59,12 @@ export default {
   },
   mounted() {
     this.getClassify();
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.wrapper, {
+        bounce: false,
+        click: true
+      });
+    });
   },
   watch: {},
   computed: {},
