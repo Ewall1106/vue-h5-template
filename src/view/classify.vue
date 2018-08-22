@@ -15,7 +15,7 @@
         </div>
       </div>
       <!-- 主体右侧 -->
-      <div class="mainRight wrapper" ref="wrapper">
+      <div class="mainRight wrapper" ref="wrapper2">
         <div class="content">
           <!-- 顶部图 -->
           <div class="display_img">
@@ -61,6 +61,10 @@ export default {
     this.getClassify();
     this.$nextTick(() => {
       this.scroll = new BScroll(this.$refs.wrapper, {
+        bounce: false,
+        click: true
+      });
+      this.scroll = new BScroll(this.$refs.wrapper2, {
         bounce: false,
         click: true
       });
