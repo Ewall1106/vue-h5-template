@@ -15,7 +15,7 @@
         </div>
       </div>
       <!-- 主体右侧 -->
-      <div class="mainRight wrapper" ref="wrapper">
+      <div class="mainRight wrapper" ref="wrapper2">
         <div class="content">
           <!-- 顶部图 -->
           <div class="display_img">
@@ -25,7 +25,7 @@
           <div class="container" v-for="(item,index) in menuDetail.details" :key="index">
             <div class="title">{{item.title}}</div>
             <div class="content">
-              <div class="content_item" v-for="(item,index) in item.icon" :key="index">
+              <div class="content_item" v-for="(item,index) in item.icon" :key="index" @click="itemClick(item.name)">
                 <img :src="item.iconImg">
                 <div class="txt">{{item.name}}</div>
               </div>
@@ -64,6 +64,10 @@ export default {
         bounce: false,
         click: true
       });
+      this.scroll = new BScroll(this.$refs.wrapper2, {
+        bounce: false,
+        click: true
+      });
     });
   },
   watch: {},
@@ -86,8 +90,18 @@ export default {
         path: "/"
       });
     },
+    // 左侧菜单栏点击
     menuClick(idx) {
       this.currentIndex = idx;
+    },
+    // item块点击
+    itemClick(title) {
+      this.$router.push({
+        path: "/goodList",
+        query: {
+          title: title
+        }
+      });
     }
   }
 };
