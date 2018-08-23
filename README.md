@@ -1,1 +1,1 @@
-分类详情页之better-scroll实现滚动
+chapter22商品列表页

@@ -12,12 +12,7 @@
 
 <script>
 export default {
-  name: "myHeader",
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App"
-    };
-  }
+  name: "myHeader"
 };
 </script>
 
