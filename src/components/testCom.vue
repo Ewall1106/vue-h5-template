@@ -29,7 +29,7 @@ export default {
 .testCom {
   //background: @bgColor;
   input {
-    border: 1px solid red;
+    border: 1px solid black;
   }
   // button {
   //   width: 200px;
