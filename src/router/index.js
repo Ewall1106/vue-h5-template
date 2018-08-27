@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/view/home'
 import Classify from '@/view/classify'
 import GoodList from '@/view/goodList'
+import Test from '@/view/test'
 
 Vue.use(Router)
 
@@ -21,5 +22,10 @@ export default new Router({
     path: '/goodList',
     name: 'GoodList',
     component: GoodList
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: Test
   }]
 })
