@@ -1,0 +1,48 @@
+{
+    "code": 200,
+    "msg": "",
+    "goodslist": [
+        {
+            "goodsId": 0,
+            "goodsImg": "//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/607153/2018/0528/120/5ed543e8-b6dc-4fe3-bcf1-e393816b8d4b_5t.jpg",
+            "desc": "熙世界V领撞色花边针织女款短袖连衣裙",
+            "price": 99,
+            "discount": 809
+        },
+        {
+            "goodsId": 1,
+            "goodsImg": "//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2018/07/17/113/e4c755e3-1663-437e-9dde-a4979363a469_5t.jpg",
+            "desc": "娜尔思 | NAERSI/娜尔思秋季新品连衣裙",
+            "price": 929,
+            "discount": 939
+        },
+        {
+            "goodsId": 2,
+            "goodsImg": "//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvop/00603727/10000646/2094163692-438051563145240605-438051563145240902-5.jpg",
+            "desc": "欧时力 | ochirly欧时力新女装拼接荷叶边刺绣网纱无袖连衣裙1JH2084210",
+            "price": 1119,
+            "discount": 8199
+        },
+        {
+            "goodsId": 3,
+            "goodsImg": "//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2018/07/17/113/e4c755e3-1663-437e-9dde-a4979363a469_5t.jpg",
+            "desc": "娜尔思 | NAERSI/娜尔思秋季新品连衣裙",
+            "price": 929,
+            "discount": 499
+        },
+        {
+            "goodsId": 4,
+            "goodsImg": "//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2018/08/02/34/b2d13309-0796-4408-beff-ce01f6295388_5t.jpg",
+            "desc": "哥弟 | 气质时尚短袖连衣裙",
+            "price": 929,
+            "discount": 8189
+        },
+        {
+            "goodsId": 5,
+            "goodsImg": "//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2018/06/07/147/fd624450-a586-4b7f-99aa-dbb8e272c26d_5t.jpg",
+            "desc": "裂帛 | 立领刺绣七分袖雪纺连衣裙女",
+            "price": 329,
+            "discount": 2399
+        }
+    ]
+}

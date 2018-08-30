@@ -1,39 +1,42 @@
 <template>
   <div class="goodlist">
-    <!-- 头部标题 -->
-    <div class="header">
-      <span class="iconfont" @click="goBack()">&#xe660;</span>
-      <div class="title">{{$route.query.title}}</div>
-      <span class="iconfont" @click="goHome()">&#xe64f;</span>
-    </div>
-    <!-- 筛选工具栏 -->
-    <div class="filter">
-      <div class="filter_item" :class="currentIdx==0 ? 'on' : ''" @click="filterClick(0)">
-        <span>综合排序</span>
+    <div class="fix_top">
+      <!-- 头部标题 -->
+      <div class="header">
+        <span class="iconfont" @click="goBack()">&#xe660;</span>
+        <div class="title">{{$route.query.title}}</div>
+        <span class="iconfont" @click="goHome()">&#xe64f;</span>
       </div>
-      <div class="filter_item" :class="currentIdx==1 ? 'on' : ''" @click="filterClick(1)">
-        <i class="iconfont">&#xe766;</i>
-        <span>销量</span>
-      </div>
-      <div class="filter_item" :class="currentIdx==2 ? 'on' : ''" @click="filterClick(2)">
-        <i class="iconfont">&#xe766;</i>
-        <span>价格</span>
-      </div>
-      <div class="filter_item" :class="currentIdx==3 ? 'on' : ''" @click="filterClick(3)">
-        <i class="iconfont">&#xe74a;</i>
-        <span>筛选</span>
+      <!-- 筛选工具栏 -->
+      <div class="filter">
+        <div class="filter_item" :class="currentIdx==0 ? 'on' : ''" @click="filterClick(0)">
+          <span>综合排序</span>
+        </div>
+        <div class="filter_item" :class="currentIdx==1 ? 'on' : ''" @click="filterClick(1)">
+          <i class="iconfont">&#xe766;</i>
+          <span>销量</span>
+        </div>
+        <div class="filter_item" :class="currentIdx==2 ? 'on' : ''" @click="filterClick(2)">
+          <i class="iconfont">&#xe766;</i>
+          <span>价格</span>
+        </div>
+        <div class="filter_item" :class="currentIdx==3 ? 'on' : ''" @click="filterClick(3)">
+          <i class="iconfont">&#xe74a;</i>
+          <span>筛选</span>
+        </div>
       </div>
     </div>
     <!-- 商品列表 -->
     <div class="goods">
-      <div class="goods_item" v-for="(item,index) in [1,2,3,4]" :key="index">
-        <goods-item></goods-item>
+      <div class="goods_item" v-for="(item,index) in list" :key="index">
+        <goods-item :img="item.goodsImg" :desc="item.desc" :price="item.price" :discount="item.discount"></goods-item>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import GoodsItem from "@/components/goodsItem.vue";
 
 export default {
@@ -43,14 +46,28 @@ export default {
   },
   data() {
     return {
-      currentIdx: 0
+      // 工具栏索引
+      currentIdx: 0,
+      // 商品列表
+      list: ""
     };
   },
   created() {},
-  mounted() {},
+  mounted() {
+    this.getGoodsList();
+  },
   watch: {},
   computed: {},
   methods: {
+    // 获取商品列表数据
+    getGoodsList() {
+      axios.get("/api/goodsList.json").then(res => {
+        if (res.data.code == 200) {
+          this.list = res.data.goodslist;
+        }
+        console.log("商品列表数据：", res);
+      });
+    },
     // 回退
     goBack() {
       this.$router.go(-1);
@@ -72,6 +89,12 @@ export default {
 <style lang="less" scoped>
 @import "../assets/styles/variables.less";
 .goodlist {
+  .fix_top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
   // 头部标题
   .header {
     box-sizing: border-box;
@@ -97,11 +120,12 @@ export default {
     flex-direction: row;
     text-align: center;
     border-bottom: 1px solid @bgColor;
+    background: #fff;
     .filter_item {
       flex-grow: 1;
       width: 0.96rem;
-      height: 1.013333rem;
-      line-height: 1.013333rem;
+      height: 38px;
+      line-height: 38px;
       font-size: @sizeM;
     }
     .on {
@@ -115,6 +139,7 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0.213333rem 0.133333rem;
+    margin-top: 83px;
     .goods_item {
       margin-bottom: 0.266667rem;
     }
