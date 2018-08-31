@@ -57,7 +57,7 @@ export default {
     // flex-direction: row;
     // justify-content: space-between;
     .price_now {
-      font-size: @sizeXL;
+      font-size: @sizeL;
       color: @themeColor;
     }
     .discount {

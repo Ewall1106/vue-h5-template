@@ -1,5 +1,5 @@
 <template>
-  <div class="goodlist">
+  <div class="goodsList">
     <div class="fix_top">
       <!-- 头部标题 -->
       <div class="header">
@@ -88,7 +88,7 @@ export default {
 
 <style lang="less" scoped>
 @import "../assets/styles/variables.less";
-.goodlist {
+.goodsList {
   .fix_top {
     position: fixed;
     top: 0;
