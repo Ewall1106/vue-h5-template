@@ -28,7 +28,7 @@
     </div>
     <!-- 商品列表 -->
     <div class="goods">
-      <div class="goods_item" v-for="(item,index) in list" :key="index">
+      <div class="goods_item" v-for="(item,index) in list" :key="index" @click="gotoDetail()">
         <goods-item :img="item.goodsImg" :desc="item.desc" :price="item.price" :discount="item.discount"></goods-item>
       </div>
     </div>
@@ -81,6 +81,12 @@ export default {
     // 筛选栏点击
     filterClick(idx) {
       this.currentIdx = idx;
+    },
+    // 点击商品块
+    gotoDetail() {
+      this.$router.push({
+        path: "/goodsDetail"
+      });
     }
   }
 };
