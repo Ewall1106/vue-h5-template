@@ -37,34 +37,34 @@
 
 
 ### 知识点梳理
-git学习
+### git学习
 - [git的学习](https://www.jianshu.com/p/6deca2cfc37a)
 
-flex布局
+### flex布局
 - [商品推荐列表及flex布局](https://www.jianshu.com/p/d58bdcb54529)
 
-项目初始化
+### 项目初始化
 - [用vue-cli脚手架搭建一个新的vue项目](https://www.jianshu.com/p/0b91e9a05694)
 - [reset.css的引入及1px边框问题解决](https://www.jianshu.com/p/03172908d344)
 - [手机适配问题之rem和lib-flexible](https://www.jianshu.com/p/6edffcd890e9)
 - [阿里巴巴矢量图库icon-font的运用](https://www.jianshu.com/p/bfc035236d76)
 - [写个首页头部组件并引入less](https://www.jianshu.com/p/bdd4dd2c098b)
 
-v-router的讲解
+### v-router的讲解
 - [什么是动态路由](https://www.jianshu.com/p/f499d9f64958)
 - [什么是嵌套路由](https://www.jianshu.com/p/3036137769da)
 - [什么是编程式路由](https://www.jianshu.com/p/81ed5a90bb10)
 - [什么是路由和命名视图](https://www.jianshu.com/p/004b73f3f589)
 
-轮播图的使用
+### 轮播图的使用
 - [组件及运用组件创建一个头部组件](https://www.jianshu.com/p/aa6d64994379)
 - [轮播图组件及swiper的引入](https://www.jianshu.com/p/4f92c4461e3d)
 - [优化轮播图组件与vue深度处理器](https://www.jianshu.com/p/4f92c4461e3d)
 
-数据mock及构建
+### 数据mock及构建
 - [axios的使用与数据的mock(1)](https://www.jianshu.com/p/9b804ad87056)
 - [axios的使用与数据的mock(2)](https://www.jianshu.com/p/896f8127fe60)
-将mock数据渲染到组件
+- 将mock数据渲染到组件
 
 
 ### 交流扯谈
