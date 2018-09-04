@@ -1,9 +1,9 @@
 # 手把手教你用vue+node+mongodb搭建一个小商城
 
-### 文章教程
+## 文章教程
 [vue商城专栏](https://www.jianshu.com/nb/14505636)
 
-### 分支说明
+## 分支说明
 - chapter3 什么是动态路由  
 - chapter4 什么是嵌套路由
 - chapter5 什么是编程式路由
@@ -36,7 +36,7 @@
 - Node
 
 
-### 知识点梳理
+## 知识点梳理
 ### git学习
 - [git的学习](https://www.jianshu.com/p/6deca2cfc37a)
 
@@ -67,7 +67,7 @@
 - 将mock数据渲染到组件
 
 
-### 交流扯谈
+## 交流扯谈
 <img src="https://wx3.sinaimg.cn/mw1024/006pIwwKgy1frm9f1mghlj30e80e83yy.jpg" width="250px" height="250px" alt="weixin:Ewall1106"/>
 
 
