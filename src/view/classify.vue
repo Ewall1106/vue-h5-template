@@ -97,7 +97,7 @@ export default {
     // item块点击
     itemClick(title) {
       this.$router.push({
-        path: "/goodList",
+        path: "/goodsList",
         query: {
           title: title
         }
