@@ -4,7 +4,7 @@
     <div class="carousel">
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide v-for="(item,index) in swiperData" :key="index">
-          <img class="myswiper_img" :src="item" alt="">
+          <img class="myswiper_img" :src="item">
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
@@ -78,6 +78,7 @@
       </div>
       <div class="shopcart_add">加入购物车</div>
     </div>
+
   </div>
 </template>
 
@@ -116,9 +117,7 @@ export default {
     };
   },
   created() {},
-  mounted() {
-    //this.getIndexData();
-  },
+  mounted() {},
   watch: {},
   computed: {},
   methods: {
@@ -246,7 +245,7 @@ export default {
       margin-right: 0.4rem;
       .service_text_item_icon {
         color: @themeColor;
-        margin-right: .053333rem;
+        margin-right: 0.053333rem;
       }
     }
   }
