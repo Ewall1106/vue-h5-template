@@ -4,7 +4,7 @@
     <div class="carousel">
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide v-for="(item,index) in swiperData" :key="index">
-          <img class="myswiper_img" :src="item">
+          <img class="myswiper_img" :src="item" @click="swiperImgClick()">
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { ImagePreview } from "vant";
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
@@ -121,19 +121,17 @@ export default {
   watch: {},
   computed: {},
   methods: {
-    getIndexData() {
-      axios.get("/api/index.json").then(res => {
-        this.swiperData = res.data.swiper;
-        this.classifiData = res.data.classifiData;
-        this.recommendData = res.data.recommendData;
-      });
-    },
+    // 尺码点击
     sizeItemClick(idx) {
       this.activeIndex = idx;
     },
     // 回退
     goBack() {
       this.$router.go(-1);
+    },
+    // 轮播图点击
+    swiperImgClick() {
+      ImagePreview(this.swiperData);
     }
   }
 };
@@ -141,6 +139,7 @@ export default {
 
 <style lang="less" scoped>
 @import "../assets/styles/variables.less";
+
 .goodsDetail {
   // 顶部轮播图
   .carousel {
