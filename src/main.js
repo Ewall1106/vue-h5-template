@@ -7,13 +7,14 @@ import 'styles/border.css'
 import 'styles/iconfont.css'
 import 'lib-flexible/flexible.js'
 import 'vant/lib/vant-css/index.css';
+import '@/assets/styles/override.css'
 
 Vue.use(VueLazyload, {
   loading: '/static/images/loading.gif'
 })
 
-import { Button } from 'vant';
-Vue.use(Button)
+import { Button, AddressList } from 'vant';
+Vue.use(Button).use(AddressList)
 
 Vue.config.productionTip = false
 
