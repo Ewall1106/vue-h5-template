@@ -1,32 +1,22 @@
 <template>
-    <div class="test">
-        <test-com @childFn="parentFn"></test-com>
-        <br/> 子组件传来的值 : {{message}}
-    </div>
+  <div class="test">
+  </div>
 </template>
 
 <script>
-import TestCom from "@/components/testCom";
-
 export default {
   name: "test",
-  components: {
-    TestCom
-  },
+  components: {},
   data() {
     return {
-      message: ""
+      message: "hello world"
     };
   },
   created() {},
   mounted() {},
   watch: {},
   computed: {},
-  methods: {
-    parentFn(payload) {
-      this.message = payload;
-    }
-  }
+  methods: {}
 };
 </script>
 
