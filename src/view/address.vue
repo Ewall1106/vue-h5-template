@@ -1,11 +1,12 @@
 <template>
-  <div class="test">
+  <div class="address">
+    address
   </div>
 </template>
 
 <script>
 export default {
-  name: "test",
+  name: "Address",
   components: {},
   data() {
     return {
@@ -22,7 +23,7 @@ export default {
 
 <style lang="less" scoped>
 @import "../assets/styles/variables.less";
-.test {
+.address {
   //background: @bgColor;
 }
 </style>
