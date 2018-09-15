@@ -4,7 +4,7 @@
     <div class="carousel">
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide v-for="(item,index) in swiperData" :key="index">
-          <img class="myswiper_img" :src="item" alt="">
+          <img class="myswiper_img" :src="item" @click="swiperImgClick()">
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
@@ -78,11 +78,12 @@
       </div>
       <div class="shopcart_add">加入购物车</div>
     </div>
+
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import { ImagePreview } from "vant";
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
@@ -116,25 +117,21 @@ export default {
     };
   },
   created() {},
-  mounted() {
-    //this.getIndexData();
-  },
+  mounted() {},
   watch: {},
   computed: {},
   methods: {
-    getIndexData() {
-      axios.get("/api/index.json").then(res => {
-        this.swiperData = res.data.swiper;
-        this.classifiData = res.data.classifiData;
-        this.recommendData = res.data.recommendData;
-      });
-    },
+    // 尺码点击
     sizeItemClick(idx) {
       this.activeIndex = idx;
     },
     // 回退
     goBack() {
       this.$router.go(-1);
+    },
+    // 轮播图点击
+    swiperImgClick() {
+      ImagePreview(this.swiperData);
     }
   }
 };
@@ -142,6 +139,7 @@ export default {
 
 <style lang="less" scoped>
 @import "../assets/styles/variables.less";
+
 .goodsDetail {
   // 顶部轮播图
   .carousel {
@@ -246,7 +244,7 @@ export default {
       margin-right: 0.4rem;
       .service_text_item_icon {
         color: @themeColor;
-        margin-right: .053333rem;
+        margin-right: 0.053333rem;
       }
     }
   }

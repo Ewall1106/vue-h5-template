@@ -5,20 +5,24 @@
 </template>
 
 <script>
-import MyHeader from '@/components/myHeader'
+import MyHeader from "@/components/myHeader";
 export default {
-  name: 'App'
-}
+  name: "App"
+};
 </script>
 
-<style>
+<style lang="less">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-html,body {
+html,
+body {
   padding: 0;
   margin: 0;
+  /deep/ .van-swipe__indicator--active {
+    background: #de3d96;
+  }
 }
 </style>
