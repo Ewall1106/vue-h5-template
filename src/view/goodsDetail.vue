@@ -73,12 +73,11 @@
     </div>
     <!-- 底部栏购物栏 -->
     <div class="shopcart">
-      <div class="shopcart_cart">
+      <div class="shopcart_cart" @click="gotoCart">
         <span class="iconfont shopcart_cart_icon">&#xe63f;</span>
       </div>
       <div class="shopcart_add">加入购物车</div>
     </div>
-
   </div>
 </template>
 
@@ -132,6 +131,12 @@ export default {
     // 轮播图点击
     swiperImgClick() {
       ImagePreview(this.swiperData);
+    },
+    // 去购物车页面
+    gotoCart() {
+      this.$router.push({
+        path: "/cart"
+      });
     }
   }
 };

@@ -13,6 +13,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Address",
   components: {},
@@ -40,7 +41,17 @@ export default {
   watch: {},
   computed: {},
   methods: {
-    onAdd() {},
+    // 回退
+    goBack() {
+      this.$router.go(-1);
+    },
+    // 地址新增
+    onAdd() {
+      this.$router.push({
+        path: "/addressEdit"
+      });
+    },
+    // 单项编辑
     onEdit(item, index) {}
   }
 };

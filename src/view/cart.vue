@@ -7,7 +7,7 @@
       <span class="iconfont" @click="goHome()">&#xe64f;</span>
     </div>
     <!-- 收货地址 -->
-    <div class="address">
+    <div class="address" @click="gotoAddress()">
       <div class="address_left">
         <i class="iconfont address_left_icon">&#xe64e;</i>
         <span>请填写收货地址</span>
@@ -41,6 +41,12 @@ export default {
     goHome() {
       this.$router.push({
         path: "/"
+      });
+    },
+    // 去购物车
+    gotoAddress() {
+      this.$router.push({
+        path: "/address"
       });
     }
   }
