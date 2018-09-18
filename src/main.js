@@ -13,8 +13,8 @@ Vue.use(VueLazyload, {
   loading: '/static/images/loading.gif'
 })
 
-import { Button, AddressList } from 'vant';
-Vue.use(Button).use(AddressList)
+import { Button, Area, AddressList, AddressEdit } from 'vant';
+Vue.use(Button).use(AddressList).use(AddressEdit)
 
 Vue.config.productionTip = false
 

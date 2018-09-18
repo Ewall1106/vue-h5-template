@@ -1,6 +1,11 @@
 .van-address-list .van-icon-checked {
     color: #de3d96;
 }
-.van-address-list .van-button--danger{
+
+.van-address-list .van-button--danger {
+    background: #de3d96;
+}
+
+.van-address-edit .van-button--danger {
     background: #de3d96;
 }

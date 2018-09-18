@@ -6,6 +6,7 @@ import GoodsList from '@/view/goodsList'
 import GoodsDetail from '@/view/goodsDetail'
 import Cart from '@/view/cart'
 import Address from '@/view/address'
+import AddressEdit from '@/view/addressEdit'
 import Test from '@/view/test'
 
 Vue.use(Router)
@@ -40,6 +41,11 @@ export default new Router({
     path: '/address',
     name: 'Address',
     component: Address
+  },
+  {
+    path: '/addressEdit',
+    name: 'AddressEdit',
+    component: AddressEdit
   },
   {
     path: '/test',
