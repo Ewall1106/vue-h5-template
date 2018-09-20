@@ -33,6 +33,7 @@
 - chapter28 购物车结算页面-导航栏与地址选择布局
 - chapter29 地址选择
 - chapter30 地址填写（姓名、电话、省市区）
+- chapter31 地址新增 — 数据结构定义与事件添加
 - MongoDB的安装
 - MongoDB服务的配置
 - MongoDB基本语法

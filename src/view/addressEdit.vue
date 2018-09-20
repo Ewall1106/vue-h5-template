@@ -7,12 +7,7 @@
     </div>
     <!-- 编辑主体 -->
     <div class="content">
-      <van-address-edit 
-        :area-list="areaList" 
-        show-postal show-delete 
-        show-set-default 
-        @save="onSave" 
-        @delete="onDelete" />
+      <van-address-edit :area-list="areaList" :address-info="addressInfo" show-postal show-delete show-set-default @save="onSave" @delete="onDelete" />
     </div>
   </div>
 </template>
@@ -25,7 +20,14 @@ export default {
   components: {},
   data() {
     return {
-      areaList
+      areaList,
+      addressInfo: {
+        name: "熊猫Ewall",
+        tel: "13111111111",
+        areaCode: "110101",
+        addressDetail: "某某街几号几号几号",
+        postalCode: "410000"
+      }
     };
   },
   created() {},
@@ -38,8 +40,19 @@ export default {
       this.$router.go(-1);
     },
     // 保存
-    onSave() {
-      Toast("save");
+    onSave(e) {
+      let data = {};
+      data.name = e.name;
+      data.tel = e.tel;
+      data.address = e.province + e.city + e.county + e.addressDetail + "";
+      data.addressDetail = e.addressDetail;
+      data.areaCodeL = e.areaCode;
+      data.postalCode = e.postalCode;
+      data.isDefault = e.isDefault;
+      let addressData = localStorage.getItem("address") || [];
+      addressData.push(data);
+    
+      console.log(addressData);
     },
     // 删除
     onDelete() {
