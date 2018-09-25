@@ -49,10 +49,15 @@ export default {
       data.areaCodeL = e.areaCode;
       data.postalCode = e.postalCode;
       data.isDefault = e.isDefault;
-      let addressData = localStorage.getItem("address") || [];
+
+      let addressData = JSON.parse(localStorage.getItem("address")) || [];
       addressData.push(data);
-    
-      console.log(addressData);
+
+      localStorage.setItem("address", JSON.stringify(addressData));
+      
+      this.$router.push({
+        path: "/address"
+      });
     },
     // 删除
     onDelete() {

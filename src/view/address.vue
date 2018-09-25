@@ -29,7 +29,9 @@ export default {
       ]
     };
   },
-  created() {},
+  created() {
+    this.list = JSON.parse(localStorage.getItem("address"));
+  },
   mounted() {},
   watch: {},
   computed: {},
