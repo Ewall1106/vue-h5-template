@@ -8,6 +8,7 @@ import Cart from '@/view/cart'
 import Address from '@/view/address'
 import AddressEdit from '@/view/addressEdit'
 import Test from '@/view/test'
+import TestCity from '@/view/testCity'
 
 Vue.use(Router)
 
@@ -51,5 +52,10 @@ export default new Router({
     path: '/test',
     name: 'Test',
     component: Test
+  },
+  {
+    path: '/testCity',
+    name: 'TestCity',
+    component: TestCity
   }]
 })

@@ -8,6 +8,7 @@ import 'styles/iconfont.css'
 import 'lib-flexible/flexible.js'
 import 'vant/lib/vant-css/index.css';
 import '@/assets/styles/override.css'
+import store from './store'
 
 Vue.use(VueLazyload, {
   loading: '/static/images/loading.gif'
@@ -22,6 +23,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
