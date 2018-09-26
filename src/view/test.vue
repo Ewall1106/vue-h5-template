@@ -1,5 +1,7 @@
 <template>
   <div class="test">
+    <router-link to="/testCity">←返回testCity页面</router-link>
+    <div>获取vuex中的值：{{this.$store.state.city}}</div>
   </div>
 </template>
 
@@ -23,6 +25,12 @@ export default {
 <style lang="less" scoped>
 @import "../assets/styles/variables.less";
 .test {
-  //background: @bgColor;
+  font-size: 16px;
+  padding: 5px;
+  div {
+    padding-top: 20px;
+    margin-top: 5px;
+    border-top: 1px dotted #000;
+  }
 }
 </style>
