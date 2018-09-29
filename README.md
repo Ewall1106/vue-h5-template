@@ -36,7 +36,8 @@
 - chapter31 地址新增 — 数据结构定义与事件添加
 - chapter32 localStorage本地储存
 - chapter33 vuex初探(一)
-- chapter33 vuex初探(二)
+- chapter34 vuex初探(二)
+- chapter35 vuex初探(三)
 - MongoDB的安装
 - MongoDB服务的配置
 - MongoDB基本语法
