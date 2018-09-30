@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "TestCity",
   components: {},
@@ -28,8 +30,12 @@ export default {
   computed: {},
   methods: {
     click(city) {
-      this.$store.dispatch("changeCity", city);
-    }
+      // this.$store.dispatch("changeCity", city);
+
+      // 通过mapActions辅助函数，我们就可以将this.changeCity()映射为this.$store.dispatch('changeCity')
+      this.changeCity(city);
+    },
+    ...mapActions(["changeCity"])
   }
 };
 </script>
