@@ -2,12 +2,16 @@
   <div class="test">
     <router-link to="/testCity">←返回testCity页面</router-link>
     <!-- <div>获取vuex中的值：{{this.$store.state.city}}</div> -->
-    <div>获取vuex中的值：{{this.city}}</div>
+    <!-- <div>获取vuex中的值：{{this.city}}</div> -->
+
+    <!-- Getter -->
+    <!-- <div>获取vuex中的值：{{this.$store.getters.currentCity}}</div> -->
+    <div>获取vuex中的值：{{this.currentCity}}</div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "test",
@@ -23,7 +27,9 @@ export default {
   computed: {
     // 使用mapState辅助函数帮助我们生成计算属性
     // 将this.city映射为this.$store.state.city
-    ...mapState(["city"])
+    // ...mapState(["city"])
+
+    ...mapGetters(["currentCity"])
   },
   methods: {}
 };

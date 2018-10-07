@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 
 export default {
   name: "TestCity",
@@ -31,11 +31,15 @@ export default {
   methods: {
     click(city) {
       // this.$store.dispatch("changeCity", city);
-
       // 通过mapActions辅助函数，我们就可以将this.changeCity()映射为this.$store.dispatch('changeCity')
+      // this.changeCity(city);
+
+      // this.$store.commit("changeCity", city);
+      // 通过mapMutations辅助函数，将this.changeCity(city)映射为this.$store.commit("changeCity", city)
       this.changeCity(city);
     },
-    ...mapActions(["changeCity"])
+    //...mapActions(["changeCity"])
+    ...mapMutations(["changeCity"])
   }
 };
 </script>
