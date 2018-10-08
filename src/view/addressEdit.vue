@@ -14,6 +14,7 @@
 
 <script>
 import areaList from "@/assets/js/area";
+import { mapMutations } from "vuex";
 
 export default {
   name: "addressEdit",
@@ -21,13 +22,7 @@ export default {
   data() {
     return {
       areaList,
-      addressInfo: {
-        name: "熊猫Ewall",
-        tel: "13111111111",
-        areaCode: "110101",
-        addressDetail: "某某街几号几号几号",
-        postalCode: "410000"
-      }
+      addressInfo: {}
     };
   },
   created() {},
@@ -50,11 +45,8 @@ export default {
       data.postalCode = e.postalCode;
       data.isDefault = e.isDefault;
 
-      let addressData = JSON.parse(localStorage.getItem("address")) || [];
-      addressData.push(data);
+      this.saveAddress(data);
 
-      localStorage.setItem("address", JSON.stringify(addressData));
-      
       this.$router.push({
         path: "/address"
       });
@@ -62,7 +54,8 @@ export default {
     // 删除
     onDelete() {
       Toast("delete");
-    }
+    },
+    ...mapMutations(["saveAddress"])
   }
 };
 </script>

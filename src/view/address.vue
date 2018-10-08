@@ -18,21 +18,21 @@ export default {
   components: {},
   data() {
     return {
-      chosenAddressId: "1",
-      list: [
-        {
-          id: "1",
-          name: "张三",
-          tel: "13000000000",
-          address: "浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室"
-        }
-      ]
+      chosenAddressId: "0",
+      list: []
     };
   },
-  created() {
-    this.list = JSON.parse(localStorage.getItem("address"));
+  created() {},
+  mounted() {
+    let addressList = this.$store.state.address;
+    addressList.forEach((element, idx) => {
+      element.id = idx + "";
+      if (element.isDefault) {
+        this.chosenAddressId = element.id;
+      }
+    });
+    this.list = addressList;
   },
-  mounted() {},
   watch: {},
   computed: {},
   methods: {

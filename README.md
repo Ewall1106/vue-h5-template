@@ -40,6 +40,7 @@
 - chapter35 vuex初探(三)
 - chapter36 vuex初探(四)
 - chapter37 vuex初探(五)
+- chapter38 vuex管理用户地址
 - MongoDB的安装
 - MongoDB服务的配置
 - MongoDB基本语法
