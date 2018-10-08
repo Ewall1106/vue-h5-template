@@ -1,7 +1,7 @@
-const currentCity = state => {
-    return state.city;
-}
+// const currentCity = state => {
+//     return state.city;
+// }
 
-export default {
-    currentCity
-}
+// export default {
+//     currentCity
+// }

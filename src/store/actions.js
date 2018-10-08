@@ -1,5 +1,5 @@
 export default {
-    changeCity(ctx, city) {
-        ctx.commit('changeCity', city)
+    saveAddress(ctx, address) {
+        ctx.commit('saveAddress', address)
     }
 }
