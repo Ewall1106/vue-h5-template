@@ -38,7 +38,9 @@ export default {
   methods: {
     // 回退
     goBack() {
-      this.$router.go(-1);
+      this.$router.push({
+        path: "/cart"
+      });
     },
     // 地址新增
     onAdd() {
@@ -48,7 +50,12 @@ export default {
     },
     // 单项编辑
     onEdit(item, index) {
-      console.log(item, index);
+      this.$router.push({
+        path: "/addressEdit",
+        query: {
+          idx: index
+        }
+      });
     }
   }
 };
