@@ -1,11 +1,7 @@
 <template>
   <div class="cart">
     <!-- 顶部导航栏 -->
-    <div class="topNav">
-      <span class="iconfont" @click="goBack()">&#xe660;</span>
-      <div class="title">确认订单</div>
-      <span class="iconfont" @click="goHome()">&#xe64f;</span>
-    </div>
+    <my-header>确认订单</my-header>
     <!-- 收货地址 -->
     <div class="address" @click="gotoAddress()">
       <div class="address_left">
@@ -67,9 +63,13 @@
 </template>
 
 <script>
+import MyHeader from "@/components/myHeader.vue";
+
 export default {
   name: "Cart",
-  components: {},
+  components: {
+    MyHeader
+  },
   data() {
     return {
       message: ""

@@ -1,6 +1,15 @@
 <template>
   <div class="home">
-    <my-header></my-header>
+    <!-- 头部 -->
+    <div class="myHeader">
+      <div class="left">
+        <img class="logo" src="@/assets/images/logo.png" />
+        <span class="title">Hxx-Luxury Store</span>
+      </div>
+      <div class="right" @click="gotoPersonalCenter">
+        <span class="iconfont">&#xe6b8;</span>
+      </div>
+    </div>
     <carousel :swiperData='swiperData'></carousel>
     <!-- 分类 -->
     <div class="classification">
@@ -31,13 +40,11 @@
   </div>
 </template>
 <script>
-import MyHeader from "@/components/myHeader";
 import Carousel from "@/components/carousel";
 import axios from "axios";
 export default {
   name: "home",
   components: {
-    MyHeader,
     Carousel
   },
   data() {
@@ -68,6 +75,11 @@ export default {
           id: id
         }
       });
+    },
+    gotoPersonalCenter() {
+       this.$router.push({
+        path: "/me"
+      });
     }
   }
 };
@@ -76,6 +88,35 @@ export default {
 @import "~styles/variables.less";
 .home {
   background: #f3f4f5;
+  // 头部
+  .myHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.066667rem;
+    padding: 0 0.133333rem;
+    background: #fff;
+    .left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .logo {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+      .title {
+        padding-left: 0.133333rem;
+        font-size: 0.4rem;
+        color: #8e8e8e;
+      }
+    }
+    .right {
+      span {
+        font-size: 0.5rem;
+      }
+    }
+  }
   // 分类
   .classification {
     .class_top,
