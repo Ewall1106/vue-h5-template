@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import MyHeader from "@/components/myHeader";
 export default {
   name: "App"
 };

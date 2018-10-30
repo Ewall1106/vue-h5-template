@@ -42,6 +42,7 @@
 - chapter37 vuex初探(五)
 - chapter38 vuex管理用户地址
 - chapter39 完成购物车页面
+- chapter40 个人中心页面
 - MongoDB的安装
 - MongoDB服务的配置
 - MongoDB基本语法
