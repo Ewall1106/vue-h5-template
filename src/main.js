@@ -6,7 +6,6 @@ import 'styles/reset.css'
 import 'styles/border.css'
 import 'styles/iconfont.css'
 import 'lib-flexible/flexible.js'
-import 'vant/lib/vant-css/index.css';
 import '@/assets/styles/override.css'
 import store from './store'
 
