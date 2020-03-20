@@ -12,15 +12,12 @@ router.beforeEach(async (to, from, next) => {
   // 根据token判断用户是否登录
   const hasToken = getToken()
 
-  console.log('adsfa', hasToken)
-
   if (hasToken) {
     if (to.path === '/login') {
       // 如果已经登录了，而去的又是login页就重定向到首页
       next({ path: '/' })
     } else {
       const hasUserInfo = store.getters.name
-      console.log('asdfas', hasUserInfo)
       if (hasUserInfo) {
         next()
       } else {
