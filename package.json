@@ -6,11 +6,12 @@
   "keywords": [
     "vue",
     "vue-template",
-    "panda-vue-template"
+    "panda-vue-template",
+    "panda-mall"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ewall1106/panda-vue-template"
+    "url": "git+https://github.com/Ewall1106/mall"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
