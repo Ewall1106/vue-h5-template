@@ -23,7 +23,7 @@
 
 ## 介绍
 
-- 使用vue的技术栈来开发一个商场小项目。
+使用vue的技术栈来开发一个商场小项目。 
 - [yapi接口文档](http://yapi.demo.qunar.com/project/17982)
 - [文章简要系列](https://www.jianshu.com/nb/14505636)
 
