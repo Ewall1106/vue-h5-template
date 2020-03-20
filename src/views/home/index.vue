@@ -1,5 +1,13 @@
 <template>
   <div class="home">
+    <div class="menu__right">
+      <van-dropdown-menu>
+        <van-dropdown-item title="" ref="item">
+          <van-button block type="info" @click="onConfirm">确认</van-button>
+        </van-dropdown-item>
+      </van-dropdown-menu>
+    </div>
+
     <img class="logo" src="@/assets/logo.png" alt="logo" />
 
     <van-cell-group title="相关介绍：">
@@ -41,29 +49,36 @@ export default {
   },
   data() {
     return {
-      val: '11111'
+      val: '11111',
+      value: 0,
+      switch1: false,
+      switch2: false
     }
   },
   mounted() {},
-  methods: {}
+  methods: {
+    onConfirm() {
+      this.$refs.item.toggle()
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+@import "~@/styles/variables.scss";
+
 .home {
   min-height: 100vh;
-  background: #f5f5f593;
+  // background: #f5f5f593;
+  background: $theme;
   .logo {
     display: block;
     width: 200px;
     margin: 0 auto;
     padding-top: 40px;
   }
-  h2 {
-    padding: 10px 0;
-  }
-  a {
-    color: #42b983;
+  .menu__right {
+    width: 50px;
   }
 }
 </style>
