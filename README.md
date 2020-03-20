@@ -1,50 +1,52 @@
-# 过去的代码，回看起来简直惨不忍睹，为了不让这个项目烂尾，我决定还是把它重构一下。。。。。。各位过两天再来看吧[抱拳]
-# 有兴趣的可以看看这个webpack的，我自认为总结的还可以：[https://github.com/Ewall1106/webpack-demo](https://github.com/Ewall1106/webpack-demo)
+<p align="center">
+  <img width="100" height="100" src="https://raw.githubusercontent.com/Ewall1106/panda-vue-template/master/src/assets/logo.png">
+  <h3  align="center">panda-vue-template</h3>
+</p>
 
+<p align="center">
+  <a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/vue-2.6.11-brightgreen.svg" alt="vue">
+  </a>
+   <a href="https://cli.vuejs.org/guide/">
+    <img src="https://img.shields.io/badge/@vue/cli-4.2.3-brightgreen.svg" alt="vue-cli">
+  </a>
+    <a href="https://youzan.github.io/vant/#/zh-CN/">
+    <img src="https://img.shields.io/badge/vant-2.7.0-brightgreen.svg" alt="vant">
+  </a>
+   <a href="https://www.npmjs.com/">
+    <img src="https://img.shields.io/badge/npm-6.9.0-brightgreen.svg" alt="npm">
+  </a>
+  <a href="https://github.com/Ewall1106/panda-vue-template/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+  </a>
+</p>
 
+## 介绍
 
-# 手把手教你搭建一个用vue小商城
+此为[create-panda-app](https://github.com/Ewall1106/create-panda-app)脚手架的内容模板之一。  
+该模板内容基于最新官方脚手架`vue-cli3.x`构建，在此基础上进行一些能力的补充，以便能更好的对新立的项目进行开发和升级。
 
-## 文章教程
-[vue商城专栏](https://www.jianshu.com/nb/14505636)
+## 使用
 
-## 分支说明
+- 推荐使用[create-panda-app](https://github.com/Ewall1106/create-panda-app)来使用本模板构建项目；
+- 或直接`clone`使用这个模板：
 
-## 知识点梳理
-### git学习
-- [git的学习](https://www.jianshu.com/p/6deca2cfc37a)
+```
+$ git clone git@github.com:Ewall1106/panda-vue-template.git
+$ npm/yarn install
+$ npm run serve
+```
 
-### flex布局
-- [商品推荐列表及flex布局](https://www.jianshu.com/p/d58bdcb54529)
+## 相关说明
 
-### 项目初始化
-- [用vue-cli脚手架搭建一个新的vue项目](https://www.jianshu.com/p/0b91e9a05694)
-- [reset.css的引入及1px边框问题解决](https://www.jianshu.com/p/03172908d344)
-- [手机适配问题之rem和lib-flexible](https://www.jianshu.com/p/6edffcd890e9)
-- [阿里巴巴矢量图库icon-font的运用](https://www.jianshu.com/p/bfc035236d76)
-- [写个首页头部组件并引入less](https://www.jianshu.com/p/bdd4dd2c098b)
+- [一次讲清移动端适配解决方案—rem 和 vw]()
+- [浏览器默认样式、1px 边框问题、css 预编译]()
+- [vue-cli3.0 与 vant 的引入]()
+- [axios 的封装与数据 mock]()
+- [vuex 的基本使用]()
+- [路由守卫、权限验证]()
+- [函数工具库 panda-utils、filters 过滤器]()
 
-### v-router的讲解
-- [什么是动态路由](https://www.jianshu.com/p/f499d9f64958)
-- [什么是嵌套路由](https://www.jianshu.com/p/3036137769da)
-- [什么是编程式路由](https://www.jianshu.com/p/81ed5a90bb10)
-- [什么是路由和命名视图](https://www.jianshu.com/p/004b73f3f589)
+## License
 
-- 。。。。。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[MIT](https://github.com/Ewall1106/panda-vue-template/blob/master/LICENSE)
