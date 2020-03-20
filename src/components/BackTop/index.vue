@@ -51,7 +51,6 @@ export default {
           window.pageYOffset ||
           document.documentElement.scrollTop ||
           document.body.scrollTop
-        console.log('asss', scrollTop)
         this.isShow = scrollTop > this.offsetTop
       }, 15)
     }
