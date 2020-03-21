@@ -1,18 +1,18 @@
 <template>
   <div class="home">
     <Header />
-    <Swiper />
-    <back-top />
+    <Swiper :banner="banner"/>
     <Category :cateList="cateList" />
     <Goods />
+    <back-top />
   </div>
 </template>
 
 <script>
+import { getBanner } from '@/api/home'
 import Header from './modules/Header'
 import Swiper from './modules/Swiper'
 import Category from './modules/Category'
-
 import Goods from './modules/Goods'
 import BackTop from '@/components/BackTop'
 
@@ -27,14 +27,12 @@ export default {
   },
   data() {
     return {
-      val: '11111',
-      value: 0,
-      switch1: false,
-      switch2: false,
+      banner: [],
       cateList: {}
     }
   },
   mounted() {
+    this.getBanner()
     const data = [
       {
         categoryName: '食品',
@@ -150,6 +148,11 @@ export default {
     }
   },
   methods: {
+    getBanner() {
+      getBanner().then(res => {
+        this.banner = res.entry
+      })
+    },
     onConfirm() {
       this.$refs.item.toggle()
     }
