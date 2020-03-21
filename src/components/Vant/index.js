@@ -13,7 +13,9 @@ import {
   NavBar,
   Search,
   Image,
-  Lazyload
+  Lazyload,
+  Swipe,
+  SwipeItem
 } from 'vant'
 
 Vue.use(Toast)
@@ -28,3 +30,5 @@ Vue.use(Toast)
   .use(Search)
   .use(Image)
   .use(Lazyload)
+  .use(Swipe)
+  .use(SwipeItem)

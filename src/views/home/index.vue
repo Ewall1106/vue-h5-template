@@ -1,56 +1,151 @@
 <template>
   <div class="home">
-    <Header/>
-    <img class="logo" src="@/assets/logo.png" alt="logo" />
-
-    <van-cell-group title="相关介绍：">
-      <van-cell title="vue-mall" is-link url="https://github.com/Ewall1106/mall" />
-      <van-cell
-        title="panda-vue-template"
-        is-link
-        url="https://github.com/Ewall1106/panda-vue-template"
-      />
-      <van-cell title="yapi接口文档" is-link url="http://yapi.demo.qunar.com/project/17982" />
-    </van-cell-group>
-
-    <van-cell-group title="功能介绍：">
-      <van-cell
-        title="一次讲清移动端适配解决方案—rem和vw"
-        is-link
-        url="https://github.com/Ewall1106/panda-vue-template"
-      />
-      <van-cell title="vue-cli3.0与vant的引入" is-link url="https://github.com/Ewall1106/mall" />
-      <van-cell title="axios的封装与数据mock" is-link url="https://github.com/Ewall1106/mall" />
-      <van-cell title="vuex的基本使用" is-link url="https://github.com/Ewall1106/mall" />
-    </van-cell-group>
-
-    <van-cell-group title="组件补充：">
-      <van-cell title="svg图标" is-link to="IconFont" />
-      <!-- <van-cell title="返回顶部" is-link to="About" target="_blank" /> -->
-    </van-cell-group>
+    <Header />
+    <Swiper />
     <back-top />
+    <Category :cateList="cateList" />
+    <!-- <Goods/> -->
   </div>
 </template>
 
 <script>
 import Header from './modules/Header'
+import Swiper from './modules/Swiper'
+import Category from './modules/Category'
 import BackTop from '@/components/BackTop'
 
 export default {
   name: 'Home',
   components: {
     Header,
-    BackTop
+    BackTop,
+    Swiper,
+    Category
   },
   data() {
     return {
       val: '11111',
       value: 0,
       switch1: false,
-      switch2: false
+      switch2: false,
+      cateList: {}
     }
   },
-  mounted() {},
+  mounted() {
+    const data = [
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      },
+      {
+        categoryName: '食品',
+        index: 0,
+        oneCategoryIcon:
+          'https://cdn.webuy.ai/assets/img/2019/11/06/n_1573033162472_4895___size132x132.png',
+        oneCategoryId: 293
+      }
+    ]
+    data.forEach((item, idx) => {
+      item.index = idx
+    })
+    if (data.length <= 5) {
+      this.cateList = {
+        prev: data,
+        next: []
+      }
+    } else if (data.length > 5 && data.length <= 10) {
+      this.cateList = {
+        prev: data.slice(0, 5),
+        next: data.slice(5)
+      }
+    } else {
+      const breakPoint = Math.ceil(data.length / 2)
+      this.cateList = {
+        prev: data.slice(0, breakPoint),
+        next: data.slice(breakPoint)
+      }
+    }
+  },
   methods: {
     onConfirm() {
       this.$refs.item.toggle()
@@ -63,10 +158,8 @@ export default {
 @import "~@/styles/variables.scss";
 
 .home {
+  background: #f5f5f5;
   min-height: 100vh;
-  // background: #f5f5f593;
-  // background: $theme;
-  background: $bg-gradient;
   .logo {
     display: block;
     width: 200px;

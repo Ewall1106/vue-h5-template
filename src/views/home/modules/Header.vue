@@ -1,6 +1,6 @@
 <template>
-  <div class="components-header">
-    <image-pic width="30" height="30" :src="require('@/assets/logo.png')" />
+  <div class="home-header">
+    <image-pic width="30px" height="30px" :src="require('@/assets/logo.png')" />
     <van-button block class="search" size="small">
       <span style="color:#8e8e8e;margin-right:6px">
         <svg-icon icon-class="search" :width="15" :height="15" />
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.components-header {
+.home-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
