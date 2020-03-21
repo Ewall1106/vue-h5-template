@@ -18,7 +18,9 @@ import {
   SwipeItem,
   Loading,
   Tag,
-  CountDown
+  CountDown,
+  Tabbar,
+  TabbarItem
 } from 'vant'
 
 Vue.use(Toast)
@@ -38,3 +40,5 @@ Vue.use(Toast)
   .use(Loading)
   .use(Tag)
   .use(CountDown)
+  .use(Tabbar)
+  .use(TabbarItem)
