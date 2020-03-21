@@ -21,7 +21,10 @@
       v-if="cateList && cateList.prev && cateList.prev.length > 5"
       @click="onClick()"
     >
-      <div class="dot" :style="{'transform': `translateX(${rate})`,'background': `${variables.theme}`}"></div>
+      <div
+        class="dot"
+        :style="{'transform': `translateX(${rate})`,'background': `${variables.$red}`}"
+      ></div>
     </div>
   </div>
 </template>
@@ -99,6 +102,8 @@ export default {
 
 <style lang="scss" scoped>
 .home-category {
+  padding: 24px 0;
+  background: #fff;
   .scroll-wrapper {
     width: 100%;
     white-space: nowrap;

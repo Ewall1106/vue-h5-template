@@ -4,7 +4,7 @@
     <Swiper />
     <back-top />
     <Category :cateList="cateList" />
-    <!-- <Goods/> -->
+    <Goods />
   </div>
 </template>
 
@@ -12,6 +12,8 @@
 import Header from './modules/Header'
 import Swiper from './modules/Swiper'
 import Category from './modules/Category'
+
+import Goods from './modules/Goods'
 import BackTop from '@/components/BackTop'
 
 export default {
@@ -20,7 +22,8 @@ export default {
     Header,
     BackTop,
     Swiper,
-    Category
+    Category,
+    Goods
   },
   data() {
     return {
