@@ -15,7 +15,8 @@ import {
   Image,
   Lazyload,
   Swipe,
-  SwipeItem
+  SwipeItem,
+  Loading
 } from 'vant'
 
 Vue.use(Toast)
@@ -32,3 +33,4 @@ Vue.use(Toast)
   .use(Lazyload)
   .use(Swipe)
   .use(SwipeItem)
+  .use(Loading)

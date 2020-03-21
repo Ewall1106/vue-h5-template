@@ -1,7 +1,7 @@
 <template>
   <div class="back-top" v-show="isShow">
     <span v-scroll-to="'body'">
-      <svg-icon icon-class="backtop" :width="30" :height="30"/>
+      <svg-icon icon-class="backtop" :width="28" :height="28"/>
     </span>
   </div>
 </template>
