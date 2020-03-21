@@ -14,6 +14,8 @@ import './permission'
 
 // import vant
 import '@/components/Vant'
+// register common components globally
+import '@/components/common'
 
 Vue.config.productionTip = false
 

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 
+// https://youzan.github.io/vant/#/zh-CN/home
 import {
   Button,
   Toast,
@@ -10,8 +11,9 @@ import {
   Cell,
   CellGroup,
   NavBar,
-  DropdownMenu,
-  DropdownItem
+  Search,
+  Image,
+  Lazyload
 } from 'vant'
 
 Vue.use(Toast)
@@ -22,6 +24,7 @@ Vue.use(Toast)
   .use(Button)
   .use(Cell)
   .use(CellGroup)
-  .use(DropdownMenu)
-  .use(DropdownItem)
   .use(NavBar)
+  .use(Search)
+  .use(Image)
+  .use(Lazyload)
