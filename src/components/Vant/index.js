@@ -16,7 +16,9 @@ import {
   Lazyload,
   Swipe,
   SwipeItem,
-  Loading
+  Loading,
+  Tag,
+  CountDown
 } from 'vant'
 
 Vue.use(Toast)
@@ -34,3 +36,5 @@ Vue.use(Toast)
   .use(Swipe)
   .use(SwipeItem)
   .use(Loading)
+  .use(Tag)
+  .use(CountDown)
