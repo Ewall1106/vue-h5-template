@@ -24,8 +24,8 @@
 ## 介绍
 
 使用vue的技术栈来开发一个商场小项目。 
-- [yapi接口文档](http://yapi.demo.qunar.com/project/17982)
 - [文章简要系列](https://www.jianshu.com/nb/14505636)
+- [yapi接口文档](http://yapi.demo.qunar.com/project/17982)
 
 ## 使用
 ```
@@ -38,6 +38,12 @@ $ npm run serve
 - [webpack从0到1](https://github.com/Ewall1106/webpack-demo)
 - [create-panda-app](https://github.com/Ewall1106/create-panda-app)
 - [工具函数库panda-utils](https://github.com/Ewall1106/panda-utils)
+
+## 规划中
+
+* [ ] 使用node完成后端开发
+* [ ] 使用kbone兼容到小程序
+* [ ] 使用vuepress搭建项目网站及文档
 
 ## License
 
