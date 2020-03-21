@@ -10,8 +10,8 @@
             :key="index"
             @click="onClick(item)"
           >
-            <img :src="item.oneCategoryIcon" />
-            <p class="text">{{item.categoryName}}</p>
+            <img :src="item.icon" />
+            <p class="text">{{item.name}}</p>
           </div>
         </div>
       </div>
