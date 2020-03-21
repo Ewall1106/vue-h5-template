@@ -1,5 +1,6 @@
 // base color
-$theme:#1c99e2c0;
+$theme: #1c99e2c0;
+$bg-gradient: linear-gradient(90deg, #0af, #0085ff);
 
 // the :export directive is the magic sauce for webpack
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass

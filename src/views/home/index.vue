@@ -1,13 +1,6 @@
 <template>
   <div class="home">
-    <div class="menu__right">
-      <van-dropdown-menu>
-        <van-dropdown-item title="" ref="item">
-          <van-button block type="info" @click="onConfirm">确认</van-button>
-        </van-dropdown-item>
-      </van-dropdown-menu>
-    </div>
-
+    <Header/>
     <img class="logo" src="@/assets/logo.png" alt="logo" />
 
     <van-cell-group title="相关介绍：">
@@ -40,11 +33,13 @@
 </template>
 
 <script>
+import Header from './modules/Header'
 import BackTop from '@/components/BackTop'
 
 export default {
   name: 'Home',
   components: {
+    Header,
     BackTop
   },
   data() {
@@ -70,7 +65,8 @@ export default {
 .home {
   min-height: 100vh;
   // background: #f5f5f593;
-  background: $theme;
+  // background: $theme;
+  background: $bg-gradient;
   .logo {
     display: block;
     width: 200px;
