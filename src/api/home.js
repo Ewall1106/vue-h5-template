@@ -6,3 +6,10 @@ export function getBanner() {
     method: 'get'
   })
 }
+
+export function getCategory() {
+  return request({
+    url: '/home/category',
+    method: 'get'
+  })
+}
