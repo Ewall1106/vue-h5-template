@@ -3,6 +3,7 @@
     <Header />
     <Swiper :banner="banner" />
     <Category :cateList="cateList" />
+    <Session />
     <Goods />
     <back-top />
   </div>
@@ -13,6 +14,7 @@ import { getBanner, getCategory } from '@/api/home'
 import Header from './modules/Header'
 import Swiper from './modules/Swiper'
 import Category from './modules/Category'
+import Session from './modules/Session'
 import Goods from './modules/Goods'
 import BackTop from '@/components/BackTop'
 
@@ -23,6 +25,7 @@ export default {
     BackTop,
     Swiper,
     Category,
+    Session,
     Goods
   },
   data() {

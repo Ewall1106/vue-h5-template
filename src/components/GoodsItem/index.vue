@@ -3,7 +3,8 @@
     <div class="pic">
       <image-pic
         align="center"
-        width="80"
+        width="90"
+        height="125"
         src="https://img1.doubanio.com/view/subject/l/public/s4575849.jpg"
       />
     </div>
@@ -55,9 +56,9 @@ export default {
   position: relative;
   width: 360px;
   overflow: hidden;
-  //   background: red;
   .pic {
     display: block;
+    padding: 14px;
     background: #f5f5f5;
   }
   .title {

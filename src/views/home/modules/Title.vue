@@ -1,13 +1,15 @@
 <template>
   <div class="home-title">
     <span class="line"></span>
-    <span class="text">为你推荐</span>
+    <span class="text">{{name}}</span>
     <span class="line"></span>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['name']
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
 <template>
   <div class="home-goods">
-    <Title />
-    <div class="container">
+    <Title name="为你推荐"/>
+    <div class="main">
       <goods-item v-for="(item,idx) in 10" :key="idx" />
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
 .home-goods {
   background: #fff;
   margin-top: 24px;
-  .container {
+  .main {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
