@@ -5,14 +5,14 @@
         align="center"
         width="90"
         height="125"
-        src="https://img1.doubanio.com/view/subject/l/public/s4575849.jpg"
+        :src="img"
       />
     </div>
-    <p class="title">张三李四王五</p>
-    <p class="desc">张三李四王五</p>
+    <p class="title">{{title}}</p>
+    <p class="desc">{{desc}}</p>
     <div class="num">
-      <span class="num__now">¥1111</span>
-      <span class="num__old">¥111</span>
+      <span class="num__now">¥{{price}}</span>
+      <span class="num__old">¥{{discount}}</span>
     </div>
     <div class="btn-wrapper">
       <van-button class="btn" size="small">立即购买</van-button>
@@ -22,17 +22,7 @@
 
 <script>
 export default {
-  props: {
-    desc: {
-      type: String
-    },
-    price: {
-      type: null
-    },
-    discount: {
-      type: null
-    }
-  },
+  props: ['img', 'title', 'desc', 'price', 'discount'],
   methods: {
     onNavigate(pitemId) {
       this.$router.push({
