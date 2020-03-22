@@ -3,7 +3,7 @@
   <div class="home-category">
     <div class="scroll-wrapper" ref="scroll">
       <div class="scroll-content">
-        <div class="scroll-item__wrapper" v-for="(cate,idx) in cateList" :key="idx">
+        <div class="scroll-item__wrapper" v-for="(cate,idx) in list" :key="idx">
           <div
             class="scroll-item"
             v-for="(item, index) in cate"
@@ -18,7 +18,7 @@
     </div>
     <div
       class="dot-wrapper"
-      v-if="cateList && cateList.prev && cateList.prev.length > 5"
+      v-if="list && list.prev && list.prev.length > 5"
       @click="onClick()"
     >
       <div
@@ -36,7 +36,7 @@ import variables from '@/styles/variables.scss'
 export default {
   props: {
     cateList: {
-      type: Object
+      type: Array
     }
   },
   data() {
@@ -46,6 +46,29 @@ export default {
     }
   },
   computed: {
+    list() {
+      let rlt = {}
+      const data = this.cateList
+      const len = this.cateList.length
+      if (len <= 5) {
+        rlt = {
+          prev: data,
+          next: []
+        }
+      } else if (len > 5 && len <= 10) {
+        rlt = {
+          prev: data.slice(0, 5),
+          next: data.slice(5)
+        }
+      } else {
+        const breakPoint = Math.ceil(data.length / 2)
+        rlt = {
+          prev: data.slice(0, breakPoint),
+          next: data.slice(breakPoint)
+        }
+      }
+      return rlt
+    },
     mainColor() {
       return 'red'
     },
@@ -58,7 +81,7 @@ export default {
   },
   watch: {
     cateList(val) {
-      if (val && val.prev.length > 5) {
+      if (val.length > 5) {
         this.$nextTick(() => {
           this.init()
         })

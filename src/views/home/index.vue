@@ -3,14 +3,14 @@
     <Header />
     <Swiper :banner="banner" />
     <Category :cateList="cateList" />
-    <Session />
-    <Goods />
+    <Session :sessionList="sessionList" />
+    <Goods :goodsList="goodsList" />
     <back-top />
   </div>
 </template>
 
 <script>
-import { getBanner, getCategory } from '@/api/home'
+import { getBanner, getCategory, getSession, getList } from '@/api/home'
 import Header from './modules/Header'
 import Swiper from './modules/Swiper'
 import Category from './modules/Category'
@@ -31,12 +31,16 @@ export default {
   data() {
     return {
       banner: [],
-      cateList: {}
+      cateList: [],
+      sessionList: [],
+      goodsList: []
     }
   },
   mounted() {
     this.getBanner()
     this.getCategory()
+    this.getSession()
+    this.getGoodsList()
   },
   methods: {
     getBanner() {
@@ -47,23 +51,21 @@ export default {
     getCategory() {
       getCategory().then(res => {
         const data = res.entry
-        if (data.length <= 5) {
-          this.cateList = {
-            prev: data,
-            next: []
-          }
-        } else if (data.length > 5 && data.length <= 10) {
-          this.cateList = {
-            prev: data.slice(0, 5),
-            next: data.slice(5)
-          }
-        } else {
-          const breakPoint = Math.ceil(data.length / 2)
-          this.cateList = {
-            prev: data.slice(0, breakPoint),
-            next: data.slice(breakPoint)
-          }
-        }
+        this.cateList = data
+      })
+    },
+    getSession() {
+      getSession().then(res => {
+        this.sessionList = res.entry
+      })
+    },
+    getGoodsList() {
+      getList({
+        pageSize: 4,
+        pageNum: 3
+      }).then(res => {
+        console.log('>>>>>>', res)
+        this.goodsList = res.entry
       })
     }
   }
