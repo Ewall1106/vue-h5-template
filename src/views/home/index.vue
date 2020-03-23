@@ -4,7 +4,12 @@
     <Swiper :banner="banner" />
     <Category :cateList="cateList" />
     <Session :sessionList="sessionList" />
-    <Goods :goodsList="goodsList" />
+    <Goods
+      :goodsList="goodsList"
+      v-model="isLoading"
+      :isFinished="isFinished"
+      @onReachBottom="onReachBottom"
+    />
     <back-top />
   </div>
 </template>
@@ -33,7 +38,11 @@ export default {
       banner: [],
       cateList: [],
       sessionList: [],
-      goodsList: []
+      goodsList: [],
+      pageSize: 1,
+      pageNum: 4,
+      isLoading: false,
+      isFinished: false
     }
   },
   mounted() {
@@ -61,20 +70,26 @@ export default {
     },
     getGoodsList() {
       getList({
-        pageSize: 4,
-        pageNum: 3
+        pageSize: this.pageSize,
+        pageNum: this.pageNum
       }).then(res => {
-        console.log('>>>>>>', res)
-        this.goodsList = res.entry
+        const data = res.entry
+        this.goodsList = [...this.goodsList, ...data]
+        this.isLoading = false
+        if (data.length < this.pageNum && this.goodsList.length > 0) {
+          this.isFinished = true
+        }
       })
+    },
+    onReachBottom() {
+      this.pageSize += 1
+      this.getGoodsList()
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~@/styles/variables.scss";
-
 .home {
   background: #f5f5f5;
   min-height: 100vh;
