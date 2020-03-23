@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     onReachBottom() {
-      console.log('sssssssss')
       this.$emit('onReachBottom')
     }
   }
