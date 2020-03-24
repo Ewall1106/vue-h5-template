@@ -41,8 +41,10 @@ module.exports = {
     }
   },
   chainWebpack (config) {
-    config.plugins.delete('preload') // TODO: need test
-    config.plugins.delete('prefetch') // TODO: need test
+    // 禁用prefetch和preload，在router.jszhong1通过webpack的内联注释手动选定要提前获取的代码区块
+    // https://cli.vuejs.org/zh/guide/html-and-static-assets.html#preload
+    config.plugins.delete('preload')
+    config.plugins.delete('prefetch')
 
     // set svg-sprite-loader
     config.module

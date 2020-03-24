@@ -7,7 +7,9 @@ const routes = [
   {
     path: '*',
     name: 'Home',
-    component: () => import('@/views/home')
+    // 路由懒加载：https://router.vuejs.org/zh/guide/advanced/lazy-loading.html
+    // preload：https://www.jianshu.com/p/bbdcfeee7fbc
+    component: () => import(/* webpackPreload: true */ '@/views/home')
   },
   {
     path: '/login',

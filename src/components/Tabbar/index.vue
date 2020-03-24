@@ -38,7 +38,7 @@ export default {
   border-top: 2px solid #f5f5f5;
 }
 .tabbar--placeholder {
-    width: 100vw;
-    height: 100px;
+  width: 100vw;
+  height: 100px;
 }
 </style>
