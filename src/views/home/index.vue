@@ -11,6 +11,7 @@
       @onReachBottom="onReachBottom"
     />
     <back-top />
+    <Skeleton v-if="isSkeletonShow"/>
   </div>
 </template>
 
@@ -21,6 +22,7 @@ import Swiper from './modules/Swiper'
 import Category from './modules/Category'
 import Session from './modules/Session'
 import Goods from './modules/Goods'
+import Skeleton from './modules/Skeleton'
 import BackTop from '@/components/BackTop'
 
 export default {
@@ -31,7 +33,8 @@ export default {
     Swiper,
     Category,
     Session,
-    Goods
+    Goods,
+    Skeleton
   },
   data() {
     return {
@@ -42,30 +45,41 @@ export default {
       pageSize: 1,
       pageNum: 4,
       isLoading: false,
-      isFinished: false
+      isFinished: false,
+      isSkeletonShow: true
     }
   },
   mounted() {
-    this.getBanner()
-    this.getCategory()
-    this.getSession()
-    this.getGoodsList()
+    Promise.all([this.getBanner(), this.getCategory(), this.getSession()])
+      .then(() => {
+        this.isSkeletonShow = false
+        this.getGoodsList()
+      })
   },
   methods: {
     getBanner() {
-      getBanner().then(res => {
-        this.banner = res.entry
+      return new Promise(resolve => {
+        getBanner().then(res => {
+          this.banner = res.entry
+          resolve()
+        })
       })
     },
     getCategory() {
-      getCategory().then(res => {
-        const data = res.entry
-        this.cateList = data
+      return new Promise(resolve => {
+        getCategory().then(res => {
+          const data = res.entry
+          this.cateList = data
+          resolve()
+        })
       })
     },
     getSession() {
-      getSession().then(res => {
-        this.sessionList = res.entry
+      return new Promise(resolve => {
+        getSession().then(res => {
+          this.sessionList = res.entry
+          resolve()
+        })
       })
     },
     getGoodsList() {
