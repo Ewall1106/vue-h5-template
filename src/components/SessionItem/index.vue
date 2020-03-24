@@ -1,19 +1,14 @@
 <template>
   <div class="session-item">
-    <image-pic
-      align="center"
-      width="100%"
-      height="160"
-      src=" https://m.360buyimg.com/babel/s750x300_jfs/t1/96501/1/14812/180805/5e69f6e2E65623863/c40c27c4ec520eef.jpg"
-    />
+    <image-pic align="center" width="100%" height="160" :src="img" />
     <div class="title">
-      <span class="title__text">头号爆品、新书特卖专场</span>
-      <count-down />
+      <span class="title__text">{{title}}</span>
+      <count-down :time="time" />
     </div>
     <div class="desc">
-      <span class="desc__tag">1000+款上新</span>
+      <span class="desc__tag">{{tagnum}}+款上新</span>
       <span class="desc__text">
-        <i>1</i>折起
+        <i>{{discount}}</i>折起
       </span>
     </div>
   </div>
@@ -22,6 +17,27 @@
 <script>
 import CountDown from '@/components/CountDown'
 export default {
+  props: {
+    img: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    },
+    time: {
+      type: Number
+    },
+    tagnum: {
+      type: Number,
+      default: 100
+    },
+    discount: {
+      type: Number,
+      default: 0
+    }
+  },
   components: {
     CountDown
   }

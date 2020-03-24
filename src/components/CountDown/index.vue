@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-count-down :time="3000000000">
+    <van-count-down v-bind="$attrs">
       <template v-slot="timeData">
         <span class="item">{{ timeData.hours | padZero}}</span>
         <span class="item">{{ timeData.minutes | padZero}}</span>

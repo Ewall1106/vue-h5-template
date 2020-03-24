@@ -3,19 +3,26 @@
     <Header />
     <Swiper :banner="banner" />
     <Category :cateList="cateList" />
-    <Session />
-    <Goods />
+    <Session :sessionList="sessionList" />
+    <Goods
+      :goodsList="goodsList"
+      v-model="isLoading"
+      :isFinished="isFinished"
+      @onReachBottom="onReachBottom"
+    />
     <back-top />
+    <Skeleton v-if="isSkeletonShow"/>
   </div>
 </template>
 
 <script>
-import { getBanner, getCategory } from '@/api/home'
+import { getBanner, getCategory, getSession, getList } from '@/api/home'
 import Header from './modules/Header'
 import Swiper from './modules/Swiper'
 import Category from './modules/Category'
 import Session from './modules/Session'
 import Goods from './modules/Goods'
+import Skeleton from './modules/Skeleton'
 import BackTop from '@/components/BackTop'
 
 export default {
@@ -26,53 +33,77 @@ export default {
     Swiper,
     Category,
     Session,
-    Goods
+    Goods,
+    Skeleton
   },
   data() {
     return {
       banner: [],
-      cateList: {}
+      cateList: [],
+      sessionList: [],
+      goodsList: [],
+      pageSize: 1,
+      pageNum: 4,
+      isLoading: false,
+      isFinished: false,
+      isSkeletonShow: true
     }
   },
   mounted() {
-    this.getBanner()
-    this.getCategory()
+    Promise.all([this.getBanner(), this.getCategory(), this.getSession()])
+      .then(() => {
+        this.isSkeletonShow = false
+        this.getGoodsList()
+      })
   },
   methods: {
     getBanner() {
-      getBanner().then(res => {
-        this.banner = res.entry
+      return new Promise(resolve => {
+        getBanner().then(res => {
+          this.banner = res.entry
+          resolve()
+        })
       })
     },
     getCategory() {
-      getCategory().then(res => {
+      return new Promise(resolve => {
+        getCategory().then(res => {
+          const data = res.entry
+          this.cateList = data
+          resolve()
+        })
+      })
+    },
+    getSession() {
+      return new Promise(resolve => {
+        getSession().then(res => {
+          this.sessionList = res.entry
+          resolve()
+        })
+      })
+    },
+    getGoodsList() {
+      getList({
+        pageSize: this.pageSize,
+        pageNum: this.pageNum
+      }).then(res => {
         const data = res.entry
-        if (data.length <= 5) {
-          this.cateList = {
-            prev: data,
-            next: []
-          }
-        } else if (data.length > 5 && data.length <= 10) {
-          this.cateList = {
-            prev: data.slice(0, 5),
-            next: data.slice(5)
-          }
-        } else {
-          const breakPoint = Math.ceil(data.length / 2)
-          this.cateList = {
-            prev: data.slice(0, breakPoint),
-            next: data.slice(breakPoint)
-          }
+        this.goodsList = [...this.goodsList, ...data]
+        this.isLoading = false
+        if (data.length < this.pageNum && this.goodsList.length > 0) {
+          this.isFinished = true
         }
       })
+    },
+    onReachBottom() {
+      this.pageSize += 1
+      this.getGoodsList()
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~@/styles/variables.scss";
-
 .home {
   background: #f5f5f5;
   min-height: 100vh;
