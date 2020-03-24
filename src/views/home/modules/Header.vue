@@ -8,7 +8,7 @@
         </span>
         <span>搜索商品名称</span>
       </van-button>
-      <span style="color:#8e8e8ec9">
+      <span style="color:#8e8e8e">
         <svg-icon icon-class="user" :width="18" :height="18" />
       </span>
     </div>
@@ -36,12 +36,13 @@ export default {
   background: #fff;
   padding: 24px;
   .search {
-    background: #f5f5f5;
     margin: 0 18px;
     display: flex;
     align-items: center;
     font-size: 26px;
     color: #8e8e8ec9;
+    background: #f5f5f5;
+    line-height: 10px;
   }
 }
 .placeholder {

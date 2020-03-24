@@ -28,10 +28,12 @@ export default {
   width: 40px;
   margin-right: 5px;
   color: #fff;
-  font-size: 12px;
+  font-size: $mini;
   text-align: center;
   background-color: $gray;
   border-radius: 6px;
+  height: 40px;
+  line-height: 40px;
 }
 .red {
   background: $red;
