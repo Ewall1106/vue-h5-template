@@ -29,7 +29,7 @@
 </template>
 
 <script>
-//
+// https://github.com/egoist/vue-content-loader
 import { ContentLoader } from 'vue-content-loader'
 
 export default {
