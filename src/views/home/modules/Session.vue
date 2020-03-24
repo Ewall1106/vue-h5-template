@@ -2,7 +2,16 @@
   <div class="home-session">
     <Title name="精选专场" />
     <div class="main">
-      <session-item style="margin-top:10px" v-for="(item,idx) in 3" :key="idx" />
+      <session-item
+        style="margin-bottom:10px"
+        v-for="(item,idx) in sessionList"
+        :key="idx"
+        :img="item.img"
+        :title="item.title"
+        :tagnum="item.tagnum"
+        :discount="item.discount"
+        :time="item.time"
+      />
     </div>
   </div>
 </template>
@@ -12,6 +21,7 @@ import Title from './Title'
 import SessionItem from '@/components/SessionItem'
 
 export default {
+  props: ['sessionList'],
   components: {
     Title,
     SessionItem

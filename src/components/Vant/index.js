@@ -20,7 +20,9 @@ import {
   Tag,
   CountDown,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  List,
+  PullRefresh
 } from 'vant'
 
 Vue.use(Toast)
@@ -42,3 +44,5 @@ Vue.use(Toast)
   .use(CountDown)
   .use(Tabbar)
   .use(TabbarItem)
+  .use(List)
+  .use(PullRefresh)
