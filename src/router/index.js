@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  // 首页
   {
     path: '*',
     name: 'Home',
@@ -11,16 +12,20 @@ const routes = [
     // preload：https://www.jianshu.com/p/bbdcfeee7fbc
     component: () => import(/* webpackPreload: true */ '@/views/home')
   },
+  // 登录
   {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/auth/login')
   },
+  // 分类
   {
-    path: '/iconfont',
-    name: 'IconFont',
-    component: () => import('@/views/about/iconfont')
+    path: '/category',
+    name: 'Category',
+    component: () => import('@/views/category')
   }
+  // 购物车
+  // 我的
 ]
 
 const router = new VueRouter({

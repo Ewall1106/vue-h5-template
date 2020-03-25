@@ -13,6 +13,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/variables.scss";
+
 .home-title {
   display: flex;
   flex-direction: row;
@@ -26,8 +28,8 @@ export default {
     background: #999;
   }
   .text {
-    font-size: 30px;
-    color: #000;
+    font-size: $small;
+    color: $black;
     padding: 0 20px;
   }
 }

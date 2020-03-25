@@ -22,7 +22,8 @@ import {
   Tabbar,
   TabbarItem,
   List,
-  PullRefresh
+  PullRefresh,
+  TreeSelect
 } from 'vant'
 
 Vue.use(Toast)
@@ -46,3 +47,4 @@ Vue.use(Toast)
   .use(TabbarItem)
   .use(List)
   .use(PullRefresh)
+  .use(TreeSelect)

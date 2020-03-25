@@ -60,12 +60,14 @@ export default {
     justify-content: space-between;
     align-items: center;
     .title__text {
-      font-size: $normal;
+      font-size: $small;
       color: $black;
     }
   }
   .desc {
-    padding: 10px;
+    padding:0 10px;
+    display: flex;
+    align-items: center;
     .desc__tag {
       background: linear-gradient(90deg, rgb(136, 210, 50), rgb(81, 192, 91));
       color: #fff;

@@ -16,22 +16,14 @@
         </div>
       </div>
     </div>
-    <div
-      class="dot-wrapper"
-      v-if="list && list.prev && list.prev.length > 5"
-      @click="onClick()"
-    >
-      <div
-        class="dot"
-        :style="{'transform': `translateX(${rate})`,'background': `${variables.$red}`}"
-      ></div>
+    <div class="dot-wrapper" v-if="list && list.prev && list.prev.length > 5" @click="onClick()">
+      <div class="dot" :style="{'transform': `translateX(${rate})`}"></div>
     </div>
   </div>
 </template>
 
 <script>
 import BScroll from '@better-scroll/core'
-import variables from '@/styles/variables.scss'
 
 export default {
   props: {
@@ -68,12 +60,6 @@ export default {
         }
       }
       return rlt
-    },
-    mainColor() {
-      return 'red'
-    },
-    variables() {
-      return variables
     }
   },
   beforeDestroy() {
@@ -124,6 +110,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/variables.scss";
+
 .home-category {
   padding: 24px 0;
   background: #fff;
@@ -136,11 +124,11 @@ export default {
     display: inline-block;
     .scroll-item__wrapper {
       .scroll-item {
-        font-size: 24px;
+        font-size: $mini;
         display: inline-block;
         text-align: center;
-        color: #1b1b1b;
-        padding: 0 32px 24px 32px;
+        color: $black;
+        padding: 0 25px 24px 25px;
         img {
           display: block;
           width: 88px;
@@ -148,9 +136,10 @@ export default {
           border-radius: 50%;
           overflow: hidden;
           background: #f5f5f5;
+          margin: 0 auto;
         }
         .text {
-          width: 88px;
+          width: 100px;
           margin-top: 12px;
         }
       }
@@ -167,8 +156,8 @@ export default {
       box-sizing: border-box;
       width: 40px;
       height: 4px;
-      background: #f96c1d;
       transition: all 0.4s linear;
+      background: $red;
     }
   }
 }
