@@ -3,7 +3,6 @@
     <Title name="为你推荐" style="background:#fff"/>
 
     <van-list
-      :offset="0"
       v-model="loading"
       :finished="isFinished"
       finished-text="没有更多了"

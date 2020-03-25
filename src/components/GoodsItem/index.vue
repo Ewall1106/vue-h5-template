@@ -53,14 +53,14 @@ export default {
   }
   .title {
     padding: 14px;
-    font-size: $normal;
+    font-size: $small;
     color: $black;
     text-align: center;
     @include text-ellipsis;
   }
   .desc {
     padding-bottom: 14px;
-    font-size: 28px;
+    font-size: $small;
     color: $gray;
     text-align: center;
     @include text-ellipsis;
