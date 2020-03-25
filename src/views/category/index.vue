@@ -1,23 +1,20 @@
 <template>
   <div class="category">
-    <van-tree-select height="calc(100vh - 50px)" :items="items" :main-active-index.sync="active">
+    <van-tree-select
+      height="calc(100vh - 50px)"
+      :items="items"
+      :main-active-index.sync="active"
+      @click-nav="onNavClick"
+    >
       <template #content>
         <div class="main">
-          <image-pic
-            fit="fill"
-            src="http://img11.360buyimg.com/uba/jfs/t1/34018/11/1897/61648/5caac06cE19c3c7e9/e17ee22760977176.jpg"
-          />
-          <div class="main__item">
-            <h3 class="main__item__title">热门推荐</h3>
+          <image-pic width="100%" height="85" fit="fill" :src="banner" />
+          <div class="main__item" v-for="(item,index) in cate" :key="index">
+            <h3 class="main__item__title">{{item.title}}</h3>
             <div class="main__item__content">
-              <div class="single" v-for="(item,idx) in 10" :key="idx">
-                <image-pic
-                  width="70"
-                  height="70"
-                  fit="contain"
-                  src="http://img30.360buyimg.com/focus/s140x140_jfs/t18520/109/1790543750/23751/a98be11f/5ad82a1cN400c11d1.jpg"
-                />
-                <span>童书</span>
+              <div class="single" v-for="(single,idx) in item.content" :key="idx">
+                <image-pic width="70" height="70" fit="contain" :src="single.img" />
+                <span>{{single.name}}</span>
               </div>
             </div>
           </div>
@@ -28,33 +25,39 @@
 </template>
 
 <script>
+import { getCateItems, getCateContent } from '@/api/category'
+
 export default {
   name: 'Category',
   data() {
     return {
       active: 0,
-      items: [
-        { text: '童书' },
-        { text: '文学小说' },
-        { text: '童书' },
-        { text: '文学小说' },
-        { text: '童书' },
-        { text: '文学小说' },
-        { text: '童书' },
-        { text: '文学小说' },
-        { text: '童书' },
-        { text: '文学小说' },
-        { text: '童书' },
-        { text: '文学小说' },
-        { text: '童书' },
-        { text: '文学小说' },
-        { text: '童书' },
-        { text: '文学小说' },
-        { text: '童书' },
-        { text: '文学小说' },
-        { text: '童书' },
-        { text: '文学小说' }
-      ]
+      items: [],
+      cate: [],
+      banner: ''
+    }
+  },
+  mounted() {
+    this.getCateItems()
+    this.getCateContent()
+  },
+  methods: {
+    getCateItems() {
+      getCateItems().then(res => {
+        this.items = res.entry
+      })
+    },
+    getCateContent() {
+      getCateContent({
+        index: this.active
+      }).then(res => {
+        const { banner, listItem } = res.entry
+        this.banner = banner
+        this.cate = listItem
+      })
+    },
+    onNavClick() {
+      this.getCateContent()
     }
   }
 }
@@ -72,16 +75,18 @@ export default {
         color: $black;
         font-size: $small;
         font-weight: bold;
+        padding: 16px;
       }
       .main__item__content {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
         flex-wrap: wrap;
-        padding: 14px;
+        padding: 4px;
         .single {
+          padding: 8px;
+          text-align: center;
           color: $black;
-          font-size: $small;
+          font-size: $mini;
         }
       }
     }
