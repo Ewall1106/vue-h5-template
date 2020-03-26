@@ -23,7 +23,9 @@ import {
   TabbarItem,
   List,
   PullRefresh,
-  TreeSelect
+  TreeSelect,
+  Icon,
+  Progress
 } from 'vant'
 
 Vue.use(Toast)
@@ -48,3 +50,5 @@ Vue.use(Toast)
   .use(List)
   .use(PullRefresh)
   .use(TreeSelect)
+  .use(Icon)
+  .use(Progress)

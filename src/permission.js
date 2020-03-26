@@ -44,7 +44,6 @@ router.beforeEach(async (to, from, next) => {
     } else {
       // 反之则去登录页面
       next(`/login?redirect=${encodeURIComponent(location.href)}`)
-      // NProgress.done()
     }
   }
 })
