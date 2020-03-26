@@ -1,15 +1,25 @@
 <template>
   <div id="app">
-    <router-view />
-    <tabbar />
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive" :key="key" />
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive" :key="key" />
+
+    <tabbar v-if="$route.meta.showTab" />
   </div>
 </template>
 
 <script>
 import Tabbar from './components/Tabbar'
+
 export default {
   components: {
     Tabbar
+  },
+  computed: {
+    key() {
+      return this.$route.path
+    }
   }
 }
 </script>

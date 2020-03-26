@@ -1,12 +1,7 @@
 <template>
   <div class="goods-item">
     <div class="pic">
-      <image-pic
-        align="center"
-        width="90"
-        height="125"
-        :src="img"
-      />
+      <image-pic align="center" width="90" height="125" :src="img" />
     </div>
     <p class="title">{{title}}</p>
     <p class="desc">{{desc}}</p>
@@ -89,11 +84,11 @@ export default {
     flex-direction: row;
     justify-content: center;
     padding-bottom: 24px;
-  }
-  .btn {
-    background: $red;
-    color: #fff;
-    border: none;
+    .btn {
+      background: $red;
+      color: #fff;
+      border: none;
+    }
   }
 }
 </style>

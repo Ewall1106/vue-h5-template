@@ -8,7 +8,7 @@
             class="scroll-item"
             v-for="(item, index) in cate"
             :key="index"
-            @click="onClick(item)"
+            @click="onNavigate()"
           >
             <img :src="item.icon" />
             <p class="text">{{item.name}}</p>
@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="dot-wrapper" v-if="list && list.prev && list.prev.length > 5" @click="onClick()">
+    <div class="dot-wrapper" v-if="list && list.prev && list.prev.length > 5">
       <div class="dot" :style="{'transform': `translateX(${rate})`}"></div>
     </div>
   </div>
@@ -75,6 +75,13 @@ export default {
     }
   },
   methods: {
+    // 跳转
+    onNavigate(item) {
+      this.$router.push({
+        path: '/product'
+      })
+    },
+    // 初始化
     init() {
       this.bs = new BScroll(this.$refs.scroll, {
         scrollX: true,
@@ -93,16 +100,6 @@ export default {
     _registerHooks(hookNames, handler) {
       hookNames.forEach(name => {
         this.bs.on(name, handler)
-      })
-    },
-    onClick(item) {
-      this.$router.push({
-        path: '/pick/cate-list',
-        query: {
-          cateId: item.oneCategoryId,
-          idx: item.index,
-          t: +new Date()
-        }
       })
     }
   }
