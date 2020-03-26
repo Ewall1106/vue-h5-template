@@ -4,6 +4,12 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  // 登录
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/auth/login')
+  },
   // 首页
   {
     path: '*',
@@ -11,15 +17,6 @@ const routes = [
     // 路由懒加载：https://router.vuejs.org/zh/guide/advanced/lazy-loading.html
     // preload：https://www.jianshu.com/p/bbdcfeee7fbc
     component: () => import(/* webpackPreload: true */ '@/views/home'),
-    meta: {
-      showTab: true
-    }
-  },
-  // 登录
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/auth/login'),
     meta: {
       showTab: true
     }
@@ -41,6 +38,12 @@ const routes = [
     path: '/product',
     name: 'Product',
     component: () => import('@/views/product')
+  },
+  // 商品详情
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: () => import('@/views/detail')
   }
 ]
 
