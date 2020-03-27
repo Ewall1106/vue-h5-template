@@ -30,7 +30,7 @@
       <div class="section__item section__item--icon">
         <div class="section__item__left">
           <p class="icon--wrapper" v-for="(item,idx) in ['panda自营','panda发货','七天无理由退款']" :key="idx">
-            <svg-icon icon-class="good" :width="18" :height="18" />
+            <svg-icon icon-class="good" :width="16" :height="16" />
             <span>{{item}}</span>
           </p>
         </div>
@@ -69,6 +69,7 @@ export default {}
     flex-direction: row;
     justify-content: space-between;
     .section__item__left {
+      font-size: $small;
       .title {
         color: $gray;
         margin-right: 16px;
@@ -89,7 +90,7 @@ export default {}
         align-items: center;
         color: $gray;
         font-size: $small;
-        margin-right: 14px;
+        margin-right: 10px;
         span {
           margin-left: 6px;
         }

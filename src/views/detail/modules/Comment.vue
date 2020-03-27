@@ -28,6 +28,9 @@
 
     <div class="main">
       <comment-item v-for="(item,idx) in 2" :key="idx" style="margin-top:12px" />
+      <div class="main__btn">
+        <van-button :color="variables.gray" plain round size="small">查看全部评价</van-button>
+      </div>
     </div>
   </div>
 </template>
@@ -60,6 +63,7 @@ export default {
       flex-direction: row;
       justify-content: space-between;
       .comment__item__left {
+         font-size: $small;
         .title {
           color: $black;
           margin-right: 16px;
@@ -94,6 +98,11 @@ export default {
 
   .main {
     padding: 0 24px;
+    .main__btn {
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+    }
   }
 }
 </style>

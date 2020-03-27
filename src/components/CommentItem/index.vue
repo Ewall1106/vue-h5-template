@@ -22,7 +22,9 @@
     </div>
 
     <div class="desc">
-      <p class="desc__text">收到货就赶紧打开看起来了，之前看过电子版的看完之后感到意犹未尽，前两天突然想再看一遍于是决定买实体书认真读一遍。</p>
+      <p
+        class="desc__text van-multi-ellipsis--l3"
+      >收到货就赶紧打开看起来了，之前看过电子版的看完之后感到意犹未尽，前两天突然想再看一遍于是决定买实体书认真读一遍。 </p>
       <div class="desc_img">
         <image-pic
           v-for="(item,idx) in imgs"
@@ -82,6 +84,7 @@ export default {
       font-size: $mini;
       color: $black;
       line-height: 38px;
+      text-align: justify;
     }
     .desc_img {
       display: flex;

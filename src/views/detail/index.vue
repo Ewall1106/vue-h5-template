@@ -5,14 +5,11 @@
         <svg-icon icon-class="share" :width="15" :height="15" />
       </span>
     </nav-bar>
-
     <Swiper :banner="banner" />
-
     <Overview />
-
     <Section />
-
     <Comment />
+    <Recommend/>
   </div>
 </template>
 
@@ -22,6 +19,7 @@ import Swiper from './modules/Swiper'
 import Overview from './modules/Overview'
 import Section from './modules/Section'
 import Comment from './modules/Comment'
+import Recommend from './modules/Recommend'
 
 export default {
   name: 'Detail',
@@ -30,7 +28,8 @@ export default {
     Swiper,
     Overview,
     Section,
-    Comment
+    Comment,
+    Recommend
   },
   data() {
     return {
