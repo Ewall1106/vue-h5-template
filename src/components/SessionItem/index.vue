@@ -1,5 +1,5 @@
 <template>
-  <div class="session-item">
+  <div class="session-item" @click="onClick">
     <image-pic align="center" width="100%" height="160" :src="img" />
     <div class="title">
       <span class="title__text">{{title}}</span>
@@ -40,6 +40,13 @@ export default {
   },
   components: {
     CountDown
+  },
+  methods: {
+    onClick() {
+      this.$router.push({
+        path: '/product'
+      })
+    }
   }
 }
 </script>
@@ -65,7 +72,7 @@ export default {
     }
   }
   .desc {
-    padding:0 10px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     .desc__tag {

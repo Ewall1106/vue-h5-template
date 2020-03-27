@@ -1,5 +1,5 @@
 <template>
-  <div class="product-item">
+  <div class="product-item" @click="onClick">
     <image-pic :src="img" width="90" height="90" />
     <div class="desc">
       <div class="desc__top">
@@ -26,7 +26,14 @@
 
 <script>
 export default {
-  props: ['img', 'title', 'desc', 'price', 'discount', 'percentage']
+  props: ['img', 'title', 'desc', 'price', 'discount', 'percentage'],
+  methods: {
+    onClick() {
+      this.$router.push({
+        path: '/detail'
+      })
+    }
+  }
 }
 </script>
 
