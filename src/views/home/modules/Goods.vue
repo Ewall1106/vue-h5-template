@@ -1,6 +1,6 @@
 <template>
   <div class="home-goods">
-    <Title name="为你推荐" style="background:#fff"/>
+    <Title name="为你推荐" style="background:#fff" />
 
     <van-list
       v-model="loading"

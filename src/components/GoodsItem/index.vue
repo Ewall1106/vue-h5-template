@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-item">
+  <div class="goods-item" @click="onNavigate">
     <div class="pic">
       <image-pic align="center" width="90" height="125" :src="img" />
     </div>
@@ -19,16 +19,10 @@
 export default {
   props: ['img', 'title', 'desc', 'price', 'discount'],
   methods: {
-    onNavigate(pitemId) {
+    onNavigate() {
       this.$router.push({
-        path: '/detail',
-        query: {
-          pitemId
-        }
+        path: '/detail'
       })
-    },
-    onAddCart(pitemId) {
-      this.$emit('onEmitAddCart', pitemId)
     }
   }
 }
