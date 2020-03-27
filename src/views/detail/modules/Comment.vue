@@ -1,0 +1,99 @@
+<template>
+  <div class="comment">
+    <div class="title">
+      <van-button block>
+        <div class="comment__item">
+          <div class="comment__item__left">
+            <span class="title">评价</span>
+            <span class="content">好评率99%</span>
+          </div>
+          <div class="comment__item__right">
+            <span class="text">共10万+评论</span>
+            <van-icon name="arrow" />
+          </div>
+        </div>
+      </van-button>
+      <div class="comment__line"></div>
+    </div>
+
+    <div class="tags">
+      <van-tag
+        class="tags__item"
+        :color="variables.red"
+        plain
+        v-for="(item,idx) in 6"
+        :key="idx"
+      >签案发时代发</van-tag>
+    </div>
+
+    <div class="main">
+      <comment-item v-for="(item,idx) in 2" :key="idx" style="margin-top:12px" />
+    </div>
+  </div>
+</template>
+
+<script>
+import CommentItem from '@/components/CommentItem'
+import variables from '@/styles/variables.scss'
+
+export default {
+  components: {
+    CommentItem
+  },
+  computed: {
+    variables() {
+      return variables
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "@/styles/variables.scss";
+
+.comment {
+  margin-top: 24px;
+  background: #fff;
+  .title {
+    .comment__item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .comment__item__left {
+        .title {
+          color: $black;
+          margin-right: 16px;
+        }
+        .content {
+          color: $red;
+        }
+      }
+      .comment__item__right {
+        display: flex;
+        align-items: center;
+        color: $gray;
+        font-size: $mini;
+      }
+    }
+    .comment__line {
+      width: 700px;
+      height: 1px;
+      background: #f5f5f5;
+      margin: 0 auto;
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 24px;
+    .tags__item {
+      margin: 14px 8px 0 0;
+    }
+  }
+
+  .main {
+    padding: 0 24px;
+  }
+}
+</style>

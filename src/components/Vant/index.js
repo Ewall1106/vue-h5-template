@@ -26,7 +26,8 @@ import {
   TreeSelect,
   Icon,
   Progress,
-  ImagePreview
+  ImagePreview,
+  Rate
 } from 'vant'
 
 Vue.use(Toast)
@@ -54,3 +55,4 @@ Vue.use(Toast)
   .use(Icon)
   .use(Progress)
   .use(ImagePreview)
+  .use(Rate)

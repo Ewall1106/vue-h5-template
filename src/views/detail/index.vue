@@ -8,18 +8,29 @@
 
     <Swiper :banner="banner" />
 
+    <Overview />
+
+    <Section />
+
+    <Comment />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar'
 import Swiper from './modules/Swiper'
+import Overview from './modules/Overview'
+import Section from './modules/Section'
+import Comment from './modules/Comment'
 
 export default {
   name: 'Detail',
   components: {
+    NavBar,
     Swiper,
-    NavBar
+    Overview,
+    Section,
+    Comment
   },
   data() {
     return {
@@ -35,5 +46,7 @@ export default {
 
 <style lang="scss" scoped>
 .detail {
+  min-height: 100vh;
+  background: #f5f5f5;
 }
 </style>
