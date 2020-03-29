@@ -13,11 +13,11 @@
     </van-button>
 
     <div class="section__line"></div>
-    <van-button block>
+    <van-button block @click="handleAddress">
       <div class="section__item">
         <div class="section__item__left">
           <span class="title">送至</span>
-          <span class="content">北京市 东城区</span>
+          <span class="content">{{this.selectedAddress.address || '北京市 东城区'}}</span>
         </div>
         <div class="section__item__right">
           <van-icon name="arrow" />
@@ -43,10 +43,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
+  computed: {
+    ...mapGetters(['selectedAddress'])
+  },
   methods: {
     onSelectSku() {
-      console.log('adsfa')
+      console.log('adsfa', this.selectedAddress)
+    },
+    handleAddress() {
+      this.$router.push({
+        path: '/address'
+      })
     }
   }
 }
