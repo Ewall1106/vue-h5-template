@@ -23,13 +23,11 @@ import Category from './modules/Category'
 import Session from './modules/Session'
 import Goods from './modules/Goods'
 import Skeleton from './modules/Skeleton'
-import BackTop from '@/components/BackTop'
 
 export default {
   name: 'Home',
   components: {
     Header,
-    BackTop,
     Swiper,
     Category,
     Session,

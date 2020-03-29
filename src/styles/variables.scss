@@ -4,6 +4,7 @@ $bg-gradient: linear-gradient(90deg, #0af, #0085ff);
 $black: #333;
 $gray: #0000008a;
 $red: #ea625b;
+$green: #38ca73;
 
 // font-size
 $large: 38px;
@@ -41,5 +42,7 @@ $mini: 20px;
 :export {
   theme: $theme;
   black: $black;
-  red: $red
+  red: $red;
+  green: $green;
+  bgGradient: $bg-gradient;
 }
