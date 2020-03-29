@@ -1,6 +1,6 @@
 <template>
   <div class="back-top" v-show="isShow">
-    <span v-scroll-to="'body'">
+    <span v-scroll-to="'body'" style="color:#8e8e8e">
       <svg-icon icon-class="backtop" :width="28" :height="28"/>
     </span>
   </div>

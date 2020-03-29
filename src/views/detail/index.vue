@@ -9,7 +9,10 @@
     <Overview />
     <Section />
     <Comment />
-    <Recommend/>
+    <Description />
+    <Sku />
+    <Tabbar />
+    <back-top />
   </div>
 </template>
 
@@ -19,7 +22,9 @@ import Swiper from './modules/Swiper'
 import Overview from './modules/Overview'
 import Section from './modules/Section'
 import Comment from './modules/Comment'
-import Recommend from './modules/Recommend'
+import Description from './modules/Description'
+import Tabbar from './modules/Tabbar'
+import Sku from './modules/Sku'
 
 export default {
   name: 'Detail',
@@ -29,7 +34,9 @@ export default {
     Overview,
     Section,
     Comment,
-    Recommend
+    Description,
+    Tabbar,
+    Sku
   },
   data() {
     return {

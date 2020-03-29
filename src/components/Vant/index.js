@@ -27,7 +27,11 @@ import {
   Icon,
   Progress,
   ImagePreview,
-  Rate
+  Rate,
+  GoodsAction,
+  GoodsActionIcon,
+  GoodsActionButton,
+  Sku
 } from 'vant'
 
 Vue.use(Toast)
@@ -56,3 +60,7 @@ Vue.use(Toast)
   .use(Progress)
   .use(ImagePreview)
   .use(Rate)
+  .use(GoodsAction)
+  .use(GoodsActionIcon)
+  .use(GoodsActionButton)
+  .use(Sku)
