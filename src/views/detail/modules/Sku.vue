@@ -15,7 +15,7 @@
 export default {
   data() {
     return {
-      isSkuShow: true,
+      isSkuShow: false,
       sku: {
         // 定义类别
         tree: [
