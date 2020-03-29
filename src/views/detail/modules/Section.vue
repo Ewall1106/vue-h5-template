@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <van-button block>
+    <van-button block @click="onSelectSku">
       <div class="section__item">
         <div class="section__item__left">
           <span class="title">已选</span>
@@ -43,7 +43,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    onSelectSku() {
+      console.log('adsfa')
+    }
+  }
+}
 </script>
 
 <style lang="scss">
