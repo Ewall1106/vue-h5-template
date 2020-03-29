@@ -31,7 +31,9 @@ import {
   GoodsAction,
   GoodsActionIcon,
   GoodsActionButton,
-  Sku
+  Sku,
+  AddressList,
+  AddressEdit
 } from 'vant'
 
 Vue.use(Toast)
@@ -64,3 +66,5 @@ Vue.use(Toast)
   .use(GoodsActionIcon)
   .use(GoodsActionButton)
   .use(Sku)
+  .use(AddressList)
+  .use(AddressEdit)

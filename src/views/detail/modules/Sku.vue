@@ -114,7 +114,7 @@ export default {
   },
   methods: {
     onBuy() {
-      console.log('asdfasdf')
+      console.log('buy')
     },
     onAddCart() {
       this.$toast.success('添加成功')

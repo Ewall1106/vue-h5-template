@@ -44,6 +44,18 @@ const routes = [
     path: '/detail',
     name: 'Detail',
     component: () => import('@/views/detail')
+  },
+  // 地址管理
+  {
+    path: '/address',
+    name: 'Address',
+    component: () => import('@/views/address')
+  },
+  // 地址编辑
+  {
+    path: '/address/edit',
+    name: 'AddressEdit',
+    component: () => import('@/views/address/edit')
   }
 ]
 
