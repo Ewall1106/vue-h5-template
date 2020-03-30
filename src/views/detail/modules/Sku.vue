@@ -1,7 +1,7 @@
 <template>
   <div class="goods-sku">
     <van-sku
-      v-model="isSkuShow"
+      v-model="isShow"
       :sku="sku"
       :goods="goods"
       :close-on-click-overlay="true"
@@ -13,9 +13,14 @@
 
 <script>
 export default {
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
-      isSkuShow: false,
       sku: {
         // 定义类别
         tree: [
@@ -112,6 +117,16 @@ export default {
       }
     }
   },
+  computed: {
+    isShow: {
+      get() {
+        return this.value
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
+    }
+  },
   methods: {
     onBuy() {
       console.log('buy')
@@ -133,7 +148,7 @@ export default {
     padding: 0;
   }
   .van-button--danger {
-      background: $red;
+    background: $red;
   }
 }
 </style>

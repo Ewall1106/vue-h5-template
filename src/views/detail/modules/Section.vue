@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     onSelectSku() {
-      console.log('adsfa', this.selectedAddress)
+      this.$emit('input', true)
     },
     handleAddress() {
       this.$router.push({
