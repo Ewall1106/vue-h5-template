@@ -5,26 +5,25 @@
         <image-pic
           round
           fit="contain"
-          :src="require('@/assets/logo.png')"
+          :src="avatar"
           width="25"
           height="25"
           style="margin-right:6px"
         />
+        <span style="margin-right:6px">{{name}}</span>
         <van-rate
-          v-model="value"
+          v-model="score"
           :size="15"
           :color="variables.red"
           void-icon="star"
           void-color="#eee"
         />
       </div>
-      <div class="title__right">2019-10-10</div>
+      <div class="title__right">{{time}}</div>
     </div>
 
     <div class="desc">
-      <p
-        class="desc__text van-multi-ellipsis--l3"
-      >收到货就赶紧打开看起来了，之前看过电子版的看完之后感到意犹未尽，前两天突然想再看一遍于是决定买实体书认真读一遍。 </p>
+      <p class="desc__text van-multi-ellipsis--l3">{{desc}}</p>
       <div class="desc_img">
         <image-pic
           v-for="(item,idx) in imgs"
@@ -44,15 +43,16 @@
 import variables from '@/styles/variables.scss'
 
 export default {
-  data() {
-    return {
-      value: 2,
-      imgs: [
-        'http://img30.360buyimg.com/shaidan/s128x96_jfs/t1/91400/14/15534/116833/5e723705E6e97e5a3/012d7444f8ccbcea.jpg',
-        'http://img30.360buyimg.com/shaidan/s128x96_jfs/t1/91314/13/15486/245367/5e723706E663c43aa/abb31350cdadf56d.jpg',
-        'http://img30.360buyimg.com/shaidan/s128x96_jfs/t1/103902/15/15108/267864/5e703d09E6603898f/4d91ad6fab4f76e0.jpg'
-      ]
-    }
+  props: {
+    avatar: String,
+    time: Number,
+    name: String,
+    score: {
+      type: Number,
+      default: 0
+    },
+    desc: String,
+    imgs: Array
   },
   computed: {
     variables() {
@@ -73,6 +73,8 @@ export default {
     .title__left {
       display: flex;
       align-items: center;
+      color: $black;
+      font-size: $mini;
     }
     .title__right {
       color: $gray;

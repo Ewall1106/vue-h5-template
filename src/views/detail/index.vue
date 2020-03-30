@@ -6,17 +6,23 @@
       </span>
     </nav-bar>
     <Swiper :banner="banner" />
-    <Overview />
+    <Overview
+      :title="overview.title"
+      :desc="overview.desc"
+      :price="overview.price"
+      :discount="overview.discount"
+    />
     <Section @input="isSkuShow = $event" />
-    <Comment />
-    <Description />
-    <Sku v-model="isSkuShow" />
+    <Comment :rate="comment.rate" :num="comment.num" :tags="comment.tags" :list="comment.list" />
+    <Description :description="description" />
+    <Sku :skudata="skudata" :goods="goods" v-model="isSkuShow" />
     <Tabbar @input="isSkuShow = $event" />
     <back-top />
   </div>
 </template>
 
 <script>
+import { getDetail } from '@/api/detail'
 import NavBar from '@/components/NavBar'
 import Swiper from './modules/Swiper'
 import Overview from './modules/Overview'
@@ -41,11 +47,37 @@ export default {
   data() {
     return {
       isSkuShow: false,
-      banner: [
-        'http://img3m4.ddimg.cn/32/35/23579654-1_e_3.jpg',
-        'http://img3m4.ddimg.cn/32/35/23579654-2_e_5.jpg',
-        'http://img3m4.ddimg.cn/32/35/23579654-3_e_3.jpg'
-      ]
+      banner: [],
+      overview: {},
+      comment: {},
+      description: '',
+      skudata: {},
+      goods: {}
+    }
+  },
+  mounted() {
+    this.getDetail()
+  },
+  methods: {
+    getDetail() {
+      getDetail({
+        goodsId: '1234'
+      }).then(res => {
+        const {
+          banner,
+          overview,
+          comment,
+          description,
+          sku,
+          goods
+        } = res.entry
+        this.banner = banner
+        this.overview = overview
+        this.comment = comment
+        this.description = description
+        this.skudata = sku
+        this.goods = goods
+      })
     }
   }
 }

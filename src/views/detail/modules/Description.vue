@@ -2,13 +2,15 @@
   <div class="description">
     <h3 class="title">产品特色</h3>
     <div class="main">
-      <image-pic width="100%" fill="cover" src="http://img57.ddimg.cn/99999990003277237.jpg" />
+      <image-pic width="100%" fill="cover" :src="description" />
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['description']
+}
 </script>
 
 <style lang="scss" scoped>

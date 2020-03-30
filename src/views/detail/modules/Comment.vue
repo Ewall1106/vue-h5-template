@@ -5,10 +5,10 @@
         <div class="comment__item">
           <div class="comment__item__left">
             <span class="title">评价</span>
-            <span class="content">好评率99%</span>
+            <span class="content">好评率{{rate}}</span>
           </div>
           <div class="comment__item__right">
-            <span class="text">共10万+评论</span>
+            <span class="text">共{{num}}评论</span>
             <van-icon name="arrow" />
           </div>
         </div>
@@ -21,13 +21,23 @@
         class="tags__item"
         :color="variables.red"
         plain
-        v-for="(item,idx) in 6"
+        v-for="(item,idx) in tags"
         :key="idx"
-      >签案发时代发</van-tag>
+      >{{item}}</van-tag>
     </div>
 
     <div class="main">
-      <comment-item v-for="(item,idx) in 2" :key="idx" style="margin-top:12px" />
+      <comment-item
+        v-for="(item,idx) in list"
+        :key="idx"
+        :avatar="item.avatar"
+        :name="item.name"
+        :time="item.time"
+        :score="item.score"
+        :desc="item.desc"
+        :imgs="item.imgs"
+        style="margin-top:12px"
+      />
       <div class="main__btn">
         <van-button :color="variables.gray" plain round size="small">查看全部评价</van-button>
       </div>
@@ -40,6 +50,7 @@ import CommentItem from '@/components/CommentItem'
 import variables from '@/styles/variables.scss'
 
 export default {
+  props: ['rate', 'num', 'tags', 'list'],
   components: {
     CommentItem
   },
@@ -63,7 +74,7 @@ export default {
       flex-direction: row;
       justify-content: space-between;
       .comment__item__left {
-         font-size: $small;
+        font-size: $small;
         .title {
           color: $black;
           margin-right: 16px;
