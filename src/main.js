@@ -18,7 +18,7 @@ import '@/components/Vant'
 import '@/components/common'
 
 // mock in online
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
 }
