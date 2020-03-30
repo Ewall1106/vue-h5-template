@@ -27,6 +27,7 @@ const actions = {
       login({ phonenum, password })
         .then(res => {
           const { token } = res.entry
+          console.log('>>>>>>>>>>>', res)
           commit('SET_TOKEN', token)
           setToken(token)
           resolve()

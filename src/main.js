@@ -17,6 +17,12 @@ import '@/components/Vant'
 // register common components globally
 import '@/components/common'
 
+// mock in online
+if (process.env.NODE_ENV === 'development') {
+  const { mockXHR } = require('../mock')
+  mockXHR()
+}
+
 Vue.config.productionTip = false
 
 new Vue({
