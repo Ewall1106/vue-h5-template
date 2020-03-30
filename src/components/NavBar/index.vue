@@ -1,6 +1,12 @@
 <template>
   <div class="nav-compoment">
-    <van-nav-bar class="nav" :title="title" left-text="返回" left-arrow   @click-left="onClickLeft">
+    <van-nav-bar
+      class="nav"
+      :title="title"
+      :left-text="leftText"
+      :left-arrow="leftArrow"
+      @click-left="onClickLeft"
+    >
       <template #right>
         <slot></slot>
       </template>
@@ -14,6 +20,14 @@ export default {
     title: {
       type: String,
       default: '请输入标题'
+    },
+    leftText: {
+      type: String,
+      default: '返回'
+    },
+    leftArrow: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {

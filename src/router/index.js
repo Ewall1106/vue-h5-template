@@ -31,8 +31,20 @@ const routes = [
     }
   },
   // 购物车
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import('@/views/cart')
+  },
   // 我的
-
+  {
+    path: '/user',
+    name: 'User',
+    component: () => import('@/views/user'),
+    meta: {
+      showTab: true
+    }
+  },
   // 商品列表
   {
     path: '/product',

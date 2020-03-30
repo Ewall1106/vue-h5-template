@@ -33,7 +33,12 @@ import {
   GoodsActionButton,
   Sku,
   AddressList,
-  AddressEdit
+  AddressEdit,
+  SwipeCell,
+  Card,
+  SubmitBar,
+  Checkbox,
+  CheckboxGroup
 } from 'vant'
 
 Vue.use(Toast)
@@ -68,3 +73,8 @@ Vue.use(Toast)
   .use(Sku)
   .use(AddressList)
   .use(AddressEdit)
+  .use(SwipeCell)
+  .use(Card)
+  .use(SubmitBar)
+  .use(Checkbox)
+  .use(CheckboxGroup)
