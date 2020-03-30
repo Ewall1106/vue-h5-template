@@ -20,15 +20,15 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
+    },
+    proxy: {
+      '/dev-api': {
+        target: mockUrl,
+        pathRewrite: { '^/dev-api': '' },
+        secure: false,
+        changeOrigin: true
+      }
     }
-    // proxy: {
-    //   '/dev-api': {
-    //     target: mockUrl,
-    //     pathRewrite: { '^/dev-api': '' },
-    //     secure: false,
-    //     changeOrigin: true
-    //   }
-    // }
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
