@@ -1,18 +1,20 @@
 
 <template>
   <div class="overview">
-    <h3 class="title">中国科幻基石丛书：三体（套装1-3册）</h3>
-    <p class="desc">《三体》获第73届世界科幻大会颁发的雨果奖*佳长篇小说奖，银河奖特别奖，刘慈欣被授予2018年度克拉克想象力服务社会奖，亚洲首位雨果奖得主十届银河奖得主。</p>
+    <h3 class="title">{{title}}</h3>
+    <p class="desc">{{desc}}</p>
 
     <div class="price">
-      <span class="price__new">¥1231</span>
-      <span class="price__old">¥123123</span>
+      <span class="price__new">¥{{price}}</span>
+      <span class="price__old">¥{{discount}}</span>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['title', 'desc', 'price', 'discount']
+}
 </script>
 
 <style lang="scss" scoped>
