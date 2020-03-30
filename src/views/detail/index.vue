@@ -5,17 +5,24 @@
         <svg-icon icon-class="share" :width="15" :height="15" />
       </span>
     </nav-bar>
+
     <Swiper :banner="banner" />
+
     <Overview
       :title="overview.title"
       :desc="overview.desc"
       :price="overview.price"
       :discount="overview.discount"
     />
+
     <Section @input="isSkuShow = $event" />
+
     <Comment :rate="comment.rate" :num="comment.num" :tags="comment.tags" :list="comment.list" />
+
     <Description :description="description" />
+
     <Sku :skudata="skudata" :goods="goods" v-model="isSkuShow" />
+
     <Tabbar @input="isSkuShow = $event" />
     <back-top />
   </div>
