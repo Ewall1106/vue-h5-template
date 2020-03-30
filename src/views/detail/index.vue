@@ -7,11 +7,11 @@
     </nav-bar>
     <Swiper :banner="banner" />
     <Overview />
-    <Section />
+    <Section @input="isSkuShow = $event" />
     <Comment />
     <Description />
-    <Sku />
-    <Tabbar />
+    <Sku v-model="isSkuShow" />
+    <Tabbar @input="isSkuShow = $event" />
     <back-top />
   </div>
 </template>
@@ -40,6 +40,7 @@ export default {
   },
   data() {
     return {
+      isSkuShow: false,
       banner: [
         'http://img3m4.ddimg.cn/32/35/23579654-1_e_3.jpg',
         'http://img3m4.ddimg.cn/32/35/23579654-2_e_5.jpg',
