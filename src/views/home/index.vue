@@ -55,6 +55,7 @@ export default {
       })
   },
   methods: {
+    // banner
     getBanner() {
       return new Promise(resolve => {
         getBanner().then(res => {
@@ -63,6 +64,7 @@ export default {
         })
       })
     },
+    // category
     getCategory() {
       return new Promise(resolve => {
         getCategory().then(res => {
@@ -72,6 +74,7 @@ export default {
         })
       })
     },
+    // session
     getSession() {
       return new Promise(resolve => {
         getSession().then(res => {
@@ -80,6 +83,7 @@ export default {
         })
       })
     },
+    // goods-list
     getGoodsList() {
       getList({
         pageSize: this.pageSize,
@@ -93,6 +97,7 @@ export default {
         }
       })
     },
+    // reach-bottom
     onReachBottom() {
       this.pageSize += 1
       this.getGoodsList()
