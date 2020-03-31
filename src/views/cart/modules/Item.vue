@@ -37,7 +37,11 @@
 import variables from '@/styles/variables.scss'
 
 export default {
+  model: {
+    prop: 'isChecked'
+  },
   props: {
+    index: Number,
     thumb: String,
     title: String,
     desc: String,
@@ -45,16 +49,23 @@ export default {
     tags: Array,
     originPrice: Number,
     price: Number,
-    num: Number
-  },
-  data() {
-    return {
-      checked: true
+    num: Number,
+    isChecked: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     variables() {
       return variables
+    },
+    checked: {
+      get() {
+        return this.isChecked
+      },
+      set(val) {
+        this.$emit('input', { val, idx: this.index })
+      }
     }
   }
 }

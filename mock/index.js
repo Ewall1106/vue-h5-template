@@ -5,8 +5,9 @@ import home from './home'
 import category from './category'
 import product from './product'
 import detail from './detail'
+import cart from './cart'
 
-const mocks = [...user, ...home, ...category, ...product, ...detail]
+const mocks = [...user, ...home, ...category, ...product, ...detail, ...cart]
 
 const delayApi = [
   '/prod-api/user/login',
