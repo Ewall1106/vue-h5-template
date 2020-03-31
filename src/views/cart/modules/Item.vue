@@ -8,17 +8,22 @@
     ></van-checkbox>
     <van-swipe-cell style="width:100%">
       <van-card
-        num="2"
-        tag="标签"
-        price="2.00"
-        desc="描萨芬多多多多多多多多多多多多多多多多多多多多多述信息"
-        title="商阿大发送到是都发到付品标题"
-        thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
-        origin-price="10.00"
+        :num="num"
+        :tag="tag"
+        :price="price"
+        :desc="desc"
+        :title="title"
+        :thumb="thumb"
+        :origin-price="originPrice"
       >
         <template #tags>
-          <van-tag plain type="danger">标签</van-tag>
-          <van-tag plain type="danger">标签</van-tag>
+          <van-tag
+            plain
+            type="danger"
+            v-for="(item,idx) in tags"
+            :key="idx"
+            style="margin-right:4px"
+          >{{item}}</van-tag>
         </template>
       </van-card>
       <template #right>
@@ -32,6 +37,16 @@
 import variables from '@/styles/variables.scss'
 
 export default {
+  props: {
+    thumb: String,
+    title: String,
+    desc: String,
+    tag: String,
+    tags: Array,
+    originPrice: Number,
+    price: Number,
+    num: Number
+  },
   data() {
     return {
       checked: true
