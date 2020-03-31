@@ -11,14 +11,24 @@
 import variables from '@/styles/variables.scss'
 
 export default {
-  data() {
-    return {
-      checked: true
+  props: {
+    isAllSelect: {
+      type: Boolean,
+      default: false
     }
   },
+
   computed: {
     variables() {
       return variables
+    },
+    checked: {
+      get() {
+        return this.isAllSelect
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
     }
   }
 }
