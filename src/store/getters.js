@@ -1,8 +1,6 @@
 const getters = {
   // base info
-  avatar: state => state.user.avatar,
-  name: state => state.user.name,
-  token: state => state.user.token,
+  userInfo: state => state.user.userInfo,
   // address
   selectedAddress: state => state.address.selectedAddress
 }

@@ -17,7 +17,12 @@
 
     <Section @input="isSkuShow = $event" />
 
-    <Comment :rate="comment.rate" :num="comment.num" :tags="comment.tags" :list="comment.list" />
+    <Comment
+      :rate="comment.rate"
+      :num="comment.num"
+      :tags="comment.tags"
+      :list="comment.list"
+    />
 
     <Description :description="description" />
 

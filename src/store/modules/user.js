@@ -3,19 +3,15 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const state = {
   token: getToken(),
-  name: '',
-  avatar: ''
+  userInfo: {}
 }
 
 const mutations = {
   SET_TOKEN: (state, token) => {
     state.token = token
   },
-  SET_NAME: (state, name) => {
-    state.name = name
-  },
-  SET_AVATAR: (state, avatar) => {
-    state.avatar = avatar
+  SET_USER_INFO: (state, info) => {
+    state.userInfo = info
   }
 }
 
@@ -63,8 +59,7 @@ const actions = {
           if (!data) {
             reject(new Error('获取基本信息失败，请重新登录'))
           }
-          commit('SET_NAME', data.name)
-          commit('SET_AVATAR', data.avatar)
+          commit('SET_USER_INFO', data)
           resolve(data)
         })
         .catch(error => {

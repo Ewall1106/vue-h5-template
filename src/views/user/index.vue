@@ -1,15 +1,23 @@
 <template>
-  <div class="user">user......</div>
+  <div class="user">
+    <Info />
+    <Order />
+    <Tools />
+  </div>
 </template>
 
 <script>
+
+import Info from './modules/Info'
+import Order from './modules/Order'
+import Tools from './modules/Tools'
+
 export default {
-  name: 'User'
+  name: 'User',
+  components: {
+    Info,
+    Order,
+    Tools
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-.user {
-
-}
-</style>
