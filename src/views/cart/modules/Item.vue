@@ -6,7 +6,7 @@
       v-model="checked"
       style="padding:0 10px 0 16px"
     ></van-checkbox>
-    <van-swipe-cell style="width:100%">
+    <van-swipe-cell style="width:100%" :before-close="beforeClose">
       <van-card
         :num="num"
         :tag="tag"
@@ -65,6 +65,31 @@ export default {
       },
       set(val) {
         this.$emit('input', { val, idx: this.index })
+      }
+    }
+  },
+  methods: {
+    // position 为关闭时点击的位置
+    // instance 为对应的 SwipeCell 实例
+    beforeClose({ position, instance }) {
+      switch (position) {
+        case 'cell':
+        case 'outside':
+          instance.close()
+          break
+        case 'right':
+          this.$dialog
+            .confirm({
+              message: '确定删除吗？'
+            })
+            .then(() => {
+              this.$emit('handleDelete', this.index)
+              instance.close()
+            })
+            .catch(() => {
+              instance.close()
+            })
+          break
       }
     }
   }

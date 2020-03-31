@@ -15,8 +15,9 @@
       :price="item.price"
       :isChecked="item.isChecked"
       @input="handleItemSelect"
+      @handleDelete="handleDelete"
     />
-    <Tabbar :isAllSelect="isAllSelect" @input="handleAllSelect" />
+    <Tabbar :amount="amount" :value="isAllSelect" @input="handleAllSelect" />
   </div>
 </template>
 
@@ -36,7 +37,8 @@ export default {
   data() {
     return {
       list: [],
-      isAllSelect: false
+      isAllSelect: false,
+      amount: 0
     }
   },
   mounted() {
@@ -44,12 +46,18 @@ export default {
   },
   watch: {
     list(newval) {
-      this.isAllSelect = !newval.some(item => {
-        return item.isChecked === false
+      let num = 0
+      newval.forEach(item => {
+        if (item.isChecked) num += item.price
       })
+      this.isAllSelect = newval.every(item => {
+        return item.isChecked === true
+      })
+      this.amount = num
     }
   },
   methods: {
+    // get list
     getList() {
       getCartList().then(res => {
         const data = res.entry
@@ -59,18 +67,41 @@ export default {
         this.list = data
       })
     },
+    // single select
     handleItemSelect(playload) {
       const { val, idx } = playload
       const newval = this.list[idx]
       newval.isChecked = val
       this.$set(this.list, idx, newval)
     },
+    // all select
     handleAllSelect(value) {
       const data = this.list.map(item => {
         item.isChecked = value
         return item
       })
       this.list = data
+    },
+    // item delete
+    handleDelete(idx) {
+      this.$toast.loading({
+        message: '加载中...',
+        overlay: true,
+        duration: 0,
+        forbidClick: true
+      })
+
+      // 模拟删除
+      let second = 3
+      const timer = setInterval(() => {
+        second--
+        if (!second) {
+          clearInterval(timer)
+          this.$toast.clear()
+          this.list.splice(idx, 1)
+          this.$toast.success('删除成功')
+        }
+      }, 1000)
     }
   }
 }

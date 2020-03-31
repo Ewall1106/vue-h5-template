@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-submit-bar :price="3050" button-text="提交订单" class="submit-bar">
+    <van-submit-bar :price="amount" button-text="提交订单" class="submit-bar">
       <van-checkbox icon-size="18px" :checked-color="variables.theme" v-model="checked">全选</van-checkbox>
     </van-submit-bar>
     <div class="submit-bar-placeholder" style="width:100%;height:50px"></div>
@@ -12,7 +12,11 @@ import variables from '@/styles/variables.scss'
 
 export default {
   props: {
-    isAllSelect: {
+    amount: {
+      type: Number,
+      default: 0
+    },
+    value: {
       type: Boolean,
       default: false
     }
@@ -24,7 +28,7 @@ export default {
     },
     checked: {
       get() {
-        return this.isAllSelect
+        return this.value
       },
       set(val) {
         this.$emit('input', val)
