@@ -6,8 +6,10 @@ export default [
       return {
         code: 200,
         entry: {
-          name: '张三',
-          avatar: '11111'
+          name: 'Ewall&熊猫',
+          avatar:
+            'https://raw.githubusercontent.com/Ewall1106/panda-vue-template/master/src/assets/logo.png',
+          id: '00001'
         }
       }
     }

@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 import Info from './modules/Info'
 import Order from './modules/Order'
 import Tools from './modules/Tools'

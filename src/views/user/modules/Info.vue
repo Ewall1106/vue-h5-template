@@ -1,7 +1,7 @@
 
 <template>
   <div class="user-info">
-    <image-pic round width="50" height="50" :src="userInfo.avatar" />
+    <image-pic  width="50" height="50" :src="userInfo.avatar" />
     <div class="main">
       <div class="main__title">
         <h3 class="name">{{userInfo.name}}</h3>
