@@ -9,11 +9,11 @@ import cart from './cart'
 
 const mocks = [...user, ...home, ...category, ...product, ...detail, ...cart]
 
-const delayApi = [
-  '/prod-api/user/login',
-  '/prod-api/home/list',
-  '/prod-api/product/list'
-]
+// const delayApi = [
+//   '/prod-api/user/login',
+//   '/prod-api/home/list',
+//   '/prod-api/product/list'
+// ]
 
 // https://github.com/nuysoft/Mock/wiki
 export function mockXHR() {
@@ -21,10 +21,10 @@ export function mockXHR() {
     Mock.mock(item.url, item.type, item.response)
 
     // 为了效果演示，定义一些接口延时
-    if (delayApi.includes(item.url)) {
-      Mock.setup({
-        timeout: 1500
-      })
-    }
+    // if (delayApi.includes(item.url)) {
+    //   Mock.setup({
+    //     timeout: 1500
+    //   })
+    // }
   }
 }

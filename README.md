@@ -26,8 +26,8 @@
 使用`vue`的技术栈来开发一个商场小项目。  
 这是一个纯前端的项目，后面可能会用`node`来写下服务端，但是当前项目中的数据都是走的mock，并为此维护了一份接口文档。
 
-- [文章简要系列](https://www.jianshu.com/nb/14505636)
-- [yapi接口文档](http://yapi.demo.qunar.com/project/17982)
+- [文档说明](https://ewall1106.github.io/docs-mall)
+- [项目预览](https://ewall1106.github.io/panda-mall)
 
 ## 使用
 ```
