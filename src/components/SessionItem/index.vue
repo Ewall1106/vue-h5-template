@@ -44,7 +44,10 @@ export default {
   methods: {
     onClick() {
       this.$router.push({
-        path: '/product'
+        path: '/product',
+        query: {
+          t: +new Date()
+        }
       })
     }
   }
