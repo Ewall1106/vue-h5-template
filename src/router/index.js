@@ -12,7 +12,8 @@ const routes = [
     // webpackPreload：https://www.jianshu.com/p/bbdcfeee7fbc
     component: () => import(/* webpackPreload: true */ '@/views/home'),
     meta: {
-      showTab: true
+      showTab: true,
+      keepAlive: true
     }
   },
   // 登录
@@ -49,13 +50,19 @@ const routes = [
   {
     path: '/product',
     name: 'Product',
-    component: () => import('@/views/product')
+    component: () => import('@/views/product'),
+    meta: {
+      keepAlive: true
+    }
   },
   // 商品详情
   {
     path: '/detail',
     name: 'Detail',
-    component: () => import('@/views/detail')
+    component: () => import('@/views/detail'),
+    meta: {
+      keepAlive: true
+    }
   },
   // 地址管理
   {

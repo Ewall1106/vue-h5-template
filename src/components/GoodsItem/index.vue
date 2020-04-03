@@ -21,7 +21,10 @@ export default {
   methods: {
     onNavigate() {
       this.$router.push({
-        path: '/detail'
+        path: '/detail',
+        query: {
+          t: +new Date()
+        }
       })
     }
   }

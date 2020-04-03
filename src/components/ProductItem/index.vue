@@ -30,7 +30,10 @@ export default {
   methods: {
     onClick() {
       this.$router.push({
-        path: '/detail'
+        path: '/detail',
+        query: {
+          t: +new Date()
+        }
       })
     }
   }
