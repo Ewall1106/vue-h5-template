@@ -1,7 +1,7 @@
 <template>
   <div class="goods-item" @click="onNavigate">
     <div class="pic">
-      <image-pic align="center" width="90" height="125" :src="img" />
+      <image-pic align="center" width="90" height="100" :src="img" />
     </div>
     <p class="title">{{title}}</p>
     <p class="desc">{{desc}}</p>

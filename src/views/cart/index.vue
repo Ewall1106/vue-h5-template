@@ -18,6 +18,7 @@
       @handleDelete="handleDelete"
     />
     <Tabbar :amount="amount" :value="isAllSelect" @input="handleAllSelect" />
+    <Skeleton v-if="isSkeletonShow" />
   </div>
 </template>
 
@@ -26,19 +27,22 @@ import { getCartList } from '@/api/cart'
 import Nav from './modules/Nav'
 import Item from './modules/Item'
 import Tabbar from './modules/Tabbar'
+import Skeleton from './modules/Skeleton'
 
 export default {
   name: 'Cart',
   components: {
     Nav,
     Item,
-    Tabbar
+    Tabbar,
+    Skeleton
   },
   data() {
     return {
       list: [],
+      amount: 0,
       isAllSelect: false,
-      amount: 0
+      isSkeletonShow: true
     }
   },
   mounted() {
@@ -65,6 +69,7 @@ export default {
           item.isChecked = false
         })
         this.list = data
+        this.isSkeletonShow = false
       })
     },
     // single select

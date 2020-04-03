@@ -12,10 +12,12 @@
           <div class="main__item" v-for="(item,index) in cate" :key="index">
             <h3 class="main__item__title">{{item.title}}</h3>
             <div class="main__item__content">
-              <div class="single" v-for="(single,idx) in item.content" :key="idx">
-                <image-pic width="70" height="70" fit="contain" :src="single.img" />
-                <span>{{single.name}}</span>
-              </div>
+              <van-grid :column-num="3" :border="false">
+                <van-grid-item class="single" v-for="(single,idx) in item.content" :key="idx">
+                  <image-pic fit="contain" :src="single.img" />
+                  <span>{{single.name}}</span>
+                </van-grid-item>
+              </van-grid>
             </div>
           </div>
         </div>
@@ -78,12 +80,7 @@ export default {
         padding: 16px;
       }
       .main__item__content {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 4px;
         .single {
-          padding: 8px;
           text-align: center;
           color: $black;
           font-size: $mini;
