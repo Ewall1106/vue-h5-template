@@ -38,7 +38,9 @@ import {
   Card,
   SubmitBar,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Grid,
+  GridItem
 } from 'vant'
 
 Vue.use(Toast)
@@ -78,3 +80,5 @@ Vue.use(Toast)
   .use(SubmitBar)
   .use(Checkbox)
   .use(CheckboxGroup)
+  .use(Grid)
+  .use(GridItem)

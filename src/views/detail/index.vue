@@ -17,12 +17,7 @@
 
     <Section @input="isSkuShow = $event" />
 
-    <Comment
-      :rate="comment.rate"
-      :num="comment.num"
-      :tags="comment.tags"
-      :list="comment.list"
-    />
+    <Comment :rate="comment.rate" :num="comment.num" :tags="comment.tags" :list="comment.list" />
 
     <Description :description="description" />
 
@@ -30,6 +25,7 @@
 
     <Tabbar @input="isSkuShow = $event" />
     <back-top />
+    <Skeleton v-if="isSkeletonShow"/>
   </div>
 </template>
 
@@ -43,6 +39,7 @@ import Comment from './modules/Comment'
 import Description from './modules/Description'
 import Tabbar from './modules/Tabbar'
 import Sku from './modules/Sku'
+import Skeleton from './modules/Skeleton'
 
 export default {
   name: 'Detail',
@@ -54,17 +51,19 @@ export default {
     Comment,
     Description,
     Tabbar,
-    Sku
+    Sku,
+    Skeleton
   },
   data() {
     return {
-      isSkuShow: false,
       banner: [],
       overview: {},
       comment: {},
       description: '',
       skudata: {},
-      goods: {}
+      goods: {},
+      isSkuShow: false,
+      isSkeletonShow: true
     }
   },
   mounted() {
@@ -89,6 +88,7 @@ export default {
         this.description = description
         this.skudata = sku
         this.goods = goods
+        this.isSkeletonShow = false
       })
     }
   }
