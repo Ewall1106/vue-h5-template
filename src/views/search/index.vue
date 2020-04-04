@@ -1,25 +1,18 @@
 <template>
   <div class="search">
-    <van-search
-      v-model="value"
-      placeholder="请输入搜索关键词"
-      show-action
-      clearable
-      autofocus
-      @search="onSearch"
-      @cancel="$router.back()"
-    />
-
-    <search-words @input="onSearch($event)" />
+    <nav-bar v-model="value"/>
+    <search-words />
   </div>
 </template>
 
 <script>
+import NavBar from './modules/NavBar'
 import SearchWords from './modules/Words'
 
 export default {
   name: 'Search',
   components: {
+    NavBar,
     SearchWords
   },
   data() {
@@ -27,17 +20,6 @@ export default {
       value: ''
     }
   },
-  methods: {
-    onSearch(value) {
-      this.$store.dispatch('search/setKey', value)
-      this.$router.push({
-        path: '/search/list',
-        query: {
-          key: value,
-          t: +new Date()
-        }
-      })
-    }
-  }
+  methods: {}
 }
 </script>

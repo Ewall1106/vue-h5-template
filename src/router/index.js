@@ -103,7 +103,7 @@ const routes = [
       title: '搜索'
     }
   },
-  // 搜索结果列表
+  // 搜索结果
   {
     path: '/search/list',
     name: 'SearchList',
