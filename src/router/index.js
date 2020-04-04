@@ -12,6 +12,7 @@ const routes = [
     // webpackPreload：https://www.jianshu.com/p/bbdcfeee7fbc
     component: () => import(/* webpackPreload: true */ '@/views/home'),
     meta: {
+      title: '首页',
       showTab: true,
       keepAlive: true
     }
@@ -20,7 +21,10 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/auth/login')
+    component: () => import('@/views/auth/login'),
+    meta: {
+      title: '登录'
+    }
   },
   // 分类
   {
@@ -28,6 +32,7 @@ const routes = [
     name: 'Category',
     component: () => import('@/views/category'),
     meta: {
+      title: '分类',
       showTab: true
     }
   },
@@ -35,7 +40,11 @@ const routes = [
   {
     path: '/cart',
     name: 'Cart',
-    component: () => import('@/views/cart')
+    component: () => import('@/views/cart'),
+    meta: {
+      title: '购物车',
+      showTab: true
+    }
   },
   // 我的
   {
@@ -43,6 +52,7 @@ const routes = [
     name: 'User',
     component: () => import('@/views/user'),
     meta: {
+      title: '我的',
       showTab: true
     }
   },
@@ -52,6 +62,7 @@ const routes = [
     name: 'Product',
     component: () => import('@/views/product'),
     meta: {
+      title: '商品列表',
       keepAlive: true
     }
   },
@@ -61,6 +72,7 @@ const routes = [
     name: 'Detail',
     component: () => import('@/views/detail'),
     meta: {
+      title: '商品详情',
       keepAlive: true
     }
   },
@@ -68,13 +80,38 @@ const routes = [
   {
     path: '/address',
     name: 'Address',
-    component: () => import('@/views/address')
+    component: () => import('@/views/address'),
+    meta: {
+      title: '地址管理'
+    }
   },
   // 地址编辑
   {
     path: '/address/edit',
     name: 'AddressEdit',
-    component: () => import('@/views/address/edit')
+    component: () => import('@/views/address/edit'),
+    meta: {
+      title: '地址编辑'
+    }
+  },
+  // 搜索
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('@/views/search'),
+    meta: {
+      title: '搜索'
+    }
+  },
+  // 搜索结果列表
+  {
+    path: '/search/list',
+    name: 'SearchList',
+    component: () => import('@/views/search/list'),
+    meta: {
+      title: '搜索结果',
+      keepAlive: true
+    }
   }
 ]
 

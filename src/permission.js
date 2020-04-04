@@ -7,7 +7,7 @@ const whiteList = ['/login'] // 白名单
 
 router.beforeEach(async (to, from, next) => {
   // 设置标题
-  document.title = 'panda-mall'
+  document.title = to.meta.title || 'panda-mall'
 
   // 根据token判断用户是否登录
   const hasToken = getToken()
