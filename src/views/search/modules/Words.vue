@@ -55,7 +55,14 @@ export default {
         .catch(() => {})
     },
     onSearch(value) {
-      this.$emit('input', value)
+      this.$store.dispatch('search/setKey', value)
+      this.$router.push({
+        path: '/search/list',
+        query: {
+          key: value,
+          t: +new Date()
+        }
+      })
     }
   }
 }

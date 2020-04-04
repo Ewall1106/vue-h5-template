@@ -40,7 +40,9 @@ import {
   Checkbox,
   CheckboxGroup,
   Grid,
-  GridItem
+  GridItem,
+  DropdownMenu,
+  DropdownItem
 } from 'vant'
 
 Vue.use(Toast)
@@ -82,3 +84,5 @@ Vue.use(Toast)
   .use(CheckboxGroup)
   .use(Grid)
   .use(GridItem)
+  .use(DropdownMenu)
+  .use(DropdownItem)
