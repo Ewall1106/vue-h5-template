@@ -29,7 +29,12 @@
         </div>
       </h3>
       <div class="hot__main">
-        <p class="hot__main__item" v-for="(item,idx) in 10" :key="idx" @click="onSearch(item)">裤子衣服</p>
+        <p
+          class="hot__main__item"
+          v-for="(item,idx) in hotList"
+          :key="idx"
+          @click="onSearch(item)"
+        >{{item}}</p>
       </div>
     </div>
   </div>
@@ -39,6 +44,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  props: ['hotList'],
   computed: {
     ...mapGetters(['searchKey'])
   },

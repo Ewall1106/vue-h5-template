@@ -30,19 +30,29 @@ export default {
         { text: '好评排序', value: 'b' },
         { text: '销量排序', value: 'c' }
       ],
-      option3: [
-        { text: '销量', value: 'a' }
-      ]
+      option3: [{ text: '销量', value: 'a' }]
     }
   }
 }
 </script>
+
+<style lang="scss" >
+// reset vant css
+.search-filter {
+  .van-hairline--top-bottom::after,
+  .van-hairline-unset--top-bottom::after {
+    border: none;
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 .search-filter {
   font-size: 10px;
   display: flex;
   flex-direction: row;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
   .filter {
     flex-basis: 25%;
     color: #323233;
