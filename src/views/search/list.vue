@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { getList } from '@/api/home'
+import { getSearchList } from '@/api/search'
 import NavBar from './modules/NavBar'
 import FilterBar from './modules/FilterBar'
 import GoodsItem from '@/components/GoodsItem'
@@ -42,31 +42,41 @@ export default {
     return {
       value: '',
       list: [],
-      pageSize: 1,
-      pageNum: 8,
+      pageSize: 8,
+      pageNo: 1,
       loading: false,
       finished: false,
       isSkeletonShow: true
     }
   },
   mounted() {
+    this.$toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+      overlay: true,
+      duration: 0
+    })
     const { key } = this.$route.query
     this.value = key
     this.getList()
   },
   methods: {
-    onReachBottom() {},
+    onReachBottom() {
+      this.pageNo += 1
+      this.getList()
+    },
     getList() {
-      getList({
+      getSearchList({
         pageSize: this.pageSize,
-        pageNum: this.pageNum
+        pageNo: this.pageNo
       }).then(res => {
         const data = res.entry
         this.list = [...this.list, ...data]
         this.loading = false
-        if (data.length < this.pageNum && this.list.length > 0) {
+        if (data.length < this.pageNo && this.list.length > 0) {
           this.finished = true
         }
+        this.$toast.clear()
       })
     }
   }

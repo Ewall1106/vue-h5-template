@@ -109,8 +109,7 @@ const routes = [
     name: 'SearchList',
     component: () => import('@/views/search/list'),
     meta: {
-      title: '搜索结果',
-      keepAlive: true
+      title: '搜索结果'
     }
   }
 ]

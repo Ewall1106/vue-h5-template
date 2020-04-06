@@ -47,3 +47,7 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 })
+
+router.afterEach(() => {
+  Toast.clear()
+})
