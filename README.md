@@ -46,7 +46,6 @@ $ npm run serve
 
 * [ ] 使用node完成后端开发
 * [ ] 使用kbone兼容到小程序
-* [ ] 使用vuepress搭建项目网站及文档说明
 
 ## License
 
