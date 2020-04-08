@@ -33,7 +33,8 @@ const routes = [
     component: () => import('@/views/category'),
     meta: {
       title: '分类',
-      showTab: true
+      showTab: true,
+      keepAlive: true
     }
   },
   // 购物车
@@ -80,7 +81,7 @@ const routes = [
   {
     path: '/address',
     name: 'Address',
-    component: () => import('@/views/address'),
+    component: () => import('@/views/address/list'),
     meta: {
       title: '地址管理'
     }
@@ -110,6 +111,24 @@ const routes = [
     component: () => import('@/views/search/list'),
     meta: {
       title: '搜索结果'
+    }
+  },
+  // 确认订单
+  {
+    path: '/order/confirm',
+    name: 'OrderConfirm',
+    component: () => import('@/views/order/confirm'),
+    meta: {
+      title: '确认订单'
+    }
+  },
+  // 订单列表
+  {
+    path: '/order/list',
+    name: 'OrderList',
+    component: () => import('@/views/order/list'),
+    meta: {
+      title: '订单列表'
     }
   }
 ]

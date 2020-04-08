@@ -65,8 +65,7 @@ export default {
       this.$router.push({
         path: '/search/list',
         query: {
-          key: value,
-          t: +new Date()
+          key: value
         }
       })
     }

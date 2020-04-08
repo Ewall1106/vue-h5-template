@@ -3,53 +3,50 @@
     <nav-bar title="编辑地址" />
 
     <van-address-edit
+      :address-info="addressInfo"
       :area-list="areaList"
       show-postal
       show-delete
       show-set-default
       show-search-result
-      :search-result="searchResult"
       :area-columns-placeholder="['请选择', '请选择', '请选择']"
       @save="onSave"
       @delete="onDelete"
-      @change-detail="onChangeDetail"
     />
   </div>
 </template>
 
 <script>
-import areaList from '@/utils/area.js'
+import { mapGetters } from 'vuex'
 import NavBar from '@/components/NavBar'
+
+import areaList from '@/utils/area.js'
 
 export default {
   name: 'AddressEdit',
   data() {
     return {
       areaList,
-      searchResult: []
+      addressInfo: {}
     }
   },
   components: {
     NavBar
   },
+  computed: {
+    ...mapGetters(['addressList'])
+  },
+  mounted() {
+    const { index } = this.$route.query
+    this.addressInfo = this.addressList[Number(index)]
+    console.log('adfasd', this.addressList, this.addressInfo)
+  },
   methods: {
-    onSave() {
-      // Toast('save')
+    onSave(value) {
+      console.log('>>>>', value)
     },
     onDelete() {
       // Toast('delete')
-    },
-    onChangeDetail(val) {
-      if (val) {
-        this.searchResult = [
-          {
-            name: '黄龙万科中心',
-            address: '杭州市西湖区'
-          }
-        ]
-      } else {
-        this.searchResult = []
-      }
     }
   }
 }
