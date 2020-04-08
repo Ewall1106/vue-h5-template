@@ -42,7 +42,10 @@ import {
   Grid,
   GridItem,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  ContactCard,
+  ContactList,
+  ContactEdit
 } from 'vant'
 
 Vue.use(Toast)
@@ -86,3 +89,6 @@ Vue.use(Toast)
   .use(GridItem)
   .use(DropdownMenu)
   .use(DropdownItem)
+  .use(ContactCard)
+  .use(ContactList)
+  .use(ContactEdit)
