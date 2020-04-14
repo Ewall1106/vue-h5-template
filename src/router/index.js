@@ -119,7 +119,8 @@ const routes = [
     name: 'OrderConfirm',
     component: () => import('@/views/order/confirm'),
     meta: {
-      title: '确认订单'
+      title: '确认订单',
+      keepAlive: true
     }
   },
   // 订单列表

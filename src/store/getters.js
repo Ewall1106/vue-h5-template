@@ -5,7 +5,6 @@ const getters = {
   userInfo: state => state.user.userInfo,
 
   // address
-  defaultId: state => state.address.defaultId,
   addressList: state => state.address.addressList,
   selectedAddress: state => state.address.selectedAddress,
 

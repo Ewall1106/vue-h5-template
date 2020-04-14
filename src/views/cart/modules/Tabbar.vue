@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-submit-bar :price="amount" button-text="提交订单" class="submit-bar">
+    <van-submit-bar :price="amount" button-text="提交订单" class="submit-bar" @submit="onSubmit">
       <van-checkbox icon-size="18px" :checked-color="variables.theme" v-model="checked">全选</van-checkbox>
     </van-submit-bar>
     <div class="submit-bar-placeholder" style="width:100%;height:50px"></div>
@@ -21,7 +21,6 @@ export default {
       default: false
     }
   },
-
   computed: {
     variables() {
       return variables
@@ -33,6 +32,13 @@ export default {
       set(val) {
         this.$emit('input', val)
       }
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$router.push({
+        path: '/order/confirm'
+      })
     }
   }
 }
