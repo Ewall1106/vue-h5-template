@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <nav-bar v-model="value" />
+    <nav-bar v-model="value" @handleSearch="handleSearch"/>
     <search-words :hotList="hotList"/>
   </div>
 </template>
@@ -29,6 +29,14 @@ export default {
     getHot() {
       getHotList().then(res => {
         this.hotList = res.entry
+      })
+    },
+    handleSearch(key) {
+      this.$router.push({
+        path: '/search/list',
+        query: {
+          key
+        }
       })
     }
   }
