@@ -39,14 +39,14 @@ export default {
   mounted() {
     const { index } = this.$route.query
     this.addressInfo = this.addressList[Number(index)]
-    console.log('adfasd', this.addressList, this.addressInfo)
   },
   methods: {
     onSave(value) {
-      console.log('>>>>', value)
+      console.log('保存地址', value)
+      this.$toast.success('保存成功')
     },
-    onDelete() {
-      // Toast('delete')
+    onDelete(value) {
+      console.log('删除地址', value)
     }
   }
 }
