@@ -49,12 +49,7 @@ export default {
         return
       }
       this.$store.dispatch('search/setKey', key)
-      this.$router.push({
-        path: '/search/list',
-        query: {
-          key
-        }
-      })
+      this.$emit('handleSearch', key)
     }
   }
 }

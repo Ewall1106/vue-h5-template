@@ -1,6 +1,6 @@
 <template>
   <div class="search-list">
-    <nav-bar v-model="value" />
+    <nav-bar v-model="value" @handleSearch="handleSearch" />
     <filter-bar />
 
     <van-list
@@ -77,6 +77,15 @@ export default {
           this.finished = true
         }
         this.$toast.clear()
+      })
+    },
+    handleSearch(key) {
+      this.$router.replace({
+        path: '/search/list',
+        query: {
+          key,
+          t: +new Date()
+        }
       })
     }
   }
