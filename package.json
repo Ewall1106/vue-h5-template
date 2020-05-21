@@ -14,7 +14,7 @@
     "url": "git+https://github.com/Ewall1106/mall"
   },
   "scripts": {
-    "dev": "vue-cli-service serve",
+    "dev": "vue-cli-service serve --mode=production",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
