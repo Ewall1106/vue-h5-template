@@ -10,7 +10,7 @@
     />
 
     <div class="list">
-      <list-item/>
+      <list-item />
     </div>
   </div>
 </template>

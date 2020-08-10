@@ -2,8 +2,8 @@
   <div class="search-nav-bar">
     <van-icon size="16" name="arrow-left" style="padding:12px 0 12px 12px" @click="$router.back()" />
     <van-search
-      style="width:100%"
       v-model="keyword"
+      style="width:100%"
       placeholder="请输入搜索关键词"
       show-action
       clearable

@@ -2,12 +2,12 @@
   <div class="home">
     <Header />
     <Swiper :banner="banner" />
-    <Category :cateList="cateList" />
-    <Session :sessionList="sessionList" />
+    <Category :cate-list="cateList" />
+    <Session :session-list="sessionList" />
     <Goods
-      :goodsList="goodsList"
       v-model="isLoading"
-      :isFinished="isFinished"
+      :goods-list="goodsList"
+      :is-finished="isFinished"
       @onReachBottom="onReachBottom"
     />
     <back-top />

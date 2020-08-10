@@ -1,11 +1,11 @@
 <template>
   <div class="card__item">
     <van-checkbox
+      v-model="checked"
       icon-size="18px"
       :checked-color="variables.theme"
-      v-model="checked"
       style="padding:0 10px 0 16px"
-    ></van-checkbox>
+    />
     <van-swipe-cell style="width:100%" :before-close="beforeClose">
       <van-card
         :num="num"
@@ -18,12 +18,12 @@
       >
         <template #tags>
           <van-tag
-            plain
-            type="danger"
             v-for="(item,idx) in tags"
             :key="idx"
+            plain
+            type="danger"
             style="margin-right:4px"
-          >{{item}}</van-tag>
+          >{{ item }}</van-tag>
         </template>
       </van-card>
       <template #right>
@@ -41,15 +41,44 @@ export default {
     prop: 'isChecked'
   },
   props: {
-    index: Number,
-    thumb: String,
-    title: String,
-    desc: String,
-    tag: String,
-    tags: Array,
-    originPrice: Number,
-    price: Number,
-    num: Number,
+    index: {
+      type: Number,
+      default: 0
+    },
+    thumb: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    },
+    desc: {
+      type: String,
+      default: ''
+    },
+    tag: {
+      type: String,
+      default: ''
+    },
+    tags: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    originPrice: {
+      type: Number,
+      default: 0
+    },
+    price: {
+      type: Number,
+      default: 0
+    },
+    num: {
+      type: Number,
+      default: 0
+    },
     isChecked: {
       type: Boolean,
       default: false

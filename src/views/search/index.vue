@@ -1,7 +1,7 @@
 <template>
   <div class="search">
-    <nav-bar v-model="value" @handleSearch="handleSearch"/>
-    <search-words :hotList="hotList"/>
+    <nav-bar v-model="value" @handleSearch="handleSearch" />
+    <search-words :hot-list="hotList" />
   </div>
 </template>
 

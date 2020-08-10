@@ -8,7 +8,7 @@
       @click-left="onClickLeft"
     >
       <template #right>
-        <slot></slot>
+        <slot />
       </template>
     </van-nav-bar>
   </div>

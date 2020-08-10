@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="header">
-      <img class="header__logo" src="@/assets/logo.png" alt="logo" />
+      <img class="header__logo" src="@/assets/logo.png" alt="logo">
       <p class="header__title">panda-mall</p>
     </div>
 

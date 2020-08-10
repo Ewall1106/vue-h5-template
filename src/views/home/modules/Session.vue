@@ -3,9 +3,9 @@
     <Title name="精选专场" />
     <div class="main">
       <session-item
-        style="margin-bottom:10px"
         v-for="(item,idx) in sessionList"
         :key="idx"
+        style="margin-bottom:10px"
         :img="item.img"
         :title="item.title"
         :tagnum="item.tagnum"
@@ -21,10 +21,17 @@ import Title from './Title'
 import SessionItem from '@/components/SessionItem'
 
 export default {
-  props: ['sessionList'],
   components: {
     Title,
     SessionItem
+  },
+  props: {
+    sessionList: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
   }
 }
 </script>

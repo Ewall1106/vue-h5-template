@@ -24,14 +24,14 @@ import areaList from '@/utils/area.js'
 
 export default {
   name: 'AddressEdit',
+  components: {
+    NavBar
+  },
   data() {
     return {
       areaList,
       addressInfo: {}
     }
-  },
-  components: {
-    NavBar
   },
   computed: {
     ...mapGetters(['addressList'])
