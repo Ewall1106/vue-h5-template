@@ -2,7 +2,7 @@ const router = require('@koa/router')()
 
 router.prefix('/user')
 
-router.get('/info', async (ctx, next) => {
+router.get('/info', async(ctx, next) => {
   ctx.status = 200
   ctx.body = {
     code: 200,
@@ -15,7 +15,7 @@ router.get('/info', async (ctx, next) => {
   }
 })
 
-router.post('/login', async (ctx, next) => {
+router.post('/login', async(ctx, next) => {
   ctx.status = 200
   ctx.body = {
     code: 200,

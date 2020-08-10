@@ -2,7 +2,7 @@ const router = require('@koa/router')()
 
 router.prefix('/category')
 
-router.get('/items', async (ctx, next) => {
+router.get('/items', async(ctx, next) => {
   ctx.status = 200
   ctx.body = {
     code: 200,
@@ -18,7 +18,7 @@ router.get('/items', async (ctx, next) => {
   }
 })
 
-router.post('/content', async (ctx, next) => {
+router.post('/content', async(ctx, next) => {
   ctx.status = 200
   const list = [
     {
@@ -575,7 +575,8 @@ router.post('/content', async (ctx, next) => {
     }
   ]
 
-  const { index } = ctx.response.body
+  const { index } = ctx.request.body
+  console.log('ctx.response.body', ctx.request.body.index)
 
   ctx.status = 200
   ctx.body = {

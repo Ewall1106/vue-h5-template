@@ -19,7 +19,7 @@ app.use(require('koa-static')(path.resolve(__dirname, '/public')))
 app.use(views(path.resolve(__dirname, '/views'), { extension: 'pug' }))
 
 // logger
-app.use(async (ctx, next) => {
+app.use(async(ctx, next) => {
   const start = new Date()
   await next()
   const ms = new Date() - start
@@ -30,9 +30,18 @@ app.use(async (ctx, next) => {
 const index = require('./routes/index')
 const user = require('./routes/user')
 const category = require('./routes/category')
+const cart = require('./routes/cart')
+const detail = require('./routes/detail')
+const product = require('./routes/product')
+const search = require('./routes/search')
+
 app.use(index.routes(), index.allowedMethods())
 app.use(user.routes(), user.allowedMethods())
-app.use(category.routes(), user.allowedMethods())
+app.use(category.routes(), category.allowedMethods())
+app.use(cart.routes(), cart.allowedMethods())
+app.use(detail.routes(), detail.allowedMethods())
+app.use(product.routes(), product.allowedMethods())
+app.use(search.routes(), search.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
