@@ -14,3 +14,11 @@ export function login(data) {
     data
   })
 }
+
+export function logout(data) {
+  return request({
+    url: '/user/login',
+    method: 'post',
+    data
+  })
+}
