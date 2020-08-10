@@ -14,16 +14,23 @@
 import variables from '@/styles/variables.scss'
 
 export default {
-  props: ['banner'],
-  computed: {
-    variables() {
-      return variables
+  props: {
+    banner: {
+      type: Array,
+      default() {
+        return []
+      }
     }
   },
   data() {
     return {
       show: false,
       previewIdx: 0
+    }
+  },
+  computed: {
+    variables() {
+      return variables
     }
   },
   methods: {

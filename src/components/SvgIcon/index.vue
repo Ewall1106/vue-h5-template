@@ -2,9 +2,9 @@
   <svg
     :class="svgClass"
     aria-hidden="true"
-    v-on="$listeners"
     :width="width ? width : size"
     :height="height ? height : size"
+    v-on="$listeners"
   >
     <use :href="iconName" />
   </svg>
@@ -26,8 +26,14 @@ export default {
       type: String,
       default: '28px'
     },
-    width: Number,
-    height: Number
+    width: {
+      type: Number,
+      default: 0
+    },
+    height: {
+      type: Number,
+      default: 0
+    }
   },
   computed: {
     iconName() {

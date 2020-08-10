@@ -7,8 +7,8 @@
       v-model="loading"
       :finished="finished"
       finished-text="没有更多了"
-      @load="onReachBottom"
       :immediate-check="false"
+      @load="onReachBottom"
     >
       <div class="main">
         <goods-item

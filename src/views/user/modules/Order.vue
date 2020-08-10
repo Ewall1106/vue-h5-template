@@ -8,9 +8,9 @@
       </p>
     </h3>
     <div class="order__bd">
-      <div class="order__bd__item" v-for="(item,idx) in orderList" :key="idx">
+      <div v-for="(item,idx) in orderList" :key="idx" class="order__bd__item">
         <van-icon :name="item.icon" size="25" color="#dab309" :badge="item.count" />
-        <span class="name">{{item.name}}</span>
+        <span class="name">{{ item.name }}</span>
       </div>
     </div>
   </div>

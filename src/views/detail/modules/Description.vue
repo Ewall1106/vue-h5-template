@@ -9,7 +9,12 @@
 
 <script>
 export default {
-  props: ['description']
+  props: {
+    description: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

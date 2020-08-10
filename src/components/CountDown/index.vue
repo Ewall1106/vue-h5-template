@@ -2,9 +2,9 @@
   <div>
     <van-count-down v-bind="$attrs">
       <template v-slot="timeData">
-        <span class="item">{{ timeData.hours | padZero}}</span>
-        <span class="item">{{ timeData.minutes | padZero}}</span>
-        <span class="item red">{{ timeData.seconds | padZero}}</span>
+        <span class="item">{{ timeData.hours | padZero }}</span>
+        <span class="item">{{ timeData.minutes | padZero }}</span>
+        <span class="item red">{{ timeData.seconds | padZero }}</span>
       </template>
     </van-count-down>
   </div>

@@ -8,7 +8,7 @@
         <van-tabbar-item to="/user" icon="manager">我的</van-tabbar-item>
       </van-tabbar>
     </div>
-    <div class="tabbar--placeholder" style="width:100%;height:50px"></div>
+    <div class="tabbar--placeholder" style="width:100%;height:50px" />
   </div>
 </template>
 

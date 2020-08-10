@@ -4,7 +4,7 @@
       <van-icon name="shop-o" />
       <span class="title__name">熊猫商城自营</span>
     </h3>
-    <div class="item" v-for="(item,idx) in 2" :key="idx">
+    <div v-for="(item,idx) in 2" :key="idx" class="item">
       <image-pic
         width="80"
         height="80"

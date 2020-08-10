@@ -11,39 +11,39 @@
       @select="onSelect"
     />
 
-     <!-- 商品列表 -->
+    <!-- 商品列表 -->
     <div class="goods">
-      <div class="goods--exhibition" v-for="(item, idx) in exhibitionSettlementItemDTOs" :key="idx">
+      <div v-for="(item, idx) in exhibitionSettlementItemDTOs" :key="idx" class="goods--exhibition">
         <h3 class="exhibition__title">
-          <svg-icon icon-class="store" :width="15" :height="15"></svg-icon>
-          <span class="name">{{item.exhibitionParkName}}</span>
+          <svg-icon icon-class="store" :width="15" :height="15" />
+          <span class="name">{{ item.exhibitionParkName }}</span>
         </h3>
-        <div class="goods__item" v-for="(item, idx2) in item.settlementItemDTOs" :key="idx2">
-          <img class="goods__item__img" :src="item.headPicture | addCDNImg" />
+        <div v-for="(subItem, idx2) in item.settlementItemDTOs" :key="idx2" class="goods__item">
+          <img class="goods__item__img" :src="subItem.headPicture | addCDNImg">
           <div class="goods__item__main">
-            <p class="goods__item__main__desc">{{item.spuName}}</p>
+            <p class="goods__item__main__desc">{{ subItem.spuName }}</p>
             <p class="goods__item__main__attr">
-              <span>{{item.attribute1}}</span>
-              <span>{{item.attribute2}}</span>
+              <span>{{ subItem.attribute1 }}</span>
+              <span>{{ subItem.attribute2 }}</span>
             </p>
             <!-- <p class="goods__item__main__id">货号：{{item.supplierId}}</p> -->
           </div>
           <div class="goods__item__price">
-            <span class="goods__item__price__price">¥{{item.itemPrice | formatAmountFixed2Zero}}</span>
-            <span class="goods__item__price__count">x{{item.num}}</span>
+            <span class="goods__item__price__price">¥{{ item.itemPrice | formatAmountFixed2Zero }}</span>
+            <span class="goods__item__price__count">x{{ item.num }}</span>
           </div>
           <!-- new add: 运费 -->
           <div
-            class="goods__item__postage"
             v-if="item.postage>0"
-          >运费：¥{{item.postage | formatAmountFixed2Zero}}</div>
+            class="goods__item__postage"
+          >运费：¥{{ item.postage | formatAmountFixed2Zero }}</div>
         </div>
         <div class="exhibition__amount">
           <span
-            class="exhibition__amount__bouns"
             v-if="role > 0"
-          >返佣金¥{{item.bonus | formatAmountFixed2Zero}}</span>
-          <span>共1件商品 合计：¥{{item.exhibitionTotalPrice | formatAmountFixed2Zero}}</span>
+            class="exhibition__amount__bouns"
+          >返佣金¥{{ item.bonus | formatAmountFixed2Zero }}</span>
+          <span>共1件商品 合计：¥{{ item.exhibitionTotalPrice | formatAmountFixed2Zero }}</span>
         </div>
       </div>
     </div>

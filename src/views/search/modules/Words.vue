@@ -1,7 +1,7 @@
 <template>
   <div class="search-words">
     <!-- history -->
-    <div class="history" v-if="searchKey.length > 0">
+    <div v-if="searchKey.length > 0" class="history">
       <h3 class="history__title">
         <p class="history__title__left">
           <van-icon name="underway-o" size="16" />
@@ -13,15 +13,15 @@
       </h3>
       <div class="history__main">
         <p
-          class="history__main__item"
           v-for="(item,idx) in searchKey"
           :key="idx"
+          class="history__main__item"
           @click="onSearch(item)"
-        >{{item}}</p>
+        >{{ item }}</p>
       </div>
     </div>
     <!-- hot -->
-    <div class="hot" v-if="true">
+    <div v-if="true" class="hot">
       <h3 class="hot__title">
         <div class="hot__title__left">
           <van-icon name="fire-o" size="16" />
@@ -30,11 +30,11 @@
       </h3>
       <div class="hot__main">
         <p
-          class="hot__main__item"
           v-for="(item,idx) in hotList"
           :key="idx"
+          class="hot__main__item"
           @click="onSearch(item)"
-        >{{item}}</p>
+        >{{ item }}</p>
       </div>
     </div>
   </div>
@@ -44,7 +44,14 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  props: ['hotList'],
+  props: {
+    hotList: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
   computed: {
     ...mapGetters(['searchKey'])
   },

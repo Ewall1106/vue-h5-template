@@ -1,18 +1,19 @@
 
 <template>
   <div class="overview">
-    <h3 class="title">{{title}}</h3>
-    <p class="desc">{{desc}}</p>
+    <h3 class="title">{{ title }}</h3>
+    <p class="desc">{{ desc }}</p>
 
     <div class="price">
-      <span class="price__new">¥{{price}}</span>
-      <span class="price__old">¥{{discount}}</span>
+      <span class="price__new">¥{{ price }}</span>
+      <span class="price__old">¥{{ discount }}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  // eslint-disable-next-line vue/require-prop-types
   props: ['title', 'desc', 'price', 'discount']
 }
 </script>

@@ -18,8 +18,18 @@ export default {
       type: Boolean,
       default: false
     },
-    skudata: Object,
-    goods: Object
+    skudata: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
+    goods: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
   },
   computed: {
     isShow: {
