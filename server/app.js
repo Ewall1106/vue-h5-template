@@ -29,8 +29,10 @@ app.use(async (ctx, next) => {
 // routes
 const index = require('./routes/index')
 const user = require('./routes/user')
+const category = require('./routes/category')
 app.use(index.routes(), index.allowedMethods())
 app.use(user.routes(), user.allowedMethods())
+app.use(category.routes(), user.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
