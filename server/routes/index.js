@@ -2,7 +2,7 @@ const router = require('@koa/router')()
 
 router.prefix('/home')
 
-router.get('/banner', async (ctx, next) => {
+router.get('/banner', async(ctx, next) => {
   ctx.status = 200
   ctx.body = {
     code: 200,
@@ -14,7 +14,7 @@ router.get('/banner', async (ctx, next) => {
   }
 })
 
-router.get('/category', async (ctx, next) => {
+router.get('/category', async(ctx, next) => {
   ctx.status = 200
   ctx.body = {
     code: 200,
@@ -95,7 +95,7 @@ router.get('/category', async (ctx, next) => {
   }
 })
 
-router.get('/session', async (ctx, next) => {
+router.get('/session', async(ctx, next) => {
   ctx.status = 200
   ctx.body = {
     code: 200,
@@ -128,7 +128,7 @@ router.get('/session', async (ctx, next) => {
   }
 })
 
-router.post('/list', async (ctx, next) => {
+router.post('/list', async(ctx, next) => {
   const { pageNum, pageSize } = ctx.request.body
 
   const list = [
