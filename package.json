@@ -14,9 +14,8 @@
     "url": "git+https://github.com/Ewall1106/mall"
   },
   "scripts": {
-    "dev": "vue-cli-service serve --mode=production",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
+    "build": "cross-env NODE_ENV=production vue-cli-service build",
     "lint": "vue-cli-service lint",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
@@ -40,6 +39,7 @@
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",

@@ -3,9 +3,12 @@ import { Toast, Dialog } from 'vant'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
 
+const baseURL =
+  process.env.NODE_ENV === 'development' ? '/dev-api' : '/prod-api'
+
 // 创建一个axios实例
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL,
   // withCredentials: true,
   timeout: 5000
 })
