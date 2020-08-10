@@ -34,7 +34,16 @@
 > Tips: 为了避免出现未知的问题，首次安装最好使用官方镜像源。
 
 ```
+# 下载到本地
 $ git clone git@github.com:Ewall1106/mall.git
+
+# 客户端运行
+$ cd mall
+$ npm install
+$ npm run dev
+
+# 服务端运行
+$ cd server
 $ npm install
 $ npm run dev
 ```
@@ -42,23 +51,33 @@ $ npm run dev
 ## 目录结构
 
 ```
-|-- mock
-|-- public
-|-- src
-|   |-- api
-|   |-- assets
-|   |-- components
-|   |-- icons
-|   |-- router
-|   |-- store
-|   |-- styles
-|   |-- utils
-|   |-- views
-|   |-- App.vue
-|   |-- main.js
-|   |-- permission.js
-|-- package.json
-|-- ...
+|-- mock                  // 本地mock数据
+|-- public                // public
+|-- server                // -- 服务端代码
+|   |-- bin               // bin命令
+|   |-- public            // public
+|   |-- routes            // 路由表
+|   |-- views             // 模板引擎
+|   |-- app.js            // koa主文件
+|   |-- package.json      // 服务端依赖
+|-- src                   // -- 客户端代码
+|   |-- api               // 接口列表
+|   |-- assets            // 图片资源
+|   |-- components        // 公共组件
+|   |-- icons             // svg图标
+|   |-- router            // 路由
+|   |-- store             // vuex
+|   |-- styles            // 公共样式
+|   |-- utils             // 工具函数
+|   |-- views             // 具体页面
+|   |-- App.vue           // 主页面
+|   |-- main.js           // 入口文件
+|   |-- permission.js     // 权限控制逻辑
+|-- package.json          // 客户端依赖
+|-- .eslint.xx            // eslint处理
+|-- babel.config.js       // babel配置文件
+|-- postcss.config.js     // postcss配置文件
+|-- vue.config.js         // vue相关配置文件
 ```
 
 ## 推荐
