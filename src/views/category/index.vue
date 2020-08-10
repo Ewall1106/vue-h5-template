@@ -9,13 +9,13 @@
       <template #content>
         <div class="main">
           <image-pic width="100%" height="85" fit="fill" :src="banner" />
-          <div class="main__item" v-for="(item,index) in cate" :key="index">
-            <h3 class="main__item__title">{{item.title}}</h3>
+          <div v-for="(item,index) in cate" :key="index" class="main__item">
+            <h3 class="main__item__title">{{ item.title }}</h3>
             <div class="main__item__content">
               <van-grid :column-num="3" :border="false">
-                <van-grid-item class="single" v-for="(single,idx) in item.content" :key="idx">
+                <van-grid-item v-for="(single,idx) in item.content" :key="idx" class="single">
                   <image-pic fit="contain" :src="single.img" />
-                  <span>{{single.name}}</span>
+                  <span>{{ single.name }}</span>
                 </van-grid-item>
               </van-grid>
             </div>

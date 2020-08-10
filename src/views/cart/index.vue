@@ -11,9 +11,9 @@
       :desc="item.desc"
       :tag="item.tag"
       :tags="item.tags"
-      :originPrice="item.originPrice"
+      :origin-price="item.originPrice"
       :price="item.price"
-      :isChecked="item.isChecked"
+      :is-checked="item.isChecked"
       @input="handleItemSelect"
       @handleDelete="handleDelete"
     />
@@ -45,9 +45,6 @@ export default {
       isSkeletonShow: true
     }
   },
-  mounted() {
-    this.getList()
-  },
   watch: {
     list(newval) {
       let num = 0
@@ -59,6 +56,9 @@ export default {
       })
       this.amount = num
     }
+  },
+  mounted() {
+    this.getList()
   },
   methods: {
     // get list

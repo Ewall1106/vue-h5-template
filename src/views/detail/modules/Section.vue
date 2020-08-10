@@ -12,12 +12,12 @@
       </div>
     </van-button>
 
-    <div class="section__line"></div>
+    <div class="section__line" />
     <van-button block @click="handleAddress">
       <div class="section__item">
         <div class="section__item__left">
           <span class="title">送至</span>
-          <span class="content">{{this.selectedAddress.address || '北京市 东城区'}}</span>
+          <span class="content">{{ selectedAddress.address || '北京市 东城区' }}</span>
         </div>
         <div class="section__item__right">
           <van-icon name="arrow" />
@@ -25,13 +25,13 @@
       </div>
     </van-button>
 
-    <div class="section__line"></div>
+    <div class="section__line" />
     <van-button block>
       <div class="section__item section__item--icon">
         <div class="section__item__left">
-          <p class="icon--wrapper" v-for="(item,idx) in ['panda自营','panda发货','七天无理由退款']" :key="idx">
+          <p v-for="(item,idx) in ['panda自营','panda发货','七天无理由退款']" :key="idx" class="icon--wrapper">
             <svg-icon icon-class="good" :width="16" :height="16" />
-            <span>{{item}}</span>
+            <span>{{ item }}</span>
           </p>
         </div>
         <div class="section__item__right">

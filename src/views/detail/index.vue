@@ -21,11 +21,11 @@
 
     <Description :description="description" />
 
-    <Sku :skudata="skudata" :goods="goods" v-model="isSkuShow" />
+    <Sku v-model="isSkuShow" :skudata="skudata" :goods="goods" />
 
     <Tabbar @input="isSkuShow = $event" />
     <back-top />
-    <Skeleton v-if="isSkeletonShow"/>
+    <Skeleton v-if="isSkeletonShow" />
   </div>
 </template>
 

@@ -1,9 +1,9 @@
 <template>
   <div>
     <van-submit-bar :price="amount" button-text="提交订单" class="submit-bar" @submit="onSubmit">
-      <van-checkbox icon-size="18px" :checked-color="variables.theme" v-model="checked">全选</van-checkbox>
+      <van-checkbox v-model="checked" icon-size="18px" :checked-color="variables.theme">全选</van-checkbox>
     </van-submit-bar>
-    <div class="submit-bar-placeholder" style="width:100%;height:50px"></div>
+    <div class="submit-bar-placeholder" style="width:100%;height:50px" />
   </div>
 </template>
 

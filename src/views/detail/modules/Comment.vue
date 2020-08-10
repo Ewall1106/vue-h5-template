@@ -5,25 +5,25 @@
         <div class="comment__item">
           <div class="comment__item__left">
             <span class="title">评价</span>
-            <span class="content">好评率{{rate}}</span>
+            <span class="content">好评率{{ rate }}</span>
           </div>
           <div class="comment__item__right">
-            <span class="text">共{{num}}评论</span>
+            <span class="text">共{{ num }}评论</span>
             <van-icon name="arrow" />
           </div>
         </div>
       </van-button>
-      <div class="comment__line"></div>
+      <div class="comment__line" />
     </div>
 
     <div class="tags">
       <van-tag
+        v-for="(item,idx) in tags"
+        :key="idx"
         class="tags__item"
         :color="variables.red"
         plain
-        v-for="(item,idx) in tags"
-        :key="idx"
-      >{{item}}</van-tag>
+      >{{ item }}</van-tag>
     </div>
 
     <div class="main">
@@ -50,10 +50,11 @@ import CommentItem from '@/components/CommentItem'
 import variables from '@/styles/variables.scss'
 
 export default {
-  props: ['rate', 'num', 'tags', 'list'],
   components: {
     CommentItem
   },
+  // eslint-disable-next-line vue/require-prop-types
+  props: ['rate', 'num', 'tags', 'list'],
   computed: {
     variables() {
       return variables

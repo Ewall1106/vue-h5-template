@@ -6,8 +6,8 @@
       v-model="loading"
       :finished="isFinished"
       finished-text="没有更多了"
-      @load="onReachBottom"
       :immediate-check="false"
+      @load="onReachBottom"
     >
       <div class="main">
         <goods-item
@@ -29,11 +29,21 @@ import Title from './Title'
 import GoodsItem from '@/components/GoodsItem'
 
 export default {
+  components: {
+    GoodsItem,
+    Title
+  },
   model: {
     prop: 'isLoading'
   },
   props: {
-    goodsList: Array,
+    goodsList: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+
     isLoading: {
       type: Boolean,
       default: false
@@ -42,10 +52,6 @@ export default {
       type: Boolean,
       default: false
     }
-  },
-  components: {
-    GoodsItem,
-    Title
   },
   computed: {
     loading: {
