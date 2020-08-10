@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path')
 
-const mockUrl = 'http://yapi.demo.qunar.com/mock/17982'
+const mockUrl = 'http://localhost:3001/'
 
 function resolve (dir) {
   return path.join(__dirname, dir)

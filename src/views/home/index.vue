@@ -11,7 +11,7 @@
       @onReachBottom="onReachBottom"
     />
     <back-top />
-    <Skeleton v-if="isSkeletonShow"/>
+    <Skeleton v-if="isSkeletonShow" />
   </div>
 </template>
 
@@ -40,25 +40,26 @@ export default {
       cateList: [],
       sessionList: [],
       goodsList: [],
-      pageSize: 1,
-      pageNum: 4,
+      pageSize: 4,
+      pageNum: 1,
       isLoading: false,
       isFinished: false,
       isSkeletonShow: true
     }
   },
   mounted() {
-    Promise.all([this.getBanner(), this.getCategory(), this.getSession()])
-      .then(() => {
+    Promise.all([this.getBanner(), this.getCategory(), this.getSession()]).then(
+      () => {
         this.isSkeletonShow = false
         this.getGoodsList()
-      })
+      }
+    )
   },
   methods: {
     // banner
     getBanner() {
-      return new Promise(resolve => {
-        getBanner().then(res => {
+      return new Promise((resolve) => {
+        getBanner().then((res) => {
           this.banner = res.entry
           resolve()
         })
@@ -66,8 +67,8 @@ export default {
     },
     // category
     getCategory() {
-      return new Promise(resolve => {
-        getCategory().then(res => {
+      return new Promise((resolve) => {
+        getCategory().then((res) => {
           const data = res.entry
           this.cateList = data
           resolve()
@@ -76,8 +77,8 @@ export default {
     },
     // session
     getSession() {
-      return new Promise(resolve => {
-        getSession().then(res => {
+      return new Promise((resolve) => {
+        getSession().then((res) => {
           this.sessionList = res.entry
           resolve()
         })
@@ -88,18 +89,18 @@ export default {
       getList({
         pageSize: this.pageSize,
         pageNum: this.pageNum
-      }).then(res => {
+      }).then((res) => {
         const data = res.entry
         this.goodsList = [...this.goodsList, ...data]
         this.isLoading = false
-        if (data.length < this.pageNum && this.goodsList.length > 0) {
+        if (data.length < this.pageSize && this.goodsList.length > 0) {
           this.isFinished = true
         }
       })
     },
     // reach-bottom
     onReachBottom() {
-      this.pageSize += 1
+      this.pageNum += 1
       this.getGoodsList()
     }
   }
