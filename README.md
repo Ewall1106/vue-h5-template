@@ -23,30 +23,51 @@
 
 ## 介绍
 
-使用`vue`的技术栈来开发一个商场小项目。  
-这是一个纯前端的项目，后面可能会用`node`来写下服务端，但是当前项目中的数据都是走的mock，并为此维护了一份接口文档。（目前功能还未全部完成）
+一个商城小项目。  
+目的是能使用不同的技术栈来实现多个端的开发，并且可以涵盖各种丰富的实用功能。
 
 - [项目预览](https://ewall1106.github.io/panda-mall)
 - [文档说明](https://ewall1106.github.io/docs-mall)
-- [接口文档](http://yapi.demo.qunar.com/project/17982)
 
 ## 使用
-```
+
+> Tips: 为了避免出现未知的问题，首次安装最好使用官方镜像源。
+
+```bash
 $ git clone git@github.com:Ewall1106/mall.git
-$ npm/yarn install
-$ npm run serve
+$ npm install
+$ npm run dev
+```
+
+## 目录结构
+
+```bash
+|-- mock
+|-- public
+|-- src
+|   |-- api
+|   |-- assets
+|   |-- components
+|   |-- icons
+|   |-- router
+|   |-- store
+|   |-- styles
+|   |-- utils
+|   |-- views
+|   |-- App.vue
+|   |-- main.js
+|   |-- permission.js
+|-- package.json
+|-- ...
 ```
 
 ## 推荐
-- [webpack从0到1](https://github.com/Ewall1106/webpack-demo)
+
+- [webpack 从 0 到 1](https://github.com/Ewall1106/webpack-demo)
 - [create-panda-app](https://github.com/Ewall1106/create-panda-app)
-- [工具函数库panda-utils](https://github.com/Ewall1106/panda-utils)
 
-## 规划中
-
-* [ ] 使用node完成后端开发
-* [ ] 使用kbone兼容到小程序
-
-## License
+## 协议
 
 [MIT](https://github.com/Ewall1106/mall/blob/master/LICENSE)
+
+Copyright (c) 2020-present Ewall&熊猫
