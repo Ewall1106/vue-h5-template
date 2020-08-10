@@ -12,7 +12,7 @@
         <svg-icon icon-class="user" :width="18" :height="18" />
       </span>
     </div>
-    <div class="placeholder"></div>
+    <div class="placeholder" />
   </div>
 </template>
 

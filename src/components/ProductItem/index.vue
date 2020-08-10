@@ -3,14 +3,14 @@
     <image-pic :src="img" width="90" height="90" />
     <div class="desc">
       <div class="desc__top">
-        <h3 class="desc__top__title">{{title}}</h3>
-        <p class="desc__top__info">{{desc}}</p>
+        <h3 class="desc__top__title">{{ title }}</h3>
+        <p class="desc__top__info">{{ desc }}</p>
       </div>
       <div class="desc__bottom">
         <div class="desc__bottom__info">
           <p class="price">
-            <span class="price--new">¥{{price}}</span>
-            <span class="price--old">¥{{discount}}</span>
+            <span class="price--new">¥{{ price }}</span>
+            <span class="price--old">¥{{ discount }}</span>
           </p>
           <div class="progress">
             <van-progress stroke-width="6" :percentage="percentage" :show-pivot="false" />
@@ -26,6 +26,7 @@
 
 <script>
 export default {
+  // eslint-disable-next-line vue/require-prop-types
   props: ['img', 'title', 'desc', 'price', 'discount', 'percentage'],
   methods: {
     onClick() {

@@ -10,7 +10,7 @@
           height="25"
           style="margin-right:6px"
         />
-        <span style="margin-right:6px">{{name}}</span>
+        <span style="margin-right:6px">{{ name }}</span>
         <van-rate
           v-model="score"
           :size="15"
@@ -19,11 +19,11 @@
           void-color="#eee"
         />
       </div>
-      <div class="title__right">{{time}}</div>
+      <div class="title__right">{{ time }}</div>
     </div>
 
     <div class="desc">
-      <p class="desc__text van-multi-ellipsis--l3">{{desc}}</p>
+      <p class="desc__text van-multi-ellipsis--l3">{{ desc }}</p>
       <div class="desc_img">
         <image-pic
           v-for="(item,idx) in imgs"
@@ -44,15 +44,32 @@ import variables from '@/styles/variables.scss'
 
 export default {
   props: {
-    avatar: String,
-    time: Number,
-    name: String,
+    avatar: {
+      type: String,
+      default: ''
+    },
+    time: {
+      type: Number,
+      default: 0
+    },
+    name: {
+      type: String,
+      default: ''
+    },
     score: {
       type: Number,
       default: 0
     },
-    desc: String,
-    imgs: Array
+    desc: {
+      type: String,
+      default: ''
+    },
+    imgs: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
   },
   computed: {
     variables() {

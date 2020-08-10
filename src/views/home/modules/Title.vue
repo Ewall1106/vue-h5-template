@@ -1,14 +1,19 @@
 <template>
   <div class="home-title">
-    <span class="line"></span>
-    <span class="text">{{name}}</span>
-    <span class="line"></span>
+    <span class="line" />
+    <span class="text">{{ name }}</span>
+    <span class="line" />
   </div>
 </template>
 
 <script>
 export default {
-  props: ['name']
+  props: {
+    name: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

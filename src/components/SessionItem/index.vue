@@ -2,13 +2,13 @@
   <div class="session-item" @click="onClick">
     <image-pic align="center" width="100%" height="160" :src="img" />
     <div class="title">
-      <span class="title__text">{{title}}</span>
+      <span class="title__text">{{ title }}</span>
       <count-down :time="time" />
     </div>
     <div class="desc">
-      <span class="desc__tag">{{tagnum}}+款上新</span>
+      <span class="desc__tag">{{ tagnum }}+款上新</span>
       <span class="desc__text">
-        <i>{{discount}}</i>折起
+        <i>{{ discount }}</i>折起
       </span>
     </div>
   </div>
@@ -17,6 +17,9 @@
 <script>
 import CountDown from '@/components/CountDown'
 export default {
+  components: {
+    CountDown
+  },
   props: {
     img: {
       type: String,
@@ -27,7 +30,8 @@ export default {
       default: ''
     },
     time: {
-      type: Number
+      type: Number,
+      default: 0
     },
     tagnum: {
       type: Number,
@@ -37,9 +41,6 @@ export default {
       type: Number,
       default: 0
     }
-  },
-  components: {
-    CountDown
   },
   methods: {
     onClick() {
