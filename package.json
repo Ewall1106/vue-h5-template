@@ -2,21 +2,10 @@
   "name": "panda-mall",
   "version": "0.1.0",
   "author": "Ewall&熊猫",
-  "license": "MIT",
-  "keywords": [
-    "vue",
-    "vue-template",
-    "panda-vue-template",
-    "panda-mall"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ewall1106/mall"
-  },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
     "build": "cross-env NODE_ENV=production vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {
@@ -34,9 +23,9 @@
     "vuex": "^3.1.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "^4.5.4",
+    "@vue/cli-plugin-eslint": "^4.5.4",
+    "@vue/cli-service": "^4.5.4",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.0",
     "cross-env": "^7.0.2",
@@ -61,5 +50,16 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "keywords": [
+    "vue",
+    "vue-template",
+    "panda-vue-template",
+    "panda-mall"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ewall1106/mall"
+  }
 }
