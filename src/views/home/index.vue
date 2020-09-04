@@ -41,7 +41,7 @@ export default {
       sessionList: [],
       goodsList: [],
       pageSize: 4,
-      pageNum: 1,
+      pageNo: 1,
       isLoading: false,
       isFinished: false,
       isSkeletonShow: true
@@ -88,7 +88,7 @@ export default {
     getGoodsList() {
       getList({
         pageSize: this.pageSize,
-        pageNum: this.pageNum
+        pageNo: this.pageNo
       }).then((res) => {
         const data = res.entry
         this.goodsList = [...this.goodsList, ...data]
@@ -100,7 +100,7 @@ export default {
     },
     // reach-bottom
     onReachBottom() {
-      this.pageNum += 1
+      this.pageNo += 1
       this.getGoodsList()
     }
   }
