@@ -6,8 +6,8 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const port = process.env.port || process.env.npm_config_port || 4949
-const mockUrl = 'http://localhost:3100'
+const port = process.env.port || process.env.npm_config_port || 8080
+const mockUrl = 'http://xwhx.top:20080/mock/5f507c0322c575000bec5c87'
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
