@@ -4,7 +4,7 @@ import store from '@/store'
 import { getToken } from '@/utils/auth'
 
 const baseURL =
-  process.env.NODE_ENV === 'development' ? '/dev-api' : '/prod-api'
+  process.env.NODE_ENV === 'development' ? '/dev-api' : 'https://xwhx.top/prod-api'
 
 // 创建一个axios实例
 const service = axios.create({
