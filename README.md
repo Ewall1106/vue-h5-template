@@ -23,10 +23,11 @@
 
 ## 介绍
 
-一个商城小项目，目的是能通过使用不同的技术栈来实现多个端的开发，并且可以涵盖各种丰富的实用功能。
+Panda-mall 商城的前端项目，技术栈主要使用 `vue+vant+axios` 来实现。  
+目的是能通过使用不同的技术栈来实现多个端的开发，并且可以涵盖各种丰富的实用功能。
 
-- [项目预览](https://ewall1106.github.io/panda-mall)
-- [文档说明](https://ewall1106.github.io/docs-mall)
+- [项目预览](https://mall.xwhx.top/)
+- [文档说明](https://docs.xwhx.top/base/)
 
 ## 使用
 
