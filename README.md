@@ -28,6 +28,7 @@ Panda-mall 商城的前端项目，技术栈主要使用 `vue+vant+axios` 来实
 
 - [项目预览](https://mall.xwhx.top/)
 - [文档说明](https://docs.xwhx.top/base/)
+- [更新日志](https://github.com/Ewall1106/mall/blob/master/changelog.md)
 
 ## 使用
 
