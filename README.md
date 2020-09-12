@@ -39,7 +39,7 @@ $ npm run dev
 
 ## 推荐
 
-- 服务端[Panda-server](https://github.com/Ewall1106/panda-server)
+服务端[Panda-server](https://github.com/Ewall1106/panda-server)
 
 ## 协议
 
