@@ -7,7 +7,8 @@ function resolve(dir) {
 }
 
 const port = process.env.port || process.env.npm_config_port || 8080
-const mockUrl = 'http://xwhx.top:20080/mock/5f507c0322c575000bec5c87'
+// const mockUrl = 'http://xwhx.top:20080/mock/5f507c0322c575000bec5c87'
+const mockUrl = 'https://xwhx.top'
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -26,7 +27,7 @@ module.exports = {
     proxy: {
       '/dev-api': {
         target: mockUrl,
-        pathRewrite: { '^/dev-api': '' },
+        pathRewrite: { '^/dev-api': '/prod-api' },
         secure: false,
         changeOrigin: true
       }

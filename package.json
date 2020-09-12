@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "author": "Ewall&熊猫",
   "scripts": {
+    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
     "build": "cross-env NODE_ENV=production vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {
@@ -37,7 +37,6 @@
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
-    "mockjs": "^1.1.0",
     "node-sass": "^4.14.1",
     "postcss-preset-env": "^6.7.0",
     "postcss-px-to-viewport": "^1.1.1",
