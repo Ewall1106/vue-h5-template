@@ -4,25 +4,36 @@
 
 - [ ] 维护一份数据表结构文档
 - [ ] 完成邮箱验证登录功能
-- [x] 老的文档迁移与更新
-- [x] 使用 `yapi` 搭建接口管理平台，提供数据 `mock` 环境
+
+📚 **Docs**
+
+🐛 **Bugs**
+
+## 更新日志
+
+### [v2.0.1](https://github.com/Ewall1106/panda-server/tree/2.0.1)
+
+`2020-09-18`
+
+🎉 **Features**
+
+- 老的文档迁移与更新
+- 使用 `yapi` 搭建接口管理平台，提供数据 `mock` 环境
   - [-->接口地址](https://yapi.xwhx.top/)
   - 因个人服务器保存数据能力有限，所以不提供注册功能，查看接口文档请使用下方账号密码登录
   - 账号：`visitor` 密码：`visitor`
 
 📚 **Docs**
 
-- [x] [vscode 插件推荐](https://docs.xwhx.top/mall/other/vscode-plugin.html)
-- [x] [charles 抓包工具](https://docs.xwhx.top/mall/other/charles.html)
-- [x] [在 vscode 中调试](https://docs.xwhx.top/mall/other/vscode-debugger.html)
+- [vscode 插件推荐](https://docs.xwhx.top/mall/other/vscode-plugin.html)
+- [charles 抓包工具](https://docs.xwhx.top/mall/other/charles.html)
+- [在 vscode 中调试](https://docs.xwhx.top/mall/other/vscode-debugger.html)
 
 🐛 **Bugs**
 
-- [x] 修复 `node-sass` 依赖包老是本地安装报错的问题。改用 `dart-sass` 作为 `css` 预处理器。文档：[-->使用 dart-sass](https://docs.xwhx.top/mall/styles.html#_2-%E4%BD%BF%E7%94%A8-dart-sass)
-- [x] 修复 `8080` 端口冲突问题，移除掉 `vue.config.js` 中 `devServer.port` 的设值，使用默认配置。
-- [x] 修复生产环境 `debugger` 调试问题，设置生产环境的 `source-map`。
-
-## 更新日志
+- 修复 `node-sass` 依赖包老是本地安装报错的问题。改用 `dart-sass` 作为 `css` 预处理器。文档：[-->使用 dart-sass](https://docs.xwhx.top/mall/styles.html#_2-%E4%BD%BF%E7%94%A8-dart-sass)
+- 修复 `8080` 端口冲突问题，移除掉 `vue.config.js` 中 `devServer.port` 的设值，使用默认配置。
+- 修复生产环境 `debugger` 调试问题，设置生产环境的 `source-map`。
 
 ### [v2.0.0](https://github.com/Ewall1106/panda-server/tree/2.0.0)
 
