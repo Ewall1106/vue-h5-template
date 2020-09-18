@@ -11,7 +11,7 @@
 
 ## 更新日志
 
-### [v2.0.1](https://github.com/Ewall1106/panda-server/tree/2.0.1)
+## [v2.0.1](https://github.com/Ewall1106/panda-server/tree/2.0.1)
 
 `2020-09-18`
 
@@ -35,7 +35,7 @@
 - 修复 `8080` 端口冲突问题，移除掉 `vue.config.js` 中 `devServer.port` 的设值，使用默认配置。
 - 修复生产环境 `debugger` 调试问题，设置生产环境的 `source-map`。
 
-### [v2.0.0](https://github.com/Ewall1106/panda-server/tree/2.0.0)
+## [v2.0.0](https://github.com/Ewall1106/panda-server/tree/2.0.0)
 
 `2020-09-12`
 
@@ -57,7 +57,7 @@
 
 - 目前商城还不够完善，整个购买交易流程还没有走完。
 
-### [v1.0.0](https://github.com/Ewall1106/panda-server/tree/1.0.0)
+## [v1.0.0](https://github.com/Ewall1106/panda-server/tree/1.0.0)
 
 `2020-05-17`
 
