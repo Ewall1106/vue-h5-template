@@ -2,10 +2,10 @@
   <div class="login-container">
     <div class="header">
       <img class="header__logo" src="@/assets/logo.png" alt="logo">
-      <p class="header__title">panda-mall</p>
+      <p class="header__title">Panda-mall</p>
     </div>
 
-    <van-form class="form" @submit="onSubmit">
+    <van-form class="form" validate-trigger="onSubmit" :show-error="false" @submit="onSubmit">
       <van-field
         v-model="form.phonenum"
         type="number"
@@ -24,9 +24,9 @@
         center
         clearable
         name="手机号"
-        label="验证码"
+        label="邮箱验证码"
         placeholder="请输入短信验证码"
-        :rules="[{ required: true, message: '请填写正确的验证码！' }]"
+        :rules="[{ required: true, message: '请输入正确的短信验证码！' }]"
       >
         <van-button
           slot="button"
@@ -38,6 +38,22 @@
         >发送验证码</van-button>
       </van-field>
 
+      <van-field
+        v-model="form.captcha"
+        type="number"
+        required
+        center
+        clearable
+        name="手机号"
+        label="图形验证码"
+        placeholder="请输入图形验证码"
+        :rules="[{ required: true, message: '请输入正确的图形验证码！' }]"
+      >
+        <template #button>
+          <div style="background: #eee;height:34px" @click="getCaptcha" v-html="captchaSvg" />
+        </template>
+      </van-field>
+
       <div style="margin: 36px;">
         <van-button
           round
@@ -46,22 +62,28 @@
           type="info"
           loading-text="登录中..."
           native-type="submit"
-        >提交</van-button>
+        >登录</van-button>
+
+        <van-button style="margin-top:10px" plain round block type="info" native-type="button" to="/registration">注册</van-button>
       </div>
     </van-form>
   </div>
 </template>
 
 <script>
+import { getCaptcha } from '@/api/public'
+
 export default {
   name: 'Login',
   data() {
     return {
       form: {
-        phonenum: 123456789,
-        password: 1234
+        phonenum: '',
+        password: '',
+        captcha: ''
       },
-      loading: false
+      loading: false,
+      captchaSvg: ''
     }
   },
   watch: {
@@ -73,10 +95,18 @@ export default {
       immediate: true
     }
   },
+  mounted() {
+    this.getCaptcha()
+  },
   methods: {
+    // 获取图形验证码
+    getCaptcha() {
+      getCaptcha().then((res) => {
+        this.captchaSvg = res.entry
+      })
+    },
     // 校检手机号
     checkPhoneNum(num) {
-      if (num === 123456789) return true
       const reg = /^[1][3,4,5,7,8][0-9]{9}$/
       if (reg.test(num)) {
         return true
