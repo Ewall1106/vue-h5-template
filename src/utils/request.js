@@ -3,13 +3,13 @@ import { Toast, Dialog } from 'vant'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
 
-const baseURL =
-  process.env.NODE_ENV === 'development' ? '/dev-api' : 'https://api.xwhx.top'
+const config = require('./config')
+const baseURL = config[process.env.NODE_ENV].baseUrl
 
 // 创建一个axios实例
 const service = axios.create({
   baseURL,
-  // withCredentials: true,
+  withCredentials: true,
   timeout: 5000
 })
 

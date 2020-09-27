@@ -38,7 +38,6 @@ router.beforeEach(async(to, from, next) => {
       }
     }
   } else {
-    console.log('>>>>>', to.path)
     if (whiteList.indexOf(to.path) !== -1) {
       // 白名单没有token也直接放行
       next()
