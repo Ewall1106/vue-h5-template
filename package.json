@@ -4,6 +4,8 @@
   "author": "Ewall&熊猫",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vue-cli-service serve",
+    "mock": "cross-env NODE_ENV=mock vue-cli-service serve",
+    "local": "cross-env NODE_ENV=local vue-cli-service serve",
     "build": "cross-env NODE_ENV=production vue-cli-service build",
     "lint": "vue-cli-service lint",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"

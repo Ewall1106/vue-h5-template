@@ -1,12 +1,13 @@
 'use strict'
 
 const path = require('path')
+const config = require('./src/utils/config')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const mockUrl = 'https://api.xwhx.top'
+const mockUrl = config[process.env.NODE_ENV].proxyUl
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
