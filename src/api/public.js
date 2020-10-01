@@ -6,3 +6,10 @@ export function getCaptcha() {
     method: 'get'
   })
 }
+
+export function getMailCode() {
+  return request({
+    url: '/public/mail',
+    method: 'post'
+  })
+}

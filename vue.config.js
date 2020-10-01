@@ -7,7 +7,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const mockUrl = config[process.env.NODE_ENV].proxyUl
+const { mockUrl } = config[process.env.NODE_ENV]
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {

@@ -39,7 +39,7 @@
           plain
           type="info"
           native-type="button"
-          @click.stop="form.password = 1234"
+          @click.stop="getMailCode"
         >发送验证码</van-button>
       </van-field>
 
@@ -80,7 +80,7 @@
 
 <script>
 import variables from '@/styles/variables.scss'
-import { getCaptcha } from '@/api/public'
+import { getCaptcha, getMailCode } from '@/api/public'
 
 export default {
   name: 'Regist',
@@ -109,6 +109,16 @@ export default {
       getCaptcha().then((res) => {
         this.captchaSvg = res.entry
       })
+    },
+    // 获取邮箱验证码
+    getMailCode() {
+      const { email } = this.form
+      if (!email || !this.checkEmail(email)) {
+        this.$toast.fail('请先输入正确的邮箱地址')
+      }
+      // getMailCode().then(res => {
+      //   console.log(res)
+      // })
     },
     // 校检邮箱
     checkEmail(email) {
