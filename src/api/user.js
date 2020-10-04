@@ -7,6 +7,14 @@ export function getInfo() {
   })
 }
 
+export function setRegistry(data) {
+  return request({
+    url: '/user/registry',
+    method: 'post',
+    data
+  })
+}
+
 export function login(data) {
   return request({
     url: '/user/login',

@@ -82,6 +82,7 @@
 import variables from '@/styles/variables.scss'
 import { v4 as uuidv4 } from 'uuid'
 import { getCaptcha, getMailCode } from '@/api/public'
+import { setRegistry } from '@/api/user'
 
 export default {
   name: 'Regist',
@@ -90,7 +91,8 @@ export default {
       form: {
         email: '',
         code: '',
-        captcha: ''
+        captcha: '',
+        sid: localStorage.getItem('sid') || ''
       },
       loading: false,
       captchaSvg: ''
@@ -107,14 +109,11 @@ export default {
   methods: {
     // 获取图形验证码
     getCaptcha() {
-      let sid = localStorage.getItem('sid') || ''
-      if (!sid) {
-        sid = uuidv4()
-        localStorage.setItem('sid', sid)
+      if (!this.form.sid) {
+        this.form.sid = uuidv4()
+        localStorage.setItem('sid', this.form.sid)
       }
-      getCaptcha({
-        sid
-      }).then((res) => {
+      getCaptcha({ sid: this.form.sid }).then((res) => {
         this.captchaSvg = res.entry
       })
     },
@@ -136,22 +135,11 @@ export default {
     // 提交
     onSubmit() {
       this.loading = true
-      this.$store
-        .dispatch('user/login', this.form)
-        .then(() => {
-          this.$notify({
-            type: 'success',
-            message: '登录成功',
-            duration: 2000,
-            onOpened: () => {
-              location.href = this.redirect
-              this.loading = false
-            }
-          })
-        })
-        .catch(() => {
-          this.loading = false
-        })
+      setRegistry(this.form).then(res => {
+
+      }).finally(() => {
+        this.loading = false
+      })
     }
   }
 }
