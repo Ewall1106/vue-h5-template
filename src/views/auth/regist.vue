@@ -80,6 +80,7 @@
 
 <script>
 import variables from '@/styles/variables.scss'
+import { v4 as uuidv4 } from 'uuid'
 import { getCaptcha, getMailCode } from '@/api/public'
 
 export default {
@@ -106,7 +107,14 @@ export default {
   methods: {
     // 获取图形验证码
     getCaptcha() {
-      getCaptcha().then((res) => {
+      let sid = localStorage.getItem('sid') || ''
+      if (!sid) {
+        sid = uuidv4()
+        localStorage.setItem('sid', sid)
+      }
+      getCaptcha({
+        sid
+      }).then((res) => {
         this.captchaSvg = res.entry
       })
     },
@@ -116,9 +124,9 @@ export default {
       if (!email || !this.checkEmail(email)) {
         this.$toast.fail('请先输入正确的邮箱地址')
       }
-      // getMailCode().then(res => {
-      //   console.log(res)
-      // })
+      getMailCode().then(res => {
+        console.log(res)
+      })
     },
     // 校检邮箱
     checkEmail(email) {
