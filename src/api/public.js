@@ -1,9 +1,10 @@
 import request from '@/utils/request'
 
-export function getCaptcha() {
+export function getCaptcha(params) {
   return request({
     url: '/public/captcha',
-    method: 'get'
+    method: 'get',
+    params
   })
 }
 

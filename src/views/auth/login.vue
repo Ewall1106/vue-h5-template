@@ -7,14 +7,14 @@
 
     <van-form class="form" validate-trigger="onSubmit" :show-error="false" @submit="onSubmit">
       <van-field
-        v-model="form.phonenum"
-        type="number"
+        v-model="form.email"
+        type="text"
         required
         clearable
-        name="手机号"
-        label="手机号"
-        placeholder="请输入手机号"
-        :rules="[{validator:checkPhoneNum, required: true, message:'请填写正确的手机号！'}]"
+        name="邮箱"
+        label="邮箱"
+        placeholder="请输入邮箱地址"
+        :rules="[{ validator: checkEmail, required: true, message: '请输入正确的邮箱地址!' }]"
       />
 
       <van-field
@@ -23,20 +23,11 @@
         required
         center
         clearable
-        name="手机号"
-        label="邮箱验证码"
-        placeholder="请输入短信验证码"
-        :rules="[{ required: true, message: '请输入正确的短信验证码！' }]"
-      >
-        <van-button
-          slot="button"
-          size="small"
-          plain
-          type="info"
-          native-type="button"
-          @click.stop="form.password = 1234"
-        >发送验证码</van-button>
-      </van-field>
+        name="密码"
+        label="密码"
+        placeholder="密码"
+        :rules="[{ required: true, message: '请输入正确的密码！' }]"
+      />
 
       <van-field
         v-model="form.captcha"
@@ -44,9 +35,9 @@
         required
         center
         clearable
-        name="手机号"
-        label="图形验证码"
-        placeholder="请输入图形验证码"
+        name="验证码"
+        label="验证码"
+        placeholder="图形验证码"
         :rules="[{ required: true, message: '请输入正确的图形验证码！' }]"
       >
         <template #button>
@@ -72,15 +63,17 @@
 
 <script>
 import { getCaptcha } from '@/api/public'
+import { v4 as uuidv4 } from 'uuid'
 
 export default {
   name: 'Login',
   data() {
     return {
       form: {
-        phonenum: '',
+        mailnum: '',
         password: '',
-        captcha: ''
+        captcha: '',
+        sid: localStorage.getItem('sid') || ''
       },
       loading: false,
       captchaSvg: ''
@@ -101,17 +94,18 @@ export default {
   methods: {
     // 获取图形验证码
     getCaptcha() {
-      getCaptcha().then((res) => {
+      if (!this.form.sid) {
+        this.form.sid = uuidv4()
+        localStorage.setItem('sid', this.form.sid)
+      }
+      getCaptcha({ sid: this.form.sid }).then((res) => {
         this.captchaSvg = res.entry
       })
     },
-    // 校检手机号
-    checkPhoneNum(num) {
-      const reg = /^[1][3,4,5,7,8][0-9]{9}$/
-      if (reg.test(num)) {
-        return true
-      }
-      return false
+    // 校检邮箱
+    checkEmail(email) {
+      const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return reg.test(email)
     },
     // 提交
     onSubmit() {
