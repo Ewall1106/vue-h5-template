@@ -16,10 +16,38 @@
         type="text"
         required
         clearable
-        name="邮箱"
-        label="邮箱"
+        name="注册邮箱"
+        label="注册邮箱"
         placeholder="请输入邮箱地址"
-        :rules="[{validator: checkEmail, required: true, message: '请输入正确的邮箱地址!'}]"
+        :rules="[
+          {
+            validator: checkEmail,
+            required: true,
+            message: '请输入正确的邮箱地址!',
+          },
+        ]"
+      />
+
+      <van-field
+        v-model="form.password"
+        type="text"
+        required
+        clearable
+        name="设置密码"
+        label="设置密码"
+        placeholder="请设置密码"
+        :rules="[{ required: true, message: '请设置密码!' }]"
+      />
+
+      <van-field
+        v-model="form.confirmPassword"
+        type="text"
+        required
+        clearable
+        name="确认密码"
+        label="确认密码"
+        placeholder="请再次输入密码确认"
+        :rules="[{ required: true, message: '请再次输入密码确认!' }]"
       />
 
       <van-field
@@ -28,8 +56,8 @@
         required
         center
         clearable
-        name="验证码"
-        label="验证码"
+        name="邮箱验证码"
+        label="邮箱验证码"
         placeholder="请输入验证码"
         :rules="[{ required: true, message: '请输入正确的邮箱验证码！' }]"
       >
@@ -90,6 +118,8 @@ export default {
     return {
       form: {
         email: '',
+        password: '',
+        confirmPassword: '',
         code: '',
         captcha: '',
         sid: localStorage.getItem('sid') || ''
@@ -123,7 +153,7 @@ export default {
       if (!email || !this.checkEmail(email)) {
         this.$toast.fail('请先输入正确的邮箱地址')
       }
-      getMailCode().then(res => {
+      getMailCode().then((res) => {
         console.log(res)
       })
     },
@@ -134,12 +164,26 @@ export default {
     },
     // 提交
     onSubmit() {
+      const { password, confirmPassword } = this.form
+      if (password !== confirmPassword) {
+        this.$toast.fail('确认密码与设置的不一致')
+        return
+      }
       this.loading = true
-      setRegistry(this.form).then(res => {
-
-      }).finally(() => {
-        this.loading = false
-      })
+      setRegistry(this.form)
+        .then((res) => {
+          this.$notify({
+            type: 'success',
+            message: '注册成功，请登录',
+            duration: 2000,
+            onOpened: () => {
+              this.$router.back()
+            }
+          })
+        })
+        .finally(() => {
+          this.loading = false
+        })
     }
   }
 }
