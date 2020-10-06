@@ -7,7 +7,7 @@
 
     <van-form class="form" validate-trigger="onSubmit" :show-error="false" @submit="onSubmit">
       <van-field
-        v-model="form.email"
+        v-model="form.username"
         type="text"
         required
         clearable
@@ -31,7 +31,6 @@
 
       <van-field
         v-model="form.captcha"
-        type="number"
         required
         center
         clearable
@@ -70,7 +69,7 @@ export default {
   data() {
     return {
       form: {
-        mailnum: '',
+        username: '',
         password: '',
         captcha: '',
         sid: localStorage.getItem('sid') || ''
@@ -103,9 +102,9 @@ export default {
       })
     },
     // 校检邮箱
-    checkEmail(email) {
+    checkEmail(value) {
       const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return reg.test(email)
+      return reg.test(value)
     },
     // 提交
     onSubmit() {

@@ -21,10 +21,9 @@ const mutations = {
 
 const actions = {
   // 登录
-  login({ commit }, userInfo) {
-    const { phonenum, password } = userInfo
+  login({ commit }, loginInfo) {
     return new Promise((resolve, reject) => {
-      login({ phonenum, password })
+      login(loginInfo)
         .then(res => {
           const { token } = res.entry
           commit('SET_TOKEN', token)
