@@ -31,7 +31,7 @@ router.beforeEach(async(to, from, next) => {
           } else {
             // 清空token重新去登录
             await store.dispatch('user/resetToken')
-            Toast.fail('出错了')
+            Toast.fail(error.message || '出错了')
             next(`/login?redirect=${encodeURIComponent(location.href)}`)
           }
         }

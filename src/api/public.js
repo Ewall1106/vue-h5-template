@@ -8,9 +8,10 @@ export function getCaptcha(params) {
   })
 }
 
-export function getMailCode() {
+export function getMailCode(params) {
   return request({
     url: '/public/mail',
-    method: 'post'
+    method: 'post',
+    params
   })
 }

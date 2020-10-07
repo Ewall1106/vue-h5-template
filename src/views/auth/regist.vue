@@ -51,7 +51,7 @@
       />
 
       <van-field
-        v-model="form.code"
+        v-model="form.mailcode"
         type="number"
         required
         center
@@ -120,9 +120,10 @@ export default {
         email: '',
         password: '',
         confirmPassword: '',
-        code: '',
+        mailcode: '',
         captcha: '',
-        sid: localStorage.getItem('sid') || ''
+        sid: localStorage.getItem('sid') || '',
+        mailsid: localStorage.getItem('mailsid') || ''
       },
       loading: false,
       captchaSvg: ''
@@ -149,12 +150,21 @@ export default {
     },
     // 获取邮箱验证码
     getMailCode() {
+      if (!this.form.mailsid) {
+        this.form.mailsid = uuidv4()
+        localStorage.setItem('mailsid', this.form.mailsid)
+      }
       const { email } = this.form
       if (!email || !this.checkEmail(email)) {
         this.$toast.fail('请先输入正确的邮箱地址')
+        return
       }
-      getMailCode().then((res) => {
-        console.log(res)
+      getMailCode({ mailsid: this.form.mailsid }).then((res) => {
+        this.$notify({
+          type: 'success',
+          message: '邮箱验证码已发送',
+          duration: 2000
+        })
       })
     },
     // 校检邮箱
