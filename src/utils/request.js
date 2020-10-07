@@ -16,9 +16,10 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   config => {
+    console.log('>>>>>>>', store.getters.token)
     if (store.getters.token) {
-      // ['X-Token']是我这里自定义测试而塞到请求头中
-      config.headers['X-TOKEN'] = getToken()
+      // 是我这里自定义测试而塞到请求头中
+      config.headers.Authorization = `Bearer ${getToken()}`
     }
     return config
   },
