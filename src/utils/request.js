@@ -9,14 +9,13 @@ const baseURL = config[process.env.NODE_ENV].baseUrl
 // 创建一个axios实例
 const service = axios.create({
   baseURL,
-  withCredentials: true,
+  // withCredentials: true,
   timeout: 5000
 })
 
 // 请求拦截器
 service.interceptors.request.use(
   config => {
-    console.log('>>>>>>>', store.getters.token)
     if (store.getters.token) {
       // 是我这里自定义测试而塞到请求头中
       config.headers.Authorization = `Bearer ${getToken()}`
