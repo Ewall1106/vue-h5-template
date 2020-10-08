@@ -1,6 +1,6 @@
 {
   "name": "panda-mall",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Ewall&熊猫",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vue-cli-service serve",
