@@ -30,7 +30,7 @@
 
       <van-field
         v-model="form.password"
-        type="text"
+        type="password"
         required
         clearable
         name="设置密码"
@@ -41,7 +41,7 @@
 
       <van-field
         v-model="form.confirmPassword"
-        type="text"
+        type="password"
         required
         clearable
         name="确认密码"
@@ -159,7 +159,7 @@ export default {
         this.$toast.fail('请先输入正确的邮箱地址')
         return
       }
-      getMailCode({ mailsid: this.form.mailsid }).then((res) => {
+      getMailCode({ email: this.form.email, mailsid: this.form.mailsid }).then((res) => {
         this.$notify({
           type: 'success',
           message: '邮箱验证码已发送',

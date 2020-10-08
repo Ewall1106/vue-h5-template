@@ -12,7 +12,7 @@ module.exports = {
     mockUrl: 'https://api.xwhx.top'
   },
   'production': {
-    baseUrl: '/dev-api',
+    baseUrl: 'https://api.xwhx.top',
     mockUrl: 'https://api.xwhx.top'
   }
 }
