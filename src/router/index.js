@@ -35,6 +35,15 @@ const routes = [
       title: '注册'
     }
   },
+  // 找回密码
+  {
+    path: '/forget',
+    name: 'Forget',
+    component: () => import('@/views/auth/forget'),
+    meta: {
+      title: '找回密码'
+    }
+  },
   // 分类
   {
     path: '/category',

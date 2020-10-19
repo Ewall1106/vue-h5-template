@@ -5,7 +5,12 @@
       <p class="header__title">Panda-mall</p>
     </div>
 
-    <van-form class="form" validate-trigger="onSubmit" :show-error="false" @submit="onSubmit">
+    <van-form
+      class="form"
+      validate-trigger="onSubmit"
+      :show-error="false"
+      @submit="onSubmit"
+    >
       <van-field
         v-model="form.username"
         type="text"
@@ -14,7 +19,13 @@
         name="邮箱"
         label="邮箱"
         placeholder="请输入邮箱地址"
-        :rules="[{ validator: checkEmail, required: true, message: '请输入正确的邮箱地址!' }]"
+        :rules="[
+          {
+            validator: checkEmail,
+            required: true,
+            message: '请输入正确的邮箱地址!',
+          },
+        ]"
       />
 
       <van-field
@@ -40,11 +51,17 @@
         :rules="[{ required: true, message: '请输入正确的图形验证码！' }]"
       >
         <template #button>
-          <div style="background: #eee;height:34px" @click="getCaptcha" v-html="captchaSvg" />
+          <div
+            style="background: #eee; height: 34px"
+            @click="getCaptcha"
+            v-html="captchaSvg"
+          />
         </template>
       </van-field>
 
-      <div style="margin: 36px;">
+      <div class="forget"><router-link tag="span" to="/forget">忘记密码</router-link></div>
+
+      <div style="margin: 36px">
         <van-button
           round
           block
@@ -54,7 +71,15 @@
           native-type="submit"
         >登录</van-button>
 
-        <van-button style="margin-top:10px" plain round block type="info" native-type="button" to="/registration">注册</van-button>
+        <van-button
+          style="margin-top: 10px"
+          plain
+          round
+          block
+          type="info"
+          native-type="button"
+          to="/registration"
+        >注册</van-button>
       </div>
     </van-form>
   </div>
@@ -156,6 +181,15 @@ export default {
     // background: red;
     padding: 24px;
     margin-top: 50px;
+  }
+
+  .forget {
+    box-sizing: border-box;
+    color: #323233b9;
+    font-size: 26px;
+    text-align: right;
+    padding-right: 34px;
+    padding-top: 20px;
   }
 }
 </style>
