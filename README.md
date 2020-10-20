@@ -26,7 +26,6 @@
 Panda-mall 商城的前端项目，技术栈主要使用 `vue+vant+axios` 来实现。  
 目的是能通过使用不同的技术栈来实现多个端的开发，并且可以涵盖各种丰富的实用功能。
 
-- [项目预览](https://mall.xwhx.top/)
 - [文档说明](https://docs.xwhx.top/base/)
 - [更新日志](https://github.com/Ewall1106/mall/blob/master/changelog.md)
 
