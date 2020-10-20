@@ -110,7 +110,7 @@
 import variables from '@/styles/variables.scss'
 import { v4 as uuidv4 } from 'uuid'
 import { getCaptcha, getMailCode } from '@/api/public'
-import { setRegistry } from '@/api/user'
+import { registry } from '@/api/user'
 
 export default {
   name: 'Regist',
@@ -175,7 +175,7 @@ export default {
         return
       }
       this.loading = true
-      setRegistry(this.form)
+      registry(this.form)
         .then((res) => {
           this.$notify({
             type: 'success',
