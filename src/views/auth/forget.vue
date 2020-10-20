@@ -18,6 +18,7 @@
         name="注册邮箱"
         label="注册邮箱"
         placeholder="请输入邮箱地址"
+        maxlength="20"
         :rules="[
           {
             validator: checkEmail,
@@ -36,6 +37,7 @@
         name="邮箱验证码"
         label="邮箱验证码"
         placeholder="请输入验证码"
+        maxlength="4"
         :rules="[{ required: true, message: '请输入正确的邮箱验证码！' }]"
       >
         <van-button
@@ -56,6 +58,7 @@
         name="设置新密码"
         label="设置新密码"
         placeholder="请设置新密码"
+        maxlength="20"
         :rules="[{ required: true, message: '请设置密码!' }]"
       />
 
@@ -64,9 +67,10 @@
         type="password"
         required
         clearable
-        name="确认密码"
-        label="确认密码"
+        name="确认新密码"
+        label="确认新密码"
         placeholder="请再次输入密码确认"
+        maxlength="20"
         :rules="[{ required: true, message: '请再次输入密码确认!' }]"
       />
 
@@ -78,7 +82,7 @@
           type="info"
           loading-text="登录中..."
           native-type="submit"
-        >找回密码</van-button>
+        >重置密码</van-button>
       </div>
     </van-form>
   </div>
@@ -86,6 +90,7 @@
 
 <script>
 import variables from '@/styles/variables.scss'
+import { reset } from '@/api/user'
 import { getMailCode } from '@/api/public'
 
 export default {
@@ -96,12 +101,9 @@ export default {
         email: '',
         password: '',
         confirmPassword: '',
-        mailcode: '',
-        captcha: '',
-        sid: localStorage.getItem('sid') || ''
+        mailcode: ''
       },
-      loading: false,
-      captchaSvg: ''
+      loading: false
     }
   },
   computed: {
@@ -138,12 +140,12 @@ export default {
         return
       }
       this.loading = true
-      setRegistry(this.form)
+      reset(this.form)
         .then((res) => {
           this.$notify({
             type: 'success',
-            message: '注册成功，请登录',
-            duration: 2000,
+            message: '重置密码成功，请登录',
+            duration: 2500,
             onOpened: () => {
               this.$router.back()
             }
