@@ -1,6 +1,6 @@
 <p align="center">
   <img width="100" height="100" src="https://raw.githubusercontent.com/Ewall1106/panda-vue-template/master/src/assets/logo.png">
-  <h3  align="center">手把手教你搭建vue小商城</h3>
+  <h3  align="center">Vue-h5</h3>
 </p>
 
 <p align="center">
@@ -23,8 +23,15 @@
 
 ## 介绍
 
-Panda-mall 商城的前端项目，技术栈主要使用 `vue+vant+axios` 来实现。  
-目的是能通过使用不同的技术栈来实现多个端的开发，并且可以涵盖各种丰富的实用功能。
+**以小商城作为基本的内容演示，目的是打造一个前端 h5 通用型的解决方案。**
+
+- 技术栈主要使用 `vue+vant` 来实现。
+
+  - 基础功能：动态路由，权限验证、vuex、eslint
+  - 数据交互：axios 封装及请求、跨域、API 接口封装、数据 mock
+  - 实用工具：scroll 滑动、复制粘贴
+  - 常用功能：骨架屏、图像验证码、svg 图标
+  - 业务组件：红包雨、倒计时等等...
 
 - [文档说明](https://docs.xwhx.top/base/)
 - [更新日志](https://github.com/Ewall1106/mall/blob/master/changelog.md)
