@@ -6,6 +6,7 @@
 - [x] docs：邮箱验证服务功能实现
 - [ ] 使用 `Axios-CancelToken` 取消重复请求
 - [ ] docs：JWT 鉴权功能实现
+- [ ] 添加 `fastclick` 解决移动端点击延迟问题
 
 ## 更新日志
 
