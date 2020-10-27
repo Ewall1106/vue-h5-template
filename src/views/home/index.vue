@@ -100,8 +100,10 @@ export default {
     },
     // reach-bottom
     onReachBottom() {
-      this.pageNo += 1
-      this.getGoodsList()
+      if (!this.isFinished) {
+        this.pageNo += 1
+        this.getGoodsList()
+      }
     }
   }
 }
