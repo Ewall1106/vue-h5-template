@@ -23,9 +23,9 @@
 
 ## 介绍
 
-**以小商城作为基本的内容演示，目的是希望打造一个前端 h5 通用型的解决方案。**
+以小商城作为基本的内容演示，目的是希望打造一个**前端 h5 通用型的解决方案。**
 
-- [文档说明](https://docs.xwhx.top/base/)
+- [文档说明](https://docs.xwhx.top/mall/)
 - [更新日志](https://github.com/Ewall1106/mall/blob/master/changelog.md)
 
 ## 使用
