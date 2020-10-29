@@ -2,7 +2,7 @@
   <div class="description">
     <h3 class="title">产品特色</h3>
     <div class="main">
-      <image-pic width="100%" fill="cover" :src="description" />
+      <image-pic width="100%" fill="cover" :src="details" />
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 <script>
 export default {
   props: {
-    description: {
+    details: {
       type: String,
       default: ''
     }

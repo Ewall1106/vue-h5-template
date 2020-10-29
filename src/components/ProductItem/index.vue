@@ -10,10 +10,14 @@
         <div class="desc__bottom__info">
           <p class="price">
             <span class="price--new">¥{{ price }}</span>
-            <span class="price--old">¥{{ discount }}</span>
+            <span class="price--old">¥{{ oldPrice }}</span>
           </p>
           <div class="progress">
-            <van-progress stroke-width="6" :percentage="percentage" :show-pivot="false" />
+            <van-progress
+              stroke-width="6"
+              :percentage="percentage"
+              :show-pivot="false"
+            />
           </div>
         </div>
         <div class="desc__bottom__btn">
@@ -27,12 +31,13 @@
 <script>
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['img', 'title', 'desc', 'price', 'discount', 'percentage'],
+  props: ['productId', 'img', 'title', 'desc', 'price', 'oldPrice', 'percentage'],
   methods: {
     onClick() {
       this.$router.push({
         path: '/detail',
         query: {
+          productId: this.productId,
           t: +new Date()
         }
       })
@@ -46,7 +51,7 @@ export default {
 
 .product-item {
   box-sizing: border-box;
-  height: 200px;
+  height: 240px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -59,18 +64,20 @@ export default {
       .desc__top__title {
         font-size: $small;
         color: $black;
-        @include text-multiple-ellipsis;
+        @include text-ellipsis;
       }
       .desc__top__info {
+        min-height: 60px;
         font-size: $mini;
         color: $gray;
-        margin-top: 10px;
-        @include text-ellipsis;
+        margin-top: 8px;
+        line-height: 30px;
+        @include text-multiple-ellipsis;
       }
     }
     .desc__bottom {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
       .desc__bottom__info {
         margin-top: 10px;

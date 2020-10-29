@@ -24,11 +24,12 @@
           <product-item
             v-for="(item,idx) in list"
             :key="idx"
+            :product-id="item.productId"
             :img="item.img"
             :title="item.title"
-            :desc="item.title"
+            :desc="item.desc"
             :price="item.price"
-            :discount="item.discount"
+            :old-price="item.oldPrice"
             :percentage="item.percentage"
             style="margin-bottom:6px"
           />
@@ -59,7 +60,7 @@ export default {
     return {
       list: [],
       pageNo: 1,
-      pageSize: 10,
+      pageSize: 8,
       loading: false,
       finished: false,
       refreshing: false,
@@ -95,12 +96,15 @@ export default {
       })
     },
     onLoad() {
-      this.loading = true
-      this.pageNo += 1
-      this.getProductList()
+      if (!this.finished) {
+        this.loading = true
+        this.pageNo += 1
+        this.getProductList()
+      }
     },
     onRefresh() {
       this.refreshing = true
+      this.finished = false
       this.pageNo = 1
       this.getProductList()
     }

@@ -1,25 +1,31 @@
 <template>
   <div class="detail">
     <nav-bar title="商品详情">
-      <span style="color:#333">
+      <span style="color: #333">
         <svg-icon icon-class="share" :width="15" :height="15" />
       </span>
     </nav-bar>
 
-    <Swiper :banner="banner" />
+    <Swiper :banner="info.banner" />
 
     <Overview
-      :title="overview.title"
-      :desc="overview.desc"
-      :price="overview.price"
-      :discount="overview.discount"
+      :title="info.title"
+      :desc="info.desc"
+      :price="info.price"
+      :old-price="info.oldPrice"
     />
 
-    <Section @input="isSkuShow = $event" />
+    <Section :service="info.service" @input="isSkuShow = $event" />
 
-    <Comment :rate="comment.rate" :num="comment.num" :tags="comment.tags" :list="comment.list" />
+    <!--
+    <Comment
+      :rate="comment.rate"
+      :num="comment.num"
+      :tags="comment.tags"
+      :list="comment.list"
+    /> -->
 
-    <Description :description="description" />
+    <Description :details="info.details" />
 
     <Sku v-model="isSkuShow" :skudata="skudata" :goods="goods" />
 
@@ -56,10 +62,8 @@ export default {
   },
   data() {
     return {
-      banner: [],
-      overview: {},
-      comment: {},
-      description: '',
+      productId: '',
+      info: {},
       skudata: {},
       goods: {},
       isSkuShow: false,
@@ -67,27 +71,18 @@ export default {
     }
   },
   mounted() {
+    const { productId } = this.$route.query
+    this.productId = productId
     this.getDetail()
   },
   methods: {
     getDetail() {
       getDetail({
-        goodsId: '1234'
-      }).then(res => {
-        const {
-          banner,
-          overview,
-          comment,
-          description,
-          sku,
-          goods
-        } = res.entry
-        this.banner = banner
-        this.overview = overview
-        this.comment = comment
-        this.description = description
-        this.skudata = sku
-        this.goods = goods
+        productId: this.productId
+      }).then((res) => {
+        const data = res.entry
+        this.info = data
+        this.skudata = data.sku
         this.isSkeletonShow = false
       })
     }
