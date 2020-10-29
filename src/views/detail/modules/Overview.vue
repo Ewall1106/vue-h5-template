@@ -6,7 +6,7 @@
 
     <div class="price">
       <span class="price__new">¥{{ price }}</span>
-      <span class="price__old">¥{{ discount }}</span>
+      <span class="price__old">¥{{ oldPrice }}</span>
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['title', 'desc', 'price', 'discount']
+  props: ['title', 'desc', 'price', 'oldPrice']
 }
 </script>
 
@@ -33,6 +33,7 @@ export default {
     font-size: $small;
     color: $gray;
     margin-top: 12px;
+    line-height: 36px;
     text-align: justify;
   }
   .price {

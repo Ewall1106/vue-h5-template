@@ -17,7 +17,9 @@
       <div class="section__item">
         <div class="section__item__left">
           <span class="title">送至</span>
-          <span class="content">{{ selectedAddress.address || '北京市 东城区' }}</span>
+          <span class="content">{{
+            selectedAddress.address || "北京市 东城区"
+          }}</span>
         </div>
         <div class="section__item__right">
           <van-icon name="arrow" />
@@ -29,8 +31,8 @@
     <van-button block>
       <div class="section__item section__item--icon">
         <div class="section__item__left">
-          <p v-for="(item,idx) in ['panda自营','panda发货','七天无理由退款']" :key="idx" class="icon--wrapper">
-            <svg-icon icon-class="good" :width="16" :height="16" />
+          <p v-for="(item, idx) in service" :key="idx" class="icon--wrapper">
+            <svg-icon icon-class="good" :width="14" :height="14" />
             <span>{{ item }}</span>
           </p>
         </div>
@@ -46,6 +48,14 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  props: {
+    service: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
   computed: {
     ...mapGetters(['selectedAddress'])
   },
@@ -68,6 +78,10 @@ export default {
     border: none;
     border-radius: 0px;
   }
+  .van-button__text {
+    width: 100%;
+    display: block;
+  }
 }
 </style>
 
@@ -81,9 +95,11 @@ export default {
   margin-top: 24px;
   background: #fff;
   .section__item {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
     .section__item__left {
       font-size: $small;
       .title {
@@ -101,15 +117,12 @@ export default {
   .section__item--icon {
     .section__item__left {
       display: flex;
+      align-items: center;
       .icon--wrapper {
         display: flex;
-        align-items: center;
         color: $gray;
         font-size: $small;
-        margin-right: 10px;
-        span {
-          margin-left: 6px;
-        }
+        margin-right: 6px;
       }
     }
   }
