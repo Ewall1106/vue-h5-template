@@ -4,6 +4,7 @@
       v-model="isShow"
       :sku="skudata"
       :goods="goods"
+      :goods-id="goodsId"
       :close-on-click-overlay="true"
       @buy-clicked="onBuy"
       @add-cart="onAddCart"
@@ -12,11 +13,17 @@
 </template>
 
 <script>
+import { addCart } from '@/api/cart'
+
 export default {
   props: {
     value: {
       type: Boolean,
       default: false
+    },
+    goodsId: {
+      type: String,
+      default: ''
     },
     skudata: {
       type: Object,
@@ -45,9 +52,17 @@ export default {
     onBuy() {
       console.log('buy')
     },
-    onAddCart() {
-      this.$toast.success('添加成功')
-      this.$emit('input', false)
+    onAddCart(data) {
+      console.log('>>>', data)
+      const { id: skuId } = data.selectedSkuComb
+      addCart({
+        productId: this.goodsId,
+        skuId,
+        selectedNum: data.selectedNum
+      }).then((res) => {
+        this.$toast.success('添加成功')
+        this.$emit('input', false)
+      })
     }
   }
 }
