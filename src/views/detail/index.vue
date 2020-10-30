@@ -27,7 +27,7 @@
 
     <Description :details="info.details" />
 
-    <Sku v-model="isSkuShow" :skudata="skudata" :goods="goods" />
+    <Sku v-model="isSkuShow" :skudata="skudata" :goods-id="productId" :goods="info.goods" />
 
     <Tabbar @input="isSkuShow = $event" />
     <back-top />

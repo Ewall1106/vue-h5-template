@@ -10,11 +10,11 @@
       <van-card
         :num="num"
         :tag="tag"
-        :price="price"
+        :price="price/100"
         :desc="desc"
         :title="title"
         :thumb="thumb"
-        :origin-price="originPrice"
+        :origin-price="oldPrice"
       >
         <template #tags>
           <van-tag
@@ -67,7 +67,7 @@ export default {
         return []
       }
     },
-    originPrice: {
+    oldPrice: {
       type: Number,
       default: 0
     },
