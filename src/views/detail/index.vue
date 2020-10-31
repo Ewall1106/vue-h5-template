@@ -15,7 +15,11 @@
       :old-price="info.oldPrice"
     />
 
-    <Section :service="info.service" @input="isSkuShow = $event" />
+    <Section
+      :service="info.service"
+      :address="address"
+      @input="isSkuShow = $event"
+    />
 
     <!--
     <Comment
@@ -27,7 +31,12 @@
 
     <Description :details="info.details" />
 
-    <Sku v-model="isSkuShow" :skudata="skudata" :goods-id="productId" :goods="info.goods" />
+    <Sku
+      v-model="isSkuShow"
+      :skudata="skudata"
+      :goods-id="productId"
+      :goods="info.goods"
+    />
 
     <Tabbar @input="isSkuShow = $event" />
     <back-top />
@@ -36,7 +45,6 @@
 </template>
 
 <script>
-import { getDetail } from '@/api/detail'
 import NavBar from '@/components/NavBar'
 import Swiper from './modules/Swiper'
 import Overview from './modules/Overview'
@@ -46,6 +54,9 @@ import Description from './modules/Description'
 import Tabbar from './modules/Tabbar'
 import Sku from './modules/Sku'
 import Skeleton from './modules/Skeleton'
+
+import { getDetail } from '@/api/detail'
+import { getAddressList } from '@/api/user'
 
 export default {
   name: 'Detail',
@@ -64,6 +75,7 @@ export default {
     return {
       productId: '',
       info: {},
+      address: '',
       skudata: {},
       goods: {},
       isSkuShow: false,
@@ -75,7 +87,11 @@ export default {
     this.productId = productId
     this.getDetail()
   },
+  activated() {
+    this.getAddress()
+  },
   methods: {
+    // 获取商品详情
     getDetail() {
       getDetail({
         productId: this.productId
@@ -84,6 +100,19 @@ export default {
         this.info = data
         this.skudata = data.sku
         this.isSkeletonShow = false
+      })
+    },
+    // 获取地址
+    getAddress() {
+      getAddressList().then((res) => {
+        const { list = [], defaultId = '' } = res.entry
+        let address = ''
+        if (defaultId) address = list.filter((item) => item.addressId === defaultId)
+        else address = list.filter((item) => item.isDefault === true)
+        if (address && address.length) {
+          const [{ province, city, county }] = address
+          this.address = `${province} ${city} ${county}`
+        }
       })
     }
   }

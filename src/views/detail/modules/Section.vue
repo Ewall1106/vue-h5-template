@@ -17,9 +17,7 @@
       <div class="section__item">
         <div class="section__item__left">
           <span class="title">送至</span>
-          <span class="content">{{
-            selectedAddress.address || "北京市 东城区"
-          }}</span>
+          <span class="content">{{ address || "北京市 东城区" }}</span>
         </div>
         <div class="section__item__right">
           <van-icon name="arrow" />
@@ -45,8 +43,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   props: {
     service: {
@@ -54,10 +50,8 @@ export default {
       default: () => {
         return []
       }
-    }
-  },
-  computed: {
-    ...mapGetters(['selectedAddress'])
+    },
+    address: { type: String, default: '' }
   },
   methods: {
     onSelectSku() {

@@ -15,7 +15,7 @@
 
 <script>
 import NavBar from '@/components/NavBar'
-import { getAddress } from '@/api/user'
+import { getAddressList, setAddressList } from '@/api/user'
 
 export default {
   name: 'Address',
@@ -36,13 +36,11 @@ export default {
   methods: {
     // 获取地址
     getAddressList() {
-      getAddress({
-        type: 'list'
-      }).then((res) => {
-        const data = res.entry
-        if (data.length) {
-          this.list = data.map((item) => {
-            item.isDefault && (this.defaultId = item.addressId)
+      getAddressList().then((res) => {
+        const { list = [], defaultId = '' } = res.entry
+        this.defaultId = defaultId
+        if (list && list.length) {
+          this.list = list.map((item) => {
             return {
               id: item.addressId,
               name: item.name,
@@ -56,8 +54,19 @@ export default {
       })
     },
     // 选择地址
-    onSelect(item, index) {
-      this.$router.go(-1)
+    onSelect(item) {
+      if (item.id === this.defaultId) {
+        this.$router.go(-1)
+        return
+      }
+      this.$toast.loading('加载中...')
+      setAddressList({
+        id: item.id
+      }).then((res) => {
+        this.defaultId = item.id
+        this.$toast.clear()
+        this.$router.go(-1)
+      })
     },
     // 新增地址
     onAdd() {

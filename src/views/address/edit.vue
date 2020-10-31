@@ -55,7 +55,7 @@ export default {
     // 获取地址信息
     getAddressInfo(id) {
       this.$toast.loading('加载中...')
-      getAddress({ type: 'single', addressId: id }).then((res) => {
+      getAddress({ addressId: id }).then((res) => {
         this.addressInfo = res.entry
         this.$toast.clear()
       })
