@@ -2,7 +2,7 @@
   <div style="background:#fff">
     <van-swipe :autoplay="3000" :indicator-color="variables.red">
       <van-swipe-item v-for="(image, index) in banner" :key="index" @click="onSwipeClick(index)">
-        <image-pic width="100%" height="400" :src="image" />
+        <image-pic width="100%" height="380" :src="image" />
       </van-swipe-item>
     </van-swipe>
 

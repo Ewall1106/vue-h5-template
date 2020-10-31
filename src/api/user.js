@@ -43,3 +43,39 @@ export function reset(data) {
     data
   })
 }
+
+// 新增地址
+export function addAddress(data) {
+  return request({
+    url: '/user/address',
+    method: 'post',
+    data
+  })
+}
+
+// 删除地址
+export function deleteAddress(data) {
+  return request({
+    url: '/user/address',
+    method: 'delete',
+    data
+  })
+}
+
+// 更新地址
+export function updateAddress(data) {
+  return request({
+    url: '/user/address',
+    method: 'put',
+    data
+  })
+}
+
+// 获取地址
+export function getAddress(params) {
+  return request({
+    url: '/user/address',
+    method: 'get',
+    params
+  })
+}

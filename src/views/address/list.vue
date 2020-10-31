@@ -10,48 +10,12 @@
       @edit="onEdit"
       @select="onSelect"
     />
-
-    <!-- 商品列表 -->
-    <div class="goods">
-      <div v-for="(item, idx) in exhibitionSettlementItemDTOs" :key="idx" class="goods--exhibition">
-        <h3 class="exhibition__title">
-          <svg-icon icon-class="store" :width="15" :height="15" />
-          <span class="name">{{ item.exhibitionParkName }}</span>
-        </h3>
-        <div v-for="(subItem, idx2) in item.settlementItemDTOs" :key="idx2" class="goods__item">
-          <img class="goods__item__img" :src="subItem.headPicture | addCDNImg">
-          <div class="goods__item__main">
-            <p class="goods__item__main__desc">{{ subItem.spuName }}</p>
-            <p class="goods__item__main__attr">
-              <span>{{ subItem.attribute1 }}</span>
-              <span>{{ subItem.attribute2 }}</span>
-            </p>
-            <!-- <p class="goods__item__main__id">货号：{{item.supplierId}}</p> -->
-          </div>
-          <div class="goods__item__price">
-            <span class="goods__item__price__price">¥{{ item.itemPrice | formatAmountFixed2Zero }}</span>
-            <span class="goods__item__price__count">x{{ item.num }}</span>
-          </div>
-          <!-- new add: 运费 -->
-          <div
-            v-if="item.postage>0"
-            class="goods__item__postage"
-          >运费：¥{{ item.postage | formatAmountFixed2Zero }}</div>
-        </div>
-        <div class="exhibition__amount">
-          <span
-            v-if="role > 0"
-            class="exhibition__amount__bouns"
-          >返佣金¥{{ item.bonus | formatAmountFixed2Zero }}</span>
-          <span>共1件商品 合计：¥{{ item.exhibitionTotalPrice | formatAmountFixed2Zero }}</span>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar'
+import { getAddress } from '@/api/user'
 
 export default {
   name: 'Address',
@@ -64,27 +28,53 @@ export default {
       list: []
     }
   },
+
   async mounted() {
     this.$toast.loading('加载中...')
-    this.list = await this.$store.dispatch('address/getList')
-    this.$toast.clear()
+    this.getAddressList()
   },
   methods: {
-    onSelect(item, index) {
-      this.$store.dispatch('address/setList', index)
-      this.$router.go(-1)
-    },
-    onAdd() {
-      this.$router.push({
-        path: '/address/edit'
+    // 获取地址
+    getAddressList() {
+      getAddress({
+        type: 'list'
+      }).then((res) => {
+        const data = res.entry
+        if (data.length) {
+          this.list = data.map((item) => {
+            item.isDefault && (this.defaultId = item.addressId)
+            return {
+              id: item.addressId,
+              name: item.name,
+              tel: item.tel,
+              address: item.fullAddress,
+              isDefault: item.isDefault
+            }
+          })
+        }
+        this.$toast.clear()
       })
     },
-    onEdit(item, index) {
-      this.$toast('编辑地址:' + index)
+    // 选择地址
+    onSelect(item, index) {
+      this.$router.go(-1)
+    },
+    // 新增地址
+    onAdd() {
       this.$router.push({
         path: '/address/edit',
         query: {
-          index
+          type: 1
+        }
+      })
+    },
+    // 编辑地址
+    onEdit(item, index) {
+      this.$router.push({
+        path: '/address/edit',
+        query: {
+          id: this.list[index].id,
+          type: 2
         }
       })
     }
