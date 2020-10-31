@@ -79,3 +79,21 @@ export function getAddress(params) {
     params
   })
 }
+
+// 获取地址列表
+export function getAddressList(params) {
+  return request({
+    url: '/user/address/list',
+    method: 'get',
+    params
+  })
+}
+
+// 选择地址列表
+export function setAddressList(data) {
+  return request({
+    url: '/user/address/list',
+    method: 'put',
+    data
+  })
+}

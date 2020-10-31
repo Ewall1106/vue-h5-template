@@ -5,10 +5,6 @@ const getters = {
   token: state => state.user.token,
   userInfo: state => state.user.userInfo,
 
-  // address
-  addressList: state => state.address.addressList,
-  selectedAddress: state => state.address.selectedAddress,
-
   // search
   searchKey: state => {
     if (state.search.searchKey.length <= 0) {
