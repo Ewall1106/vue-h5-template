@@ -1,7 +1,6 @@
 const getters = {
   // base info
-  id: state => state.user.id,
-  name: state => state.user.name,
+  uid: state => state.user.uid,
   token: state => state.user.token,
   userInfo: state => state.user.userInfo,
 

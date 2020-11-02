@@ -49,11 +49,16 @@ export default {
     }
   },
   methods: {
-    onBuy() {
-      console.log('buy')
+    onBuy(data) {
+      console.log('buy', data)
+      const { id: skuId } = data.selectedSkuComb
+      this.$router.push({
+        path: '/order/confirm',
+        id: skuId
+      })
+      this.$emit('input', false)
     },
     onAddCart(data) {
-      console.log('>>>', data)
       const { id: skuId } = data.selectedSkuComb
       addCart({
         productId: this.goodsId,

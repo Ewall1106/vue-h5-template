@@ -2,7 +2,7 @@
   <div class="cart">
     <Nav />
     <Item
-      v-for="(item,idx) in list"
+      v-for="(item, idx) in list"
       :key="idx"
       :index="idx"
       :num="item.num"
@@ -17,7 +17,12 @@
       @input="handleItemSelect"
       @handleDelete="handleDelete"
     />
-    <Tabbar :amount="amount" :value="isAllSelect" @input="handleAllSelect" />
+    <Tabbar
+      :amount="amount"
+      :value="isAllSelect"
+      @input="handleAllSelect"
+      @handleSubmit="handleSubmit"
+    />
     <Skeleton v-if="isSkeletonShow" />
   </div>
 </template>
@@ -48,10 +53,10 @@ export default {
   watch: {
     list(newval) {
       let num = 0
-      newval.forEach(item => {
+      newval.forEach((item) => {
         if (item.isChecked) num += item.price
       })
-      this.isAllSelect = newval.every(item => {
+      this.isAllSelect = newval.every((item) => {
         return item.isChecked === true
       })
       this.amount = num
@@ -61,33 +66,33 @@ export default {
     this.getList()
   },
   methods: {
-    // get list
+    // 获取列表
     getList() {
-      getCartList().then(res => {
+      getCartList().then((res) => {
         const data = res.entry
-        data.forEach(item => {
+        data.forEach((item) => {
           item.isChecked = false
         })
         this.list = data
         this.isSkeletonShow = false
       })
     },
-    // single select
+    // 单选
     handleItemSelect(playload) {
       const { val, idx } = playload
       const newval = this.list[idx]
       newval.isChecked = val
       this.$set(this.list, idx, newval)
     },
-    // all select
+    // 全选
     handleAllSelect(value) {
-      const data = this.list.map(item => {
+      const data = this.list.map((item) => {
         item.isChecked = value
         return item
       })
       this.list = data
     },
-    // item delete
+    // 删除
     handleDelete(idx) {
       this.$toast.loading({
         message: '加载中...',
@@ -107,6 +112,12 @@ export default {
           this.$toast.success('删除成功')
         }
       }, 1000)
+    },
+    // 提交订单
+    handleSubmit() {
+      this.$router.push({
+        path: '/order/confirm'
+      })
     }
   }
 }
