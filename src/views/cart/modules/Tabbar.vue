@@ -1,9 +1,18 @@
 <template>
   <div>
-    <van-submit-bar :price="amount" button-text="提交订单" class="submit-bar" @submit="onSubmit">
-      <van-checkbox v-model="checked" icon-size="18px" :checked-color="variables.theme">全选</van-checkbox>
+    <van-submit-bar
+      :price="amount"
+      button-text="提交订单"
+      class="submit-bar"
+      @submit="onSubmit"
+    >
+      <van-checkbox
+        v-model="checked"
+        icon-size="18px"
+        :checked-color="variables.theme"
+      >全选</van-checkbox>
     </van-submit-bar>
-    <div class="submit-bar-placeholder" style="width:100%;height:50px" />
+    <div class="submit-bar-placeholder" style="width: 100%; height: 50px" />
   </div>
 </template>
 
@@ -36,9 +45,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$router.push({
-        path: '/order/confirm'
-      })
+      this.$emit('handleSubmit')
     }
   }
 }

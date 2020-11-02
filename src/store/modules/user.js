@@ -3,8 +3,7 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const state = {
   token: getToken(),
-  id: '',
-  name: '',
+  uid: '',
   userInfo: {}
 }
 
@@ -14,8 +13,7 @@ const mutations = {
   },
   SET_USER_INFO: (state, info) => {
     state.userInfo = info
-    state.id = info.id
-    state.name = info.name
+    state.uid = info.uid
   }
 }
 

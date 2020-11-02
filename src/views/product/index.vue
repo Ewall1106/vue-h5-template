@@ -18,11 +18,10 @@
           v-model="loading"
           :finished="finished"
           finished-text="没有更多了"
-          :immediate-check="false"
           @load="onLoad"
         >
           <product-item
-            v-for="(item,idx) in list"
+            v-for="(item, idx) in list"
             :key="idx"
             :product-id="item.productId"
             :img="item.img"
@@ -31,7 +30,7 @@
             :price="item.price"
             :old-price="item.oldPrice"
             :percentage="item.percentage"
-            style="margin-bottom:6px"
+            style="margin-bottom: 6px"
           />
         </van-list>
       </van-pull-refresh>
@@ -59,7 +58,7 @@ export default {
   data() {
     return {
       list: [],
-      pageNo: 1,
+      pageNo: 0,
       pageSize: 8,
       loading: false,
       finished: false,
@@ -72,24 +71,20 @@ export default {
       return variables
     }
   },
-  mounted() {
-    this.getProductList()
-  },
   methods: {
     getProductList() {
       getList({
         pageNo: this.pageNo,
         pageSize: this.pageSize
-      }).then(res => {
+      }).then((res) => {
         const data = res.entry
         if (this.refreshing) {
           this.list = data
           this.refreshing = false
+          this.finished = false
         } else {
           this.list = [...this.list, ...data]
-          if (data.length < this.pageSize && this.list.length > 0) {
-            this.finished = true
-          }
+          if (data.length < this.pageSize) this.finished = true
         }
         this.loading = false
         this.isSkeletonShow = false
@@ -104,7 +99,6 @@ export default {
     },
     onRefresh() {
       this.refreshing = true
-      this.finished = false
       this.pageNo = 1
       this.getProductList()
     }

@@ -16,8 +16,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import ListItem from './modules/ListItem'
+
+import { getAddressList } from '@/api/user'
+import { getOrderList } from '@/api/order'
 
 export default {
   name: 'OrderConfirm',
@@ -27,36 +29,51 @@ export default {
   data() {
     return {
       contact: {
-        type: 'add',
+        type: 'edit',
         name: '',
         tel: ''
       }
     }
   },
-  computed: {
-    ...mapGetters(['selectedAddress'])
-  },
   mounted() {
-
-  },
-  activated() {
-    // 对于使用了keep-alive的组件
-    // 使用activated这个生命周期钩子刷新地址
-    if (this.selectedAddress.id) {
-      const { name, tel } = this.selectedAddress
-      this.contact.type = 'edit'
-      this.contact.name = name
-      this.contact.tel = tel
-    } else {
-      this.contact.type = 'add'
-    }
+    this.getAddress()
   },
   methods: {
+    // 获取列表
+    getOrderList() {
+      getOrderList({
+
+      }).then(res => {
+
+      })
+    },
+    // 获取地址
+    getAddress() {
+      getAddressList().then((res) => {
+        const { list = [], defaultId = '' } = res.entry
+        let address = ''
+        if (defaultId) {
+          address = list.filter((item) => item.addressId === defaultId)
+        } else address = list.filter((item) => item.isDefault === true)
+        if (address && address.length) {
+          const [{ name, tel, addressId }] = address
+          this.contact = {
+            type: 'edit',
+            addressId,
+            name,
+            tel: tel + ''
+          }
+        } else {
+          this.contact = { type: 'add' }
+        }
+      })
+    },
     onContact() {
       this.$router.push({
         path: '/address'
       })
     }
+
   }
 }
 </script>

@@ -17,7 +17,7 @@ router.beforeEach(async(to, from, next) => {
       // 如果已经登录了，而去的又是login页就重定向到首页
       next({ path: '/' })
     } else {
-      const hasUserInfo = store.getters.id
+      const hasUserInfo = store.getters.uid
       if (hasUserInfo) {
         next()
       } else {
