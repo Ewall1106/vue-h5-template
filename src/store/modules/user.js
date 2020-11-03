@@ -41,7 +41,6 @@ const actions = {
         .then(() => {
           commit('SET_TOKEN', '')
           removeToken()
-
           resolve()
         })
         .catch(error => {

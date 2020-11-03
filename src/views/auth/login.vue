@@ -142,8 +142,8 @@ export default {
             message: '登录成功',
             duration: 2000,
             onOpened: () => {
-              location.href = this.redirect
               this.loading = false
+              location.href = this.redirect
             }
           })
         })

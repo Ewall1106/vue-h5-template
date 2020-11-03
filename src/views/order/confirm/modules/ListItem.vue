@@ -4,34 +4,53 @@
       <van-icon name="shop-o" />
       <span class="title__name">熊猫商城自营</span>
     </h3>
-    <div v-for="(item,idx) in 2" :key="idx" class="item">
-      <image-pic
-        width="80"
-        height="80"
-        fit="fill"
-        src="http://img3m4.ddimg.cn/32/35/23579654-1_l_3.jpg"
-      />
+    <div v-for="item in list" :key="item.skuId" class="item">
+      <image-pic width="80" height="80" fit="fill" :src="item.imgUrl" />
       <div class="item__main">
-        <p class="item__main__desc van-multi-ellipsis--l2">中国科幻中国科幻基石丛书：三体（套装1-3册）</p>
+        <p class="item__main__desc van-multi-ellipsis--l2">
+          {{ item.title }}
+        </p>
         <p class="item__main__attr">
-          <span>1.320kg/件</span>
-          <span>套装1-3册</span>
+          <span v-for="(attr, idx) in item.skuAttr" :key="idx">{{ attr }}</span>
         </p>
       </div>
       <div class="item__price">
-        <span class="item__price__price">¥1111.00</span>
-        <span class="item__price__count">x3</span>
+        <span class="item__price__price">¥{{ item.price }}</span>
+        <span class="item__price__count">x{{ item.selectedNum }}</span>
       </div>
     </div>
     <div class="amount">
-      共<span class="amount--red">1</span>件商品 合计:
-      <span class="amount--red">¥1111.10</span>
+      共<span class="amount--red">{{ amountObj.num }}</span>件商品 合计:
+      <span class="amount--red">¥{{ amountObj.price }}</span>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    list: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
+  computed: {
+    // 店铺维度
+    amountObj() {
+      let num = 0; let price = 0
+      this.list.forEach(item => {
+        num += item.selectedNum
+        price += (item.selectedNum * item.price)
+      })
+      return {
+        num,
+        price
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

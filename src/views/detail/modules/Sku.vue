@@ -50,13 +50,16 @@ export default {
   },
   methods: {
     onBuy(data) {
-      console.log('buy', data)
-      const { id: skuId } = data.selectedSkuComb
-      this.$router.push({
-        path: '/order/confirm',
-        id: skuId
-      })
       this.$emit('input', false)
+      const { selectedNum, selectedSkuComb } = data
+      const { id, productId } = selectedSkuComb
+      this.$store.dispatch('order/setIds', [{ id, productId, selectedNum }])
+
+      this.$nextTick(() => {
+        this.$router.push({
+          path: '/order/confirm'
+        })
+      })
     },
     onAddCart(data) {
       const { id: skuId } = data.selectedSkuComb

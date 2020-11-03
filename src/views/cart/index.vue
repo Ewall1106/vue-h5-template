@@ -28,11 +28,12 @@
 </template>
 
 <script>
-import { getCartList } from '@/api/cart'
 import Nav from './modules/Nav'
 import Item from './modules/Item'
 import Tabbar from './modules/Tabbar'
 import Skeleton from './modules/Skeleton'
+
+import { getCartList } from '@/api/cart'
 
 export default {
   name: 'Cart',
@@ -115,6 +116,7 @@ export default {
     },
     // 提交订单
     handleSubmit() {
+      // this.$store.dispatch('search/setKey', key)
       this.$router.push({
         path: '/order/confirm'
       })
