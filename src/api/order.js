@@ -7,3 +7,11 @@ export function getOrderList(data) {
     data
   })
 }
+
+export function settleOrder(data) {
+  return request({
+    url: '/order/settle',
+    method: 'post',
+    data
+  })
+}

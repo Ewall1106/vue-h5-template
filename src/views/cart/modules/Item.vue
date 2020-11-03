@@ -15,6 +15,7 @@
         :title="title"
         :thumb="thumb"
         :origin-price="oldPrice"
+        @click="gotoDetail"
       >
         <template #tags>
           <van-tag
@@ -98,6 +99,13 @@ export default {
     }
   },
   methods: {
+    gotoDetail() {
+      this.$router.push({
+        path: '/detail',
+        query: {
+        }
+      })
+    },
     // position 为关闭时点击的位置
     // instance 为对应的 SwipeCell 实例
     beforeClose({ position, instance }) {

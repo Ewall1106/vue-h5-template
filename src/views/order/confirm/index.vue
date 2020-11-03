@@ -10,21 +10,31 @@
     />
 
     <div class="list">
-      <list-item />
+      <list-item :list="list" />
     </div>
+
+    <submit-bar
+      :amount="amount"
+      :loading="submitLoading"
+      @handleSubmit="handleSubmit"
+    />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import ListItem from './modules/ListItem'
+import SubmitBar from './modules/SubmitBar'
 
 import { getAddressList } from '@/api/user'
-import { getOrderList } from '@/api/order'
+import { getOrderList, settleOrder } from '@/api/order'
 
 export default {
   name: 'OrderConfirm',
   components: {
-    ListItem
+    ListItem,
+    SubmitBar
   },
   data() {
     return {
@@ -32,19 +42,32 @@ export default {
         type: 'edit',
         name: '',
         tel: ''
-      }
+      },
+      list: [],
+      submitLoading: false
+    }
+  },
+  computed: {
+    ...mapGetters(['ids', 'uid']),
+    amount() {
+      let price = 0
+      this.list.forEach((item) => {
+        price += item.selectedNum * item.price
+      })
+      return price
     }
   },
   mounted() {
+    this.getOrderList()
     this.getAddress()
   },
   methods: {
     // 获取列表
     getOrderList() {
       getOrderList({
-
-      }).then(res => {
-
+        ids: this.ids
+      }).then((res) => {
+        this.list = res.entry
       })
     },
     // 获取地址
@@ -68,12 +91,29 @@ export default {
         }
       })
     },
+    // 地址栏跳转
     onContact() {
       this.$router.push({
         path: '/address'
       })
+    },
+    // 提交订单
+    handleSubmit() {
+      this.submitLoading = true
+      settleOrder({
+        uid: this.uid,
+        list: this.list
+      }).then((res) => {
+        const orderId = res.entry
+        this.submitLoading = false
+        this.$router.replace({
+          path: '/order/status',
+          query: {
+            orderId
+          }
+        })
+      })
     }
-
   }
 }
 </script>

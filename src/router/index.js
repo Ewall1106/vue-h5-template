@@ -148,6 +148,24 @@ const routes = [
     meta: {
       title: '订单列表'
     }
+  },
+  // 订单支付状态-失败、成功
+  {
+    path: '/order/status',
+    name: 'OrderStatus',
+    component: () => import('@/views/order/status'),
+    meta: {
+      title: '支付状态'
+    }
+  },
+  // 订单详情
+  {
+    path: '/order/detail',
+    name: 'OrderDetail',
+    component: () => import('@/views/order/detail'),
+    meta: {
+      title: '订单详情'
+    }
   }
 ]
 
