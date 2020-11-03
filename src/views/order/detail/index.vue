@@ -1,6 +1,7 @@
 <template>
   <div class="order-detail">
-    <nav-bar title="确认订单" />
+    <nav-bar title="订单详情" />
+    开发中....
   </div>
 </template>
 

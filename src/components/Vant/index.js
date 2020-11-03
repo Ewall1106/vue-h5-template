@@ -45,7 +45,10 @@ import {
   DropdownItem,
   ContactCard,
   ContactList,
-  ContactEdit
+  ContactEdit,
+  ShareSheet,
+  Tab,
+  Tabs
 } from 'vant'
 
 Vue.use(Toast)
@@ -92,3 +95,6 @@ Vue.use(Toast)
   .use(ContactCard)
   .use(ContactList)
   .use(ContactEdit)
+  .use(ShareSheet)
+  .use(Tab)
+  .use(Tabs)

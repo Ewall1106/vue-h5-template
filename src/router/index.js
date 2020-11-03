@@ -166,6 +166,15 @@ const routes = [
     meta: {
       title: '订单详情'
     }
+  },
+  // 售后
+  {
+    path: '/after-sale',
+    name: 'AfterSale',
+    component: () => import('@/views/aftersale'),
+    meta: {
+      title: '订单详情'
+    }
   }
 ]
 
