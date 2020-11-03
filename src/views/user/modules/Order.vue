@@ -3,13 +3,23 @@
     <h3 class="order__title">
       <p class="order__title__title">我的订单</p>
       <p class="order__title__navigate">
-        <span>全部订单</span>
+        <router-link tag="span" to="/order/list">全部订单</router-link>
         <van-icon name="arrow" color="#969799" />
       </p>
     </h3>
     <div class="order__bd">
-      <div v-for="(item,idx) in orderList" :key="idx" class="order__bd__item">
-        <van-icon :name="item.icon" size="25" color="#dab309" :badge="item.count" />
+      <div
+        v-for="(item, idx) in orderList"
+        :key="idx"
+        class="order__bd__item"
+        @click="gotoOrderList(item, idx)"
+      >
+        <van-icon
+          :name="item.icon"
+          size="25"
+          color="#dab309"
+          :badge="item.count"
+        />
         <span class="name">{{ item.name }}</span>
       </div>
     </div>
@@ -24,24 +34,35 @@ export default {
         {
           icon: 'pending-payment',
           name: '待支付',
-          count: 3
+          count: '',
+          path: '/order/list'
         },
         {
           icon: 'peer-pay',
           name: '待发货',
-          count: ''
+          count: '',
+          path: '/order/list'
         },
         {
           icon: 'logistics',
           name: '待收货',
-          count: ''
+          count: '',
+          path: '/order/list'
         },
         {
           icon: 'chat-o',
           name: '售后',
-          count: ''
+          count: '',
+          path: '/after-sale'
         }
       ]
+    }
+  },
+  methods: {
+    gotoOrderList(item, idx) {
+      this.$router.push({
+        path: `${item.path}?type=${idx + 1}`
+      })
     }
   }
 }
