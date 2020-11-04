@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Header />
+    <!-- <Header /> -->
     <Swiper :banner="banner" />
     <Category :cate-list="cateList" />
     <Session :session-list="sessionList" />

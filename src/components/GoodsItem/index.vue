@@ -1,13 +1,13 @@
 <template>
   <div class="goods-item" @click="onNavigate">
     <div class="pic">
-      <image-pic align="center" width="90" height="100" :src="img" />
+      <image-pic fill="cover" align="center" width="90" height="100" :src="img" />
     </div>
     <p class="title">{{ title }}</p>
     <p class="desc">{{ desc }}</p>
     <div class="num">
       <span class="num__now">¥{{ price }}</span>
-      <span class="num__old">¥{{ discount }}</span>
+      <span class="num__old">¥{{ oldPrice }}</span>
     </div>
     <div class="btn-wrapper">
       <van-button class="btn" size="small">立即购买</van-button>
@@ -18,13 +18,14 @@
 <script>
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['img', 'title', 'desc', 'price', 'discount'],
+  props: ['productId', 'img', 'title', 'desc', 'price', 'oldPrice'],
   methods: {
     onNavigate() {
       this.$router.push({
         path: '/detail',
         query: {
-          t: +new Date()
+          t: +new Date(),
+          productId: this.productId
         }
       })
     }
@@ -52,7 +53,8 @@ export default {
     @include text-ellipsis;
   }
   .desc {
-    padding-bottom: 14px;
+    padding: 14px;
+    padding-top: 0;
     font-size: $small;
     color: $gray;
     text-align: center;

@@ -1,6 +1,6 @@
 <template>
   <div class="share">
-    <svg-icon icon-class="facelove" :width="40" :height="40" />
+    <image-pic width="42" height="42" :src="require('@/assets/facelove.png')" />
     <div class="share__center">
       <p class="share__center__title">立即分享</p>
       <p class="share__center__subtitle">快和亲朋好友分享好物吧~</p>
