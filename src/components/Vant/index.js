@@ -48,7 +48,8 @@ import {
   ContactEdit,
   ShareSheet,
   Tab,
-  Tabs
+  Tabs,
+  Sticky
 } from 'vant'
 
 Vue.use(Toast)
@@ -98,3 +99,4 @@ Vue.use(Toast)
   .use(ShareSheet)
   .use(Tab)
   .use(Tabs)
+  .use(Sticky)

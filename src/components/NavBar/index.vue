@@ -1,16 +1,18 @@
 <template>
   <div class="nav-compoment">
-    <van-nav-bar
-      class="nav"
-      :title="title"
-      :left-text="leftText"
-      :left-arrow="leftArrow"
-      @click-left="onClickLeft"
-    >
-      <template #right>
-        <slot />
-      </template>
-    </van-nav-bar>
+    <van-sticky>
+      <van-nav-bar
+        class="nav"
+        :title="title"
+        :left-text="leftText"
+        :left-arrow="leftArrow"
+        @click-left="onClickLeft"
+      >
+        <template #right>
+          <slot />
+        </template>
+      </van-nav-bar>
+    </van-sticky>
   </div>
 </template>
 
