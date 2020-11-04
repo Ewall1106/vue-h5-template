@@ -3,7 +3,7 @@
     <h3 class="order__title">
       <p class="order__title__title">我的订单</p>
       <p class="order__title__navigate">
-        <router-link tag="span" to="/order/list">全部订单</router-link>
+        <router-link tag="span" to="/order/list?type=0">全部订单</router-link>
         <van-icon name="arrow" color="#969799" />
       </p>
     </h3>

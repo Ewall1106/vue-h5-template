@@ -2,7 +2,13 @@
   <div class="description">
     <h3 class="title">产品特色</h3>
     <div class="main">
-      <image-pic width="100%" fill="cover" :src="details" />
+      <image-pic
+        v-for="(item, idx) in details"
+        :key="idx"
+        width="100%"
+        fill="cover"
+        :src="item"
+      />
     </div>
   </div>
 </template>
@@ -11,8 +17,10 @@
 export default {
   props: {
     details: {
-      type: String,
-      default: ''
+      type: Array,
+      default: () => {
+        return []
+      }
     }
   }
 }

@@ -1,32 +1,33 @@
 <template>
   <div class="order-list">
     <nav-bar title="订单列表" />
-    <van-tabs v-model="active" type="card" sticky swipeable offset-top="46">
+    <van-tabs
+      v-model="active"
+      type="card"
+      sticky
+      swipeable
+      offset-top="46"
+      @change="onTitleChange"
+    >
       <van-tab v-for="(title, idx) in titleList" :key="idx" :title="title">
         <van-pull-refresh
           v-model="refreshing"
-          style="height: calc(100vh - 84px)"
+          style="min-height: calc(100vh - 84px)"
           @refresh="onRefresh"
         >
           <van-list
             v-model="loading"
             :finished="finished"
             finished-text="没有更多了"
+            :immediate-check="false"
             @load="onLoad"
           >
-            <list-item v-for="(item, idx) in 3" :key="idx" />
-            <!-- <product-item
-              v-for="(item, idx) in list"
-              :key="idx"
-              :product-id="item.productId"
-              :img="item.img"
-              :title="item.title"
-              :desc="item.desc"
-              :price="item.price"
-              :old-price="item.oldPrice"
-              :percentage="item.percentage"
-              style="margin-bottom: 6px"
-            /> -->
+            <list-item
+              v-for="item in list"
+              :key="item.orderId"
+              :order-id="item.orderId"
+              :item-list="item"
+            />
           </van-list>
         </van-pull-refresh>
       </van-tab>
@@ -37,6 +38,8 @@
 <script>
 import ListItem from './modules/ListItem'
 
+import { getUserList } from '@/api/order'
+
 export default {
   name: 'OrderList',
   components: {
@@ -44,7 +47,7 @@ export default {
   },
   data() {
     return {
-      active: 2,
+      active: 0,
       titleList: ['全部', '待支付', '待发货', '待收货'],
 
       list: [],
@@ -57,21 +60,56 @@ export default {
     }
   },
 
+  mounted() {
+    const { type } = this.$route.query
+    this.active = Number(type)
+    this.onLoad()
+  },
+
   methods: {
+    // 获取列表
+    getList() {
+      getUserList({
+        type: this.active,
+        pageNo: this.pageNo,
+        pageSize: this.pageSize
+      }).then((res) => {
+        const data = res.entry
+        if (this.refreshing) {
+          this.list = data
+          this.refreshing = false
+          this.finished = false
+        } else {
+          this.list = [...this.list, ...data]
+          if (data.length < this.pageSize) this.finished = true
+        }
+        this.loading = false
+        this.isSkeletonShow = false
+      })
+    },
+    // tab 切换
+    onTitleChange(idx) {
+      this.pageNo = 0
+      this.loading = false
+      this.finished = false
+      this.refreshing = false
+      this.isSkeletonShow = true
+      this.list = []
+      this.onLoad()
+    },
+    // 触底刷新
     onLoad() {
       if (!this.finished) {
         this.loading = true
         this.pageNo += 1
-        // this.getProductList()
+        this.getList()
       }
-
-      console.log('>>>>')
-      this.loading = false
     },
+    // 下拉刷新
     onRefresh() {
       this.refreshing = true
       this.pageNo = 1
-      // this.getProductList()
+      this.getList()
     }
   }
 }
@@ -81,6 +119,7 @@ export default {
 .order-list {
   .van-card {
     background: #fff;
+    margin-top: 0;
   }
   .van-tabs__wrap {
     background: #fff;
@@ -98,6 +137,7 @@ export default {
     margin-top: 12px;
     border-radius: 10px;
     overflow: hidden;
+    background: #fff;
   }
 }
 </style>

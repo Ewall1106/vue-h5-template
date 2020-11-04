@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <van-button block @click="onSelectSku">
+    <!-- <van-button block @click="onSelectSku">
       <div class="section__item">
         <div class="section__item__left">
           <span class="title">已选</span>
@@ -10,7 +10,7 @@
           <van-icon name="arrow" />
         </div>
       </div>
-    </van-button>
+    </van-button> -->
 
     <div class="section__line" />
     <van-button block @click="handleAddress">

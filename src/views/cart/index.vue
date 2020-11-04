@@ -3,14 +3,16 @@
     <Nav />
     <Item
       v-for="(item, idx) in list"
-      :key="idx"
+      :key="item.skuId"
       :index="idx"
+      :sku-id="item.skuId"
       :num="item.num"
       :thumb="item.img"
       :title="item.title"
       :desc="item.desc"
       :tag="item.tag"
       :tags="item.tags"
+      :sku-attr="item.skuAttr"
       :old-price="item.oldPrice"
       :price="item.price"
       :is-checked="item.isChecked"
@@ -33,7 +35,7 @@ import Item from './modules/Item'
 import Tabbar from './modules/Tabbar'
 import Skeleton from './modules/Skeleton'
 
-import { getCartList } from '@/api/cart'
+import { getCartList, deleteCart } from '@/api/cart'
 
 export default {
   name: 'Cart',
@@ -53,14 +55,16 @@ export default {
   },
   watch: {
     list(newval) {
-      let num = 0
-      newval.forEach((item) => {
-        if (item.isChecked) num += item.price
-      })
-      this.isAllSelect = newval.every((item) => {
-        return item.isChecked === true
-      })
-      this.amount = num
+      if (newval && newval.length > 0) {
+        let num = 0
+        newval.forEach((item) => {
+          if (item.isChecked) num += item.price
+        })
+        this.isAllSelect = newval.every((item) => {
+          return item.isChecked === true
+        })
+        this.amount = num
+      }
     }
   },
   mounted() {
@@ -94,7 +98,7 @@ export default {
       this.list = data
     },
     // 删除
-    handleDelete(idx) {
+    handleDelete(idx, skuId) {
       this.$toast.loading({
         message: '加载中...',
         overlay: true,
@@ -102,17 +106,13 @@ export default {
         forbidClick: true
       })
 
-      // 模拟删除
-      let second = 3
-      const timer = setInterval(() => {
-        second--
-        if (!second) {
-          clearInterval(timer)
-          this.$toast.clear()
-          this.list.splice(idx, 1)
-          this.$toast.success('删除成功')
-        }
-      }, 1000)
+      deleteCart({
+        skuId
+      }).then((res) => {
+        this.list.splice(idx, 1)
+        this.$toast.clear()
+        this.$toast.success('删除成功')
+      })
     },
     // 提交订单
     handleSubmit() {

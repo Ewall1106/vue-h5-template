@@ -13,11 +13,12 @@
         <goods-item
           v-for="(item,idx) in goodsList"
           :key="idx"
+          :product-id="item.productId"
           :img="item.img"
           :title="item.title"
           :desc="item.desc"
           :price="item.price"
-          :discount="item.discount"
+          :old-price="item.oldPrice"
         />
       </div>
     </van-list>

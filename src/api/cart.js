@@ -14,3 +14,11 @@ export function addCart(data) {
     data
   })
 }
+
+export function deleteCart(data) {
+  return request({
+    url: '/order/cart/delete',
+    method: 'delete',
+    data
+  })
+}

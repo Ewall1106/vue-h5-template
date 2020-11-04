@@ -18,14 +18,22 @@
         @click="gotoDetail"
       >
         <template #tags>
-          <van-tag
+          <!-- <van-tag
             v-for="(item,idx) in tags"
             :key="idx"
             plain
             type="danger"
             style="margin-right:4px"
-          >{{ item }}</van-tag>
+          >{{ item }}</van-tag> -->
+          <van-tag
+            v-for="(attr, idx) in skuAttr"
+            :key="idx"
+            plain
+            color="#999"
+            style="margin-right: 2px"
+          >{{ attr }}</van-tag>
         </template>
+
       </van-card>
       <template #right>
         <van-button square text="删除" type="danger" style="height:100%" />
@@ -46,6 +54,10 @@ export default {
       type: Number,
       default: 0
     },
+    skuId: {
+      type: String,
+      default: ''
+    },
     thumb: {
       type: String,
       default: ''
@@ -63,6 +75,12 @@ export default {
       default: ''
     },
     tags: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    skuAttr: {
       type: Array,
       default() {
         return []
@@ -120,7 +138,7 @@ export default {
               message: '确定删除吗？'
             })
             .then(() => {
-              this.$emit('handleDelete', this.index)
+              this.$emit('handleDelete', this.index, this.skuId)
               instance.close()
             })
             .catch(() => {
