@@ -8,7 +8,7 @@
       <image-pic width="80" height="80" fit="fill" :src="item.imgUrl" />
       <div class="item__main">
         <p class="item__main__desc van-multi-ellipsis--l2">
-          {{ item.title }}
+          {{ item.desc }}
         </p>
         <p class="item__main__attr">
           <span v-for="(attr, idx) in item.skuAttr" :key="idx">{{ attr }}</span>

@@ -5,16 +5,7 @@
       v-for="(item, idx) in list"
       :key="item.skuId"
       :index="idx"
-      :sku-id="item.skuId"
-      :num="item.num"
-      :thumb="item.img"
-      :title="item.title"
-      :desc="item.desc"
-      :tag="item.tag"
-      :tags="item.tags"
-      :sku-attr="item.skuAttr"
-      :old-price="item.oldPrice"
-      :price="item.price"
+      :info="item"
       :is-checked="item.isChecked"
       @input="handleItemSelect"
       @handleDelete="handleDelete"
@@ -116,9 +107,26 @@ export default {
     },
     // 提交订单
     handleSubmit() {
-      // this.$store.dispatch('search/setKey', key)
-      this.$router.push({
-        path: '/order/confirm'
+      const data = this.list.reduce((memo, current, index, array) => {
+        if (current.isChecked) {
+          memo.push({
+            id: current.skuId,
+            productId: current.productId,
+            selectedNum: current.num
+          })
+        }
+        return memo
+      }, [])
+
+      if (!data.length) {
+        this.$toast('请至少勾选一件商品')
+        return
+      }
+
+      this.$store.dispatch('order/setIds', data).then((res) => {
+        this.$router.push({
+          path: '/order/confirm'
+        })
       })
     }
   }
