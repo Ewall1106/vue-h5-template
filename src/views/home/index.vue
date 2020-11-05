@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <!-- <Header /> -->
-    <Swiper :banner="banner" />
-    <Category :cate-list="cateList" />
-    <Session :session-list="sessionList" />
-    <Goods
-      v-model="isLoading"
-      :goods-list="goodsList"
-      :is-finished="isFinished"
-      @onReachBottom="onReachBottom"
-    />
-    <back-top />
-    <Skeleton v-if="isSkeletonShow" />
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+      <!-- <Header /> -->
+      <Swiper :banner="banner" />
+      <Category :cate-list="cateList" />
+      <Session :session-list="sessionList" />
+      <Goods
+        v-model="loading"
+        :goods-list="list"
+        :is-finished="finished"
+        @onReachBottom="onReachBottom"
+      />
+      <back-top />
+      <Skeleton v-if="isSkeletonShow" />
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -39,11 +41,12 @@ export default {
       banner: [],
       cateList: [],
       sessionList: [],
-      goodsList: [],
+      list: [],
+      pageNo: 0,
       pageSize: 4,
-      pageNo: 1,
-      isLoading: false,
-      isFinished: false,
+      loading: false,
+      finished: false,
+      refreshing: false,
       isSkeletonShow: true
     }
   },
@@ -51,7 +54,6 @@ export default {
     Promise.all([this.getBanner(), this.getCategory(), this.getSession()]).then(
       () => {
         this.isSkeletonShow = false
-        this.getGoodsList()
       }
     )
   },
@@ -91,17 +93,34 @@ export default {
         pageNo: this.pageNo
       }).then((res) => {
         const data = res.entry
-        this.goodsList = [...this.goodsList, ...data]
-        this.isLoading = false
-        if (data.length < this.pageSize && this.goodsList.length > 0) {
-          this.isFinished = true
+        if (this.refreshing) {
+          this.list = data
+          this.refreshing = false
+          this.finished = false
+        } else {
+          this.list = [...this.list, ...data]
+          if (data.length < this.pageSize) this.finished = true
         }
+        this.loading = false
       })
     },
     // reach-bottom
     onReachBottom() {
-      if (!this.isFinished) {
+      if (!this.finished) {
+        this.loading = true
         this.pageNo += 1
+        this.getGoodsList()
+      }
+    },
+
+    // pull-refresh
+    onRefresh() {
+      if (!this.loading) {
+        this.refreshing = true
+        this.pageNo = 1
+        this.getBanner()
+        this.getCategory()
+        this.getSession()
         this.getGoodsList()
       }
     }

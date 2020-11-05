@@ -6,7 +6,6 @@
       v-model="loading"
       :finished="isFinished"
       finished-text="没有更多了"
-      :immediate-check="false"
       @load="onReachBottom"
     >
       <div class="main">

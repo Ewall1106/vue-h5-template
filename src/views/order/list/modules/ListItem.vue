@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 .list-item {
   .title__right {
-    font-size: 8px;
+    font-size: 24px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
