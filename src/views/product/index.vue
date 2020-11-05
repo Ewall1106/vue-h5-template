@@ -1,19 +1,18 @@
 <template>
   <div class="product">
-    <nav-bar title="商品列表">
-      <van-icon name="shopping-cart-o" :color="variables.black" size="18" />
-    </nav-bar>
+    <nav-bar title="商品列表" />
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
 
-    <div class="banner">
-      <image-pic
-        src="http://m.360buyimg.com/babel/jfs/t1/106316/25/14939/138006/5e6a3b4dE5609efcf/27de6ed334aa7c9b.jpg!q70.dpg"
-        width="100%"
-        height="100"
-      />
-    </div>
+      <div class="banner">
+        <image-pic
+          src="http://m.360buyimg.com/babel/jfs/t1/106316/25/14939/138006/5e6a3b4dE5609efcf/27de6ed334aa7c9b.jpg!q70.dpg"
+          width="100%"
+          height="100"
+        />
+      </div>
 
-    <div class="main">
-      <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+      <div class="main">
+
         <van-list
           v-model="loading"
           :finished="finished"
@@ -33,8 +32,9 @@
             style="margin-bottom: 6px"
           />
         </van-list>
-      </van-pull-refresh>
-    </div>
+
+      </div>
+    </van-pull-refresh>
 
     <Skeleton v-if="isSkeletonShow" />
   </div>

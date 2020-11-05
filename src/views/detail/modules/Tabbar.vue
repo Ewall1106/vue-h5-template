@@ -2,7 +2,7 @@
   <div class="tab-bar">
     <van-goods-action>
       <van-goods-action-icon icon="shop-o" text="首页" to="/" />
-      <van-goods-action-icon icon="cart-o" text="购物车" badge="5" to="/cart" />
+      <van-goods-action-icon icon="cart-o" text="购物车" :badge="num" to="/cart" />
       <van-goods-action-button type="warning" text="加入购物车" @click="handleClick" />
       <van-goods-action-button :color="variables.red" text="立即购买" @click="handleClick" />
     </van-goods-action>
@@ -14,6 +14,14 @@
 import variables from '@/styles/variables.scss'
 
 export default {
+  props: {
+    num: {
+      type: Number,
+      default: () => {
+        return ''
+      }
+    }
+  },
   computed: {
     variables() {
       return variables
