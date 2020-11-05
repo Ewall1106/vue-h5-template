@@ -47,7 +47,7 @@ service.interceptors.response.use(
 
     // 与后端约定的错误码
     if (res.code !== 200) {
-      Toast.fail(res.message)
+      Toast(res.message)
       // 现约定 50001:无效token 50002:token过期
       if (res.code === 50001 || res.code === 50002) {
         Dialog.alert({
@@ -66,7 +66,7 @@ service.interceptors.response.use(
   },
   error => {
     console.log('err' + error)
-    Toast.fail(error.message)
+    Toast(error.message)
     return Promise.reject(error)
   }
 )

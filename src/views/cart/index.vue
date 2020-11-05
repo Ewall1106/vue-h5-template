@@ -17,6 +17,7 @@
       @handleSubmit="handleSubmit"
     />
     <Skeleton v-if="isSkeletonShow" />
+    <van-empty v-if="isEmpty" description="购物车里没有内容" />
   </div>
 </template>
 
@@ -40,6 +41,7 @@ export default {
     return {
       list: [],
       amount: 0,
+      isEmpty: false,
       isAllSelect: false,
       isSkeletonShow: true
     }
@@ -69,7 +71,8 @@ export default {
         data.forEach((item) => {
           item.isChecked = false
         })
-        this.list = data
+        this.list = data || []
+        if (this.list.length <= 0) this.isEmpty = true
         this.isSkeletonShow = false
       })
     },

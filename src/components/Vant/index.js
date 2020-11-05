@@ -49,7 +49,8 @@ import {
   ShareSheet,
   Tab,
   Tabs,
-  Sticky
+  Sticky,
+  Empty
 } from 'vant'
 
 Vue.use(Toast)
@@ -100,3 +101,5 @@ Vue.use(Toast)
   .use(Tab)
   .use(Tabs)
   .use(Sticky)
+  .use(Empty)
+

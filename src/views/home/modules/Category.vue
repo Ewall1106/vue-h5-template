@@ -5,7 +5,7 @@
       <div class="scroll-content">
         <div v-for="(cate,idx) in list" :key="idx" class="scroll-item__wrapper">
           <div v-for="(item, index) in cate" :key="index" class="scroll-item" @click="onNavigate()">
-            <img :src="item.icon">
+            <image-pic width="35" height="35" fill="contain" :src="item.icon" />
             <p class="text">{{ item.name }}</p>
           </div>
         </div>
@@ -83,6 +83,7 @@ export default {
     init() {
       this.bs = new BScroll(this.$refs.scroll, {
         scrollX: true,
+        scrollY: false,
         click: true,
         // taps: true,
         probeType: 3 // listening scroll hook
