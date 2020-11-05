@@ -11,9 +11,9 @@
       :key="item.skuId"
       :num="item.selectedNum"
       :price="item.price"
-      :desc="item.title"
+      :desc="item.desc"
       :title="item.title"
-      thumb="https://img.yzcdn.cn/vant/ipad.jpeg"
+      :thumb="item.imgUrl"
     >
       <template #tags>
         <van-tag
@@ -51,11 +51,11 @@ export default {
 
 <style lang="scss" scoped>
 .list-item {
-  .title__left {
-    font-size: 16px;
-  }
   .title__right {
     font-size: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .btn {
     padding: 0 20px 20px 20px;

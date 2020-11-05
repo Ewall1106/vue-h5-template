@@ -4,39 +4,31 @@
       v-model="checked"
       icon-size="18px"
       :checked-color="variables.theme"
-      style="padding:0 10px 0 16px"
+      style="padding: 0 10px 0 16px"
     />
-    <van-swipe-cell style="width:100%" :before-close="beforeClose">
+    <van-swipe-cell style="width: 100%" :before-close="beforeClose">
       <van-card
-        :num="num"
-        :tag="tag"
-        :price="price/100"
-        :desc="desc"
-        :title="title"
-        :thumb="thumb"
-        :origin-price="oldPrice"
+        :num="info.num"
+        :tag="info.tag"
+        :price="info.price / 100"
+        :desc="info.desc"
+        :title="info.title"
+        :thumb="info.img"
+        :origin-price="info.oldPrice"
         @click="gotoDetail"
       >
         <template #tags>
-          <!-- <van-tag
-            v-for="(item,idx) in tags"
-            :key="idx"
-            plain
-            type="danger"
-            style="margin-right:4px"
-          >{{ item }}</van-tag> -->
           <van-tag
-            v-for="(attr, idx) in skuAttr"
+            v-for="(attr, idx) in info.skuAttr"
             :key="idx"
             plain
             color="#999"
             style="margin-right: 2px"
           >{{ attr }}</van-tag>
         </template>
-
       </van-card>
       <template #right>
-        <van-button square text="删除" type="danger" style="height:100%" />
+        <van-button square text="删除" type="danger" style="height: 100%" />
       </template>
     </van-swipe-cell>
   </div>
@@ -54,49 +46,11 @@ export default {
       type: Number,
       default: 0
     },
-    skuId: {
-      type: String,
-      default: ''
-    },
-    thumb: {
-      type: String,
-      default: ''
-    },
-    title: {
-      type: String,
-      default: ''
-    },
-    desc: {
-      type: String,
-      default: ''
-    },
-    tag: {
-      type: String,
-      default: ''
-    },
-    tags: {
-      type: Array,
-      default() {
-        return []
+    info: {
+      type: Object,
+      default: () => {
+        return {}
       }
-    },
-    skuAttr: {
-      type: Array,
-      default() {
-        return []
-      }
-    },
-    oldPrice: {
-      type: Number,
-      default: 0
-    },
-    price: {
-      type: Number,
-      default: 0
-    },
-    num: {
-      type: Number,
-      default: 0
     },
     isChecked: {
       type: Boolean,
@@ -121,6 +75,7 @@ export default {
       this.$router.push({
         path: '/detail',
         query: {
+          productId: this.info.productId
         }
       })
     },
@@ -138,7 +93,7 @@ export default {
               message: '确定删除吗？'
             })
             .then(() => {
-              this.$emit('handleDelete', this.index, this.skuId)
+              this.$emit('handleDelete', this.index, this.info.skuId)
               instance.close()
             })
             .catch(() => {
