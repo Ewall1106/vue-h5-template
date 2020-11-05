@@ -4,6 +4,7 @@
     <van-cell title="文档说明" is-link url="https://docs.xwhx.top/mall/" />
     <!-- <van-cell title="相关组件" is-link /> -->
     <!-- <van-cell title="推荐学习" is-link /> -->
+    <van-cell title="我的地址" is-link to="/address" />
     <van-cell title="退出登录" is-link @click="loginOut" />
   </div>
 </template>
@@ -12,7 +13,7 @@
 export default {
   methods: {
     loginOut() {
-      this.$store.dispatch('user/logout').then(res => {
+      this.$store.dispatch('user/logout').then((res) => {
         this.$notify({ type: 'success', message: '退出登录成功' })
         this.$router.replace('/')
       })

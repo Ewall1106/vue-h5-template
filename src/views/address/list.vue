@@ -10,6 +10,8 @@
       @edit="onEdit"
       @select="onSelect"
     />
+
+    <van-empty v-if="isEmpty" description="快去新增一个地址吧" />
   </div>
 </template>
 
@@ -25,7 +27,8 @@ export default {
   data() {
     return {
       defaultId: '',
-      list: []
+      list: [],
+      isEmpty: false
     }
   },
 
@@ -49,6 +52,8 @@ export default {
               isDefault: item.isDefault
             }
           })
+        } else {
+          this.isEmpty = true
         }
         this.$toast.clear()
       })
@@ -91,5 +96,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.address-list {
+  background: #f5f5f5;
+  min-height: 100vh;
+}
 </style>
