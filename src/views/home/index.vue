@@ -1,6 +1,7 @@
 <template>
-  <div class="home">
-    <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+  <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+    <div class="home">
+
       <!-- <Header /> -->
       <Swiper :banner="banner" />
       <Category :cate-list="cateList" />
@@ -13,8 +14,9 @@
       />
       <back-top />
       <Skeleton v-if="isSkeletonShow" />
-    </van-pull-refresh>
-  </div>
+
+    </div>
+  </van-pull-refresh>
 </template>
 
 <script>

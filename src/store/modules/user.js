@@ -1,4 +1,4 @@
-import { login, logout, getInfo } from '@/api/user'
+import { login, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const state = {
@@ -37,15 +37,9 @@ const actions = {
   // 登出
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token)
-        .then(() => {
-          commit('SET_TOKEN', '')
-          removeToken()
-          resolve()
-        })
-        .catch(error => {
-          reject(error)
-        })
+      commit('SET_TOKEN', '')
+      removeToken()
+      resolve()
     })
   },
 

@@ -43,7 +43,6 @@ export default {
         return []
       }
     },
-
     isLoading: {
       type: Boolean,
       default: false

@@ -1,7 +1,7 @@
 <template>
   <div v-show="isShow" class="back-top">
     <span v-scroll-to="'body'" style="color:#8e8e8e">
-      <svg-icon icon-class="backtop" :width="28" :height="28" />
+      <svg-icon icon-class="backtop" :width="30" :height="30" />
     </span>
   </div>
 </template>
@@ -61,8 +61,8 @@ export default {
 <style lang="scss" scoped>
 .back-top {
   position: fixed;
-  right: 30px;
-  bottom: 150px;
+  right: 40px;
+  bottom: 180px;
   z-index: 999;
 }
 </style>

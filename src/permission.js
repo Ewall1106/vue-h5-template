@@ -1,9 +1,9 @@
 import router from './router'
 import store from './store'
-import { Toast } from 'vant'
+import { Toast, Notify } from 'vant'
 import { getToken } from '@/utils/auth' // get token from cookie
 
-const whiteList = ['/login', '/registration', '/forget'] // 白名单
+import { blackList } from './router/blacklist'
 
 router.beforeEach(async(to, from, next) => {
   // 设置标题
@@ -26,7 +26,7 @@ router.beforeEach(async(to, from, next) => {
           await store.dispatch('user/getInfo')
           next()
         } catch (error) {
-          if (whiteList.indexOf(to.path) !== -1) {
+          if (blackList.indexOf(to.path) === -1) {
             next()
           } else {
             // 清空token重新去登录
@@ -38,11 +38,12 @@ router.beforeEach(async(to, from, next) => {
       }
     }
   } else {
-    if (whiteList.indexOf(to.path) !== -1) {
+    if (blackList.indexOf(to.path) === -1) {
       // 白名单没有token也直接放行
       next()
     } else {
       // 反之则去登录页面
+      Notify({ type: 'primary', message: '请先登录后再操作' })
       next(`/login?redirect=${encodeURIComponent(location.href)}`)
     }
   }

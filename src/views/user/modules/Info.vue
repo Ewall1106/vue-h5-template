@@ -4,10 +4,10 @@
     <image-pic width="50" height="50" :src="userInfo.avatar" />
     <div class="main">
       <div class="main__title">
-        <h3 class="name">{{ userInfo.name }}</h3>
+        <h3 class="name">{{ userInfo.nickname }}</h3>
       </div>
-      <div class="main__id" @click="doCopy(userInfo.id)">
-        <span class="code">用户id：{{ userInfo.id }}</span>
+      <div class="main__id" @click="doCopy(userInfo.uid)">
+        <span class="code">用户id：{{ userInfo.uid }}</span>
         <span style="color:#fff">
           <svg-icon icon-class="copy" :width="13" :height="13" />
         </span>

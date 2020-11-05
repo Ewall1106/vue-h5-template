@@ -41,6 +41,7 @@
       />
 
       <van-field
+        v-if="form.isCaptchaShow"
         v-model="form.captcha"
         required
         center
@@ -97,8 +98,10 @@ export default {
         username: '',
         password: '',
         captcha: '',
+        isCaptchaShow: false,
         sid: localStorage.getItem('sid') || ''
       },
+
       loading: false,
       captchaSvg: ''
     }
@@ -113,7 +116,7 @@ export default {
     }
   },
   mounted() {
-    this.getCaptcha()
+    // this.getCaptcha()
   },
   methods: {
     // 获取图形验证码

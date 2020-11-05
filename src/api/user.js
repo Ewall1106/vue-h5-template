@@ -26,15 +26,6 @@ export function login(data) {
   })
 }
 
-// 登出
-export function logout(data) {
-  return request({
-    url: '/user/login',
-    method: 'post',
-    data
-  })
-}
-
 // 重置密码
 export function reset(data) {
   return request({

@@ -1,7 +1,13 @@
 <template>
   <div class="goods-item" @click="onNavigate">
     <div class="pic">
-      <image-pic fill="cover" align="center" width="90" height="100" :src="img" />
+      <image-pic
+        fill="cover"
+        align="center"
+        width="90"
+        height="100"
+        :src="img"
+      />
     </div>
     <p class="title">{{ title }}</p>
     <p class="desc">{{ desc }}</p>
@@ -24,7 +30,6 @@ export default {
       this.$router.push({
         path: '/detail',
         query: {
-          t: +new Date(),
           productId: this.productId
         }
       })
