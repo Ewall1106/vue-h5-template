@@ -22,3 +22,12 @@ export function deleteCart(data) {
     data
   })
 }
+
+export function getCartNum(params) {
+  return request({
+    url: '/order/cart/num',
+    method: 'get',
+    params
+  })
+}
+

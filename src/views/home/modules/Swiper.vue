@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-swipe :autoplay="3000" indicator-color="white">
-      <van-swipe-item v-for="(item, index) in banner" :key="index">
+      <van-swipe-item v-for="(item, index) in banner" :key="index" @click="onNavigate">
         <image-pic width="100%" height="150" :src="item.img" />
       </van-swipe-item>
     </van-swipe>
@@ -16,6 +16,13 @@ export default {
       default() {
         return []
       }
+    }
+  },
+  methods: {
+    onNavigate() {
+      this.$router.push({
+        path: '/product'
+      })
     }
   }
 }

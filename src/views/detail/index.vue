@@ -38,7 +38,7 @@
       :goods="info.goods"
     />
 
-    <Tabbar @input="isSkuShow = $event" />
+    <Tabbar :num="cartNum" @input="isSkuShow = $event" />
     <back-top />
     <Skeleton v-if="isSkeletonShow" />
   </div>
@@ -57,6 +57,7 @@ import Skeleton from './modules/Skeleton'
 
 import { getDetail } from '@/api/detail'
 import { getAddressList } from '@/api/user'
+import { getCartNum } from '@/api/cart'
 
 export default {
   name: 'Detail',
@@ -78,6 +79,7 @@ export default {
       address: '',
       skudata: {},
       goods: {},
+      cartNum: '',
       isSkuShow: false,
       isSkeletonShow: true
     }
@@ -86,6 +88,7 @@ export default {
     const { productId } = this.$route.query
     this.productId = productId
     this.getDetail()
+    this.getCartNum()
   },
   activated() {
     this.getAddress()
@@ -100,6 +103,12 @@ export default {
         this.info = data
         this.skudata = data.sku
         this.isSkeletonShow = false
+      })
+    },
+    // 购物车数量
+    getCartNum() {
+      getCartNum().then(res => {
+        this.cartNum = res.entry
       })
     },
     // 获取地址
