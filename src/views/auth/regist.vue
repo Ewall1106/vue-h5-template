@@ -154,7 +154,13 @@ export default {
         this.$toast.fail('请先输入正确的邮箱地址')
         return
       }
+      this.$toast.loading({
+        duration: 0,
+        message: '加载中...',
+        forbidClick: true
+      })
       getMailCode({ email: this.form.email }).then((res) => {
+        this.$toast.clear()
         this.$notify({
           type: 'success',
           message: '邮箱验证码已发送',
