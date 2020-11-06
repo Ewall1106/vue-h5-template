@@ -36,6 +36,7 @@
       :skudata="skudata"
       :goods-id="productId"
       :goods="info.goods"
+      @handleCartNum="getCartNum"
     />
 
     <Tabbar :num="cartNum" @input="isSkuShow = $event" />
@@ -108,7 +109,7 @@ export default {
     // 购物车数量
     getCartNum() {
       getCartNum().then(res => {
-        this.cartNum = res.entry
+        this.cartNum = res.entry + ''
       })
     },
     // 获取地址

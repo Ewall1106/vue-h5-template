@@ -18,6 +18,7 @@
       :loading="submitLoading"
       @handleSubmit="handleSubmit"
     />
+    <Skeleton v-if="isSkeletonShow" />
   </div>
 </template>
 
@@ -26,6 +27,7 @@ import { mapGetters } from 'vuex'
 
 import ListItem from './modules/ListItem'
 import SubmitBar from './modules/SubmitBar'
+import Skeleton from './modules/Skeleton'
 
 import { getAddressList } from '@/api/user'
 import { getOrderList, settleOrder } from '@/api/order'
@@ -34,7 +36,8 @@ export default {
   name: 'OrderConfirm',
   components: {
     ListItem,
-    SubmitBar
+    SubmitBar,
+    Skeleton
   },
   data() {
     return {
@@ -44,6 +47,7 @@ export default {
         tel: ''
       },
       list: [],
+      isSkeletonShow: true,
       submitLoading: false
     }
   },
@@ -68,6 +72,7 @@ export default {
         ids: this.ids
       }).then((res) => {
         this.list = res.entry
+        this.isSkeletonShow = false
       })
     },
     // 获取地址
@@ -99,6 +104,10 @@ export default {
     },
     // 提交订单
     handleSubmit() {
+      if (!this.contact.addressId) {
+        this.$toast('请添加收货联系人地址')
+        return
+      }
       this.submitLoading = true
       settleOrder({
         uid: this.uid,

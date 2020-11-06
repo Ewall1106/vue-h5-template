@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- https://youzan.github.io/vant/#/zh-CN/image#api -->
-    <van-image v-bind="$attrs" lazy-load>
+    <van-image v-bind="$attrs" lazy-load style="display:block">
       <template v-slot:loading>
         <van-loading type="spinner" size="20" />
       </template>
