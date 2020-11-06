@@ -1,27 +1,28 @@
 <template>
+
   <div class="detail">
     <nav-bar title="商品详情">
       <span style="color: #333" @click="isShareShow = true">
         <svg-icon icon-class="share" :width="15" :height="15" />
       </span>
     </nav-bar>
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+      <Swiper :banner="info.banner" />
 
-    <Swiper :banner="info.banner" />
+      <Overview
+        :title="info.title"
+        :desc="info.desc"
+        :price="info.price"
+        :old-price="info.oldPrice"
+      />
 
-    <Overview
-      :title="info.title"
-      :desc="info.desc"
-      :price="info.price"
-      :old-price="info.oldPrice"
-    />
+      <Section
+        :service="info.service"
+        :address="address"
+        @input="isSkuShow = $event"
+      />
 
-    <Section
-      :service="info.service"
-      :address="address"
-      @input="isSkuShow = $event"
-    />
-
-    <!--
+      <!--
     <Comment
       :rate="comment.rate"
       :num="comment.num"
@@ -29,22 +30,25 @@
       :list="comment.list"
     /> -->
 
-    <Description :details="info.details" />
+      <Description :details="info.details" />
 
-    <Sku
-      v-model="isSkuShow"
-      :skudata="skudata"
-      :goods-id="productId"
-      :goods="info.goods"
-      @handleCartNum="getCartNum"
-    />
+      <Sku
+        v-model="isSkuShow"
+        :skudata="skudata"
+        :goods-id="productId"
+        :goods="info.goods"
+        @handleCartNum="getCartNum"
+      />
 
-    <Share v-model="isShareShow" />
+      <Share v-model="isShareShow" />
+
+    </van-pull-refresh>
 
     <Tabbar :num="cartNum" @input="isSkuShow = $event" />
     <back-top />
     <Skeleton v-if="isSkeletonShow" />
   </div>
+
 </template>
 
 <script>
@@ -84,7 +88,8 @@ export default {
       address: '',
       skudata: {},
       goods: {},
-      cartNum: '',
+      cartNum: 0,
+      refreshing: false,
       isShareShow: false,
       isSkuShow: false,
       isSkeletonShow: true
@@ -109,6 +114,7 @@ export default {
         this.info = data
         this.skudata = data.sku
         this.isSkeletonShow = false
+        this.refreshing = false
       })
     },
     // 购物车数量
@@ -128,6 +134,11 @@ export default {
           this.address = `${province} ${city} ${county}`
         }
       })
+    },
+    // 下拉刷新
+    onRefresh() {
+      this.getDetail()
+      this.getCartNum()
     }
   }
 }
