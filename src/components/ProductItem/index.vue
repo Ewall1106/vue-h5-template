@@ -9,8 +9,8 @@
       <div class="desc__bottom">
         <div class="desc__bottom__info">
           <p class="price">
-            <span class="price--new">¥{{ price }}</span>
-            <span class="price--old">¥{{ oldPrice }}</span>
+            <span class="price--new">¥{{ price | toDecimal }}</span>
+            <span class="price--old">¥{{ oldPrice | toDecimal }}</span>
           </p>
           <div class="progress">
             <van-progress
@@ -31,7 +31,15 @@
 <script>
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['productId', 'img', 'title', 'desc', 'price', 'oldPrice', 'percentage'],
+  props: [
+    'productId',
+    'img',
+    'title',
+    'desc',
+    'price',
+    'oldPrice',
+    'percentage'
+  ],
   methods: {
     onClick() {
       this.$router.push({

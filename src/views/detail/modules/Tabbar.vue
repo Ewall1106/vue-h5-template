@@ -5,7 +5,7 @@
       <van-goods-action-icon
         icon="cart-o"
         text="购物车"
-        :badge="num"
+        :badge="num || ''"
         to="/cart"
       />
       <van-goods-action-button
@@ -29,8 +29,8 @@ import variables from '@/styles/variables.scss'
 export default {
   props: {
     num: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 0
     }
   },
   computed: {

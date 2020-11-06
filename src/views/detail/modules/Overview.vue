@@ -5,8 +5,8 @@
     <p class="desc">{{ desc }}</p>
 
     <div class="price">
-      <span class="price__new">¥{{ price }}</span>
-      <span class="price__old">¥{{ oldPrice }}</span>
+      <span class="price__new">¥{{ price | toDecimal }}</span>
+      <span class="price__old">¥{{ oldPrice | toDecimal }}</span>
     </div>
   </div>
 </template>
