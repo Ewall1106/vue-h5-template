@@ -6,7 +6,8 @@
       <count-down :time="time" />
     </div>
     <div class="desc">
-      <span class="desc__tag">{{ tagnum }}+款上新</span>
+      <van-tag round type="success">{{ tagnum }}+款上新</van-tag>
+
       <span class="desc__text">
         <i>{{ discount }}</i>折起
       </span>
@@ -79,13 +80,6 @@ export default {
     padding: 0 10px;
     display: flex;
     align-items: center;
-    .desc__tag {
-      background: linear-gradient(90deg, rgb(136, 210, 50), rgb(81, 192, 91));
-      color: #fff;
-      font-size: $mini;
-      padding: 4px;
-      border-radius: 10px;
-    }
     .desc__text {
       margin-left: 14px;
       font-size: $small;

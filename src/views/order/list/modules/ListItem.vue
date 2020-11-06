@@ -10,7 +10,7 @@
       v-for="item in itemList.list"
       :key="item.skuId"
       :num="item.selectedNum"
-      :price="item.price"
+      :price="item.price | toDecimal"
       :desc="item.desc"
       :title="item.title"
       :thumb="item.imgUrl"

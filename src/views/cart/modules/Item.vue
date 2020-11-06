@@ -10,11 +10,11 @@
       <van-card
         :num="info.num"
         :tag="info.tag"
-        :price="info.price / 100"
+        :price="info.price | toDecimal"
         :desc="info.desc"
         :title="info.title"
         :thumb="info.img"
-        :origin-price="info.oldPrice"
+        :origin-price="info.oldPrice | toDecimal"
         @click="gotoDetail"
       >
         <template #tags>

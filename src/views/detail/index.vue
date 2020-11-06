@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
     <nav-bar title="商品详情">
-      <span style="color: #333">
+      <span style="color: #333" @click="isShareShow = true">
         <svg-icon icon-class="share" :width="15" :height="15" />
       </span>
     </nav-bar>
@@ -39,6 +39,8 @@
       @handleCartNum="getCartNum"
     />
 
+    <Share v-model="isShareShow" />
+
     <Tabbar :num="cartNum" @input="isSkuShow = $event" />
     <back-top />
     <Skeleton v-if="isSkeletonShow" />
@@ -55,6 +57,7 @@ import Description from './modules/Description'
 import Tabbar from './modules/Tabbar'
 import Sku from './modules/Sku'
 import Skeleton from './modules/Skeleton'
+import Share from './modules/Share'
 
 import { getDetail } from '@/api/detail'
 import { getAddressList } from '@/api/user'
@@ -71,7 +74,8 @@ export default {
     Description,
     Tabbar,
     Sku,
-    Skeleton
+    Skeleton,
+    Share
   },
   data() {
     return {
@@ -81,6 +85,7 @@ export default {
       skudata: {},
       goods: {},
       cartNum: '',
+      isShareShow: false,
       isSkuShow: false,
       isSkeletonShow: true
     }
@@ -108,8 +113,8 @@ export default {
     },
     // 购物车数量
     getCartNum() {
-      getCartNum().then(res => {
-        this.cartNum = res.entry + ''
+      getCartNum().then((res) => {
+        this.cartNum = res.entry
       })
     },
     // 获取地址
@@ -117,8 +122,7 @@ export default {
       getAddressList().then((res) => {
         const { list = [], defaultId = '' } = res.entry
         let address = ''
-        if (defaultId) address = list.filter((item) => item.addressId === defaultId)
-        else address = list.filter((item) => item.isDefault === true)
+        if (defaultId) { address = list.filter((item) => item.addressId === defaultId) } else address = list.filter((item) => item.isDefault === true)
         if (address && address.length) {
           const [{ province, city, county }] = address
           this.address = `${province} ${city} ${county}`

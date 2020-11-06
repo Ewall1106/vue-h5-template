@@ -15,13 +15,13 @@
         </p>
       </div>
       <div class="item__price">
-        <span class="item__price__price">¥{{ item.price }}</span>
+        <span class="item__price__price">¥{{ item.price | toDecimal }}</span>
         <span class="item__price__count">x{{ item.selectedNum }}</span>
       </div>
     </div>
     <div class="amount">
       共<span class="amount--red">{{ amountObj.num }}</span>件商品 合计:
-      <span class="amount--red">¥{{ amountObj.price }}</span>
+      <span class="amount--red">¥{{ amountObj.price | toDecimal }}</span>
     </div>
   </div>
 </template>

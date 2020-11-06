@@ -12,6 +12,11 @@ import store from './store'
 import './icons'
 import './permission'
 
+import * as filters from '@/filters'
+Object.keys(filters).forEach((key) => {
+  Vue.filter(key, filters[key])
+})
+
 // import vant
 import '@/components/Vant'
 // register common components globally
