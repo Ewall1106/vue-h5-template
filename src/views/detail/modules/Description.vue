@@ -5,7 +5,6 @@
       <image-pic
         v-for="(item, idx) in details"
         :key="idx"
-        width="100%"
         fill="cover"
         :src="item"
       />

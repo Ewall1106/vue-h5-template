@@ -70,6 +70,7 @@ export default {
       }).then((res) => {
         this.$toast.success('添加成功')
         this.$emit('input', false)
+        this.$emit('handleCartNum')
       })
     }
   }
