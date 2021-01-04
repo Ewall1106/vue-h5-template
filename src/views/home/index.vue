@@ -1,11 +1,8 @@
 <template>
   <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
     <div class="home">
-
-      <!-- <Header /> -->
       <Swiper :banner="banner" />
       <Category :cate-list="cateList" />
-      <Session :session-list="sessionList" />
       <Goods
         v-model="loading"
         :goods-list="list"
@@ -14,27 +11,22 @@
       />
       <back-top />
       <Skeleton v-if="isSkeletonShow" />
-
     </div>
   </van-pull-refresh>
 </template>
 
 <script>
-import { getBanner, getCategory, getSession, getList } from '@/api/home'
-import Header from './modules/Header'
+import { getBanner, getCategory, getList } from '@/api/home'
 import Swiper from './modules/Swiper'
 import Category from './modules/Category'
-import Session from './modules/Session'
 import Goods from './modules/Goods'
 import Skeleton from './modules/Skeleton'
 
 export default {
   name: 'Home',
   components: {
-    Header,
     Swiper,
     Category,
-    Session,
     Goods,
     Skeleton
   },
@@ -53,17 +45,15 @@ export default {
     }
   },
   mounted() {
-    Promise.all([this.getBanner(), this.getCategory(), this.getSession()]).then(
-      () => {
-        this.isSkeletonShow = false
-      }
-    )
+    Promise.all([this.getBanner(), this.getCategory()]).then(() => {
+      this.isSkeletonShow = false
+    })
   },
   methods: {
     // banner
     getBanner() {
-      return new Promise((resolve) => {
-        getBanner().then((res) => {
+      return new Promise(resolve => {
+        getBanner().then(res => {
           this.banner = res.entry
           resolve()
         })
@@ -71,19 +61,10 @@ export default {
     },
     // category
     getCategory() {
-      return new Promise((resolve) => {
-        getCategory().then((res) => {
+      return new Promise(resolve => {
+        getCategory().then(res => {
           const data = res.entry
           this.cateList = data
-          resolve()
-        })
-      })
-    },
-    // session
-    getSession() {
-      return new Promise((resolve) => {
-        getSession().then((res) => {
-          this.sessionList = res.entry
           resolve()
         })
       })
@@ -93,7 +74,7 @@ export default {
       getList({
         pageSize: this.pageSize,
         pageNo: this.pageNo
-      }).then((res) => {
+      }).then(res => {
         const data = res.entry
         if (this.refreshing) {
           this.list = data
@@ -122,7 +103,6 @@ export default {
         this.pageNo = 1
         this.getBanner()
         this.getCategory()
-        this.getSession()
         this.getGoodsList()
       }
     }

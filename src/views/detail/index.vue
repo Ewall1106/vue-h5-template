@@ -1,11 +1,11 @@
 <template>
-
   <div class="detail">
     <nav-bar title="商品详情">
       <span style="color: #333" @click="isShareShow = true">
         <svg-icon icon-class="share" :width="15" :height="15" />
       </span>
     </nav-bar>
+
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
       <Swiper :banner="info.banner" />
 
@@ -15,20 +15,6 @@
         :price="info.price"
         :old-price="info.oldPrice"
       />
-
-      <Section
-        :service="info.service"
-        :address="address"
-        @input="isSkuShow = $event"
-      />
-
-      <!--
-    <Comment
-      :rate="comment.rate"
-      :num="comment.num"
-      :tags="comment.tags"
-      :list="comment.list"
-    /> -->
 
       <Description :details="info.details" />
 
@@ -41,22 +27,18 @@
       />
 
       <Share v-model="isShareShow" />
-
     </van-pull-refresh>
 
     <Tabbar :num="cartNum" @input="isSkuShow = $event" />
     <back-top />
     <Skeleton v-if="isSkeletonShow" />
   </div>
-
 </template>
 
 <script>
 import NavBar from '@/components/NavBar'
 import Swiper from './modules/Swiper'
 import Overview from './modules/Overview'
-import Section from './modules/Section'
-import Comment from './modules/Comment'
 import Description from './modules/Description'
 import Tabbar from './modules/Tabbar'
 import Sku from './modules/Sku'
@@ -64,7 +46,6 @@ import Skeleton from './modules/Skeleton'
 import Share from './modules/Share'
 
 import { getDetail } from '@/api/detail'
-import { getAddressList } from '@/api/user'
 import { getCartNum } from '@/api/cart'
 
 export default {
@@ -73,8 +54,6 @@ export default {
     NavBar,
     Swiper,
     Overview,
-    Section,
-    Comment,
     Description,
     Tabbar,
     Sku,
@@ -85,7 +64,6 @@ export default {
     return {
       productId: '',
       info: {},
-      address: '',
       skudata: {},
       goods: {},
       cartNum: 0,
@@ -98,7 +76,6 @@ export default {
   mounted() {
     const { productId } = this.$route.query
     this.productId = productId
-    this.getDetail()
     this.getCartNum()
   },
   activated() {
@@ -109,7 +86,7 @@ export default {
     getDetail() {
       getDetail({
         productId: this.productId
-      }).then((res) => {
+      }).then(res => {
         const data = res.entry
         this.info = data
         this.skudata = data.sku
@@ -119,20 +96,8 @@ export default {
     },
     // 购物车数量
     getCartNum() {
-      getCartNum().then((res) => {
+      getCartNum().then(res => {
         this.cartNum = res.entry
-      })
-    },
-    // 获取地址
-    getAddress() {
-      getAddressList().then((res) => {
-        const { list = [], defaultId = '' } = res.entry
-        let address = ''
-        if (defaultId) { address = list.filter((item) => item.addressId === defaultId) } else address = list.filter((item) => item.isDefault === true)
-        if (address && address.length) {
-          const [{ province, city, county }] = address
-          this.address = `${province} ${city} ${county}`
-        }
       })
     },
     // 下拉刷新

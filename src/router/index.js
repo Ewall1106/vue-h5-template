@@ -75,16 +75,6 @@ const routes = [
       showTab: true
     }
   },
-  // 商品列表
-  {
-    path: '/product',
-    name: 'Product',
-    component: () => import('@/views/product'),
-    meta: {
-      title: '商品列表',
-      keepAlive: true
-    }
-  },
   // 商品详情
   {
     path: '/detail',
@@ -113,24 +103,6 @@ const routes = [
       title: '地址编辑'
     }
   },
-  // 搜索
-  {
-    path: '/search',
-    name: 'Search',
-    component: () => import('@/views/search'),
-    meta: {
-      title: '搜索'
-    }
-  },
-  // 搜索结果
-  {
-    path: '/search/list',
-    name: 'SearchList',
-    component: () => import('@/views/search/list'),
-    meta: {
-      title: '搜索结果'
-    }
-  },
   // 确认订单
   {
     path: '/order/confirm',
@@ -156,24 +128,6 @@ const routes = [
     component: () => import('@/views/order/status'),
     meta: {
       title: '支付状态'
-    }
-  },
-  // 订单详情
-  {
-    path: '/order/detail',
-    name: 'OrderDetail',
-    component: () => import('@/views/order/detail'),
-    meta: {
-      title: '订单详情'
-    }
-  },
-  // 售后
-  {
-    path: '/after-sale',
-    name: 'AfterSale',
-    component: () => import('@/views/aftersale'),
-    meta: {
-      title: '订单详情'
     }
   }
 ]

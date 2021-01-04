@@ -1,7 +1,5 @@
 <template>
   <div class="home-goods">
-    <Title name="为你推荐" style="background:#fff" />
-
     <van-list
       v-model="loading"
       :finished="isFinished"
@@ -10,7 +8,7 @@
     >
       <div class="main">
         <goods-item
-          v-for="(item,idx) in goodsList"
+          v-for="(item, idx) in goodsList"
           :key="idx"
           :product-id="item.productId"
           :img="item.img"
@@ -25,13 +23,11 @@
 </template>
 
 <script>
-import Title from './Title'
-import GoodsItem from '@/components/GoodsItem'
+import GoodsItem from './GoodsItem'
 
 export default {
   components: {
-    GoodsItem,
-    Title
+    GoodsItem
   },
   model: {
     prop: 'isLoading'
@@ -72,11 +68,10 @@ export default {
 
 <style lang="scss" scoped>
 .home-goods {
-  margin-top: 24px;
   .main {
     background: #fff;
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
