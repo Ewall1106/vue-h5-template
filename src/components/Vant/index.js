@@ -18,7 +18,6 @@ import {
   SwipeItem,
   Loading,
   Tag,
-  CountDown,
   Tabbar,
   TabbarItem,
   List,
@@ -69,7 +68,6 @@ Vue.use(Toast)
   .use(SwipeItem)
   .use(Loading)
   .use(Tag)
-  .use(CountDown)
   .use(Tabbar)
   .use(TabbarItem)
   .use(List)
