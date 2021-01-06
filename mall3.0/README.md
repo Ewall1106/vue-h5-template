@@ -54,24 +54,24 @@ $ npm run dev
 
 ## 功能特性
 
-```
-开发规范：
-eslint 校检及错误提示
-prettier 统一代码风格
-styleLint 统一样式风格
+:paperclip: 开发规范
 
-初始化配置：
+- `Eslint` 校检及错误提示
+- `Prettier` 统一代码风格
+
+:hammer: 初始化配置：
+
 vw 移动端适配
 css 预处理器
 浏览器默认样式处理
 promise 降级
 fast-click 处理
 
-基础功能：
+基础功能 :wrench:
+
 vuex 模块话使用
 路由配置及权限控制
 axios 封装及请求
-```
 
 ## 目录结构
 
