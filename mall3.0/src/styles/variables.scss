@@ -1,0 +1,48 @@
+// base color
+$theme: #1c99e2c0;
+$bg-gradient: linear-gradient(90deg, #0af, #0085ff);
+$black: #333;
+$gray: #0000008a;
+$red: #ea625b;
+$green: #38ca73;
+
+// font-size
+$large: 38px;
+$normal: 32px;
+$small: 28px;
+$mini: 20px;
+
+// 单行溢出
+@mixin text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 多行溢出
+@mixin text-multiple-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: -o-ellipsis-lastline;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// 水平垂直居中
+@mixin transform-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  theme: $theme;
+  black: $black;
+  red: $red;
+  green: $green;
+  bgGradient: $bg-gradient;
+}

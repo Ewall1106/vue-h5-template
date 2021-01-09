@@ -54,28 +54,27 @@ $ npm run dev
 
 ## 功能特性
 
-:paperclip: 开发规范
+:hammer: 开发规范
 
 - `Eslint` 校检及错误提示
 - `Prettier` 统一代码风格
 
-:hammer: 初始化配置：
+:hammer: 初始化配置
 
-vw 移动端适配
-css 预处理器
-浏览器默认样式处理
-promise 降级
-fast-click 处理
+- vw 移动端适配
+- css 预处理器
+- 浏览器默认样式处理
+- promise 降级
+- fast-click 处理
 
-基础功能 :wrench:
+:hammer: 基础功能
 
-vuex 模块话使用
-路由配置及权限控制
-axios 封装及请求
+- 路由配置及权限控制
+- axios 封装及请求
 
 ## 目录结构
 
-```bash
+```js
 |-- public                // public
 |-- src
 |   |-- api               // 接口列表
