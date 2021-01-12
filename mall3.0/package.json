@@ -1,15 +1,28 @@
 {
-  "name": "mall3.0",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vue-h5-template",
+  "version": "3.0.0",
+  "author": "Ewall熊猫",
+  "keywords": [
+    "vue",
+    "typescript",
+    "vue-h5-template"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ewall1106/mall"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
+    "mock": "cross-env NODE_ENV=mock vue-cli-service serve",
+    "local": "cross-env NODE_ENV=local vue-cli-service serve",
+    "build": "cross-env NODE_ENV=production vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "vant": "^3.0.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -29,6 +42,7 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^2.0.0-0",
+    "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^7.0.0-0",
@@ -37,6 +51,7 @@
     "prettier": "^1.19.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "ts-import-plugin": "^1.6.7",
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0"
   }
