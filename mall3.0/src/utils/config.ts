@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   mock: {
     baseUrl: '/dev-api',
     mockUrl: 'https://mock.xwhx.top'
