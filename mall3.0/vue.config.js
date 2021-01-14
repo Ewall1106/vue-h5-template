@@ -4,13 +4,13 @@ const path = require('path')
 const merge = require('webpack-merge')
 const tsImportPluginFactory = require('ts-import-plugin')
 
-const config = require('./src/utils/config')
+const config = require('./config')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const { mockUrl } = config[process.env.NODE_ENV]
+const { mockURL } = config[process.env.NODE_ENV]
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
     },
     proxy: {
       '/dev-api': {
-        target: mockUrl,
+        target: mockURL,
         pathRewrite: {
           '^/dev-api': '/'
         },

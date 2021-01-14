@@ -14,13 +14,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
+import { defineComponent, onMounted, reactive } from 'vue'
+import HelloWorld from '@/components/HelloWorld.vue'
+import { getBanner } from '@/api'
 
 export default defineComponent({
   name: 'Home',
   components: {
     HelloWorld
+  },
+  setup() {
+    const data = reactive({
+      banner: []
+    })
+
+    onMounted(() => {
+      getBanner().then((res: any) => {
+        data.banner = res.entry
+      })
+    })
   }
 })
 </script>

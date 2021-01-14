@@ -6,7 +6,7 @@ export function getToken() {
   return Cookies.get(key)
 }
 
-export function setToken(token) {
+export function setToken(token: any) {
   return Cookies.set(key, token, { expires: 15 })
 }
 

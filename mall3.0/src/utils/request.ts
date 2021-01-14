@@ -2,14 +2,14 @@ import axios from 'axios'
 import { Toast, Dialog } from 'vant'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
-import config from './config'
 
-const baseURL = config[process.env.NODE_ENV].baseUrl
+// eslint-disable-next-line
+const config = require('../../config')
+const { baseURL } = config[process.env.NODE_ENV]
 
 // 创建一个axios实例
 const service = axios.create({
   baseURL,
-  // withCredentials: true,
   timeout: 5000
 })
 
