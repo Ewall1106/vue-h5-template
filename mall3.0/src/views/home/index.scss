@@ -1,0 +1,67 @@
+@import '@/styles/variables.scss';
+
+// home
+.home {
+  background: #f5f5f5;
+  min-height: 100vh;
+  .logo {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+  .menu__right {
+    width: 50px;
+  }
+}
+
+// category
+.home-category {
+  padding: 24px 0;
+  background: #fff;
+  .scroll-wrapper {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .scroll-content {
+    display: inline-block;
+    .scroll-item__wrapper {
+      .scroll-item {
+        font-size: $mini;
+        display: inline-block;
+        text-align: center;
+        color: $black;
+        padding: 0 25px 24px 25px;
+        img {
+          display: block;
+          width: 88px;
+          height: 88px;
+          border-radius: 50%;
+          overflow: hidden;
+          background: #f5f5f5;
+          margin: 0 auto;
+        }
+        .text {
+          width: 100px;
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+  .dot-wrapper {
+    width: 80px;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    margin: 0 auto;
+    overflow: hidden;
+    .dot {
+      box-sizing: border-box;
+      width: 40px;
+      height: 4px;
+      transition: all 0.4s linear;
+      background: $red;
+    }
+  }
+}
