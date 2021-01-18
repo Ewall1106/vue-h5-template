@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch, ref, PropType } from 'vue'
+import { defineComponent, computed, watch, ref, PropType, nextTick } from 'vue'
 import BScroll from '@better-scroll/core'
 
 export default defineComponent({
@@ -37,9 +37,9 @@ export default defineComponent({
       default: () => []
     }
   },
-  setup(props, { root }) {
-    const { $nextTick } = root
-    const rate = ref(0)
+  setup(props) {
+    let bs
+    let rate = ref('0')
     const list = computed(() => {
       let rlt
       const data = props.cateList
@@ -65,8 +65,13 @@ export default defineComponent({
     })
 
     // 初始化
+    const _registerHooks = (hookNames, handler) => {
+      hookNames.forEach(name => {
+        this.bs.on(name, handler)
+      })
+    }
     const init = () => {
-      this.bs = new BScroll(this.$refs.scroll, {
+      bs = new BScroll(this.$refs.scroll, {
         scrollX: true,
         scrollY: false,
         click: true,
@@ -74,22 +79,17 @@ export default defineComponent({
         probeType: 3 // listening scroll hook
       })
 
-      const totalX = Math.abs(this.bs.maxScrollX)
+      const totalX = Math.abs(bs.maxScrollX)
 
       _registerHooks(['scroll'], pos => {
         const currentX = Math.abs(pos.x)
-        this.rate = `${Number((currentX / totalX) * 100).toFixed(2)}%`
-      })
-    }
-    const _registerHooks = (hookNames, handler) => {
-      hookNames.forEach(name => {
-        this.bs.on(name, handler)
+        rate = `${Number((currentX / totalX) * 100).toFixed(2)}%`
       })
     }
 
     watch(props.cateList, value => {
       if (value.length > 5) {
-        $nextTick(() => {
+        nextTick(() => {
           init()
         })
       }
