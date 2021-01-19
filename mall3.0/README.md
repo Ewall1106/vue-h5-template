@@ -1,5 +1,3 @@
-<img width="100" height="100" src="https://raw.githubusercontent.com/Ewall1106/panda-vue-template/master/src/assets/logo.png">
-
 ## VUE-H5-TEMPLATE
 
 <p>
@@ -41,7 +39,7 @@
 
 ```bash
 # 项目下载
-# 克隆项目很慢？将地址中的 `github.com` 替换替换为 `github.com.cnpmjs.org` 试试
+# 克隆项目很慢？将地址中的 `github.com` 替换为 `github.com.cnpmjs.org` 试试
 $ git clone git@github.com:Ewall1106/mall.git
 
 # 安装运行
@@ -71,7 +69,7 @@ $ npm run dev
 
 ## 目录结构
 
-```js
+```bash
 |-- public                // public
 |-- src
 |   |-- api               // 接口列表
@@ -94,9 +92,11 @@ $ npm run dev
 |-- ...
 ```
 
+:label: 其它说明
+
 - 目录 `components` 下的所有公共组件使用 [tsx](https://v3.vuejs.org/guide/render-function.html) 进行开发。
 - 目录 `views` 下的业务组件使用 [sfc](https://cn.vuejs.org/v2/guide/single-file-components.html) 的形式进行开发。
-- 为什么这样？对于公共组件来说，使用 `tsx` 开发更加灵活、渲染性能更好且更方便测试。对于业务组件，使用 `sfc` 的方式可以更好的发挥出 `vue` 的优势，简洁明了。
+- 为什么这样划分？对于公共组件来说，使用 `tsx` 开发更加灵活、渲染性能更好且更方便测试。对于业务组件，使用 `sfc` 的方式可以更好的发挥出 `vue` 的优势，简洁明了。
 
 ## 协议
 

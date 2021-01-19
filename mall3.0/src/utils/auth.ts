@@ -13,3 +13,6 @@ export function setToken(token: any) {
 export function removeToken() {
   return Cookies.remove(key)
 }
+
+// import router from './router'
+// import store from './store'
