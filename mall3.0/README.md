@@ -92,7 +92,7 @@ $ npm run dev
 |-- ...
 ```
 
-:label: 其它说明
+:bookmark: 目录说明：
 
 - 目录 `components` 下的所有公共组件使用 [tsx](https://v3.vuejs.org/guide/render-function.html) 进行开发。
 - 目录 `views` 下的业务组件使用 [sfc](https://cn.vuejs.org/v2/guide/single-file-components.html) 的形式进行开发。
@@ -100,6 +100,6 @@ $ npm run dev
 
 ## 协议
 
-[MIT](https://github.com/Ewall1106/mall/blob/master/LICENSE)
+- [MIT](https://github.com/Ewall1106/mall/blob/master/LICENSE)
 
-Copyright (c) 2021-present Ewall&熊猫
+- Copyright (c) 2021-present Ewall&熊猫

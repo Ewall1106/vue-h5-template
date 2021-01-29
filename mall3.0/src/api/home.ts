@@ -13,3 +13,14 @@ export function getCategory(): Promise<any> {
     method: 'get'
   })
 }
+
+export function getList(data: {
+  pageSize: number
+  pageNo: number
+}): Promise<any> {
+  return request({
+    url: '/home/list',
+    method: 'post',
+    data
+  })
+}
