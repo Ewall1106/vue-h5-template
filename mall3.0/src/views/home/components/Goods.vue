@@ -3,6 +3,7 @@
     <div class="goods-item" @click="onNavigate">
       <div class="pic">
         <van-image
+          class="img"
           fill="cover"
           align="center"
           width="90"
@@ -13,8 +14,8 @@
       <p class="title">{{ title }}</p>
       <p class="desc">{{ desc }}</p>
       <div class="num">
-        <!-- <span class="num__now">¥{{ price | toDecimal }}</span>
-        <span class="num__old">¥{{ oldPrice | toDecimal }}</span> -->
+        <span class="num__now">¥{{ price }}</span>
+        <span class="num__old">¥{{ oldPrice }}</span>
       </div>
       <div class="btn-wrapper">
         <van-button class="btn" size="small">立即购买</van-button>
@@ -24,15 +25,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
   props: {
-    id: {
-      type: Number,
+    productId: {
+      type: String,
       requied: true
-    }
+    },
+    desc: String,
+    img: String,
+    oldPrice: Number,
+    price: Number,
+    title: String
   },
   setup(props) {
     const router = useRouter()
@@ -41,7 +47,7 @@ export default defineComponent({
       router.push({
         path: '/detail',
         query: {
-          productId: props.id
+          productId: props.productId
         }
       })
     }
@@ -62,6 +68,10 @@ export default defineComponent({
     display: block;
     padding: 14px;
     background: #f5f5f5;
+    .img {
+      display: block;
+      margin: 0 auto;
+    }
   }
   .title {
     padding: 14px;

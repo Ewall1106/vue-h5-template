@@ -1,7 +1,7 @@
 <template>
   <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
     <van-list
-      v-model="loading"
+      v-model:loading="loading"
       :finished="finished"
       finished-text="没有更多了"
       :immediate-check="false"
@@ -9,27 +9,29 @@
     >
       <div class="home">
         <Banner :banner="banner" />
-        <Goods />
+        <div class="goods-list">
+          <Goods
+            v-for="item in goodsList"
+            :key="item.productId"
+            :productId="item.productId"
+            :desc="item.desc"
+            :img="item.img"
+            :oldPrice="item.oldPrice"
+            :price="item.price"
+            :title="item.title"
+          />
+        </div>
       </div>
     </van-list>
   </van-pull-refresh>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive, toRefs } from 'vue'
-import { getBanner, getCategory, getList } from '@/api'
-import Banner from './Banner.vue'
-import Goods from './Goods.vue'
-
-interface DataType {
-  banner: object[]
-  cateList: object[]
-  pageNo: number
-  pageSize: number
-  loading: boolean
-  finished: boolean
-  refreshing: boolean
-}
+import { defineComponent } from 'vue'
+import { useBasicInfo } from './hooks/useBasicInfo'
+import { useListEffect } from './hooks/useListEffect'
+import Banner from './components/Banner.vue'
+import Goods from './components/Goods.vue'
 
 export default defineComponent({
   name: 'Home',
@@ -38,60 +40,31 @@ export default defineComponent({
     Goods
   },
   setup() {
-    const data = reactive<DataType>({
-      banner: [],
-      cateList: [],
-      pageNo: 0,
-      pageSize: 4,
-      loading: false,
-      finished: false,
-      refreshing: false
-    })
+    const { banner, requestBanner, cateList, requestCategory } = useBasicInfo()
+    const {
+      loading,
+      finished,
+      refreshing,
+      goodsList,
+      requestGoodsList,
+      onLoad,
+      onRefresh
+    } = useListEffect()
 
-    onMounted(() => {
-      getBanner().then(res => {
-        data.banner = res.entry
-      })
-      getCategory().then(res => {
-        data.cateList = res.entry
-      })
-    })
+    requestBanner()
+    requestCategory()
+    requestGoodsList()
 
-    const getGoodsList = () => {
-      getList({
-        pageSize: data.pageSize,
-        pageNo: data.pageNo
-      }).then(res => {
-        const data = res.entry
-        if (data.refreshing) {
-          data.list = data
-          data.refreshing = false
-          data.finished = false
-        } else {
-          data.list = [...data.list, ...data]
-          if (data.length < data.pageSize) data.finished = true
-        }
-        data.loading = false
-      })
+    return {
+      banner,
+      cateList,
+      goodsList,
+      loading,
+      finished,
+      refreshing,
+      onLoad,
+      onRefresh
     }
-
-    const onRefresh = () => {
-      if (!data.loading) {
-        data.refreshing = true
-        data.pageNo = 1
-        getGoodsList()
-      }
-    }
-
-    const onLoad = () => {
-      if (!data.finished) {
-        data.loading = true
-        data.pageNo += 1
-        getGoodsList()
-      }
-    }
-
-    return { ...toRefs(data), onRefresh, onLoad }
   }
 })
 </script>
@@ -108,6 +81,12 @@ export default defineComponent({
   }
   .menu__right {
     width: 50px;
+  }
+  .goods-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: #fff;
   }
 }
 </style>
