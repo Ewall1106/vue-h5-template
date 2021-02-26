@@ -2,23 +2,13 @@
   "name": "vue-h5-template",
   "version": "3.0.0",
   "author": "Ewall熊猫",
-  "keywords": [
-    "vue",
-    "typescript",
-    "vue-h5-template"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ewall1106/mall"
-  },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
-    "mock": "cross-env NODE_ENV=mock vue-cli-service serve",
-    "local": "cross-env NODE_ENV=local vue-cli-service serve",
     "build": "cross-env NODE_ENV=production vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
+    "local": "cross-env NODE_ENV=local vue-cli-service serve",
+    "mock": "cross-env NODE_ENV=mock vue-cli-service serve"
   },
   "dependencies": {
     "@better-scroll/core": "^2.1.1",
@@ -36,13 +26,13 @@
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/babel-plugin-jsx": "^1.0.2",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "~4.5.11",
+    "@vue/cli-plugin-eslint": "~4.5.11",
+    "@vue/cli-plugin-router": "~4.5.11",
+    "@vue/cli-plugin-typescript": "~4.5.11",
+    "@vue/cli-plugin-unit-jest": "~4.5.11",
+    "@vue/cli-plugin-vuex": "~4.5.11",
+    "@vue/cli-service": "~4.5.11",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
@@ -59,5 +49,15 @@
     "ts-import-plugin": "^1.6.7",
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0"
+  },
+  "keywords": [
+    "vue",
+    "typescript",
+    "vue-h5-template"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ewall1106/mall"
   }
 }
