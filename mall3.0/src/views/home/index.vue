@@ -73,15 +73,6 @@ export default defineComponent({
 .home {
   background: #f5f5f5;
   min-height: 100vh;
-  .logo {
-    display: block;
-    width: 200px;
-    margin: 0 auto;
-    padding-top: 40px;
-  }
-  .menu__right {
-    width: 50px;
-  }
   .goods-list {
     display: flex;
     flex-wrap: wrap;

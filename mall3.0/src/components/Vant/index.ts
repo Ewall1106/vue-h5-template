@@ -7,7 +7,9 @@ import {
   TabbarItem,
   Swipe,
   SwipeItem,
-  Image as VanImage
+  Image as VanImage,
+  Form,
+  Field
 } from 'vant'
 
 // https://vant-contrib.gitee.io/vant/v3/#/zh-CN
@@ -19,7 +21,9 @@ const plugins = [
   Swipe,
   SwipeItem,
   VanImage,
-  PullRefresh
+  PullRefresh,
+  Form,
+  Field
 ]
 
 export default {
