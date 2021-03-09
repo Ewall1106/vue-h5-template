@@ -15,6 +15,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "js-cookie": "^2.2.1",
+    "uuid": "^8.3.2",
     "vant": "^3.0.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.19",
     "@types/js-cookie": "^2.2.6",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/babel-plugin-jsx": "^1.0.2",

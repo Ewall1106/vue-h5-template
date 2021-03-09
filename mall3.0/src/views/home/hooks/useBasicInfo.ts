@@ -14,11 +14,11 @@ export const useBasicInfo = () => {
 
   const requestBanner = async () => {
     const res = await getBanner()
-    basic.banner = res.entry
+    basic.banner = res.data
   }
   const requestCategory = async () => {
     const res = await getCategory()
-    basic.cateList = res.entry
+    basic.cateList = res.data
   }
 
   return { ...toRefs(basic), requestBanner, requestCategory }

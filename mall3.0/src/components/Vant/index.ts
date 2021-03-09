@@ -9,7 +9,9 @@ import {
   SwipeItem,
   Image as VanImage,
   Form,
-  Field
+  Field,
+  NavBar,
+  Icon
 } from 'vant'
 
 // https://vant-contrib.gitee.io/vant/v3/#/zh-CN
@@ -23,7 +25,9 @@ const plugins = [
   VanImage,
   PullRefresh,
   Form,
-  Field
+  Field,
+  NavBar,
+  Icon
 ]
 
 export default {

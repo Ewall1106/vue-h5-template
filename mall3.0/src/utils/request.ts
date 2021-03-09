@@ -4,7 +4,7 @@ import service from './axios'
 interface BaseResponse<T> {
   code: number
   status: boolean
-  entry: T
+  data: T
   message?: string
 }
 

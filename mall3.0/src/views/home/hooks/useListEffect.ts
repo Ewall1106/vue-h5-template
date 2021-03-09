@@ -25,7 +25,7 @@ export const useListEffect = () => {
       pageSize: info.pageSize,
       pageNo: info.pageNo
     })
-    const data = res.entry
+    const data = res.data
     info.loading = false
     if (info.refreshing) {
       info.goodsList = data

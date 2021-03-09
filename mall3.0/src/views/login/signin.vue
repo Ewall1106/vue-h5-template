@@ -1,5 +1,5 @@
 <template>
-  <!-- <Logo /> -->
+  <Logo />
   <Form />
 </template>
 
@@ -9,7 +9,7 @@ import Form from './components/Form.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Home',
+  name: 'Signin',
   components: {
     Logo,
     Form
