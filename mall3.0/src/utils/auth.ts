@@ -14,5 +14,8 @@ export function removeToken() {
   return Cookies.remove(key)
 }
 
+export function getCsrfToken() {
+  return Cookies.get('csrfToken')
+}
 // import router from './router'
 // import store from './store'

@@ -1,6 +1,6 @@
 <template>
   <van-nav-bar title="用户注册" left-text="返回" left-arrow />
-  <van-form class="form" @submit="onSubmit">
+  <van-form class="form" @submit="onSubmit" style="padding: 12px">
     <van-field
       v-model="username"
       type="text"
@@ -56,37 +56,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue'
-import { getCaptcha } from '@/api'
-import { v4 as uuidv4 } from 'uuid'
-
-interface FormType {
-  username: string
-  password: string
-  confirmPassword: string
-  captcha: string
-  captchaSvg: HTMLOrSVGElement | null
-}
-
-const useFormEffect = () => {
-  const form = reactive<FormType>({
-    username: '',
-    password: '',
-    confirmPassword: '',
-    captcha: '',
-    captchaSvg: null
-  })
-
-  const requestCaptcha = async () => {
-    const { data } = await getCaptcha({ id: uuidv4() })
-    form.captchaSvg = data
-  }
-
-  const onSubmit = (values: FormType) => {
-    console.log('submit', values)
-  }
-  return { ...toRefs(form), requestCaptcha, onSubmit }
-}
+import { defineComponent } from 'vue'
+import { useSignupFormEffect } from './hooks/useSignupFormEffect'
 
 export default defineComponent({
   name: 'Signup',
@@ -99,7 +70,7 @@ export default defineComponent({
       captcha,
       requestCaptcha,
       onSubmit
-    } = useFormEffect()
+    } = useSignupFormEffect()
 
     requestCaptcha()
 
@@ -114,9 +85,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss" scoped>
-.form {
-  padding: 24px;
-}
-</style>

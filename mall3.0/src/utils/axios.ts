@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
 import { Toast, Dialog } from 'vant'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import { getToken, getCsrfToken } from '@/utils/auth'
 
 // eslint-disable-next-line
 const config = require('../../config')
@@ -17,9 +17,9 @@ const service: AxiosInstance = axios.create({
 service.interceptors.request.use(
   config => {
     if (store.getters.token) {
-      // JWT鉴权
       config.headers.Authorization = `Bearer ${getToken()}`
     }
+    config.headers['x-csrf-token'] = getCsrfToken()
     return config
   },
   error => {
@@ -56,9 +56,10 @@ service.interceptors.response.use(
           // 服务端错误
           break
         default:
+          Toast(res.message)
           break
       }
-      Toast(res.message)
+
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
       return response
