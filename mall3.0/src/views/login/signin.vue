@@ -23,7 +23,7 @@
       <van-button
         round
         block
-        type="info"
+        type="primary"
         native-type="submit"
         :loading="loading"
       >
@@ -35,54 +35,45 @@
 
 <script lang="ts">
 import Logo from './components/Logo.vue'
-import { defineComponent, reactive, toRefs } from 'vue'
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { defineComponent, ref, reactive, toRefs, watch } from 'vue'
+import { useRoute } from 'vue-router'
+
 import { Notify } from 'vant'
-import { signin } from '@/api'
+
+import { useStore } from 'vuex'
 
 interface FormType {
   username: string
   password: string
+  loading: boolean
 }
 
 const useSigninFormEffect = () => {
+  const store = useStore()
   const form = reactive<FormType>({
     username: '',
-    password: ''
+    password: '',
+    loading: false
   })
-
-  // this.loading = true
-  // this.$store
-  //   .dispatch('user/login', this.form)
-  //   .then(() => {
-  //     this.$notify({
-  //       type: 'success',
-  //       message: '登录成功',
-  //       duration: 2000,
-  //       onOpened: () => {
-  //         this.loading = false
-  //         location.href = this.redirect
-  //       }
-  //     })
-  //   })
-  //   .catch(() => {
-  //     this.loading = false
-  //   })
-
-  // const onSubmit = async (values: FormType) => {
-  //   const { status } = await signin({ ...values })
-  //   if (status) {
-  //     Notify({
-  //       type: 'success',
-  //       message: '注册成功，请重新登录',
-  //       duration: 2000,
-  //       onOpened: () => {
-  //         router.back()
-  //       }
-  //     })
-  //   }
-  // }
+  const onSubmit = (values: FormType) => {
+    form.loading = true
+    store
+      .dispatch('user/SING_IN', values)
+      .then(() => {
+        Notify({
+          type: 'success',
+          message: '登录成功',
+          duration: 2000,
+          onOpened: () => {
+            form.loading = false
+            // location.href = this.redirect
+          }
+        })
+      })
+      .catch(() => {
+        form.loading = false
+      })
+  }
   return { ...toRefs(form), onSubmit }
 }
 
@@ -93,12 +84,23 @@ export default defineComponent({
   },
 
   setup() {
-    const { username, password, loading } = useSigninFormEffect()
-
+    const redirect = ref<string | null>('')
+    const route = useRoute()
+    const { username, password, loading, onSubmit } = useSigninFormEffect()
+    watch(
+      route,
+      route => {
+        console.log('>>>>>>>>', route.query)
+      },
+      {
+        immediate: true
+      }
+    )
     return {
       username,
       password,
-      loading
+      loading,
+      onSubmit
     }
   }
 })

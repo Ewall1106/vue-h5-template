@@ -18,6 +18,7 @@ export type SigninRequest = {
   username: string
   password: string
 }
+export type SigninResponse = string
 
 export function signup(data: SignupRequest) {
   return request({
@@ -28,7 +29,7 @@ export function signup(data: SignupRequest) {
 }
 
 export function signin(data: SigninRequest) {
-  return request({
+  return request<SigninResponse>({
     url: '/user/signin',
     method: 'post',
     data
