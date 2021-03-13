@@ -1,20 +1,22 @@
-import { MutationTree, ActionTree } from 'vuex'
-import { signin } from '@/api'
+import { MutationTree, ActionTree, GetterTree } from 'vuex'
+import { signin, getInfo } from '@/api'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 import { State } from './types/state-types'
 import { Mutations, Mutation } from './types/mutation-types'
 import { Actions, Action } from './types/action-types'
 
-const state: State = {
+export const state: State = {
   token: getToken(),
-  uid: '',
   userInfo: {}
 }
 
 const mutations: MutationTree<State> & Mutations = {
-  [Mutation.SET_TOKEN](state, token: string) {
+  [Mutation.SET_TOKEN](state, token) {
     state.token = token
+  },
+  [Mutation.SET_USER_INFO](state, info) {
+    state.userInfo = info
   }
 }
 
@@ -28,6 +30,20 @@ const actions: ActionTree<State, State> & Actions = {
           commit(Mutation.SET_TOKEN, token)
           setToken(token)
           resolve(token)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  },
+  // 获取基本用户信息
+  [Action.GET_INFO]({ commit }) {
+    return new Promise((resolve, reject) => {
+      getInfo()
+        .then(res => {
+          const data = res.data
+          commit(Mutation.SET_USER_INFO, data)
+          resolve(data)
         })
         .catch(err => {
           reject(err)

@@ -1,13 +1,5 @@
 import request from '@/utils/request'
 
-// 获取基本用户信息
-// export function getInfo(): Promise<any> {
-//   return request({
-//     url: '/user/info',
-//     method: 'get'
-//   })
-// }
-
 export type SignupRequest = {
   username: string
   password: string
@@ -19,6 +11,13 @@ export type SigninRequest = {
   password: string
 }
 export type SigninResponse = string
+export type GetInfoResponse = {
+  uid?: string
+  username?: string
+  password?: string
+  nickname?: string
+  avatar?: string
+}
 
 export function signup(data: SignupRequest) {
   return request({
@@ -33,5 +32,12 @@ export function signin(data: SigninRequest) {
     url: '/user/signin',
     method: 'post',
     data
+  })
+}
+
+export function getInfo() {
+  return request<GetInfoResponse>({
+    url: '/user/info',
+    method: 'get'
   })
 }

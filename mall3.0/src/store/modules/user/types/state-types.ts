@@ -1,5 +1,6 @@
+import { GetInfoResponse } from '@/api'
+
 export interface State {
   token: string | undefined
-  uid: string
-  userInfo: any
+  userInfo: GetInfoResponse
 }

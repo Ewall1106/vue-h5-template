@@ -3,8 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import './utils/auth'
 import './styles/index.scss'
+
+import './utils/auth'
+import './utils/permission'
 
 import vant from '@/components/Vant'
 
