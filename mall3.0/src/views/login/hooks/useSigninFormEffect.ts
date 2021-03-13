@@ -29,7 +29,7 @@ export const useSigninFormEffect = () => {
           duration: 2000,
           onOpened: () => {
             form.loading = false
-            location.href = redirect
+            location.href = redirect.value
           }
         })
       })

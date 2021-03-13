@@ -1,4 +1,4 @@
-import { MutationTree, ActionTree, GetterTree } from 'vuex'
+import { MutationTree, ActionTree } from 'vuex'
 import { signin, getInfo } from '@/api'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
@@ -13,6 +13,9 @@ export const state: State = {
 
 const mutations: MutationTree<State> & Mutations = {
   [Mutation.SET_TOKEN](state, token) {
+    state.token = token
+  },
+  [Mutation.SING_OUT](state, token) {
     state.token = token
   },
   [Mutation.SET_USER_INFO](state, info) {
@@ -36,6 +39,14 @@ const actions: ActionTree<State, State> & Actions = {
         })
     })
   },
+  // 登出
+  [Action.SING_OUT]({ commit }) {
+    return new Promise(resolve => {
+      commit(Mutation.SET_TOKEN, '')
+      removeToken()
+      resolve()
+    })
+  },
   // 获取基本用户信息
   [Action.GET_INFO]({ commit }) {
     return new Promise((resolve, reject) => {
@@ -51,63 +62,6 @@ const actions: ActionTree<State, State> & Actions = {
     })
   }
 }
-
-// const   actions = {
-//   // 登录
-//   [Action.SING_IN]({ commit }) {
-
-//   }
-//   // signin(context: { commit: Commit }, loginInfo) {
-//   //   return new Promise((resolve, reject) => {
-//   //     login(loginInfo)
-//   //       .then(res => {
-//   //         const { token } = res.entry
-//   //         context.commit('SET_TOKEN', token)
-//   //         setToken(token)
-//   //         resolve()
-//   //       })
-//   //       .catch(error => {
-//   //         reject(error)
-//   //       })
-//   //   })
-//   }
-
-// // 登出
-// logout({ commit, state }) {
-//   return new Promise((resolve, reject) => {
-//     commit('SET_TOKEN', '')
-//     removeToken()
-//     resolve()
-//   })
-// },
-
-// // 获取基本用户信息
-// getInfo({ commit, state }) {
-//   return new Promise((resolve, reject) => {
-//     getInfo(state.token)
-//       .then(res => {
-//         const data = res.entry
-//         if (!data) {
-//           reject(new Error('获取基本信息失败，请重新登录'))
-//         }
-//         commit('SET_USER_INFO', data)
-//         resolve(data)
-//       })
-//       .catch(error => {
-//         reject(error)
-//       })
-//   })
-// },
-
-// // 重置token
-// resetToken({ commit }) {
-//   return new Promise(resolve => {
-//     commit('SET_TOKEN', '')
-//     removeToken()
-//     resolve()
-//   })
-// }
-// }
 
 export default {
   namespaced: true,
