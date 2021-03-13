@@ -1,5 +1,10 @@
 <template>
-  <van-nav-bar title="用户注册" left-text="返回" left-arrow />
+  <van-nav-bar
+    title="用户注册"
+    left-text="返回"
+    left-arrow
+    @click-left="$router.back()"
+  />
   <van-form class="form" @submit="onSubmit" style="padding: 12px">
     <van-field
       v-model="username"

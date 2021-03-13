@@ -19,6 +19,11 @@
       placeholder="密码"
       :rules="[{ required: true, message: '请填写密码' }]"
     />
+    <div class="forget">
+      <router-link to="/forget" custom v-slot="{ navigate }">
+        <span @click="navigate" role="link">忘记密码</span>
+      </router-link>
+    </div>
     <div style="margin: 16px;">
       <van-button
         round
@@ -29,53 +34,24 @@
       >
         提交
       </van-button>
+      <van-button
+        style="margin-top: 10px"
+        plain
+        round
+        block
+        type="primary"
+        native-type="button"
+        to="/signup"
+        >注册</van-button
+      >
     </div>
   </van-form>
 </template>
 
 <script lang="ts">
 import Logo from './components/Logo.vue'
-import { defineComponent, ref, reactive, toRefs, watch } from 'vue'
-import { useRoute } from 'vue-router'
-
-import { Notify } from 'vant'
-
-import { useStore } from 'vuex'
-
-interface FormType {
-  username: string
-  password: string
-  loading: boolean
-}
-
-const useSigninFormEffect = () => {
-  const store = useStore()
-  const form = reactive<FormType>({
-    username: '',
-    password: '',
-    loading: false
-  })
-  const onSubmit = (values: FormType) => {
-    form.loading = true
-    store
-      .dispatch('user/SING_IN', values)
-      .then(() => {
-        Notify({
-          type: 'success',
-          message: '登录成功',
-          duration: 2000,
-          onOpened: () => {
-            form.loading = false
-            // location.href = this.redirect
-          }
-        })
-      })
-      .catch(() => {
-        form.loading = false
-      })
-  }
-  return { ...toRefs(form), onSubmit }
-}
+import { defineComponent } from 'vue'
+import { useSigninFormEffect } from './hooks/useSigninFormEffect'
 
 export default defineComponent({
   name: 'Signin',
@@ -84,18 +60,7 @@ export default defineComponent({
   },
 
   setup() {
-    const redirect = ref<string | null>('')
-    const route = useRoute()
     const { username, password, loading, onSubmit } = useSigninFormEffect()
-    watch(
-      route,
-      route => {
-        console.log('>>>>>>>>', route.query)
-      },
-      {
-        immediate: true
-      }
-    )
     return {
       username,
       password,
@@ -110,5 +75,14 @@ export default defineComponent({
 .form {
   padding: 24px;
   margin-top: 50px;
+}
+
+.forget {
+  box-sizing: border-box;
+  color: #323233b9;
+  font-size: 26px;
+  text-align: right;
+  padding-right: 34px;
+  padding-top: 20px;
 }
 </style>
