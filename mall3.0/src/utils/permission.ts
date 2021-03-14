@@ -1,7 +1,7 @@
 import router from '@/router'
 import store from '@/store'
 import { Toast, Notify } from 'vant'
-import { getToken } from './auth'
+import { getToken, blackList } from './auth'
 
 router.beforeEach(async (to, from, next) => {
   // 设置标题
@@ -10,7 +10,7 @@ router.beforeEach(async (to, from, next) => {
   // 根据token判断用户是否登录
   const hasToken = getToken()
   if (hasToken) {
-    if (to.path === '/login') {
+    if (to.path === '/signin') {
       // 如果已经登录了，而去的又是login页就重定向到首页
       next({ path: '/' })
     } else {
@@ -31,7 +31,12 @@ router.beforeEach(async (to, from, next) => {
       }
     }
   } else {
-    Notify({ type: 'primary', message: '请先登录后再操作' })
-    next(`/login?redirect=${encodeURIComponent(location.href)}`)
+    if (blackList.indexOf(to.path) === -1) {
+      // 白名单没有token也直接放行
+      next()
+    } else {
+      Notify({ type: 'primary', message: '请先登录后再操作' })
+      next(`/signin?redirect=${encodeURIComponent(location.href)}`)
+    }
   }
 })

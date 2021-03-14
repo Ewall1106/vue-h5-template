@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 
-const key = 'VueH5TemplateToken'
+// 用户cookie
+const key = 'H5Token'
 
 export function getToken() {
   return Cookies.get(key)
@@ -14,6 +15,10 @@ export function removeToken() {
   return Cookies.remove(key)
 }
 
+// 安全cookie
 export function getCsrfToken() {
   return Cookies.get('csrfToken')
 }
+
+// 需要token才能访问
+export const blackList = ['/cart', '/order/list', '/user']
