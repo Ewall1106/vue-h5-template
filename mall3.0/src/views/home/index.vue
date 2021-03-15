@@ -9,6 +9,7 @@
     >
       <div class="home">
         <Banner :banner="banner" />
+        <Category :cateList="cateList" />
         <div class="goods-list">
           <Goods
             v-for="item in goodsList"
@@ -30,12 +31,14 @@
 import { defineComponent } from 'vue'
 import { useBasicInfo } from './hooks/useBasicInfo'
 import { useListEffect } from './hooks/useListEffect'
+import Category from './components/Category.vue'
 import Banner from './components/Banner.vue'
 import Goods from './components/Goods.vue'
 
 export default defineComponent({
   name: 'Home',
   components: {
+    Category,
     Banner,
     Goods
   },

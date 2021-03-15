@@ -1,18 +1,13 @@
 <template>
-  <div class="home-category">
-    <div ref="scroll" class="scroll-wrapper">
+  <div class="category">
+    <div ref="root" class="scroll-wrapper">
       <div class="scroll-content">
         <div
           v-for="(cate, idx) in list"
           :key="idx"
           class="scroll-item__wrapper"
         >
-          <div
-            v-for="(item, index) in cate"
-            :key="index"
-            class="scroll-item"
-            @click="onNavigate()"
-          >
+          <div v-for="(item, index) in cate" :key="index" class="scroll-item">
             <van-image width="35" height="35" fill="contain" :src="item.icon" />
             <p class="text">{{ item.name }}</p>
           </div>
@@ -26,8 +21,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch, ref, PropType, nextTick } from 'vue'
-import BScroll from '@better-scroll/core'
+import { defineComponent, PropType, toRef, nextTick, watch } from 'vue'
+import { useScrollEffect } from '../hooks/useScrollEffect'
 
 export default defineComponent({
   props: {
@@ -38,64 +33,22 @@ export default defineComponent({
     }
   },
   setup(props) {
-    let bs
-    let rate = ref('0')
-    const list = computed(() => {
-      let rlt
-      const data = props.cateList
-      const len = props.cateList.length
-      if (len <= 5) {
-        rlt = {
-          prev: data,
-          next: []
-        }
-      } else if (len > 5 && len <= 10) {
-        rlt = {
-          prev: data.slice(0, 5),
-          next: data.slice(5)
-        }
-      } else {
-        const breakPoint = Math.ceil(data.length / 2)
-        rlt = {
-          prev: data.slice(0, breakPoint),
-          next: data.slice(breakPoint)
-        }
-      }
-      return rlt
-    })
+    const { list, root, rate, init } = useScrollEffect(toRef(props, 'cateList'))
 
-    // 初始化
-    const _registerHooks = (hookNames, handler) => {
-      hookNames.forEach(name => {
-        this.bs.on(name, handler)
-      })
-    }
-    const init = () => {
-      bs = new BScroll(this.$refs.scroll, {
-        scrollX: true,
-        scrollY: false,
-        click: true,
-        // taps: true,
-        probeType: 3 // listening scroll hook
-      })
-
-      const totalX = Math.abs(bs.maxScrollX)
-
-      _registerHooks(['scroll'], pos => {
-        const currentX = Math.abs(pos.x)
-        rate = `${Number((currentX / totalX) * 100).toFixed(2)}%`
-      })
-    }
-
-    watch(props.cateList, value => {
-      if (value.length > 5) {
+    watch(
+      () => props.cateList,
+      () => {
         nextTick(() => {
           init()
         })
       }
-    })
+    )
 
-    return { list }
+    return {
+      list,
+      root,
+      rate
+    }
   }
 })
 </script>
@@ -103,8 +56,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 
-// category
-.home-category {
+.category {
   padding: 24px 0;
   background: #fff;
   .scroll-wrapper {
