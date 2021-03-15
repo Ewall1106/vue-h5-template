@@ -1,5 +1,5 @@
 import BScroll from '@better-scroll/core'
-import { computed, ref, Ref, onUnmounted } from 'vue'
+import { computed, ref, Ref } from 'vue'
 
 export const useScrollEffect = (cateList: Ref<string[]>) => {
   const root = ref<HTMLDivElement | string>('')
@@ -26,16 +26,13 @@ export const useScrollEffect = (cateList: Ref<string[]>) => {
       // scrollStart
     })
     bs.on('scroll', (pos: { x: number }) => {
-      console.log('scrolling-', pos.x)
       const currentX = Math.abs(pos.x)
       rate.value = `${Number((currentX / totalX) * 100).toFixed(2)}%`
     })
     bs.on('scrollEnd', () => {
       // scrollingEnd
     })
-    onUnmounted(() => {
-      bs.destroy()
-    })
   }
+
   return { list, init, root, rate }
 }

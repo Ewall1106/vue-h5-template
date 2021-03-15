@@ -11,7 +11,9 @@ import {
   Form,
   Field,
   NavBar,
-  Icon
+  Icon,
+  Cell,
+  CellGroup
 } from 'vant'
 
 // https://vant-contrib.gitee.io/vant/v3/#/zh-CN
@@ -27,7 +29,9 @@ const plugins = [
   Form,
   Field,
   NavBar,
-  Icon
+  Icon,
+  Cell,
+  CellGroup
 ]
 
 export default {

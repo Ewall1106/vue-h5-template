@@ -53,19 +53,28 @@ $ npm run dev
 
 - `Eslint` 校检及错误提示
 - `Prettier` 统一代码风格
+- `Typescript` 语法支持
 
 :hammer: 初始化配置
 
-- vw 移动端适配
-- css 预处理器
+- `vw` 移动端适配
+- `css` 预处理器
 - 浏览器默认样式处理
-- promise 降级
-- fast-click 处理
+- `promise` 降级
+- `fast-click` 处理
 
 :hammer: 基础功能
 
-- 路由配置及权限控制
-- axios 封装及请求
+- `vuex4.0` 封装及使用
+- `vue-router4.x` 路由配置及权限控制
+- `axios+typescript` 封装及请求
+- `composition-api` 及自定义 `hooks` 封装
+
+:hammer: 组件相关
+
+- `vant` 组件的安装及使用
+- 横向 `scroll` 滚动组件封装
+- `svg-icon` 图标组件
 
 ## 目录结构
 
