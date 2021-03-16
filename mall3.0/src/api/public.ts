@@ -10,3 +10,10 @@ export function getCaptcha(params: CaptchaRequest) {
     params
   })
 }
+
+export function initCsrfToken() {
+  return request({
+    url: '/public/csrf-token',
+    method: 'get'
+  })
+}

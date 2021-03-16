@@ -1,11 +1,15 @@
 import router from '@/router'
 import store from '@/store'
 import { Toast, Notify } from 'vant'
-import { getToken, blackList } from './auth'
+import { initCsrfToken } from '@/api'
+import { getCsrfToken, getToken, blackList } from './auth'
 
 router.beforeEach(async (to, from, next) => {
   // 设置标题
   document.title = to.meta.title || 'Vue-H5-Template'
+
+  // 判断Csrf-Token是否存在
+  if (!getCsrfToken()) await initCsrfToken()
 
   // 根据token判断用户是否登录
   const hasToken = getToken()
