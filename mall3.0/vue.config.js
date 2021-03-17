@@ -45,6 +45,7 @@ module.exports = {
   },
 
   chainWebpack(config) {
+    // set ts-loader
     config.module
       .rule('ts')
       .use('ts-loader')
@@ -67,7 +68,24 @@ module.exports = {
         return options
       })
 
-    config.when(process.env.NODE_ENV !== 'development', config => {
+    // set svg-sprite-loader
+    config.module
+      .rule('svg')
+      .exclude.add(resolve('src/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
+      .end()
+
+    config.when(process.env.NODE_ENV === 'production', config => {
       config.optimization.splitChunks({
         chunks: 'all',
         cacheGroups: {

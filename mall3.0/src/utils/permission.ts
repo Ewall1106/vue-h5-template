@@ -30,7 +30,7 @@ router.beforeEach(async (to, from, next) => {
           // 清空token重新去登录
           await store.dispatch('user/SING_OUT')
           Toast.fail(error.message || '出错了')
-          next(`/login?redirect=${encodeURIComponent(location.href)}`)
+          next(`/login?redirect=${encodeURI(location.href)}`)
         }
       }
     }
