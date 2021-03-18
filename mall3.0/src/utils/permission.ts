@@ -40,7 +40,7 @@ router.beforeEach(async (to, from, next) => {
       next()
     } else {
       Notify({ type: 'primary', message: '请先登录后再操作' })
-      next(`/signin?redirect=${encodeURIComponent(location.href)}`)
+      next(`/signin?redirect=${to.fullPath}`)
     }
   }
 })

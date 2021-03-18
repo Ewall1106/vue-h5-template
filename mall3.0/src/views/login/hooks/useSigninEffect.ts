@@ -1,6 +1,7 @@
 import { reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { Notify } from 'vant'
+import { useRouter } from 'vue-router'
 
 import { useCurrentRoute } from './useCurrentRoute'
 
@@ -10,8 +11,10 @@ export interface FormType {
   loading: boolean
 }
 
-export const useSigninFormEffect = () => {
+export const useSigninEffect = () => {
   const store = useStore()
+  const router = useRouter()
+
   const { redirect } = useCurrentRoute()
   const form = reactive<FormType>({
     username: '',
@@ -26,12 +29,10 @@ export const useSigninFormEffect = () => {
         Notify({
           type: 'success',
           message: '登录成功',
-          duration: 2000,
-          onOpened: () => {
-            form.loading = false
-            location.href = redirect.value
-          }
+          duration: 2000
         })
+        form.loading = false
+        router.push({ path: redirect.value })
       })
       .catch(() => {
         form.loading = false

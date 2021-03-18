@@ -51,7 +51,7 @@
 <script lang="ts">
 import Logo from './components/Logo.vue'
 import { defineComponent } from 'vue'
-import { useSigninFormEffect } from './hooks/useSigninFormEffect'
+import { useSigninEffect } from './hooks/useSigninEffect'
 
 export default defineComponent({
   name: 'Signin',
@@ -60,7 +60,7 @@ export default defineComponent({
   },
 
   setup() {
-    const { username, password, loading, onSubmit } = useSigninFormEffect()
+    const { username, password, loading, onSubmit } = useSigninEffect()
     return {
       username,
       password,

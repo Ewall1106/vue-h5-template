@@ -62,7 +62,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useSignupFormEffect } from './hooks/useSignupFormEffect'
+import { useSignupEffect } from './hooks/useSignupEffect'
 
 export default defineComponent({
   name: 'Signup',
@@ -75,7 +75,7 @@ export default defineComponent({
       captcha,
       requestCaptcha,
       onSubmit
-    } = useSignupFormEffect()
+    } = useSignupEffect()
 
     requestCaptcha()
 

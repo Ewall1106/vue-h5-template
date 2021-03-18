@@ -3,10 +3,10 @@
     <van-image width="50" height="50" :src="userInfo.avatar" />
     <div class="main">
       <div class="main__title">
-        <h3 class="name">{{ userInfo.nickname }}</h3>
+        <h3 class="main__title__name">{{ userInfo.nickname }}</h3>
       </div>
-      <div class="main__id" @click="doCopy(userInfo.uid)">
-        <span class="code">用户id：{{ userInfo.uid }}</span>
+      <div class="main__id">
+        <span class="main__id__code">用户id：{{ userInfo.uid }}</span>
         <span style="color:#fff">
           <svg-icon icon-class="copy" :width="13" :height="13" />
         </span>
@@ -45,12 +45,12 @@ export default defineComponent({
   border-radius: 100% 100% 100% 100% / 0% 0% 16% 16%;
   .main {
     margin-left: 18px;
-    .main__title {
+    &__title {
       display: flex;
       flex-direction: row;
       align-items: center;
       margin-top: 6px;
-      .name {
+      &__name {
         font-size: $large;
         font-weight: 500;
         color: #fff;
@@ -62,9 +62,9 @@ export default defineComponent({
         margin-right: 20px;
       }
     }
-    .main__id {
+    &__id {
       margin-top: 24px;
-      .code {
+      &__code {
         font-size: $small;
         font-weight: 400;
         color: #fff;

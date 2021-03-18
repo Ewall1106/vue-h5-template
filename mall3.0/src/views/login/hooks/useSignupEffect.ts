@@ -14,7 +14,7 @@ export interface FormType {
   captchaSvg: HTMLOrSVGElement | null
 }
 
-export const useSignupFormEffect = () => {
+export const useSignupEffect = () => {
   const form = reactive<FormType>({
     username: '',
     password: '',

@@ -7,8 +7,7 @@ const routes: Array<RouteRecordRaw> = [
     // route level code-splitting
     // this generates a separate chunk (home.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "Home" */ '../views/home/index.vue'),
+    component: () => import('../views/home/index.vue'),
     meta: {
       title: '首页',
       showTab: true,
@@ -18,8 +17,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/signin',
     name: 'Signin',
-    component: () =>
-      import(/* webpackChunkName: "Signin" */ '../views/login/signin.vue'),
+    component: () => import('../views/login/signin.vue'),
     meta: {
       title: '登录'
     }
@@ -27,8 +25,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/signup',
     name: 'Signup',
-    component: () =>
-      import(/* webpackChunkName: "Signup" */ '../views/login/signup.vue'),
+    component: () => import('../views/login/signup.vue'),
     meta: {
       title: '注册'
     }
@@ -36,22 +33,34 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/power',
     name: 'Power',
-    component: () =>
-      import(/* webpackChunkName: "Power" */ '../views/power/index.vue'),
+    component: () => import('../views/power/index.vue'),
     meta: {
       title: '扩展功能',
       showTab: true
     }
   },
   {
+    path: '/power/svg-icon',
+    name: 'SvgIcon',
+    component: () => import('../views/power/demo/svgicon.vue'),
+    meta: {
+      title: '图标组件'
+    }
+  },
+  {
     path: '/user',
     name: 'User',
-    component: () =>
-      import(/* webpackChunkName: "User" */ '../views/user/index.vue'),
+    component: () => import('../views/user/index.vue'),
     meta: {
       title: '个人中心',
       showTab: true
     }
+  },
+  // 404
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404',
+    redirect: '/'
   }
 ]
 

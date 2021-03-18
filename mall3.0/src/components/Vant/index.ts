@@ -13,7 +13,9 @@ import {
   NavBar,
   Icon,
   Cell,
-  CellGroup
+  CellGroup,
+  Grid,
+  GridItem
 } from 'vant'
 
 // https://vant-contrib.gitee.io/vant/v3/#/zh-CN
@@ -31,7 +33,9 @@ const plugins = [
   NavBar,
   Icon,
   Cell,
-  CellGroup
+  CellGroup,
+  Grid,
+  GridItem
 ]
 
 export default {

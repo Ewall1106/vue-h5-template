@@ -80,22 +80,32 @@ $ npm run dev
 
 ```bash
 |-- public                // public
+|-- config                // config配置文件
 |-- src
 |   |-- api               // 接口列表
 |   |-- assets            // 图片资源
 |   |-- components        // 公共组件
+|   |-- hooks             // 全局hooks
 |   |-- icons             // svg图标
 |   |-- router            // 路由
 |   |-- store             // vuex
 |   |-- styles            // 公共样式
+|   |-- types             // 文件声明
 |   |-- utils             // 工具函数
-|   |-- views             // 具体页面
+|   |-- views             // 各级页面
+|   |   |-- home          // 首页
+|   |   |   |-- components   // 局部组件
+|   |   |   |-- hooks        // 局部hooks
+|   |   |   |-- hooks        // 局部hooks
+|   |   |-- user          // 用户页面
+|   |   |-- ....          // ...
 |   |-- App.vue           // 主页面
 |   |-- main.js           // 入口文件
-|   |-- permission.js     // 权限控制逻辑
-|-- package.json          // 客户端依赖
-|-- .eslint.xx            // eslint处理
+|-- .eslintrc.js          // eslint配置
+|-- .prettierrc           // .prettier配置
 |-- babel.config.js       // babel配置文件
+|-- changelog.md          // 更新日志
+|-- package.json          // 客户端依赖
 |-- postcss.config.js     // postcss配置文件
 |-- vue.config.js         // vue相关配置文件
 |-- ...
