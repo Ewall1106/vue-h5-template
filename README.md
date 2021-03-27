@@ -18,8 +18,9 @@
 ## 基本说明
 
 - [文档说明](https://docs.xwhx.top/vue-h5-template/)
-- [电脑预览](https://mall.xwhx.top)
-- [更新日志](https://github.com/Ewall1106/mall/blob/master/changelog.md)
+- [电脑预览](https://template.xwhx.top)
+- [后端服务](https://github.com/Ewall1106/panda-server)
+- [更新日志](https://github.com/Ewall1106/vue-h5-template/blob/master/changelog.md)
 
 ### 部分页面预览：
 
@@ -36,11 +37,10 @@
 ```bash
 # 项目下载
 # 克隆项目很慢？将地址中的 `github.com` 替换为 `github.com.cnpmjs.org` 试试
-$ git clone git@github.com:Ewall1106/mall.git
+$ git clone git@github.com:Ewall1106/vue-h5-template.git
 
 # 安装运行
-$ npm install
-$ npm run dev
+$ yarn & yarn dev
 ```
 
 ## 功能特性
@@ -121,6 +121,6 @@ $ npm run dev
 
 ## 协议
 
-- [MIT](https://github.com/Ewall1106/mall/blob/master/LICENSE)
+- [MIT](https://github.com/Ewall1106/vue-h5-template/blob/master/LICENSE)
 
 - Copyright (c) 2021-present Ewall&熊猫
