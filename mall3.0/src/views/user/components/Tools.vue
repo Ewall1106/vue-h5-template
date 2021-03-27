@@ -11,7 +11,7 @@
 import { defineComponent } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import { Notify } from 'vant'
+import { Dialog, Notify } from 'vant'
 
 export default defineComponent({
   name: 'User',
@@ -20,9 +20,13 @@ export default defineComponent({
     const router = useRouter()
 
     const loginOut = () => {
-      store.dispatch('user/SING_OUT').then(() => {
-        Notify({ type: 'success', message: '退出登录成功' })
-        router.replace('/')
+      Dialog.confirm({
+        message: '确认退出登录吗？'
+      }).then(() => {
+        store.dispatch('user/SING_OUT').then(() => {
+          Notify({ type: 'success', message: '退出登录成功' })
+          router.replace('/')
+        })
       })
     }
 

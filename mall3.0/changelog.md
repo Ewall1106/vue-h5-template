@@ -1,10 +1,8 @@
-## 当前规划
-
 ## 更新日志
 
 ## [v3.0.0](https://github.com/Ewall1106/mall/releases/tag/3.0.0)
 
-`2020-03-01`
+`2020-03-27`
 
 🎉 **Features**
 
@@ -12,9 +10,8 @@
 - `Vuex4.0+ts` 重封装。
 - `Axios+ts` 请求重封装。
 - `Vue-Router4.0` 使用。
-- 使用 `vitepress` 重新搭建文档与内容更新。
 - 使用 `composition-api` 封装自定义 `hooks` 及逻辑。
-- 删除项目中冗余的业务演示代码，更专注于通用型模板解决方案。
+- 文档与内容更新。
 - And more...
 
 ## [v2.0.3](https://github.com/Ewall1106/mall/releases/tag/2.0.3)

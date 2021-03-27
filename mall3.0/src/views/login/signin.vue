@@ -5,6 +5,7 @@
       v-model="username"
       type="text"
       name="username"
+      maxlength="20"
       clearable
       label="用户名"
       placeholder="用户名"
@@ -14,16 +15,17 @@
       v-model="password"
       type="password"
       name="password"
+      maxlength="20"
       clearable
       label="密码"
       placeholder="密码"
       :rules="[{ required: true, message: '请填写密码' }]"
     />
-    <div class="forget">
+    <!-- <div class="forget">
       <router-link to="/forget" custom v-slot="{ navigate }">
         <span @click="navigate" role="link">忘记密码</span>
       </router-link>
-    </div>
+    </div> -->
     <div style="margin: 16px;">
       <van-button
         round
