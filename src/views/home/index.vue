@@ -1,127 +1,86 @@
 <template>
   <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-    <div class="home">
-      <Swiper :banner="banner" />
-      <Category :cate-list="cateList" />
-      <Goods
-        v-model="loading"
-        :goods-list="list"
-        :is-finished="finished"
-        @onReachBottom="onReachBottom"
-      />
-      <back-top />
-      <Skeleton v-if="isSkeletonShow" />
-    </div>
+    <van-list
+      v-model:loading="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      :immediate-check="false"
+      @load="onLoad"
+    >
+      <div class="home">
+        <Banner :banner="banner" />
+        <Category :cateList="cateList" />
+        <div class="goods-list">
+          <Goods
+            v-for="item in goodsList"
+            :key="item.productId"
+            :productId="item.productId"
+            :desc="item.desc"
+            :img="item.img"
+            :oldPrice="item.oldPrice"
+            :price="item.price"
+            :title="item.title"
+          />
+        </div>
+      </div>
+    </van-list>
   </van-pull-refresh>
 </template>
 
-<script>
-import { getBanner, getCategory, getList } from '@/api/home'
-import Swiper from './modules/Swiper'
-import Category from './modules/Category'
-import Goods from './modules/Goods'
-import Skeleton from './modules/Skeleton'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useBasicInfo } from './hooks/useBasicInfo'
+import { useListEffect } from './hooks/useListEffect'
+import Category from './components/Category.vue'
+import Banner from './components/Banner.vue'
+import Goods from './components/Goods.vue'
 
-export default {
+export default defineComponent({
   name: 'Home',
   components: {
-    Swiper,
     Category,
-    Goods,
-    Skeleton
+    Banner,
+    Goods
   },
-  data() {
-    return {
-      banner: [],
-      cateList: [],
-      sessionList: [],
-      list: [],
-      pageNo: 0,
-      pageSize: 4,
-      loading: false,
-      finished: false,
-      refreshing: false,
-      isSkeletonShow: true
-    }
-  },
-  mounted() {
-    Promise.all([this.getBanner(), this.getCategory()]).then(() => {
-      this.isSkeletonShow = false
-    })
-  },
-  methods: {
-    // banner
-    getBanner() {
-      return new Promise(resolve => {
-        getBanner().then(res => {
-          this.banner = res.entry
-          resolve()
-        })
-      })
-    },
-    // category
-    getCategory() {
-      return new Promise(resolve => {
-        getCategory().then(res => {
-          const data = res.entry
-          this.cateList = data
-          resolve()
-        })
-      })
-    },
-    // goods-list
-    getGoodsList() {
-      getList({
-        pageSize: this.pageSize,
-        pageNo: this.pageNo
-      }).then(res => {
-        const data = res.entry
-        if (this.refreshing) {
-          this.list = data
-          this.refreshing = false
-          this.finished = false
-        } else {
-          this.list = [...this.list, ...data]
-          if (data.length < this.pageSize) this.finished = true
-        }
-        this.loading = false
-      })
-    },
-    // reach-bottom
-    onReachBottom() {
-      if (!this.finished) {
-        this.loading = true
-        this.pageNo += 1
-        this.getGoodsList()
-      }
-    },
+  setup() {
+    const { banner, requestBanner, cateList, requestCategory } = useBasicInfo()
+    const {
+      loading,
+      finished,
+      refreshing,
+      goodsList,
+      requestGoodsList,
+      onLoad,
+      onRefresh
+    } = useListEffect()
 
-    // pull-refresh
-    onRefresh() {
-      if (!this.loading) {
-        this.refreshing = true
-        this.pageNo = 1
-        this.getBanner()
-        this.getCategory()
-        this.getGoodsList()
-      }
+    requestBanner()
+    requestCategory()
+    requestGoodsList()
+
+    return {
+      banner,
+      cateList,
+      goodsList,
+      loading,
+      finished,
+      refreshing,
+      onLoad,
+      onRefresh
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
 .home {
   background: #f5f5f5;
   min-height: 100vh;
-  .logo {
-    display: block;
-    width: 200px;
-    margin: 0 auto;
-    padding-top: 40px;
-  }
-  .menu__right {
-    width: 50px;
+  .goods-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: #fff;
   }
 }
 </style>

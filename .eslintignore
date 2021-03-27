@@ -1,3 +1,4 @@
+vue.config.js
 build/*.js
 src/assets
 public

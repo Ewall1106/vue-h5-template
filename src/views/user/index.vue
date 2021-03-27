@@ -1,22 +1,20 @@
 <template>
-  <div class="user">
+  <div class="detail">
     <Info />
-    <Order />
     <Tools />
   </div>
 </template>
 
-<script>
-import Info from './modules/Info'
-import Order from './modules/Order'
-import Tools from './modules/Tools'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import Info from './components/Info.vue'
+import Tools from './components/Tools.vue'
 
-export default {
+export default defineComponent({
   name: 'User',
   components: {
     Info,
-    Order,
     Tools
   }
-}
+})
 </script>

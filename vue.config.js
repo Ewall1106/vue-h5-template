@@ -1,13 +1,16 @@
 'use strict'
 
 const path = require('path')
-const config = require('./src/utils/config')
+const merge = require('webpack-merge')
+const tsImportPluginFactory = require('ts-import-plugin')
+
+const config = require('./config')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-const { mockUrl } = config[process.env.NODE_ENV]
+const { mockURL } = config[process.env.NODE_ENV]
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -15,6 +18,8 @@ module.exports = {
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
+  // https://github.com/youzan/vant/issues/5735
+  parallel: process.env.NODE_ENV === 'development',
   devServer: {
     overlay: {
       warnings: false,
@@ -22,7 +27,7 @@ module.exports = {
     },
     proxy: {
       '/dev-api': {
-        target: mockUrl,
+        target: mockURL,
         pathRewrite: {
           '^/dev-api': '/'
         },
@@ -33,27 +38,37 @@ module.exports = {
   },
   configureWebpack: {
     devtool: 'source-map',
-    name: 'panda-mall',
+    name: 'vue-h5-template',
     resolve: {
       alias: {
         '@': resolve('src')
       }
     }
   },
-  chainWebpack(config) {
-    // it can improve the speed of the first screen, it is recommended to turn on preload
-    config.plugin('preload').tap(() => [
-      {
-        rel: 'preload',
-        // to ignore runtime.js
-        // https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/cli-service/lib/config/app.js#L171
-        fileBlacklist: [/\.map$/, /hot-update\.js$/, /runtime\..*\.js$/],
-        include: 'initial'
-      }
-    ])
 
-    // when there are many pages, it will cause too many meaningless requests
-    config.plugins.delete('prefetch')
+  chainWebpack(config) {
+    // set ts-loader
+    config.module
+      .rule('ts')
+      .use('ts-loader')
+      .tap(options => {
+        options = merge(options, {
+          transpileOnly: true,
+          getCustomTransformers: () => ({
+            before: [
+              tsImportPluginFactory({
+                libraryName: 'vant',
+                libraryDirectory: 'es',
+                style: true
+              })
+            ]
+          }),
+          compilerOptions: {
+            module: 'es2015'
+          }
+        })
+        return options
+      })
 
     // set svg-sprite-loader
     config.module
@@ -71,28 +86,5 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
-
-    config.when(process.env.NODE_ENV !== 'development', config => {
-      config.optimization.splitChunks({
-        chunks: 'all',
-        cacheGroups: {
-          libs: {
-            name: 'chunk-libs',
-            test: /[\\/]node_modules[\\/]/,
-            priority: 10,
-            chunks: 'initial' // only package third parties that are initially dependent
-          },
-          commons: {
-            name: 'chunk-commons',
-            test: resolve('src/components'), // can customize your rules
-            minChunks: 3, //  minimum common number
-            priority: 5,
-            reuseExistingChunk: true
-          }
-        }
-      })
-      // https:// webpack.js.org/configuration/optimization/#optimizationruntimechunk
-      config.optimization.runtimeChunk('single')
-    })
   }
 }

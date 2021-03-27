@@ -2,7 +2,7 @@ module.exports = {
   plugins: {
     // https://github.com/csstools/postcss-preset-env
     'postcss-preset-env': {},
-    // https://github.com/evrone/postcss-px-to-viewport/blob/master/README_CN.md
+    // https://github.com/evrone/postcss-px-to-viewport
     'postcss-px-to-viewport': {
       unitToConvert: 'px',
       viewportWidth: 750,

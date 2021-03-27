@@ -1,8 +1,0 @@
-@import './reset.scss';
-@import './normalize.scss';
-@import './variables.scss';
-
-// hotfix：https://github.com/ftlabs/fastclick/issues/510
-html {
-  touch-action: manipulation;
-}

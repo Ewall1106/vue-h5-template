@@ -1,26 +1,14 @@
 <template>
-  <div id="app">
-    <keep-alive>
-      <router-view v-if="$route.meta.keepAlive" :key="key" />
-    </keep-alive>
-    <router-view v-if="!$route.meta.keepAlive" :key="key" />
-
-    <tabbar v-if="$route.meta.showTab" />
-  </div>
+  <Layout />
 </template>
 
-<script>
-import Tabbar from './components/Tabbar'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import Layout from '@/components/Layout'
 
-export default {
+export default defineComponent({
   components: {
-    Tabbar
-  },
-  computed: {
-    key() {
-      return this.$route.fullPath
-    }
+    Layout
   }
-}
+})
 </script>
-
