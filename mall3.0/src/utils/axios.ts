@@ -10,6 +10,7 @@ const { baseURL } = config[process.env.NODE_ENV]
 const service: AxiosInstance = axios.create({
   baseURL,
   timeout: 5000
+  // withCredentials: true
 })
 
 // 请求拦截器
@@ -18,7 +19,7 @@ service.interceptors.request.use(
     if (store.getters.getToken) {
       config.headers.Authorization = `Bearer ${getToken()}`
     }
-    config.headers['x-csrf-token'] = getCsrfToken()
+    // config.headers['x-csrf-token'] = getCsrfToken()
     return config
   },
   error => {

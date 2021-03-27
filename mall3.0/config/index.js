@@ -5,7 +5,7 @@ module.exports = {
   },
   local: {
     baseURL: '/dev-api',
-    mockURL: 'http://127.0.0.1:7001'
+    mockURL: 'http://0.0.0.0:7001'
   },
   development: {
     baseURL: '/dev-api',

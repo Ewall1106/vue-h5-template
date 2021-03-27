@@ -88,3 +88,9 @@ export default defineComponent({
   padding-top: 20px;
 }
 </style>
+
+<style lang="scss">
+.van-cell__title {
+  flex: none;
+}
+</style>

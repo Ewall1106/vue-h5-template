@@ -4,8 +4,6 @@ import { signup, getCaptcha } from '@/api'
 import { v4 as uuidv4 } from 'uuid'
 import { Notify } from 'vant'
 
-const router = useRouter()
-
 export interface FormType {
   username: string
   password: string
@@ -15,6 +13,8 @@ export interface FormType {
 }
 
 export const useSignupEffect = () => {
+  const router = useRouter()
+
   const form = reactive<FormType>({
     username: '',
     password: '',
