@@ -14,7 +14,7 @@ module.exports = {
       minPixelValue: 1,
       mediaQuery: false,
       replace: true,
-      exclude: [],
+      exclude: [/node_modules/],
       landscape: false,
       landscapeUnit: 'vw',
       landscapeWidth: 568
