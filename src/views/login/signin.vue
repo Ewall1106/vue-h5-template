@@ -26,7 +26,7 @@
         <span @click="navigate" role="link">忘记密码</span>
       </router-link>
     </div> -->
-    <div style="margin: 16px;">
+    <div style="margin: 16px">
       <van-button
         round
         block

@@ -1,7 +1,7 @@
 'use strict'
 
 const path = require('path')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const tsImportPluginFactory = require('ts-import-plugin')
 
 const config = require('./config')

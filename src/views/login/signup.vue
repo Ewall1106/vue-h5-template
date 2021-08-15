@@ -52,7 +52,7 @@
       </template>
     </van-field>
 
-    <div style="margin: 16px;">
+    <div style="margin: 16px">
       <van-button round block type="primary" native-type="submit">
         提交
       </van-button>

@@ -39,7 +39,7 @@ const plugins = [
 ]
 
 export default {
-  install: function(vm: App) {
+  install(vm: App) {
     plugins.forEach(item => {
       vm.component(item.name, item)
     })
