@@ -11,6 +11,7 @@ import './utils/permission'
 
 import vant from '@/components/Vant'
 
+// eslint-disable-next-line
 createApp(App)
   .use(store)
   .use(router)

@@ -7,7 +7,7 @@
       </div>
       <div class="main__id">
         <span class="main__id__code">用户id：{{ userInfo.uid }}</span>
-        <span style="color:#fff">
+        <span style="color: #fff">
           <svg-icon icon-class="copy" :width="13" :height="13" />
         </span>
       </div>

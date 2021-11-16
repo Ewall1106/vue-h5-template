@@ -2,7 +2,7 @@
 
 ## [v3.0.0](https://github.com/Ewall1106/vue-h5-template/releases/tag/3.0.0)
 
-`2020-03-27`
+`2021-03-27`
 
 🎉 **Features**
 

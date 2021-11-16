@@ -3,6 +3,7 @@ import store from '@/store'
 import { Toast, Notify } from 'vant'
 import { getToken, blackList } from './auth'
 
+// eslint-disable-next-line
 router.beforeEach(async (to: any, from, next) => {
   // 设置标题
   document.title = to.meta.title || 'Vue-H5-Template'

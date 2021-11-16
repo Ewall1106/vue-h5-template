@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
+// eslint-disable-next-line
 import { getToken, getCsrfToken } from '@/utils/auth'
 import store from '@/store'
 
