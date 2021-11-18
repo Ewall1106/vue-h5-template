@@ -1,5 +1,6 @@
 import { reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
+import { State } from '@/store/modules/user/types/state-types'
 import { Notify } from 'vant'
 import { useRouter } from 'vue-router'
 
@@ -12,7 +13,7 @@ export interface FormType {
 }
 
 export const useSigninEffect = () => {
-  const store = useStore()
+  const store = useStore<State>() // 可以以这种形式，可能可读性更加友好
   const router = useRouter()
 
   const { redirect } = useCurrentRoute()
