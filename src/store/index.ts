@@ -1,8 +1,10 @@
 import { createStore } from 'vuex'
-import user from './modules/user/index'
-import getters from './getters'
+import { user, UserState } from './modules/user'
+
+export interface GlobalProp {
+  user: UserState
+}
 
 export default createStore({
-  modules: { user },
-  getters
+  modules: { user }
 })

@@ -24,7 +24,7 @@ export const useSigninEffect = () => {
   const onSubmit = (values: FormType) => {
     form.loading = true
     store
-      .dispatch('user/SING_IN', values)
+      .dispatch('user/signIn', values)
       .then(() => {
         Notify({
           type: 'success',

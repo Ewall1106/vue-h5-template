@@ -1,10 +1,10 @@
-import { watch, ref } from 'vue'
+import { computed, watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 export const useCurrentRoute = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const redirect = ref<any>('')
   const route = useRoute()
+  // const redirect = computed(() => route.query.redirect || '/')
   watch(
     route,
     route => {

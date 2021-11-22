@@ -27,7 +27,7 @@ export default defineComponent({
       Dialog.confirm({
         message: '确认退出登录吗？'
       }).then(() => {
-        store.dispatch('user/SING_OUT').then(() => {
+        store.dispatch('user/signOut').then(() => {
           Notify({ type: 'success', message: '退出登录成功' })
           router.replace('/')
         })
