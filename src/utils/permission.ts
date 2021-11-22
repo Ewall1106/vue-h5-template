@@ -3,7 +3,6 @@ import store from '@/store'
 import { Toast, Notify } from 'vant'
 import { getToken, blackList } from './auth'
 
-// eslint-disable-next-line
 router.beforeEach(async (to: any, from, next) => {
   // 设置标题
   document.title = to.meta.title || 'Vue-H5-Template'
@@ -15,17 +14,17 @@ router.beforeEach(async (to: any, from, next) => {
       // 如果已经登录了，而去的又是login页就重定向到首页
       next({ path: '/' })
     } else {
-      const hasUserInfo = store.getters.getUid
+      const hasUserInfo = store.state.user.userInfo.uid
       if (hasUserInfo) {
         next()
       } else {
         // 如果用户刷新了浏览器，那么需要重新请求基本信息塞到vuex中进行状态管理
         try {
-          await store.dispatch('user/GET_INFO')
+          await store.dispatch('user/getInfo')
           next()
-        } catch (error) {
+        } catch (error: any) {
           // 清空token重新去登录
-          await store.dispatch('user/SING_OUT')
+          await store.dispatch('user/signOut')
           Toast.fail(error.message || '出错了')
           next(`/login?redirect=${encodeURI(location.href)}`)
         }

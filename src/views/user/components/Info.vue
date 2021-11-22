@@ -20,13 +20,15 @@ import { computed, defineComponent } from 'vue'
 import SvgIcon from '@/components/SvgIcon'
 import { useStore } from 'vuex'
 
+import { GlobalProp } from '@/store'
+
 export default defineComponent({
   name: 'User',
   components: {
     SvgIcon
   },
   setup() {
-    const store = useStore()
+    const store = useStore<GlobalProp>()
     return {
       userInfo: computed(() => store.state.user.userInfo)
     }

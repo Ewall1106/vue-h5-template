@@ -24,7 +24,7 @@ const request = <T>(config: AxiosRequestConfig): Promise<BaseResponse<T>> => {
               title: '提示',
               message: '您还未登录或登录已过期，请重新登录'
             }).then(() => {
-              store.dispatch('user/resetToken').then(() => {
+              store.dispatch('user/signOut').then(() => {
                 location.reload()
               })
             })

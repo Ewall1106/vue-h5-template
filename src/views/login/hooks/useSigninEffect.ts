@@ -1,6 +1,5 @@
 import { reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
-import { State } from '@/store/modules/user/types/state-types'
 import { Notify } from 'vant'
 import { useRouter } from 'vue-router'
 
@@ -13,7 +12,7 @@ export interface FormType {
 }
 
 export const useSigninEffect = () => {
-  const store = useStore<State>() // 可以以这种形式，可能可读性更加友好
+  const store = useStore()
   const router = useRouter()
 
   const { redirect } = useCurrentRoute()
@@ -25,7 +24,7 @@ export const useSigninEffect = () => {
   const onSubmit = (values: FormType) => {
     form.loading = true
     store
-      .dispatch('user/SING_IN', values)
+      .dispatch('user/signIn', values)
       .then(() => {
         Notify({
           type: 'success',
