@@ -21,10 +21,6 @@ module.exports = {
   // https://github.com/youzan/vant/issues/5735
   parallel: process.env.NODE_ENV === 'development',
   devServer: {
-    overlay: {
-      warnings: false,
-      errors: true
-    },
     proxy: {
       '/dev-api': {
         target: mockURL,
@@ -71,10 +67,7 @@ module.exports = {
       })
 
     // set svg-sprite-loader
-    config.module
-      .rule('svg')
-      .exclude.add(resolve('src/icons'))
-      .end()
+    config.module.rule('svg').exclude.add(resolve('src/icons')).end()
     config.module
       .rule('icons')
       .test(/\.svg$/)
