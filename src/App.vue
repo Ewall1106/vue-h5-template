@@ -10,17 +10,16 @@
 </template>
 
 <script>
-import Tabbar from './components/Tabbar'
+import Tabbar from "./components/Tabbar";
 
 export default {
   components: {
-    Tabbar
+    Tabbar,
   },
   computed: {
     key() {
-      return this.$route.fullPath
-    }
-  }
-}
+      return this.$route.fullPath;
+    },
+  },
+};
 </script>
-

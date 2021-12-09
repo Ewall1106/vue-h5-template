@@ -13,14 +13,15 @@
 export default {
   methods: {
     loginOut() {
-      this.$store.dispatch('user/logout').then((res) => {
-        this.$notify({ type: 'success', message: '退出登录成功' })
-        this.$router.replace('/')
-      })
-    }
-  }
-}
-</script>v
+      this.$store.dispatch("user/logout").then((res) => {
+        this.$notify({ type: "success", message: "退出登录成功" });
+        this.$router.replace("/");
+      });
+    },
+  },
+};
+</script>
+v
 
 <style lang="scss" scoped>
 .user-tools {

@@ -20,7 +20,8 @@
       </div>
     </div>
     <div class="amount">
-      共<span class="amount--red">{{ amountObj.num }}</span>件商品 合计:
+      共<span class="amount--red">{{ amountObj.num }}</span
+      >件商品 合计:
       <span class="amount--red">¥{{ amountObj.price | toDecimal }}</span>
     </div>
   </div>
@@ -32,25 +33,26 @@ export default {
     list: {
       type: Array,
       default: () => {
-        return []
-      }
-    }
+        return [];
+      },
+    },
   },
   computed: {
     // 店铺维度
     amountObj() {
-      let num = 0; let price = 0
-      this.list.forEach(item => {
-        num += item.selectedNum
-        price += (item.selectedNum * item.price)
-      })
+      let num = 0;
+      let price = 0;
+      this.list.forEach((item) => {
+        num += item.selectedNum;
+        price += item.selectedNum * item.price;
+      });
       return {
         num,
-        price
-      }
-    }
-  }
-}
+        price,
+      };
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,4 +1,3 @@
-
 <template>
   <div class="user-info">
     <image-pic width="50" height="50" :src="userInfo.avatar" />
@@ -8,7 +7,7 @@
       </div>
       <div class="main__id" @click="doCopy(userInfo.uid)">
         <span class="code">用户id：{{ userInfo.uid }}</span>
-        <span style="color:#fff">
+        <span style="color: #fff">
           <svg-icon icon-class="copy" :width="13" :height="13" />
         </span>
       </div>
@@ -17,30 +16,30 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { mapGetters } from 'vuex'
-import VueClipboard from 'vue-clipboard2'
-Vue.use(VueClipboard)
+import Vue from "vue";
+import { mapGetters } from "vuex";
+import VueClipboard from "vue-clipboard2";
+Vue.use(VueClipboard);
 
 export default {
   computed: {
-    ...mapGetters(['userInfo'])
+    ...mapGetters(["userInfo"]),
   },
   methods: {
     doCopy(val) {
       this.$copyText(val).then(
-        e => {
+        (e) => {
           // success
-          this.$toast.success('Id复制成功')
+          this.$toast.success("Id复制成功");
         },
-        e => {
+        (e) => {
           // fail
-          console.log(e)
+          console.log(e);
         }
-      )
-    }
-  }
-}
+      );
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

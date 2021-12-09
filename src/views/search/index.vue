@@ -6,39 +6,39 @@
 </template>
 
 <script>
-import { getHotList } from '@/api/search'
-import NavBar from './modules/NavBar'
-import SearchWords from './modules/Words'
+import { getHotList } from "@/api/search";
+import NavBar from "./modules/NavBar";
+import SearchWords from "./modules/Words";
 
 export default {
-  name: 'Search',
+  name: "Search",
   components: {
     NavBar,
-    SearchWords
+    SearchWords,
   },
   data() {
     return {
-      value: '',
-      hotList: []
-    }
+      value: "",
+      hotList: [],
+    };
   },
   mounted() {
-    this.getHot()
+    this.getHot();
   },
   methods: {
     getHot() {
-      getHotList().then(res => {
-        this.hotList = res.entry
-      })
+      getHotList().then((res) => {
+        this.hotList = res.entry;
+      });
     },
     handleSearch(key) {
       this.$router.push({
-        path: '/search/list',
+        path: "/search/list",
         query: {
-          key
-        }
-      })
-    }
-  }
-}
+          key,
+        },
+      });
+    },
+  },
+};
 </script>

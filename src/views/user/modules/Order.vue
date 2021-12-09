@@ -32,40 +32,40 @@ export default {
     return {
       orderList: [
         {
-          icon: 'pending-payment',
-          name: '待支付',
-          count: '',
-          path: '/order/list'
+          icon: "pending-payment",
+          name: "待支付",
+          count: "",
+          path: "/order/list",
         },
         {
-          icon: 'peer-pay',
-          name: '待发货',
-          count: '',
-          path: '/order/list'
+          icon: "peer-pay",
+          name: "待发货",
+          count: "",
+          path: "/order/list",
         },
         {
-          icon: 'logistics',
-          name: '待收货',
-          count: '',
-          path: '/order/list'
+          icon: "logistics",
+          name: "待收货",
+          count: "",
+          path: "/order/list",
         },
         {
-          icon: 'chat-o',
-          name: '售后',
-          count: '',
-          path: '/after-sale'
-        }
-      ]
-    }
+          icon: "chat-o",
+          name: "售后",
+          count: "",
+          path: "/after-sale",
+        },
+      ],
+    };
   },
   methods: {
     gotoOrderList(item, idx) {
       this.$router.push({
-        path: `${item.path}?type=${idx + 1}`
-      })
-    }
-  }
-}
+        path: `${item.path}?type=${idx + 1}`,
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

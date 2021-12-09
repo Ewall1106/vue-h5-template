@@ -8,16 +8,12 @@
     <p class="header__desc">我们将尽快为您配货~</p>
 
     <div class="header__btn">
-      <router-link
-        tag="p"
-        class="header__btn__item"
-        to="/"
-      >返回首页</router-link>
-      <router-link
-        tag="p"
-        class="header__btn__item"
-        to="/order/detail"
-      >查看订单</router-link>
+      <router-link tag="p" class="header__btn__item" to="/"
+        >返回首页</router-link
+      >
+      <router-link tag="p" class="header__btn__item" to="/order/detail"
+        >查看订单</router-link
+      >
     </div>
   </div>
 </template>

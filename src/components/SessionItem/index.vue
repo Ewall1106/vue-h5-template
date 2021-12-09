@@ -9,51 +9,52 @@
       <van-tag round type="success">{{ tagnum }}+款上新</van-tag>
 
       <span class="desc__text">
-        <i>{{ discount }}</i>折起
+        <i>{{ discount }}</i
+        >折起
       </span>
     </div>
   </div>
 </template>
 
 <script>
-import CountDown from '@/components/CountDown'
+import CountDown from "@/components/CountDown";
 export default {
   components: {
-    CountDown
+    CountDown,
   },
   props: {
     img: {
       type: String,
-      default: ''
+      default: "",
     },
     title: {
       type: String,
-      default: ''
+      default: "",
     },
     time: {
       type: Number,
-      default: 0
+      default: 0,
     },
     tagnum: {
       type: Number,
-      default: 100
+      default: 100,
     },
     discount: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   methods: {
     onClick() {
       this.$router.push({
-        path: '/product',
+        path: "/product",
         query: {
-          t: +new Date()
-        }
-      })
-    }
-  }
-}
+          t: +new Date(),
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

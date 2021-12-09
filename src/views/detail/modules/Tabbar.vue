@@ -24,27 +24,26 @@
 </template>
 
 <script>
-import variables from '@/styles/variables.scss'
+import variables from "@/styles/variables.scss";
 
 export default {
   props: {
     num: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   computed: {
     variables() {
-      return variables
-    }
+      return variables;
+    },
   },
   methods: {
     handleClick() {
-      this.$emit('input', true)
-    }
-  }
-}
+      this.$emit("input", true);
+    },
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>

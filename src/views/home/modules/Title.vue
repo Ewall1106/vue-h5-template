@@ -11,10 +11,10 @@ export default {
   props: {
     name: {
       type: String,
-      default: ''
-    }
-  }
-}
+      default: "",
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

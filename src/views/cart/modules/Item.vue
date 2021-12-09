@@ -24,7 +24,8 @@
             plain
             color="#999"
             style="margin-right: 2px"
-          >{{ attr }}</van-tag>
+            >{{ attr }}</van-tag
+          >
         </template>
       </van-card>
       <template #right>
@@ -35,75 +36,75 @@
 </template>
 
 <script>
-import variables from '@/styles/variables.scss'
+import variables from "@/styles/variables.scss";
 
 export default {
   model: {
-    prop: 'isChecked'
+    prop: "isChecked",
   },
   props: {
     index: {
       type: Number,
-      default: 0
+      default: 0,
     },
     info: {
       type: Object,
       default: () => {
-        return {}
-      }
+        return {};
+      },
     },
     isChecked: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     variables() {
-      return variables
+      return variables;
     },
     checked: {
       get() {
-        return this.isChecked
+        return this.isChecked;
       },
       set(val) {
-        this.$emit('input', { val, idx: this.index })
-      }
-    }
+        this.$emit("input", { val, idx: this.index });
+      },
+    },
   },
   methods: {
     gotoDetail() {
       this.$router.push({
-        path: '/detail',
+        path: "/detail",
         query: {
-          productId: this.info.productId
-        }
-      })
+          productId: this.info.productId,
+        },
+      });
     },
     // position 为关闭时点击的位置
     // instance 为对应的 SwipeCell 实例
     beforeClose({ position, instance }) {
       switch (position) {
-        case 'cell':
-        case 'outside':
-          instance.close()
-          break
-        case 'right':
+        case "cell":
+        case "outside":
+          instance.close();
+          break;
+        case "right":
           this.$dialog
             .confirm({
-              message: '确定删除吗？'
+              message: "确定删除吗？",
             })
             .then(() => {
-              this.$emit('handleDelete', this.index, this.info.skuId)
-              instance.close()
+              this.$emit("handleDelete", this.index, this.info.skuId);
+              instance.close();
             })
             .catch(() => {
-              instance.close()
-            })
-          break
+              instance.close();
+            });
+          break;
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

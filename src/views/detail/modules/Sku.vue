@@ -13,68 +13,68 @@
 </template>
 
 <script>
-import { addCart } from '@/api/cart'
+import { addCart } from "@/api/cart";
 
 export default {
   props: {
     value: {
       type: Boolean,
-      default: false
+      default: false,
     },
     goodsId: {
       type: String,
-      default: ''
+      default: "",
     },
     skudata: {
       type: Object,
       default() {
-        return {}
-      }
+        return {};
+      },
     },
     goods: {
       type: Object,
       default() {
-        return {}
-      }
-    }
+        return {};
+      },
+    },
   },
   computed: {
     isShow: {
       get() {
-        return this.value
+        return this.value;
       },
       set(val) {
-        this.$emit('input', val)
-      }
-    }
+        this.$emit("input", val);
+      },
+    },
   },
   methods: {
     onBuy(data) {
-      this.$emit('input', false)
-      const { selectedNum, selectedSkuComb } = data
-      const { id, productId } = selectedSkuComb
-      this.$store.dispatch('order/setIds', [{ id, productId, selectedNum }])
+      this.$emit("input", false);
+      const { selectedNum, selectedSkuComb } = data;
+      const { id, productId } = selectedSkuComb;
+      this.$store.dispatch("order/setIds", [{ id, productId, selectedNum }]);
 
       this.$nextTick(() => {
         this.$router.push({
-          path: '/order/confirm'
-        })
-      })
+          path: "/order/confirm",
+        });
+      });
     },
     onAddCart(data) {
-      const { id: skuId } = data.selectedSkuComb
+      const { id: skuId } = data.selectedSkuComb;
       addCart({
         productId: this.goodsId,
         skuId,
-        selectedNum: data.selectedNum
+        selectedNum: data.selectedNum,
       }).then((res) => {
-        this.$toast.success('添加成功')
-        this.$emit('input', false)
-        this.$emit('handleCartNum')
-      })
-    }
-  }
-}
+        this.$toast.success("添加成功");
+        this.$emit("input", false);
+        this.$emit("handleCartNum");
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss">

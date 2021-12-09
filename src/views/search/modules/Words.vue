@@ -13,11 +13,13 @@
       </h3>
       <div class="history__main">
         <p
-          v-for="(item,idx) in searchKey"
+          v-for="(item, idx) in searchKey"
           :key="idx"
           class="history__main__item"
           @click="onSearch(item)"
-        >{{ item }}</p>
+        >
+          {{ item }}
+        </p>
       </div>
     </div>
     <!-- hot -->
@@ -30,54 +32,56 @@
       </h3>
       <div class="hot__main">
         <p
-          v-for="(item,idx) in hotList"
+          v-for="(item, idx) in hotList"
           :key="idx"
           class="hot__main__item"
           @click="onSearch(item)"
-        >{{ item }}</p>
+        >
+          {{ item }}
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   props: {
     hotList: {
       type: Array,
       default() {
-        return []
-      }
-    }
+        return [];
+      },
+    },
   },
   computed: {
-    ...mapGetters(['searchKey'])
+    ...mapGetters(["searchKey"]),
   },
   methods: {
     onDelete() {
       this.$dialog
         .confirm({
-          title: '提示',
-          message: '确定清空所有搜索记录吗？'
+          title: "提示",
+          message: "确定清空所有搜索记录吗？",
         })
         .then(() => {
-          this.$store.dispatch('search/delKey')
+          this.$store.dispatch("search/delKey");
         })
-        .catch(() => {})
+        .catch(() => {});
     },
     onSearch(value) {
-      this.$store.dispatch('search/setKey', value)
+      this.$store.dispatch("search/setKey", value);
       this.$router.push({
-        path: '/search/list',
+        path: "/search/list",
         query: {
-          key: value
-        }
-      })
-    }
-  }
-}
+          key: value,
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

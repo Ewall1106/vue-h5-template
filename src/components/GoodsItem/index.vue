@@ -24,18 +24,18 @@
 <script>
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['productId', 'img', 'title', 'desc', 'price', 'oldPrice'],
+  props: ["productId", "img", "title", "desc", "price", "oldPrice"],
   methods: {
     onNavigate() {
       this.$router.push({
-        path: '/detail',
+        path: "/detail",
         query: {
-          productId: this.productId
-        }
-      })
-    }
-  }
-}
+          productId: this.productId,
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

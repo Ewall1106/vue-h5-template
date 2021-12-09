@@ -4,11 +4,11 @@
 
 <script>
 export default {
-  name: 'AfterSale'
-}
+  name: "AfterSale",
+};
 </script>
 
- <style lang="scss" scoped>
+<style lang="scss" scoped>
 .after-sale {
 }
 </style>

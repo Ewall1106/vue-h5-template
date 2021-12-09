@@ -10,45 +10,46 @@
         v-model="checked"
         icon-size="18px"
         :checked-color="variables.theme"
-      >全选</van-checkbox>
+        >全选</van-checkbox
+      >
     </van-submit-bar>
     <div class="submit-bar-placeholder" style="width: 100%; height: 50px" />
   </div>
 </template>
 
 <script>
-import variables from '@/styles/variables.scss'
+import variables from "@/styles/variables.scss";
 
 export default {
   props: {
     amount: {
       type: Number,
-      default: 0
+      default: 0,
     },
     value: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     variables() {
-      return variables
+      return variables;
     },
     checked: {
       get() {
-        return this.value
+        return this.value;
       },
       set(val) {
-        this.$emit('input', val)
-      }
-    }
+        this.$emit("input", val);
+      },
+    },
   },
   methods: {
     onSubmit() {
-      this.$emit('handleSubmit')
-    }
-  }
-}
+      this.$emit("handleSubmit");
+    },
+  },
+};
 </script>
 
 <style scoped>

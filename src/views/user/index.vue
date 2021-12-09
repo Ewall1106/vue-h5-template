@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import Info from './modules/Info'
-import Order from './modules/Order'
-import Tools from './modules/Tools'
+import Info from "./modules/Info";
+import Order from "./modules/Order";
+import Tools from "./modules/Tools";
 
 export default {
-  name: 'User',
+  name: "User",
   components: {
     Info,
     Order,
-    Tools
-  }
-}
+    Tools,
+  },
+};
 </script>

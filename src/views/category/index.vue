@@ -9,11 +9,15 @@
       <template #content>
         <div class="main">
           <image-pic width="100%" height="85" fit="fill" :src="banner" />
-          <div v-for="(item,index) in cate" :key="index" class="main__item">
+          <div v-for="(item, index) in cate" :key="index" class="main__item">
             <h3 class="main__item__title">{{ item.title }}</h3>
             <div class="main__item__content">
               <van-grid :column-num="3" :border="false">
-                <van-grid-item v-for="(single,idx) in item.content" :key="idx" class="single">
+                <van-grid-item
+                  v-for="(single, idx) in item.content"
+                  :key="idx"
+                  class="single"
+                >
                   <image-pic fit="contain" :src="single.img" />
                   <span>{{ single.name }}</span>
                 </van-grid-item>
@@ -27,42 +31,42 @@
 </template>
 
 <script>
-import { getCateItems, getCateContent } from '@/api/category'
+import { getCateItems, getCateContent } from "@/api/category";
 
 export default {
-  name: 'Category',
+  name: "Category",
   data() {
     return {
       active: 0,
       items: [],
       cate: [],
-      banner: ''
-    }
+      banner: "",
+    };
   },
   mounted() {
-    this.getCateItems()
-    this.getCateContent()
+    this.getCateItems();
+    this.getCateContent();
   },
   methods: {
     getCateItems() {
-      getCateItems().then(res => {
-        this.items = res.entry
-      })
+      getCateItems().then((res) => {
+        this.items = res.entry;
+      });
     },
     getCateContent() {
       getCateContent({
-        index: this.active
-      }).then(res => {
-        const { banner, listItem } = res.entry
-        this.banner = banner
-        this.cate = listItem
-      })
+        index: this.active,
+      }).then((res) => {
+        const { banner, listItem } = res.entry;
+        this.banner = banner;
+        this.cate = listItem;
+      });
     },
     onNavClick() {
-      this.getCateContent()
-    }
-  }
-}
+      this.getCateContent();
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
