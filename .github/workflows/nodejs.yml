@@ -23,18 +23,15 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_NAME }}
           key: ${{ secrets.SSH_KEY }}
-          source: "./dist"
+          source: "./dist.zip"
           target: "~/template/vue-h5-template/2.x"
 
-      # - name: Remote ssh && Deploy
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.SSH_HOST }}
-      #     username: ${{ secrets.SSH_NAME }}
-      #     key: ${{ secrets.SSH_KEY }}
-      #     script: |
-      #       cd /root/template/vue-h5-template
-      #       git checkout dev
-      #       git pull
-      #       npm install --registry=https://registry.npm.taobao.org
-      #       npm run build
+      - name: Remote ssh && Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_NAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/template/vue-h5-template/2.x
+            unzip dist.zip 

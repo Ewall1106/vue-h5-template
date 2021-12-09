@@ -2,7 +2,7 @@
 
 const path = require("path");
 const CompressionPlugin = require("compression-webpack-plugin");
-
+const FileManagerPlugin = require("filemanager-webpack-plugin");
 const config = require("./src/utils/config");
 
 function resolve(dir) {
@@ -110,6 +110,19 @@ module.exports = {
           threshold: 10240,
           minRatio: 0.8,
           deleteOriginalAssets: true,
+        },
+      ]);
+    });
+
+    config.when(process.env.NODE_ENV === "production", (config) => {
+      config.plugin("FileManagerPlugin").use(FileManagerPlugin, [
+        {
+          events: {
+            onEnd: {
+              delete: ["dist.zip"],
+              archive: [{ source: "./dist", destination: "dist.zip" }],
+            },
+          },
         },
       ]);
     });
