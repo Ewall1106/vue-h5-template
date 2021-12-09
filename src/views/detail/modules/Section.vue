@@ -48,22 +48,22 @@ export default {
     service: {
       type: Array,
       default: () => {
-        return []
-      }
+        return [];
+      },
     },
-    address: { type: String, default: '' }
+    address: { type: String, default: "" },
   },
   methods: {
     onSelectSku() {
-      this.$emit('input', true)
+      this.$emit("input", true);
     },
     handleAddress() {
       this.$router.push({
-        path: '/address'
-      })
-    }
-  }
-}
+        path: "/address",
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss">

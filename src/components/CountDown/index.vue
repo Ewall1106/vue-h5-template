@@ -13,11 +13,11 @@
 <script>
 export default {
   filters: {
-    padZero: function(value) {
-      return `${value}`.padStart(2, '0')
-    }
-  }
-}
+    padZero: function (value) {
+      return `${value}`.padStart(2, "0");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

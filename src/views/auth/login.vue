@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="header">
-      <img class="header__logo" src="@/assets/logo.png" alt="logo">
+      <img class="header__logo" src="@/assets/logo.png" alt="logo" />
       <p class="header__title">Panda-mall</p>
     </div>
 
@@ -60,7 +60,9 @@
         </template>
       </van-field>
 
-      <div class="forget"><router-link tag="span" to="/forget">忘记密码</router-link></div>
+      <div class="forget">
+        <router-link tag="span" to="/forget">忘记密码</router-link>
+      </div>
 
       <div style="margin: 36px">
         <van-button
@@ -70,7 +72,8 @@
           type="info"
           loading-text="登录中..."
           native-type="submit"
-        >登录</van-button>
+          >登录</van-button
+        >
 
         <van-button
           style="margin-top: 10px"
@@ -80,40 +83,41 @@
           type="info"
           native-type="button"
           to="/registration"
-        >注册</van-button>
+          >注册</van-button
+        >
       </div>
     </van-form>
   </div>
 </template>
 
 <script>
-import { getCaptcha } from '@/api/public'
-import { v4 as uuidv4 } from 'uuid'
+import { getCaptcha } from "@/api/public";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
       form: {
-        username: '',
-        password: '',
-        captcha: '',
+        username: "",
+        password: "",
+        captcha: "",
         isCaptchaShow: false,
-        sid: localStorage.getItem('sid') || ''
+        sid: localStorage.getItem("sid") || "",
       },
 
       loading: false,
-      captchaSvg: ''
-    }
+      captchaSvg: "",
+    };
   },
   watch: {
     $route: {
       handler(route) {
-        console.log('route:', route)
-        this.redirect = (route.query && route.query.redirect) || '/'
+        console.log("route:", route);
+        this.redirect = (route.query && route.query.redirect) || "/";
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   mounted() {
     // this.getCaptcha()
@@ -122,40 +126,41 @@ export default {
     // 获取图形验证码
     getCaptcha() {
       if (!this.form.sid) {
-        this.form.sid = uuidv4()
-        localStorage.setItem('sid', this.form.sid)
+        this.form.sid = uuidv4();
+        localStorage.setItem("sid", this.form.sid);
       }
       getCaptcha({ sid: this.form.sid }).then((res) => {
-        this.captchaSvg = res.entry
-      })
+        this.captchaSvg = res.entry;
+      });
     },
     // 校检邮箱
     checkEmail(value) {
-      const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return reg.test(value)
+      const reg =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return reg.test(value);
     },
     // 提交
     onSubmit() {
-      this.loading = true
+      this.loading = true;
       this.$store
-        .dispatch('user/login', this.form)
+        .dispatch("user/login", this.form)
         .then(() => {
           this.$notify({
-            type: 'success',
-            message: '登录成功',
+            type: "success",
+            message: "登录成功",
             duration: 2000,
             onOpened: () => {
-              this.loading = false
-              location.href = this.redirect
-            }
-          })
+              this.loading = false;
+              location.href = this.redirect;
+            },
+          });
         })
         .catch(() => {
-          this.loading = false
-        })
-    }
-  }
-}
+          this.loading = false;
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

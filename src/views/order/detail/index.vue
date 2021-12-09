@@ -7,11 +7,11 @@
 
 <script>
 export default {
-  name: 'OrderDetail'
-}
+  name: "OrderDetail",
+};
 </script>
 
- <style lang="scss" scoped>
+<style lang="scss" scoped>
 .order-detail {
 }
 </style>

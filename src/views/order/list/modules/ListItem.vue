@@ -22,7 +22,8 @@
           plain
           color="#999"
           style="margin-right: 2px"
-        >{{ attr }}</van-tag>
+          >{{ attr }}</van-tag
+        >
       </template>
     </van-card>
     <!-- <div class="btn">
@@ -37,16 +38,16 @@ export default {
   props: {
     orderId: {
       type: String,
-      default: ''
+      default: "",
     },
     itemList: {
       type: Object,
       default: () => {
-        return {}
-      }
-    }
-  }
-}
+        return {};
+      },
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

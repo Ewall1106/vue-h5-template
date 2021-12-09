@@ -3,5 +3,5 @@
  * @param {Number} num
  */
 export function toDecimal(num = undefined) {
-  return num ? (+num / 100).toFixed(2) : num
+  return num ? (+num / 100).toFixed(2) : num;
 }

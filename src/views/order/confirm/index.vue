@@ -23,111 +23,111 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
-import ListItem from './modules/ListItem'
-import SubmitBar from './modules/SubmitBar'
-import Skeleton from './modules/Skeleton'
+import ListItem from "./modules/ListItem";
+import SubmitBar from "./modules/SubmitBar";
+import Skeleton from "./modules/Skeleton";
 
-import { getAddressList } from '@/api/user'
-import { getOrderList, settleOrder } from '@/api/order'
+import { getAddressList } from "@/api/user";
+import { getOrderList, settleOrder } from "@/api/order";
 
 export default {
-  name: 'OrderConfirm',
+  name: "OrderConfirm",
   components: {
     ListItem,
     SubmitBar,
-    Skeleton
+    Skeleton,
   },
   data() {
     return {
       contact: {
-        type: 'edit',
-        name: '',
-        tel: ''
+        type: "edit",
+        name: "",
+        tel: "",
       },
       list: [],
       isSkeletonShow: true,
-      submitLoading: false
-    }
+      submitLoading: false,
+    };
   },
   computed: {
-    ...mapGetters(['ids', 'uid']),
+    ...mapGetters(["ids", "uid"]),
     amount() {
-      let price = 0
+      let price = 0;
       this.list.forEach((item) => {
-        price += item.selectedNum * item.price
-      })
-      return price
-    }
+        price += item.selectedNum * item.price;
+      });
+      return price;
+    },
   },
   mounted() {
-    this.getOrderList()
-    this.getAddress()
+    this.getOrderList();
+    this.getAddress();
   },
   methods: {
     // 获取列表
     getOrderList() {
       getOrderList({
-        ids: this.ids
+        ids: this.ids,
       }).then((res) => {
-        this.list = res.entry
-        this.isSkeletonShow = false
-      })
+        this.list = res.entry;
+        this.isSkeletonShow = false;
+      });
     },
     // 获取地址
     getAddress() {
       getAddressList().then((res) => {
-        const { list = [], defaultId = '' } = res.entry
-        let address = ''
+        const { list = [], defaultId = "" } = res.entry;
+        let address = "";
         if (defaultId) {
-          address = list.filter((item) => item.addressId === defaultId)
-        } else address = list.filter((item) => item.isDefault === true)
+          address = list.filter((item) => item.addressId === defaultId);
+        } else address = list.filter((item) => item.isDefault === true);
         if (address && address.length) {
-          const [{ name, tel, addressId }] = address
+          const [{ name, tel, addressId }] = address;
           this.contact = {
-            type: 'edit',
+            type: "edit",
             addressId,
             name,
-            tel: tel + ''
-          }
+            tel: tel + "",
+          };
         } else {
-          this.contact = { type: 'add' }
+          this.contact = { type: "add" };
         }
-      })
+      });
     },
     // 地址栏跳转
     onContact() {
       this.$router.push({
-        path: '/address'
-      })
+        path: "/address",
+      });
     },
     // 提交订单
     handleSubmit() {
       if (!this.contact.addressId) {
-        this.$toast('请添加收货联系人地址')
-        return
+        this.$toast("请添加收货联系人地址");
+        return;
       }
-      this.submitLoading = true
+      this.submitLoading = true;
       settleOrder({
         uid: this.uid,
-        list: this.list
+        list: this.list,
       }).then((res) => {
-        const orderId = res.entry
-        this.submitLoading = false
+        const orderId = res.entry;
+        this.submitLoading = false;
         this.$router.replace({
-          path: '/order/status',
+          path: "/order/status",
           query: {
-            orderId
-          }
-        })
-      })
-    }
-  }
-}
+            orderId,
+          },
+        });
+      });
+    },
+  },
+};
 </script>
 
- <style lang="scss" scoped>
+<style lang="scss" scoped>
 .order-confirm {
   min-height: 100vh;
   background: #f5f5f5;

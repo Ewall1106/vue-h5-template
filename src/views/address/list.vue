@@ -16,32 +16,32 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar'
-import { getAddressList, setAddressList } from '@/api/user'
+import NavBar from "@/components/NavBar";
+import { getAddressList, setAddressList } from "@/api/user";
 
 export default {
-  name: 'Address',
+  name: "Address",
   components: {
-    NavBar
+    NavBar,
   },
   data() {
     return {
-      defaultId: '',
+      defaultId: "",
       list: [],
-      isEmpty: false
-    }
+      isEmpty: false,
+    };
   },
 
   async mounted() {
-    this.$toast.loading('加载中...')
-    this.getAddressList()
+    this.$toast.loading("加载中...");
+    this.getAddressList();
   },
   methods: {
     // 获取地址
     getAddressList() {
       getAddressList().then((res) => {
-        const { list = [], defaultId = '' } = res.entry
-        this.defaultId = defaultId
+        const { list = [], defaultId = "" } = res.entry;
+        this.defaultId = defaultId;
         if (list && list.length) {
           this.list = list.map((item) => {
             return {
@@ -49,51 +49,51 @@ export default {
               name: item.name,
               tel: item.tel,
               address: item.fullAddress,
-              isDefault: item.isDefault
-            }
-          })
+              isDefault: item.isDefault,
+            };
+          });
         } else {
-          this.isEmpty = true
+          this.isEmpty = true;
         }
-        this.$toast.clear()
-      })
+        this.$toast.clear();
+      });
     },
     // 选择地址
     onSelect(item) {
       if (item.id === this.defaultId) {
-        this.$router.go(-1)
-        return
+        this.$router.go(-1);
+        return;
       }
-      this.$toast.loading('加载中...')
+      this.$toast.loading("加载中...");
       setAddressList({
-        id: item.id
+        id: item.id,
       }).then((res) => {
-        this.defaultId = item.id
-        this.$toast.clear()
-        this.$router.go(-1)
-      })
+        this.defaultId = item.id;
+        this.$toast.clear();
+        this.$router.go(-1);
+      });
     },
     // 新增地址
     onAdd() {
       this.$router.push({
-        path: '/address/edit',
+        path: "/address/edit",
         query: {
-          type: 1
-        }
-      })
+          type: 1,
+        },
+      });
     },
     // 编辑地址
     onEdit(item, index) {
       this.$router.push({
-        path: '/address/edit',
+        path: "/address/edit",
         query: {
           id: this.list[index].id,
-          type: 2
-        }
-      })
-    }
-  }
-}
+          type: 2,
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
   <div class="home-goods">
-    <Title name="为你推荐" style="background:#fff" />
+    <Title name="为你推荐" style="background: #fff" />
 
     <van-list
       v-model="loading"
@@ -10,7 +10,7 @@
     >
       <div class="main">
         <goods-item
-          v-for="(item,idx) in goodsList"
+          v-for="(item, idx) in goodsList"
           :key="idx"
           :product-id="item.productId"
           :img="item.img"
@@ -25,49 +25,49 @@
 </template>
 
 <script>
-import Title from './Title'
-import GoodsItem from '@/components/GoodsItem'
+import Title from "./Title";
+import GoodsItem from "@/components/GoodsItem";
 
 export default {
   components: {
     GoodsItem,
-    Title
+    Title,
   },
   model: {
-    prop: 'isLoading'
+    prop: "isLoading",
   },
   props: {
     goodsList: {
       type: Array,
       default() {
-        return []
-      }
+        return [];
+      },
     },
     isLoading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isFinished: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     loading: {
       get() {
-        return this.isLoading
+        return this.isLoading;
       },
       set(val) {
-        this.$emit('input', val)
-      }
-    }
+        this.$emit("input", val);
+      },
+    },
   },
   methods: {
     onReachBottom() {
-      this.$emit('onReachBottom')
-    }
-  }
-}
+      this.$emit("onReachBottom");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

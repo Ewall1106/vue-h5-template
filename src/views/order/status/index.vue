@@ -6,16 +6,16 @@
 </template>
 
 <script>
-import Header from './modules/Header'
-import Share from './modules/Share'
+import Header from "./modules/Header";
+import Share from "./modules/Share";
 
 export default {
-  name: 'OrderStatus',
+  name: "OrderStatus",
   components: {
     Header,
-    Share
-  }
-}
+    Share,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

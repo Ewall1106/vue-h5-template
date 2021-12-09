@@ -8,9 +8,9 @@
           :src="avatar"
           width="25"
           height="25"
-          style="margin-right:6px"
+          style="margin-right: 6px"
         />
-        <span style="margin-right:6px">{{ name }}</span>
+        <span style="margin-right: 6px">{{ name }}</span>
         <van-rate
           v-model="score"
           :size="15"
@@ -26,13 +26,13 @@
       <p class="desc__text van-multi-ellipsis--l3">{{ desc }}</p>
       <div class="desc_img">
         <image-pic
-          v-for="(item,idx) in imgs"
+          v-for="(item, idx) in imgs"
           :key="idx"
           :src="item"
           fit="cover"
           width="60"
           height="70"
-          style="margin-right:8px"
+          style="margin-right: 8px"
         />
       </div>
     </div>
@@ -40,43 +40,43 @@
 </template>
 
 <script>
-import variables from '@/styles/variables.scss'
+import variables from "@/styles/variables.scss";
 
 export default {
   props: {
     avatar: {
       type: String,
-      default: ''
+      default: "",
     },
     time: {
       type: Number,
-      default: 0
+      default: 0,
     },
     name: {
       type: String,
-      default: ''
+      default: "",
     },
     score: {
       type: Number,
-      default: 0
+      default: 0,
     },
     desc: {
       type: String,
-      default: ''
+      default: "",
     },
     imgs: {
       type: Array,
       default() {
-        return []
-      }
-    }
+        return [];
+      },
+    },
   },
   computed: {
     variables() {
-      return variables
-    }
-  }
-}
+      return variables;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

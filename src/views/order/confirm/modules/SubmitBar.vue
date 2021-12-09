@@ -12,30 +12,30 @@
 </template>
 
 <script>
-import variables from '@/styles/variables.scss'
+import variables from "@/styles/variables.scss";
 
 export default {
   props: {
     amount: {
       type: Number,
-      default: 0
+      default: 0,
     },
     loading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     variables() {
-      return variables
-    }
+      return variables;
+    },
   },
   methods: {
     onSubmit() {
-      this.$emit('handleSubmit')
-    }
-  }
-}
+      this.$emit("handleSubmit");
+    },
+  },
+};
 </script>
 
 <style scoped>

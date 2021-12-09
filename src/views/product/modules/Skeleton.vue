@@ -1,4 +1,3 @@
-
 <template>
   <div class="skeleton">
     <ContentLoader width="325" height="600">
@@ -21,11 +20,11 @@
 
 <script>
 // https://github.com/egoist/vue-content-loader
-import { ContentLoader } from 'vue-content-loader'
+import { ContentLoader } from "vue-content-loader";
 
 export default {
-  components: { ContentLoader }
-}
+  components: { ContentLoader },
+};
 </script>
 
 <style lang="scss" scoped>

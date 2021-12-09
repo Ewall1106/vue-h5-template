@@ -47,7 +47,8 @@
           type="info"
           native-type="button"
           @click.stop="getMailCode"
-        >发送验证码</van-button>
+          >发送验证码</van-button
+        >
       </van-field>
 
       <van-field
@@ -82,84 +83,86 @@
           type="info"
           loading-text="登录中..."
           native-type="submit"
-        >重置密码</van-button>
+          >重置密码</van-button
+        >
       </div>
     </van-form>
   </div>
 </template>
 
 <script>
-import variables from '@/styles/variables.scss'
-import { reset } from '@/api/user'
-import { getMailCode } from '@/api/public'
+import variables from "@/styles/variables.scss";
+import { reset } from "@/api/user";
+import { getMailCode } from "@/api/public";
 
 export default {
-  name: 'Forget',
+  name: "Forget",
   data() {
     return {
       form: {
-        email: '',
-        password: '',
-        confirmPassword: '',
-        mailcode: ''
+        email: "",
+        password: "",
+        confirmPassword: "",
+        mailcode: "",
       },
-      loading: false
-    }
+      loading: false,
+    };
   },
   computed: {
     variables() {
-      return variables
-    }
+      return variables;
+    },
   },
   methods: {
     // 获取邮箱验证码
     getMailCode() {
-      const { email } = this.form
+      const { email } = this.form;
       if (!email || !this.checkEmail(email)) {
-        this.$toast.fail('请先输入正确的邮箱地址')
-        return
+        this.$toast.fail("请先输入正确的邮箱地址");
+        return;
       }
       getMailCode({ email: this.form.email }).then((res) => {
         this.$notify({
-          type: 'success',
-          message: '邮箱验证码已发送',
-          duration: 2000
-        })
-      })
+          type: "success",
+          message: "邮箱验证码已发送",
+          duration: 2000,
+        });
+      });
     },
     // 校检邮箱
     checkEmail(email) {
-      const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return reg.test(email)
+      const reg =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return reg.test(email);
     },
     // 提交
     onSubmit() {
-      const { password, confirmPassword } = this.form
+      const { password, confirmPassword } = this.form;
       if (password !== confirmPassword) {
-        this.$toast.fail('确认密码与设置的不一致')
-        return
+        this.$toast.fail("确认密码与设置的不一致");
+        return;
       }
-      this.loading = true
+      this.loading = true;
       reset(this.form)
         .then((res) => {
           this.$notify({
-            type: 'success',
-            message: '重置密码成功，请登录',
+            type: "success",
+            message: "重置密码成功，请登录",
             duration: 2500,
             onOpened: () => {
-              this.$router.back()
-            }
-          })
+              this.$router.back();
+            },
+          });
         })
         .finally(() => {
-          this.loading = false
-        })
-    }
-  }
-}
+          this.loading = false;
+        });
+    },
+  },
+};
 </script>
 
- <style lang="scss" scoped>
+<style lang="scss" scoped>
 .forget-container {
   .form {
     padding: 24px;

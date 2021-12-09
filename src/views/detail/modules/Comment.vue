@@ -18,17 +18,18 @@
 
     <div class="tags">
       <van-tag
-        v-for="(item,idx) in tags"
+        v-for="(item, idx) in tags"
         :key="idx"
         class="tags__item"
         :color="variables.red"
         plain
-      >{{ item }}</van-tag>
+        >{{ item }}</van-tag
+      >
     </div>
 
     <div class="main">
       <comment-item
-        v-for="(item,idx) in list"
+        v-for="(item, idx) in list"
         :key="idx"
         :avatar="item.avatar"
         :name="item.name"
@@ -36,31 +37,33 @@
         :score="item.score"
         :desc="item.desc"
         :imgs="item.imgs"
-        style="margin-top:12px"
+        style="margin-top: 12px"
       />
       <div class="main__btn">
-        <van-button :color="variables.gray" plain round size="small">查看全部评价</van-button>
+        <van-button :color="variables.gray" plain round size="small"
+          >查看全部评价</van-button
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import CommentItem from '@/components/CommentItem'
-import variables from '@/styles/variables.scss'
+import CommentItem from "@/components/CommentItem";
+import variables from "@/styles/variables.scss";
 
 export default {
   components: {
-    CommentItem
+    CommentItem,
   },
   // eslint-disable-next-line vue/require-prop-types
-  props: ['rate', 'num', 'tags', 'list'],
+  props: ["rate", "num", "tags", "list"],
   computed: {
     variables() {
-      return variables
-    }
-  }
-}
+      return variables;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -21,26 +21,26 @@ export default {
   props: {
     title: {
       type: String,
-      default: '请输入标题'
+      default: "请输入标题",
     },
     leftText: {
       type: String,
-      default: '返回'
+      default: "返回",
     },
     leftArrow: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   methods: {
     onClickLeft() {
-      this.$router.go(-1)
-    }
-  }
-}
+      this.$router.go(-1);
+    },
+  },
+};
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 @import "@/styles/variables.scss";
 
 // reset vant-nav-bar style

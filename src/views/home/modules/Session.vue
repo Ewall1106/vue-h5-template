@@ -3,9 +3,9 @@
     <Title name="精选专场" />
     <div class="main">
       <session-item
-        v-for="(item,idx) in sessionList"
+        v-for="(item, idx) in sessionList"
         :key="idx"
-        style="margin-bottom:10px"
+        style="margin-bottom: 10px"
         :img="item.img"
         :title="item.title"
         :tagnum="item.tagnum"
@@ -17,24 +17,23 @@
 </template>
 
 <script>
-import Title from './Title'
-import SessionItem from '@/components/SessionItem'
+import Title from "./Title";
+import SessionItem from "@/components/SessionItem";
 
 export default {
   components: {
     Title,
-    SessionItem
+    SessionItem,
   },
   props: {
     sessionList: {
       type: Array,
       default() {
-        return []
-      }
-    }
-  }
-}
+        return [];
+      },
+    },
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

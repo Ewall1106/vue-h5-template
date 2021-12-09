@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from "vue";
 
 // https://youzan.github.io/vant/#/zh-CN/home
 import {
@@ -50,8 +50,8 @@ import {
   Tab,
   Tabs,
   Sticky,
-  Empty
-} from 'vant'
+  Empty,
+} from "vant";
 
 Vue.use(Toast)
   .use(Dialog)
@@ -101,5 +101,4 @@ Vue.use(Toast)
   .use(Tab)
   .use(Tabs)
   .use(Sticky)
-  .use(Empty)
-
+  .use(Empty);

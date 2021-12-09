@@ -20,20 +20,20 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar'
-import areaList from '@/utils/area.js'
+import NavBar from "@/components/NavBar";
+import areaList from "@/utils/area.js";
 import {
   addAddress,
   deleteAddress,
   updateAddress,
-  getAddress
-} from '@/api/user'
-import { nanoid } from 'nanoid'
+  getAddress,
+} from "@/api/user";
+import { nanoid } from "nanoid";
 
 export default {
-  name: 'AddressEdit',
+  name: "AddressEdit",
   components: {
-    NavBar
+    NavBar,
   },
   data() {
     return {
@@ -41,78 +41,77 @@ export default {
       isSaving: false,
       isDeleting: false,
       areaList,
-      addressInfo: {}
-    }
+      addressInfo: {},
+    };
   },
   mounted() {
-    const { type, id } = this.$route.query
-    this.type = Number(type)
+    const { type, id } = this.$route.query;
+    this.type = Number(type);
     if (this.type === 2) {
-      this.getAddressInfo(id)
+      this.getAddressInfo(id);
     }
   },
   methods: {
     // 获取地址信息
     getAddressInfo(id) {
-      this.$toast.loading('加载中...')
+      this.$toast.loading("加载中...");
       getAddress({ addressId: id }).then((res) => {
-        this.addressInfo = res.entry
-        this.$toast.clear()
-      })
+        this.addressInfo = res.entry;
+        this.$toast.clear();
+      });
     },
     // 新增or更新
     onSave(address) {
-      this.isSaving = true
+      this.isSaving = true;
       if (this.type === 1) {
         addAddress({
           addressId: nanoid(6),
-          ...address
+          ...address,
         }).then((res) => {
-          this.isSaving = false
+          this.isSaving = false;
           this.$notify({
-            type: 'success',
-            message: '保存成功',
+            type: "success",
+            message: "保存成功",
             duration: 2000,
             onOpened: () => {
-              this.$router.back()
-            }
-          })
-        })
+              this.$router.back();
+            },
+          });
+        });
       } else {
         updateAddress({
-          ...address
+          ...address,
         }).then((res) => {
-          this.isSaving = false
+          this.isSaving = false;
           this.$notify({
-            type: 'success',
-            message: '更新成功',
+            type: "success",
+            message: "更新成功",
             duration: 2000,
             onOpened: () => {
-              this.$router.back()
-            }
-          })
-        })
+              this.$router.back();
+            },
+          });
+        });
       }
     },
     // 删除地址
     onDelete(address) {
       deleteAddress({
-        addressId: address.addressId
-      }).then((res) => {
-        this.isSaving = false
+        addressId: address.addressId,
+      }).then(() => {
+        this.isSaving = false;
         this.$notify({
-          type: 'success',
-          message: '删除成功',
+          type: "success",
+          message: "删除成功",
           duration: 2000,
           onOpened: () => {
-            this.$router.back()
-          }
-        })
-      })
-    }
-  }
-}
+            this.$router.back();
+          },
+        });
+      });
+    },
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>

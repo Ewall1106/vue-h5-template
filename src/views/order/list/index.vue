@@ -36,19 +36,19 @@
 </template>
 
 <script>
-import ListItem from './modules/ListItem'
+import ListItem from "./modules/ListItem";
 
-import { getUserList } from '@/api/order'
+import { getUserList } from "@/api/order";
 
 export default {
-  name: 'OrderList',
+  name: "OrderList",
   components: {
-    ListItem
+    ListItem,
   },
   data() {
     return {
       active: 0,
-      titleList: ['全部', '待支付', '待发货', '待收货'],
+      titleList: ["全部", "待支付", "待发货", "待收货"],
 
       list: [],
       pageNo: 0,
@@ -56,14 +56,14 @@ export default {
       loading: false,
       finished: false,
       refreshing: false,
-      isSkeletonShow: true
-    }
+      isSkeletonShow: true,
+    };
   },
 
   mounted() {
-    const { type } = this.$route.query
-    this.active = Number(type)
-    this.onLoad()
+    const { type } = this.$route.query;
+    this.active = Number(type);
+    this.onLoad();
   },
 
   methods: {
@@ -72,47 +72,47 @@ export default {
       getUserList({
         type: this.active,
         pageNo: this.pageNo,
-        pageSize: this.pageSize
+        pageSize: this.pageSize,
       }).then((res) => {
-        const data = res.entry
+        const data = res.entry;
         if (this.refreshing) {
-          this.list = data
-          this.refreshing = false
-          this.finished = false
+          this.list = data;
+          this.refreshing = false;
+          this.finished = false;
         } else {
-          this.list = [...this.list, ...data]
-          if (data.length < this.pageSize) this.finished = true
+          this.list = [...this.list, ...data];
+          if (data.length < this.pageSize) this.finished = true;
         }
-        this.loading = false
-        this.isSkeletonShow = false
-      })
+        this.loading = false;
+        this.isSkeletonShow = false;
+      });
     },
     // tab 切换
     onTitleChange(idx) {
-      this.pageNo = 0
-      this.loading = false
-      this.finished = false
-      this.refreshing = false
-      this.isSkeletonShow = true
-      this.list = []
-      this.onLoad()
+      this.pageNo = 0;
+      this.loading = false;
+      this.finished = false;
+      this.refreshing = false;
+      this.isSkeletonShow = true;
+      this.list = [];
+      this.onLoad();
     },
     // 触底刷新
     onLoad() {
       if (!this.finished) {
-        this.loading = true
-        this.pageNo += 1
-        this.getList()
+        this.loading = true;
+        this.pageNo += 1;
+        this.getList();
       }
     },
     // 下拉刷新
     onRefresh() {
-      this.refreshing = true
-      this.pageNo = 1
-      this.getList()
-    }
-  }
-}
+      this.refreshing = true;
+      this.pageNo = 1;
+      this.getList();
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -128,7 +128,7 @@ export default {
 }
 </style>
 
- <style lang="scss" scoped>
+<style lang="scss" scoped>
 .order-list {
   background: #f5f5f5;
   .list-item {

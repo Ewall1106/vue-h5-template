@@ -3,8 +3,17 @@
   <div class="home-category">
     <div ref="scroll" class="scroll-wrapper">
       <div class="scroll-content">
-        <div v-for="(cate,idx) in list" :key="idx" class="scroll-item__wrapper">
-          <div v-for="(item, index) in cate" :key="index" class="scroll-item" @click="onNavigate()">
+        <div
+          v-for="(cate, idx) in list"
+          :key="idx"
+          class="scroll-item__wrapper"
+        >
+          <div
+            v-for="(item, index) in cate"
+            :key="index"
+            class="scroll-item"
+            @click="onNavigate()"
+          >
             <image-pic width="35" height="35" fill="contain" :src="item.icon" />
             <p class="text">{{ item.name }}</p>
           </div>
@@ -12,72 +21,72 @@
       </div>
     </div>
     <div v-if="list && list.prev && list.prev.length > 5" class="dot-wrapper">
-      <div class="dot" :style="{'transform': `translateX(${rate})`}" />
+      <div class="dot" :style="{ transform: `translateX(${rate})` }" />
     </div>
   </div>
 </template>
 
 <script>
-import BScroll from '@better-scroll/core'
+import BScroll from "@better-scroll/core";
 
 export default {
   props: {
     cateList: {
       type: Array,
       default() {
-        return []
-      }
-    }
+        return [];
+      },
+    },
   },
   data() {
     return {
       rate: 0,
-      breakPoint: 0
-    }
+      breakPoint: 0,
+    };
   },
   computed: {
     list() {
-      let rlt = {}
-      const data = this.cateList
-      const len = this.cateList.length
+      let rlt = {};
+      const data = this.cateList;
+      const len = this.cateList.length;
       if (len <= 5) {
         rlt = {
           prev: data,
-          next: []
-        }
+          next: [],
+        };
       } else if (len > 5 && len <= 10) {
         rlt = {
           prev: data.slice(0, 5),
-          next: data.slice(5)
-        }
+          next: data.slice(5),
+        };
       } else {
-        const breakPoint = Math.ceil(data.length / 2)
+        const breakPoint = Math.ceil(data.length / 2);
         rlt = {
           prev: data.slice(0, breakPoint),
-          next: data.slice(breakPoint)
-        }
+          next: data.slice(breakPoint),
+        };
       }
-      return rlt
-    }
+      return rlt;
+    },
   },
   watch: {
     cateList(val) {
       if (val.length > 5) {
         this.$nextTick(() => {
-          this.init()
-        })
+          this.init();
+        });
       }
-    }
+    },
   },
   beforeDestroy() {
-    if (this.bs) this.bs.destroy()
+    if (this.bs) this.bs.destroy();
   },
   methods: {
     // 跳转
     onNavigate(item) {
       this.$router.push({
-        path: '/product'
-      })
+        path: "/product",
+      });
     },
     // 初始化
     init() {
@@ -86,23 +95,23 @@ export default {
         scrollY: false,
         click: true,
         // taps: true,
-        probeType: 3 // listening scroll hook
-      })
+        probeType: 3, // listening scroll hook
+      });
 
-      const totalX = Math.abs(this.bs.maxScrollX)
+      const totalX = Math.abs(this.bs.maxScrollX);
 
-      this._registerHooks(['scroll'], (pos) => {
-        const currentX = Math.abs(pos.x)
-        this.rate = `${Number((currentX / totalX) * 100).toFixed(2)}%`
-      })
+      this._registerHooks(["scroll"], (pos) => {
+        const currentX = Math.abs(pos.x);
+        this.rate = `${Number((currentX / totalX) * 100).toFixed(2)}%`;
+      });
     },
     _registerHooks(hookNames, handler) {
       hookNames.forEach((name) => {
-        this.bs.on(name, handler)
-      })
-    }
-  }
-}
+        this.bs.on(name, handler);
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,4 +1,3 @@
-
 <template>
   <div class="overview">
     <h3 class="title">{{ title }}</h3>
@@ -14,8 +13,8 @@
 <script>
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['title', 'desc', 'price', 'oldPrice']
-}
+  props: ["title", "desc", "price", "oldPrice"],
+};
 </script>
 
 <style lang="scss" scoped>

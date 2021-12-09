@@ -1,19 +1,19 @@
 <template>
   <div v-show="isShow" class="back-top">
-    <span v-scroll-to="'body'" style="color:#8e8e8e">
+    <span v-scroll-to="'body'" style="color: #8e8e8e">
       <svg-icon icon-class="backtop" :width="30" :height="30" />
     </span>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import VueScrollTo from 'vue-scrollto'
+import Vue from "vue";
+import VueScrollTo from "vue-scrollto";
 
 Vue.use(VueScrollTo, {
-  container: 'body',
+  container: "body",
   duration: 500,
-  easing: 'ease',
+  easing: "ease",
   offset: 0,
   force: true,
   cancelable: true,
@@ -21,41 +21,41 @@ Vue.use(VueScrollTo, {
   onDone: false,
   onCancel: false,
   x: false,
-  y: true
-})
+  y: true,
+});
 
 export default {
   props: {
     offsetTop: {
       type: Number,
-      default: 100
-    }
+      default: 100,
+    },
   },
   data() {
     return {
       timer: null,
-      isShow: false
-    }
+      isShow: false,
+    };
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener("scroll", this.handleScroll);
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     handleScroll() {
-      if (this.timer) clearTimeout(this.timer)
+      if (this.timer) clearTimeout(this.timer);
       this.timer = setTimeout(() => {
         const scrollTop =
           window.pageYOffset ||
           document.documentElement.scrollTop ||
-          document.body.scrollTop
-        this.isShow = scrollTop > this.offsetTop
-      }, 15)
-    }
-  }
-}
+          document.body.scrollTop;
+        this.isShow = scrollTop > this.offsetTop;
+      }, 15);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

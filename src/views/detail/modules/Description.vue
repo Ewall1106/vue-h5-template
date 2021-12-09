@@ -18,11 +18,11 @@ export default {
     details: {
       type: Array,
       default: () => {
-        return []
-      }
-    }
-  }
-}
+        return [];
+      },
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -40,4 +40,5 @@ export default {
     padding: 0 24px;
   }
 }
-</style>>
+</style>
+>
