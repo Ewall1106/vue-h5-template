@@ -9,14 +9,16 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-const { mockUrl } = config[process.env.NODE_ENV];
+const NODE_ENV = process.env.NODE_ENV;
+const { mockUrl } = config[NODE_ENV];
+const isDev = NODE_ENV === "development" || NODE_ENV === "local";
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
   publicPath: "/",
   outputDir: "dist",
   assetsDir: "static",
-  lintOnSave: process.env.NODE_ENV === "development",
+  lintOnSave: isDev,
   devServer: {
     overlay: {
       warnings: false,
@@ -78,7 +80,7 @@ module.exports = {
       })
       .end();
 
-    config.when(process.env.NODE_ENV !== "development", (config) => {
+    config.when(!isDev, (config) => {
       config.optimization.splitChunks({
         chunks: "all",
         cacheGroups: {
@@ -101,7 +103,7 @@ module.exports = {
       config.optimization.runtimeChunk("single");
     });
 
-    config.when(process.env.NODE_ENV === "production", (config) => {
+    config.when(!isDev, (config) => {
       // Notice：https://github.com/webpack-contrib/compression-webpack-plugin/issues/223
       config.plugin("compressPlugin").use(CompressionPlugin, [
         {
@@ -114,7 +116,7 @@ module.exports = {
       ]);
     });
 
-    config.when(process.env.NODE_ENV === "production", (config) => {
+    config.when(process.env.NODE_ENV === "publish", (config) => {
       config.plugin("FileManagerPlugin").use(FileManagerPlugin, [
         {
           events: {
