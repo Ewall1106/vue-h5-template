@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="header">
       <img class="header__logo" src="@/assets/logo.png" alt="logo" />
-      <p class="header__title">Panda-mall</p>
+      <p class="header__title">Vue-H5-Template</p>
     </div>
 
     <van-form

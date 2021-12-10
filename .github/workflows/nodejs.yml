@@ -34,4 +34,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/template/vue-h5-template/2.x
-            unzip dist.zip 
+            unzip -o dist.zip 
