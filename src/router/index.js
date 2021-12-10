@@ -4,20 +4,43 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
-  // 首页
   {
     path: "*",
-    name: "Home",
-    // 路由懒加载：https://router.vuejs.org/zh/guide/advanced/lazy-loading.html
-    // webpackPreload：https://www.jianshu.com/p/bbdcfeee7fbc
-    component: () => import(/* webpackPreload: true */ "@/views/home"),
+    name: "Power",
+    component: () => import("@/views/power"),
     meta: {
-      title: "首页",
+      title: "能力",
+      showTab: true,
+    },
+  },
+  {
+    path: "/power",
+    name: "Power",
+    component: () => import("@/views/power"),
+    meta: {
+      title: "能力",
+      showTab: true,
+    },
+  },
+  {
+    path: "/show",
+    name: "Show",
+    component: () => import("@/views/show"),
+    meta: {
+      title: "演示",
       showTab: true,
       keepAlive: true,
     },
   },
-  // 登录
+  {
+    path: "/user",
+    name: "User",
+    component: () => import("@/views/user"),
+    meta: {
+      title: "我的",
+      showTab: true,
+    },
+  },
   {
     path: "/login",
     name: "Login",
@@ -26,7 +49,6 @@ const routes = [
       title: "登录",
     },
   },
-  // 注册
   {
     path: "/registration",
     name: "Registration",
@@ -35,24 +57,21 @@ const routes = [
       title: "注册",
     },
   },
-  // 找回密码
+  // 基础组件 Demo
   {
-    path: "/forget",
-    name: "Forget",
-    component: () => import("@/views/auth/forget"),
+    path: "/power/svg-icon",
+    name: "Power",
+    component: () => import("@/views/demo/svg-icon"),
     meta: {
-      title: "找回密码",
+      title: "图标组件",
     },
   },
-
-  // 我的
   {
-    path: "/user",
-    name: "User",
-    component: () => import("@/views/user"),
+    path: "/power/back-top",
+    name: "Power",
+    component: () => import("@/views/demo/back-top"),
     meta: {
-      title: "我的",
-      showTab: true,
+      title: "返回顶部",
     },
   },
 ];

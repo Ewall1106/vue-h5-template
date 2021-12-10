@@ -1,18 +1,16 @@
 <template>
-  <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-    <div class="home">
-      <Swiper :banner="banner" />
-      <Category :cate-list="cateList" />
-      <Goods
-        v-model="loading"
-        :goods-list="list"
-        :is-finished="finished"
-        @onReachBottom="onReachBottom"
-      />
-      <back-top />
-      <Skeleton v-if="isSkeletonShow" />
-    </div>
-  </van-pull-refresh>
+  <div class="home">
+    <Swiper :banner="banner" />
+    <Category :cate-list="cateList" />
+    <Goods
+      v-model="loading"
+      :goods-list="list"
+      :is-finished="finished"
+      @onReachBottom="onReachBottom"
+    />
+    <back-top />
+    <Skeleton v-if="isSkeletonShow" />
+  </div>
 </template>
 
 <script>
@@ -93,15 +91,6 @@ export default {
         this.getGoodsList();
       }
     },
-    onRefresh() {
-      if (!this.loading) {
-        this.refreshing = true;
-        this.pageNo = 1;
-        this.getBanner();
-        this.getCategory();
-        this.getGoodsList();
-      }
-    },
   },
 };
 </script>
@@ -109,7 +98,6 @@ export default {
 <style lang="scss" scoped>
 .home {
   background: #f5f5f5;
-  min-height: 100vh;
   .logo {
     display: block;
     width: 200px;

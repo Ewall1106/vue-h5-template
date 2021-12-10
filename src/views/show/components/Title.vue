@@ -1,7 +1,7 @@
 <template>
   <div class="home-title">
     <span class="line" />
-    <span class="text">{{ name }}</span>
+    <span class="text">{{ title }}</span>
     <span class="line" />
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 export default {
   props: {
-    name: {
+    title: {
       type: String,
       default: "",
     },
