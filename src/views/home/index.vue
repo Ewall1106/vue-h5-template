@@ -1,10 +1,8 @@
 <template>
   <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
     <div class="home">
-      <!-- <Header /> -->
       <Swiper :banner="banner" />
       <Category :cate-list="cateList" />
-      <Session :session-list="sessionList" />
       <Goods
         v-model="loading"
         :goods-list="list"
@@ -18,21 +16,17 @@
 </template>
 
 <script>
-import { getBanner, getCategory, getSession, getList } from "@/api/home";
-import Header from "./modules/Header";
-import Swiper from "./modules/Swiper";
-import Category from "./modules/Category";
-import Session from "./modules/Session";
-import Goods from "./modules/Goods";
-import Skeleton from "./modules/Skeleton";
+import { getBanner, getCategory, getList } from "@/api/home";
+import Swiper from "./components/Swiper";
+import Category from "./components/Category";
+import Goods from "./components/Goods";
+import Skeleton from "./components/Skeleton";
 
 export default {
   name: "Home",
   components: {
-    Header,
     Swiper,
     Category,
-    Session,
     Goods,
     Skeleton,
   },
@@ -51,48 +45,35 @@ export default {
     };
   },
   mounted() {
-    Promise.all([this.getBanner(), this.getCategory(), this.getSession()]).then(
-      () => {
-        this.isSkeletonShow = false;
-      }
-    );
+    Promise.all([this.getBanner(), this.getCategory()]).then(() => {
+      this.isSkeletonShow = false;
+    });
   },
   methods: {
-    // banner
+    // ---- request --- //
     getBanner() {
       return new Promise((resolve) => {
         getBanner().then((res) => {
-          this.banner = res.entry;
+          this.banner = res.data;
           resolve();
         });
       });
     },
-    // category
     getCategory() {
       return new Promise((resolve) => {
         getCategory().then((res) => {
-          const data = res.entry;
+          const data = res.data;
           this.cateList = data;
           resolve();
         });
       });
     },
-    // session
-    getSession() {
-      return new Promise((resolve) => {
-        getSession().then((res) => {
-          this.sessionList = res.entry;
-          resolve();
-        });
-      });
-    },
-    // goods-list
     getGoodsList() {
       getList({
         pageSize: this.pageSize,
         pageNo: this.pageNo,
       }).then((res) => {
-        const data = res.entry;
+        const data = res.data;
         if (this.refreshing) {
           this.list = data;
           this.refreshing = false;
@@ -104,7 +85,7 @@ export default {
         this.loading = false;
       });
     },
-    // reach-bottom
+    // ---- actions --- //
     onReachBottom() {
       if (!this.finished) {
         this.loading = true;
@@ -112,15 +93,12 @@ export default {
         this.getGoodsList();
       }
     },
-
-    // pull-refresh
     onRefresh() {
       if (!this.loading) {
         this.refreshing = true;
         this.pageNo = 1;
         this.getBanner();
         this.getCategory();
-        this.getSession();
         this.getGoodsList();
       }
     },

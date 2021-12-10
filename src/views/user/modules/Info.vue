@@ -28,7 +28,7 @@ export default {
   methods: {
     doCopy(val) {
       this.$copyText(val).then(
-        (e) => {
+        () => {
           // success
           this.$toast.success("Id复制成功");
         },

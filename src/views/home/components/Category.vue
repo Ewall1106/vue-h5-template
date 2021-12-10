@@ -1,5 +1,4 @@
 <template>
-  <!-- https://www.jianshu.com/p/c7ecd50f2e52 -->
   <div class="home-category">
     <div ref="scroll" class="scroll-wrapper">
       <div class="scroll-content">
@@ -8,12 +7,7 @@
           :key="idx"
           class="scroll-item__wrapper"
         >
-          <div
-            v-for="(item, index) in cate"
-            :key="index"
-            class="scroll-item"
-            @click="onNavigate()"
-          >
+          <div v-for="(item, index) in cate" :key="index" class="scroll-item">
             <image-pic width="35" height="35" fill="contain" :src="item.icon" />
             <p class="text">{{ item.name }}</p>
           </div>
@@ -82,12 +76,6 @@ export default {
     if (this.bs) this.bs.destroy();
   },
   methods: {
-    // 跳转
-    onNavigate(item) {
-      this.$router.push({
-        path: "/product",
-      });
-    },
     // 初始化
     init() {
       this.bs = new BScroll(this.$refs.scroll, {

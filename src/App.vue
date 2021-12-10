@@ -5,16 +5,16 @@
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive" :key="key" />
 
-    <tabbar v-if="$route.meta.showTab" />
+    <tab-bar v-if="$route.meta.showTab" />
   </div>
 </template>
 
 <script>
-import Tabbar from "./components/Tabbar";
+import TabBar from "./components/TabBar";
 
 export default {
   components: {
-    Tabbar,
+    TabBar,
   },
   computed: {
     key() {
