@@ -13,7 +13,7 @@
 export default {
   methods: {
     loginOut() {
-      this.$store.dispatch("user/logout").then((res) => {
+      this.$store.dispatch("user/logout").then(() => {
         this.$notify({ type: "success", message: "退出登录成功" });
         this.$router.replace("/");
       });

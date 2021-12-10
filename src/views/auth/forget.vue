@@ -121,7 +121,7 @@ export default {
         this.$toast.fail("请先输入正确的邮箱地址");
         return;
       }
-      getMailCode({ email: this.form.email }).then((res) => {
+      getMailCode({ email: this.form.email }).then(() => {
         this.$notify({
           type: "success",
           message: "邮箱验证码已发送",
@@ -144,7 +144,7 @@ export default {
       }
       this.loading = true;
       reset(this.form)
-        .then((res) => {
+        .then(() => {
           this.$notify({
             type: "success",
             message: "重置密码成功，请登录",

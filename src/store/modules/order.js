@@ -10,7 +10,7 @@ const mutations = {
 };
 
 const actions = {
-  setIds({ commit, state }, ids) {
+  setIds({ commit }, ids) {
     commit("SET_IDS", ids);
     localStorage.setItem("ids", JSON.stringify(ids));
   },

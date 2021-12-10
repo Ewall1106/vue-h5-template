@@ -160,7 +160,7 @@ export default {
         message: "加载中...",
         forbidClick: true,
       });
-      getMailCode({ email: this.form.email }).then((res) => {
+      getMailCode({ email: this.form.email }).then(() => {
         this.$toast.clear();
         this.$notify({
           type: "success",
@@ -184,7 +184,7 @@ export default {
       }
       this.loading = true;
       registry(this.form)
-        .then((res) => {
+        .then(() => {
           this.$notify({
             type: "success",
             message: "注册成功，请登录",
