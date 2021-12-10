@@ -1,13 +1,7 @@
 <template>
-  <div class="goods-item" @click="onNavigate">
+  <div class="goods-item">
     <div class="pic">
-      <image-pic
-        fill="cover"
-        align="center"
-        width="90"
-        height="100"
-        :src="img"
-      />
+      <van-image lazy-load width="90" height="100" :src="img" />
     </div>
     <p class="title">{{ title }}</p>
     <p class="desc">{{ desc }}</p>
@@ -23,18 +17,7 @@
 
 <script>
 export default {
-  // eslint-disable-next-line vue/require-prop-types
   props: ["productId", "img", "title", "desc", "price", "oldPrice"],
-  methods: {
-    onNavigate() {
-      this.$router.push({
-        path: "/detail",
-        query: {
-          productId: this.productId,
-        },
-      });
-    },
-  },
 };
 </script>
 
@@ -46,7 +29,8 @@ export default {
   width: 360px;
   overflow: hidden;
   .pic {
-    display: block;
+    display: flex;
+    justify-content: center;
     padding: 14px;
     background: #f5f5f5;
   }

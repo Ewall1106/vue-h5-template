@@ -1,44 +1,9 @@
 <template>
-  <div>
-    <div class="tabbar">
-      <van-tabbar
-        v-model="active"
-        :active-color="variables.theme"
-        :fixed="false"
-        route
-      >
-        <van-tabbar-item to="/" icon="wap-home">演示</van-tabbar-item>
-        <van-tabbar-item to="/category" icon="bars">组件</van-tabbar-item>
-        <van-tabbar-item to="/user" icon="manager">我的</van-tabbar-item>
-      </van-tabbar>
-    </div>
-    <div class="tabbar--placeholder" style="width: 100%; height: 50px" />
-  </div>
+  <van-tabbar route active-color="#1989fa">
+    <van-tabbar-item replace to="/power" icon="good-job">
+      能力
+    </van-tabbar-item>
+    <van-tabbar-item replace to="/show" icon="wap-nav">演示</van-tabbar-item>
+    <van-tabbar-item replace to="/user" icon="manager">我的</van-tabbar-item>
+  </van-tabbar>
 </template>
-
-<script>
-import variables from "@/styles/variables.scss";
-
-export default {
-  data() {
-    return {
-      active: 0,
-    };
-  },
-  computed: {
-    variables() {
-      return variables;
-    },
-  },
-};
-</script>
-
-<style lang="scss" scoped>
-.tabbar {
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  border-top: 2px solid #f5f5f5;
-}
-</style>

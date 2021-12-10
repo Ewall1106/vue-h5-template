@@ -1,5 +1,5 @@
 <template>
-  <div class="home-category">
+  <div class="category">
     <div ref="scroll" class="scroll-wrapper">
       <div class="scroll-content">
         <div
@@ -8,7 +8,7 @@
           class="scroll-item__wrapper"
         >
           <div v-for="(item, index) in cate" :key="index" class="scroll-item">
-            <image-pic width="35" height="35" fill="contain" :src="item.icon" />
+            <van-image width="35" height="35" fill="contain" :src="item.icon" />
             <p class="text">{{ item.name }}</p>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/variables.scss";
 
-.home-category {
+.category {
   padding: 24px 0;
   background: #fff;
   .scroll-wrapper {
