@@ -14,13 +14,6 @@ export function getCategory() {
   });
 }
 
-export function getSession() {
-  return request({
-    url: "/home/session",
-    method: "get",
-  });
-}
-
 export function getList(data) {
   return request({
     url: "/home/list",

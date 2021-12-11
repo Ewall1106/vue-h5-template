@@ -37,7 +37,7 @@ module.exports = {
   },
   configureWebpack: {
     devtool: "source-map",
-    name: "panda-mall",
+    name: "vue-h5-template",
     resolve: {
       alias: {
         "@": resolve("src"),
