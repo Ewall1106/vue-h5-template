@@ -8,7 +8,6 @@
     "local": "cross-env NODE_ENV=local vue-cli-service serve",
     "build": "cross-env NODE_ENV=production vue-cli-service build",
     "lint": "cross-env NODE_ENV=development vue-cli-service lint",
-    "publish": "cross-env NODE_ENV=publish vue-cli-service build",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {

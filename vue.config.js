@@ -116,7 +116,7 @@ module.exports = {
       ]);
     });
 
-    config.when(process.env.NODE_ENV === "publish", (config) => {
+    config.when(!isDev, (config) => {
       config.plugin("FileManagerPlugin").use(FileManagerPlugin, [
         {
           events: {
