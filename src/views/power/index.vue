@@ -12,7 +12,8 @@
       <van-cell title="更新中..." />
     </van-cell-group>
 
-    <van-cell-group title="基础功能">
+    <van-cell-group title="扩展功能">
+      <van-cell title="接口请求" is-link to="/show" />
       <van-cell title="更新中..." />
     </van-cell-group>
   </div>
