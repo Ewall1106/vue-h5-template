@@ -15,7 +15,7 @@
 
 `Vue-H5-Template` 项目使用提供搭建 `移动端h5页面` 开发所需的基础模板，并提供一些通用型的解决方案、可复用组件及扩展功能。
 
-[vue2.x 版本](https://github.com/Ewall1106/vue-h5-template/tree/2.x) | [vue3.x 版本](https://github.com/Ewall1106/vue-h5-template/tree/3.x)
+版本: [vue2.x](https://github.com/Ewall1106/vue-h5-template/tree/2.x) | [vue3.x](https://github.com/Ewall1106/vue-h5-template/tree/3.x)
 
 ## 基本说明
 
@@ -51,7 +51,6 @@ $ yarn & yarn dev
 - `vant` 组件的安装及使用
 - `scroll` 横向滚动组件封装
 - `svg-icon` 图标组件
-
 - ...
 
 ## 目录结构
