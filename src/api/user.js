@@ -9,82 +9,19 @@ export function getInfo() {
 }
 
 // 注册
-export function registry(data) {
+export function signup(data) {
   return request({
-    url: "/user/registry",
+    url: "/user/signup",
     method: "post",
     data,
   });
 }
 
 // 登录
-export function login(data) {
+export function signin(data) {
   return request({
-    url: "/user/login",
+    url: "/user/signin",
     method: "post",
-    data,
-  });
-}
-
-// 重置密码
-export function reset(data) {
-  return request({
-    url: "/user/reset",
-    method: "post",
-    data,
-  });
-}
-
-// 新增地址
-export function addAddress(data) {
-  return request({
-    url: "/user/address",
-    method: "post",
-    data,
-  });
-}
-
-// 删除地址
-export function deleteAddress(data) {
-  return request({
-    url: "/user/address",
-    method: "delete",
-    data,
-  });
-}
-
-// 更新地址
-export function updateAddress(data) {
-  return request({
-    url: "/user/address",
-    method: "put",
-    data,
-  });
-}
-
-// 获取地址
-export function getAddress(params) {
-  return request({
-    url: "/user/address",
-    method: "get",
-    params,
-  });
-}
-
-// 获取地址列表
-export function getAddressList(params) {
-  return request({
-    url: "/user/address/list",
-    method: "get",
-    params,
-  });
-}
-
-// 选择地址列表
-export function setAddressList(data) {
-  return request({
-    url: "/user/address/list",
-    method: "put",
     data,
   });
 }

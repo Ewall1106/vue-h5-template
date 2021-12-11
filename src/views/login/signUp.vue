@@ -1,5 +1,5 @@
 <template>
-  <div class="registration">
+  <div class="signup">
     <nav-bar title="用户注册">
       <van-icon :color="variables.black" size="18" />
     </nav-bar>
@@ -15,14 +15,13 @@
         type="text"
         required
         clearable
-        name="注册邮箱"
-        label="注册邮箱"
-        placeholder="请输入邮箱地址"
+        name="注册名"
+        label="注册名"
+        placeholder="请输入用户名"
         :rules="[
           {
-            validator: checkEmail,
             required: true,
-            message: '请输入正确的邮箱地址!',
+            message: '请输入用户名!',
           },
         ]"
       />
@@ -39,7 +38,7 @@
       />
 
       <van-field
-        v-model="form.confirmPassword"
+        v-model="form.confirmPwd"
         type="password"
         required
         clearable
@@ -50,42 +49,20 @@
       />
 
       <van-field
-        v-model="form.mailcode"
-        type="number"
-        required
-        center
-        clearable
-        name="邮箱验证码"
-        label="邮箱验证码"
-        placeholder="请输入验证码"
-        :rules="[{ required: true, message: '请输入正确的邮箱验证码！' }]"
-      >
-        <van-button
-          slot="button"
-          size="small"
-          plain
-          type="info"
-          native-type="button"
-          @click.stop="getMailCode"
-          >发送验证码</van-button
-        >
-      </van-field>
-
-      <van-field
         v-model="form.captcha"
         type="text"
         required
         center
         clearable
-        name="手机号"
+        name="图形验证码"
         maxlength="4"
         label="图形验证码"
         placeholder="请输入图形验证码"
-        :rules="[{ required: true, message: '请输入正确的图形验证码！' }]"
+        :rules="[{ required: true, message: '请输入正确的图形验证码!' }]"
       >
         <template #button>
           <div
-            style="background: #eee; height: 34px"
+            style="background: #eee; height: 34px; width: 100px"
             @click="getCaptcha"
             v-html="captchaSvg"
           />
@@ -109,21 +86,17 @@
 
 <script>
 import variables from "@/styles/variables.scss";
-import { v4 as uuidv4 } from "uuid";
-import { getCaptcha, getMailCode } from "@/api/public";
-import { registry } from "@/api/user";
+import { getCaptcha } from "@/api/public";
+import { signup } from "@/api/user";
 
 export default {
   name: "Regist",
   data() {
     return {
       form: {
-        email: "",
         password: "",
-        confirmPassword: "",
-        mailcode: "",
+        confirmPwd: "",
         captcha: "",
-        sid: localStorage.getItem("sid") || "",
       },
       loading: false,
       captchaSvg: "",
@@ -135,55 +108,24 @@ export default {
     },
   },
   mounted() {
-    this.getCaptcha();
+    // this.getCaptcha();
   },
   methods: {
     // 获取图形验证码
     getCaptcha() {
-      if (!this.form.sid) {
-        this.form.sid = uuidv4();
-        localStorage.setItem("sid", this.form.sid);
-      }
       getCaptcha({ sid: this.form.sid }).then((res) => {
         this.captchaSvg = res.entry;
       });
     },
-    // 获取邮箱验证码
-    getMailCode() {
-      const { email } = this.form;
-      if (!email || !this.checkEmail(email)) {
-        this.$toast.fail("请先输入正确的邮箱地址");
-        return;
-      }
-      this.$toast.loading({
-        duration: 0,
-        message: "加载中...",
-        forbidClick: true,
-      });
-      getMailCode({ email: this.form.email }).then(() => {
-        this.$toast.clear();
-        this.$notify({
-          type: "success",
-          message: "邮箱验证码已发送",
-          duration: 2000,
-        });
-      });
-    },
-    // 校检邮箱
-    checkEmail(email) {
-      const reg =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return reg.test(email);
-    },
     // 提交
     onSubmit() {
-      const { password, confirmPassword } = this.form;
-      if (password !== confirmPassword) {
+      const { password, confirmPwd } = this.form;
+      if (password !== confirmPwd) {
         this.$toast.fail("确认密码与设置的不一致");
         return;
       }
       this.loading = true;
-      registry(this.form)
+      signup(this.form)
         .then(() => {
           this.$notify({
             type: "success",
