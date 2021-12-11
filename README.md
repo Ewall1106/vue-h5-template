@@ -13,74 +13,77 @@
   </a>
 </p>
 
-`Vue-H5-Template` 项目使用提供搭建 `移动端h5页面` 开发所需的基础模板，并提供一些通用型的解决方案、可复用组件及扩展功能。
+[English](https://github.com/Ewall1106/vue-h5-template/blob/2.x/README.md) | [简体中文](https://github.com/Ewall1106/vue-h5-template/blob/2.x/README.zh.md)
 
-版本: [vue2.x](https://github.com/Ewall1106/vue-h5-template/tree/2.x) | [vue3.x](https://github.com/Ewall1106/vue-h5-template/tree/3.x)
+The `Vue-H5-Template` project provides the basic template required for building `mobile H5 page` development, and provides some general solutions, reusable components and extended functions.
 
-## 基本说明
+The project maintains two versions, includes `vue2.x` and `vue3.x`. Please select a different branch to view the details.
 
-- [预览地址](https://template.xwhx.top)
-- [更新日志](https://github.com/Ewall1106/vue-h5-template/blob/2.x/changelog.md)
+version: [vue2.x](https://github.com/Ewall1106/vue-h5-template/tree/2.x) | [vue3.x](https://github.com/Ewall1106/vue-h5-template/tree/3.x)
 
-### 扫码预览
+## BASIC
 
-<img width="180" src="https://s4.ax1x.com/2021/12/11/oTUzUU.png">
+- [preview](https://template.xwhx.top)
+- [changelog](https://github.com/Ewall1106/vue-h5-template/blob/2.x/changelog.md)
 
-### 安装使用
+### Scan
+
+<img width="180" src="https://s4.ax1x.com/2021/12/11/oHZy5V.png">
+
+### Usage
 
 ```bash
-# 下载项目
+# clone
 $ git -b 2.x git@github.com:Ewall1106/vue-h5-template.git
-# 安装运行
+# install & run
 $ yarn & yarn dev
 ```
 
-## 功能特性
+## FEATURES
 
-:hammer: 基础能力
+:hammer: basic
 
-- `eslint` 校检及错误提示
-- `prettier` 统一代码风格
-- `vw` 移动端适配
-- `vuex` 封装及使用
-- `vue-router` 路由配置及权限控制
-- `axios` 封装及请求
+- `eslint` Check and error prompt
+- `prettier` uniform program style
+- `vw` mobile adaption
+- `vuex` encapsulation && usage
+- `vue-router` routing configuration and permission control
+- `axios` encapsulation and request
 
-:hammer: 组件相关
+:hammer: components
 
-- `vant` 组件的安装及使用
-- `scroll` 横向滚动组件封装
-- `svg-icon` 图标组件
+- `vant` install && usage
+- `scroll` horizontal scroll component
+- `svg-icon` icon component
 - ...
 
-## 目录结构
+## CONTENTS
 
 ```
 |-- public
 |-- src
-|   |-- api               // 接口列表
-|   |-- assets            // 图片资源
-|   |-- components        // 通用组件
-|   |-- filters           // 过滤器
-|   |-- icons             // 图标
-|   |-- router            // 路由
-|   |-- store             // 状态管理
-|   |-- styles            // 公共样式
-|   |-- types             // 文件声明
-|   |-- utils             // 工具函数
-|   |-- views             // 页面
-|   |-- App.vue           // 主页面
-|   |-- main.js           // 入口文件
-|-- babel.config.js       // babel配置文件
-|-- changelog.md          // 更新日志
-|-- package.json          // 客户端依赖
-|-- .postcssrc.js         // postcss配置文件
-|-- vue.config.js         // vue相关配置文件
+|   |-- api               // api
+|   |-- assets            // assets && picture
+|   |-- components        // generic components
+|   |-- filters           // filters
+|   |-- icons             // icons
+|   |-- router            // router
+|   |-- store             // state management
+|   |-- styles            // common styles
+|   |-- utils             // utility function
+|   |-- views             // pages
+|   |-- App.vue           // main page
+|   |-- main.js           // entry file
+|-- babel.config.js       // babel config
+|-- changelog.md          // changelog
+|-- package.json          // just package.json
+|-- .postcssrc.js         // postcss config
+|-- vue.config.js         // vue config
 |-- ...
 ```
 
-## 协议
+## LICENSE
 
 - [MIT](https://github.com/Ewall1106/vue-h5-template/blob/master/LICENSE)
 
-- Copyright (c) 2022-present Ewall&熊猫
+- Copyright (c) 2022-present Ewall Xiong
