@@ -10,7 +10,7 @@ import router from "./router";
 import store from "./store";
 
 import "./icons";
-import "./permission";
+import "./utils/permission";
 
 import * as filters from "@/filters";
 Object.keys(filters).forEach((key) => {
