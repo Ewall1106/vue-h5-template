@@ -1,47 +1,87 @@
-<p align="center">
-  <img width="100" height="100" src="https://raw.githubusercontent.com/Ewall1106/panda-vue-template/master/src/assets/logo.png">
-  <h3  align="center">Panda-vue-h5</h3>
-</p>
+## VUE-H5-TEMPLATE
 
-<p align="center">
+<p>
   <a href="https://github.com/vuejs/vue">
     <img src="https://img.shields.io/badge/vue-2.6.11-brightgreen.svg" alt="vue">
   </a>
-   <a href="https://cli.vuejs.org/guide/">
-    <img src="https://img.shields.io/badge/@vue/cli-4.2.3-brightgreen.svg" alt="vue-cli">
   </a>
     <a href="https://youzan.github.io/vant/#/zh-CN/">
-    <img src="https://img.shields.io/badge/vant-2.7.0-brightgreen.svg" alt="vant">
-  </a>
-   <a href="https://www.npmjs.com/">
-    <img src="https://img.shields.io/badge/npm-6.9.0-brightgreen.svg" alt="npm">
+    <img src="https://img.shields.io/badge/vant-2.12.36-1989fa.svg" alt="vant">
   </a>
   <a href="https://github.com/Ewall1106/panda-vue-template/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
   </a>
 </p>
 
-## 介绍
+`Vue-H5-Template` 项目使用提供搭建 `移动端h5页面` 开发所需的基础模板，并提供一些通用型的解决方案、可复用组件及扩展功能。
 
-以小商城作为基本的内容演示，目的是希望打造一个**前端 h5 通用型的解决方案。**
+[vue2.x 版本](https://github.com/Ewall1106/vue-h5-template/tree/2.x) | [vue3.x 版本](https://github.com/Ewall1106/vue-h5-template/tree/3.x)
 
-- [文档说明](https://docs.xwhx.top/mall/)
-- [更新日志](https://github.com/Ewall1106/mall/blob/master/changelog.md)
+## 基本说明
 
-## 使用
+- [预览地址](https://template.xwhx.top)
+- [更新日志](https://github.com/Ewall1106/vue-h5-template/blob/2.x/changelog.md)
+
+### 扫码预览
+
+<img width="180" class="zoom" src="https://z3.ax1x.com/2021/03/27/6zzC34.png">
+
+### 安装使用
+
+```bash
+# 下载项目
+$ git -b 2.x git@github.com:Ewall1106/vue-h5-template.git
+# 安装运行
+$ yarn & yarn dev
+```
+
+## 功能特性
+
+:hammer: 基础能力
+
+- `eslint` 校检及错误提示
+- `prettier` 统一代码风格
+- `vw` 移动端适配
+- `vuex` 封装及使用
+- `vue-router` 路由配置及权限控制
+- `axios` 封装及请求
+
+:hammer: 组件相关
+
+- `vant` 组件的安装及使用
+- `scroll` 横向滚动组件封装
+- `svg-icon` 图标组件
+
+- ...
+
+## 目录结构
 
 ```
-$ git clone git@github.com:Ewall1106/mall.git
-$ npm install
-$ npm run dev
+|-- public
+|-- src
+|   |-- api               // 接口列表
+|   |-- assets            // 图片资源
+|   |-- components        // 通用组件
+|   |-- filters           // 过滤器
+|   |-- icons             // 图标
+|   |-- router            // 路由
+|   |-- store             // 状态管理
+|   |-- styles            // 公共样式
+|   |-- types             // 文件声明
+|   |-- utils             // 工具函数
+|   |-- views             // 页面
+|   |-- App.vue           // 主页面
+|   |-- main.js           // 入口文件
+|-- babel.config.js       // babel配置文件
+|-- changelog.md          // 更新日志
+|-- package.json          // 客户端依赖
+|-- .postcssrc.js         // postcss配置文件
+|-- vue.config.js         // vue相关配置文件
+|-- ...
 ```
-
-## 推荐
-
-[Panda-koa](https://github.com/Ewall1106/panda-server)
 
 ## 协议
 
-[MIT](https://github.com/Ewall1106/mall/blob/master/LICENSE)
+- [MIT](https://github.com/Ewall1106/vue-h5-template/blob/master/LICENSE)
 
-Copyright (c) 2020-present Ewall&熊猫
+- Copyright (c) 2022-present Ewall&熊猫
