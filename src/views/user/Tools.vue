@@ -1,10 +1,10 @@
 <template>
   <div class="user-tools">
-    <van-cell title="Git仓库" is-link url="https://github.com/Ewall1106/mall" />
-    <van-cell title="文档说明" is-link url="https://docs.xwhx.top/mall/" />
-    <!-- <van-cell title="相关组件" is-link /> -->
-    <!-- <van-cell title="推荐学习" is-link /> -->
-    <van-cell title="我的地址" is-link to="/address" />
+    <van-cell
+      title="Git仓库"
+      is-link
+      url="https://github.com/Ewall1106/vue-h5-template"
+    />
     <van-cell title="退出登录" is-link @click="loginOut" />
   </div>
 </template>

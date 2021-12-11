@@ -1,4 +1,4 @@
-import { login, getInfo } from "@/api/user";
+import { signin, getInfo } from "@/api/user";
 import { getToken, setToken, removeToken } from "@/utils/auth";
 
 const state = {
@@ -19,11 +19,11 @@ const mutations = {
 
 const actions = {
   // 登录
-  login({ commit }, loginInfo) {
+  signin({ commit }, loginInfo) {
     return new Promise((resolve, reject) => {
-      login(loginInfo)
+      signin(loginInfo)
         .then((res) => {
-          const { token } = res.entry;
+          const token = res.data;
           commit("SET_TOKEN", token);
           setToken(token);
           resolve();
@@ -48,7 +48,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token)
         .then((res) => {
-          const data = res.entry;
+          const data = res.data;
           if (!data) {
             reject(new Error("获取基本信息失败，请重新登录"));
           }

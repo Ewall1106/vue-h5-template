@@ -21,7 +21,6 @@
         placeholder="请输入邮箱地址"
         :rules="[
           {
-            validator: checkEmail,
             required: true,
             message: '请输入正确的邮箱地址!',
           },
@@ -39,30 +38,6 @@
         placeholder="密码"
         :rules="[{ required: true, message: '请输入正确的密码！' }]"
       />
-
-      <van-field
-        v-if="form.isCaptchaShow"
-        v-model="form.captcha"
-        required
-        center
-        clearable
-        name="验证码"
-        label="验证码"
-        placeholder="图形验证码"
-        :rules="[{ required: true, message: '请输入正确的图形验证码！' }]"
-      >
-        <template #button>
-          <div
-            style="background: #eee; height: 34px"
-            @click="getCaptcha"
-            v-html="captchaSvg"
-          />
-        </template>
-      </van-field>
-
-      <div class="forget">
-        <router-link tag="span" to="/forget">忘记密码</router-link>
-      </div>
 
       <div style="margin: 36px">
         <van-button
@@ -82,7 +57,7 @@
           block
           type="info"
           native-type="button"
-          to="/registration"
+          to="/signup"
           >注册</van-button
         >
       </div>
@@ -91,9 +66,6 @@
 </template>
 
 <script>
-import { getCaptcha } from "@/api/public";
-import { v4 as uuidv4 } from "uuid";
-
 export default {
   name: "Login",
   data() {
@@ -110,48 +82,19 @@ export default {
       captchaSvg: "",
     };
   },
-  watch: {
-    $route: {
-      handler(route) {
-        console.log("route:", route);
-        this.redirect = (route.query && route.query.redirect) || "/";
-      },
-      immediate: true,
-    },
-  },
-  mounted() {
-    // this.getCaptcha()
-  },
   methods: {
-    // 获取图形验证码
-    getCaptcha() {
-      if (!this.form.sid) {
-        this.form.sid = uuidv4();
-        localStorage.setItem("sid", this.form.sid);
-      }
-      getCaptcha({ sid: this.form.sid }).then((res) => {
-        this.captchaSvg = res.entry;
-      });
-    },
-    // 校检邮箱
-    checkEmail(value) {
-      const reg =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return reg.test(value);
-    },
-    // 提交
     onSubmit() {
       this.loading = true;
       this.$store
-        .dispatch("user/login", this.form)
+        .dispatch("user/signin", this.form)
         .then(() => {
+          this.$router.push("/power");
           this.$notify({
             type: "success",
             message: "登录成功",
             duration: 2000,
             onOpened: () => {
               this.loading = false;
-              location.href = this.redirect;
             },
           });
         })

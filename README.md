@@ -24,7 +24,7 @@
 
 ### 扫码预览
 
-<img width="180" class="zoom" src="https://z3.ax1x.com/2021/03/27/6zzC34.png">
+<img width="180" src="https://s4.ax1x.com/2021/12/11/oTUzUU.png">
 
 ### 安装使用
 
