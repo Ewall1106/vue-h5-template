@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TabBar from "./components/TabBar";
+import TabBar from "./components/Tabbar";
 
 export default {
   components: {
