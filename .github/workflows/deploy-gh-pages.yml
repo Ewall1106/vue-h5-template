@@ -14,7 +14,6 @@ jobs:
       - name: Checkout Git Source
         uses: actions/checkout@v2
 
-    steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy to GitHub Pages
