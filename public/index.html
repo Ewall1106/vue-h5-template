@@ -1,13 +1,50 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="">
 
 <head>
-  <title>哈哈哈哈哈哈哈GitHub Pages deployed!</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+
+  <script>
+    (function () {
+      function resetRemUnit() {
+        var UI_WIDTH = 375; // 设计稿宽度 (这个要和UI保持一致)
+        var docElement = window.document.documentElement;
+        var width = docElement.clientWidth || 375;
+        // 设置htmlFontSize
+        var rate = width / (UI_WIDTH / 100);
+        docElement.style.fontSize = rate + 'px';
+        // 验证准确性
+        var div = window.document.createElement('div');
+        div.style.width = '1rem';
+        div.style.display = "none";
+        window.document.getElementsByTagName('head')[0].appendChild(div);
+        var realRate = parseFloat(window.getComputedStyle(div, null).getPropertyValue('width'));
+        if (rate !== realRate) {
+          // 补上损失的部分rate
+          docElement.style.fontSize = rate * (rate / realRate) + 'px';
+        }
+      }
+      resetRemUnit();
+      window.addEventListener('resize', resetRemUnit);
+    })();
+
+  </script>
 </head>
 
 <body>
-  <p>GitHub Pages with <strong>${{ github.sha }}</strong> commit ID has been deployed through <a
-      href="https://github.com/marketplace/actions/github-pages">GitHub Pages action</a> successfully.</p>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
 </body>
 
 </html>
