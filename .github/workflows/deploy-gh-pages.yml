@@ -12,6 +12,7 @@ jobs:
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:
+          repo: vue-h5-template
           target_branch: gh-pages
           build_dir: public
         env:
