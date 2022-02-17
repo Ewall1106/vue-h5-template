@@ -2,12 +2,12 @@ name: Deploy-Gh-Pages
 
 on:
   push:
-    branches: [2.x]
+    branches: [dev_2.x]
   pull_request:
-    branches: [2.x]
+    branches: [dev_2.x]
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
 
     steps:
