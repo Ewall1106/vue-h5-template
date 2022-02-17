@@ -15,7 +15,7 @@ const isDev = NODE_ENV === "development" || NODE_ENV === "local";
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
-  publicPath: "/",
+  publicPath: "/vue-h5-template/",
   outputDir: "dist",
   assetsDir: "static",
   lintOnSave: isDev,
