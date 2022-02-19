@@ -3,35 +3,35 @@
 
 # name: Deploy-Vps
 
-# on:
-#   push:
-#     branches: [2.x]
-#   pull_request:
-#     branches: [2.x]
+on:
+  push:
+    branches: [2.x]
+  pull_request:
+    branches: [2.x]
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout Git Source
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout Git Source
+        uses: actions/checkout@v2
 
-#       - name: Copy Dist To VPS
-#         uses: appleboy/scp-action@master
-#         with:
-#           host: ${{ secrets.SSH_HOST }}
-#           username: ${{ secrets.SSH_NAME }}
-#           key: ${{ secrets.SSH_KEY }}
-#           source: "./dist.zip"
-#           target: "~/template/vue-h5-template/2.x"
+      # - name: Copy Dist To VPS
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.SSH_HOST }}
+      #     username: ${{ secrets.SSH_NAME }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     source: "./dist.zip"
+      #     target: "~/template/vue-h5-template/2.x"
 
-#       - name: Remote ssh && Deploy
-#         uses: appleboy/ssh-action@master
-#         with:
-#           host: ${{ secrets.SSH_HOST }}
-#           username: ${{ secrets.SSH_NAME }}
-#           key: ${{ secrets.SSH_KEY }}
-#           script: |
-#             cd ~/template/vue-h5-template/2.x
-#             unzip -o dist.zip
+      # - name: Remote ssh && Deploy
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.SSH_HOST }}
+      #     username: ${{ secrets.SSH_NAME }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     script: |
+      #       cd ~/template/vue-h5-template/2.x
+      #       unzip -o dist.zip
