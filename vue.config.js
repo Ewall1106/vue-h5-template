@@ -1,7 +1,6 @@
 "use strict";
 
 const path = require("path");
-const CompressionPlugin = require("compression-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 const config = require("./src/utils/config");
 
@@ -101,19 +100,6 @@ module.exports = {
       });
 
       config.optimization.runtimeChunk("single");
-    });
-
-    config.when(!isDev, (config) => {
-      // Notice：https://github.com/webpack-contrib/compression-webpack-plugin/issues/223
-      config.plugin("compressPlugin").use(CompressionPlugin, [
-        {
-          algorithm: "gzip",
-          test: /\.js$|\.html$|\.css/,
-          threshold: 10240,
-          minRatio: 0.8,
-          deleteOriginalAssets: true,
-        },
-      ]);
     });
 
     config.when(!isDev, (config) => {
