@@ -6,7 +6,7 @@
     "dev": "cross-env NODE_ENV=development vue-cli-service serve",
     "serve": "cross-env NODE_ENV=development vue-cli-service serve",
     "local": "cross-env NODE_ENV=local vue-cli-service serve",
-    "build": "cross-env NODE_ENV=production vue-cli-service build",
+    "build": "cross-env NODE_ENV=production COMPRESS=true vue-cli-service build",
     "lint": "cross-env NODE_ENV=development vue-cli-service lint",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
@@ -34,6 +34,7 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.3",
+    "compression-webpack-plugin": "^6.1.1",
     "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",

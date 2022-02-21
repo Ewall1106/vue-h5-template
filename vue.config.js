@@ -1,6 +1,7 @@
 "use strict";
 
 const path = require("path");
+const CompressionPlugin = require("compression-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 const config = require("./src/utils/config");
 
@@ -8,7 +9,7 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-const NODE_ENV = process.env.NODE_ENV;
+const { NODE_ENV, COMPRESS } = process.env;
 const { mockUrl } = config[NODE_ENV];
 const isDev = NODE_ENV === "development" || NODE_ENV === "local";
 
@@ -100,6 +101,19 @@ module.exports = {
       });
 
       config.optimization.runtimeChunk("single");
+    });
+
+    config.when(!isDev && COMPRESS, (config) => {
+      // Notice：https://github.com/webpack-contrib/compression-webpack-plugin/issues/223
+      config.plugin("compressPlugin").use(CompressionPlugin, [
+        {
+          algorithm: "gzip",
+          test: /\.js$|\.html$|\.css/,
+          threshold: 10240,
+          minRatio: 0.8,
+          deleteOriginalAssets: true,
+        },
+      ]);
     });
 
     config.when(!isDev, (config) => {
