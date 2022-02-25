@@ -6,29 +6,19 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "*",
-    component: () => import("@/views/power"),
+    component: () => import("@/views/home"),
     meta: {
       title: "能力",
       showTab: true,
     },
   },
   {
-    path: "/power",
+    path: "/home",
     name: "Power",
-    component: () => import("@/views/power"),
+    component: () => import("@/views/home"),
     meta: {
       title: "能力",
       showTab: true,
-    },
-  },
-  {
-    path: "/show",
-    name: "Show",
-    component: () => import("@/views/show"),
-    meta: {
-      title: "演示",
-      showTab: true,
-      keepAlive: true,
     },
   },
   {
@@ -54,21 +44,6 @@ const routes = [
     component: () => import("@/views/login/signUp"),
     meta: {
       title: "注册",
-    },
-  },
-  // 基础组件 Demo
-  {
-    path: "/power/svg-icon",
-    component: () => import("@/views/demo/svg-icon"),
-    meta: {
-      title: "图标组件",
-    },
-  },
-  {
-    path: "/power/back-top",
-    component: () => import("@/views/demo/back-top"),
-    meta: {
-      title: "返回顶部",
     },
   },
 ];

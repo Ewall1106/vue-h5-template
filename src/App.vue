@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="App">
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive" :key="key" />
     </keep-alive>
@@ -23,3 +23,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#App {
+  font-size: 16px;
+}
+</style>
