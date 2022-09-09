@@ -9,13 +9,13 @@
   </a>
 </p>
 
-[English](https://github.com/Ewall1106/vue-h5-template/blob/2.x/README.md) | [简体中文](https://github.com/Ewall1106/vue-h5-template/blob/2.x/README.zh.md)
+[English](https://github.com/Ewall1106/vue-h5-template/blob/main/README.md) | [简体中文](https://github.com/Ewall1106/vue-h5-template/blob/main/README.zh.md)
 
 `Vue-H5-Template` provides the basic template required for h5 page development, and including some common solutions and extended functions on the basis of the official templates.
 
-This project maintains two versions, includes `vue2.x` and `vue3.x`. Please select a different branch to view the details.
+You can choose the vue version you want.
 
-Version: [vue2.x](https://github.com/Ewall1106/vue-h5-template) | [vue3.x](https://github.com/Ewall1106/vue-next-template)
+Version: [vue2](https://github.com/Ewall1106/vue-h5-template) | [vue3](https://github.com/Ewall1106/vue-next-template)
 
 More info: https://bamboo-docs.vercel.app
 
@@ -42,5 +42,5 @@ $ yarn & yarn dev
 
 ## LICENSE
 
-- [MIT](https://github.com/Ewall1106/vue-h5-template/blob/master/LICENSE)
+- [MIT](https://github.com/Ewall1106/vue-h5-template/blob/main/LICENSE)
 - Copyright (c) 2022-present danielxiong
