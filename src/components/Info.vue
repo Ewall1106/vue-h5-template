@@ -7,7 +7,7 @@
       src="@/assets/logo.png"
       alt="logo"
     />
-    <p class="info__title">Vue-H5-Template</p>
+    <p class="info__title">{{ name }}</p>
     <p class="info__desc">
       <span>Documents: </span>
       <a href="https://bamboo-docs.vercel.app/" target="_blank" rel="noopener">
@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  props: ["name"],
   name: "Login",
   data() {
     return {};
