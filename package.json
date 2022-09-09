@@ -1,7 +1,7 @@
 {
   "name": "Vue-H5-Template",
   "version": "2.0.3",
-  "author": "Ewall&熊猫",
+  "author": "danielxiong<ewall1106@gmail.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vue-cli-service serve",
     "serve": "cross-env NODE_ENV=development vue-cli-service serve",
