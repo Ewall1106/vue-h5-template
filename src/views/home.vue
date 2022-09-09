@@ -13,7 +13,7 @@ export default {
   components: { Info },
   data() {
     return {
-      name: "....",
+      name: "loading...",
     };
   },
   mounted() {

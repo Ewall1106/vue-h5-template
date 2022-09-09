@@ -9,18 +9,22 @@
   </a>
 </p>
 
+[English](https://github.com/Ewall1106/vue-h5-template/blob/main/README.md) | [简体中文](https://github.com/Ewall1106/vue-h5-template/blob/main/README.zh.md)
+
 `Vue-H5-Template` 项目使用提供开发所需的基础模板，并在官方模板的基础上包含一些通用型的解决方案及扩展功能。
 
-版本: [vue2.x](https://github.com/Ewall1106/vue-h5-template/tree/2.x) | [vue3.x](https://github.com/Ewall1106/vue-h5-template/tree/3.x)
+你可以根据需求选择你想要的 `vue` 版本。
+
+版本: [vue2](https://github.com/Ewall1106/vue-h5-template) | [vue3](https://github.com/Ewall1106/vue-next-template)
 
 相关文档: https://bamboo-docs.vercel.app
 
 ## 使用
 
 ```bash
-# 下载项目
-$ git -b 2.x git@github.com:Ewall1106/vue-h5-template.git
-# 安装运行
+# clone
+$ git clone git@github.com:Ewall1106/vue-h5-template.git
+# install & run
 $ yarn & yarn dev
 ```
 
@@ -38,5 +42,5 @@ $ yarn & yarn dev
 
 ## 协议
 
-- [MIT](https://github.com/Ewall1106/vue-h5-template/blob/master/LICENSE)
+- [MIT](https://github.com/Ewall1106/vue-h5-template/blob/main/LICENSE)
 - Copyright (c) 2022-present danielxiong
