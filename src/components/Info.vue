@@ -20,10 +20,7 @@
 <script>
 export default {
   props: ["name"],
-  name: "Login",
-  data() {
-    return {};
-  },
+  name: "Info",
 };
 </script>
 
