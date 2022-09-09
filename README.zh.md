@@ -24,6 +24,7 @@
 ```bash
 # clone
 $ git clone git@github.com:Ewall1106/vue-h5-template.git
+
 # install & run
 $ yarn & yarn dev
 ```
@@ -42,7 +43,13 @@ $ yarn & yarn dev
 
 ## 其他
 
-- 如果要将此项目用做 `PC` 端基础模板的话，则只需删除移动端适配相关代码，即 `postcss-px-to-viewport` 插件相关配置内容即可。
+1. 如果要将此项目用做 `PC` 端基础模板的话，则只需删除移动端适配相关代码，即 `postcss-px-to-viewport` 插件相关配置内容即可。
+
+1. 其他相关模板推荐:
+
+   - [next-template](https://github.com/Ewall1106/next-template)
+   - [react-template](https://github.com/Ewall1106/react-template)
+   - [vue-next-template](https://github.com/Ewall1106/vue-next-template)
 
 ## 协议
 
