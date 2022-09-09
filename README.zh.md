@@ -40,6 +40,10 @@ $ yarn & yarn dev
 - `axios` 封装及请求
 - 等等...
 
+## 其他
+
+- 如果要将此项目用做 `PC` 端基础模板的话，则只需删除移动端适配相关代码，即 `postcss-px-to-viewport` 插件相关配置内容即可。
+
 ## 协议
 
 - [MIT](https://github.com/Ewall1106/vue-h5-template/blob/main/LICENSE)
