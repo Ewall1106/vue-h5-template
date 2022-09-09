@@ -40,6 +40,10 @@ $ yarn & yarn dev
 - `axios` encapsulation and request.
 - and more...
 
+## MEMO
+
+- If you want to use this project as the basic template on `PC`, then you only need to remove the content related to the mobile adaptation, that is, the configuration related to the `postcss-px-to-viewport` plugin.
+
 ## LICENSE
 
 - [MIT](https://github.com/Ewall1106/vue-h5-template/blob/main/LICENSE)
