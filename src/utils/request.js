@@ -23,7 +23,7 @@ service.interceptors.response.use(
     if (res.status !== 200) {
       return Promise.reject(res);
     } else {
-      return res;
+      return res.data;
     }
   },
   (error) => {
