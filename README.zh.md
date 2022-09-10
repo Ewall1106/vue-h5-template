@@ -13,9 +13,9 @@
 
 `Vue-H5-Template` 项目使用提供开发所需的基础模板，并在官方模板的基础上包含一些通用型的解决方案及扩展功能。
 
-你可以根据需求选择你想要的 `vue` 版本。
+你可以根据需求选择你想要的 `vue` 版本: [vue2](https://github.com/Ewall1106/vue-h5-template) | [vue3](https://github.com/Ewall1106/vue-next-template)
 
-版本: [vue2](https://github.com/Ewall1106/vue-h5-template) | [vue3](https://github.com/Ewall1106/vue-next-template)
+组件开发: https://bamboo-material.vercel.app
 
 相关文档: https://bamboo-docs.vercel.app
 
