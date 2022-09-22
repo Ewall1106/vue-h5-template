@@ -5,7 +5,7 @@ module.exports = {
       unitToConvert: "px",
       viewportWidth: 750,
       unitPrecision: 3,
-      propList: ["*"],
+      propList: ["*", "!font*"],
       viewportUnit: "vw",
       fontViewportUnit: "vw",
       selectorBlackList: [".ignore"],
