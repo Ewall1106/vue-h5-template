@@ -1,30 +1,21 @@
 <template>
   <div class="home">
-    <Info :name="name" />
+    <Info :name="userInfo.name" />
   </div>
 </template>
 
 <script>
-import { getUserInfo } from "@/api/user";
+import { mapGetters } from "vuex";
 import Info from "@/components/Info.vue";
 
 export default {
   name: "Home",
   components: { Info },
-  data() {
-    return {
-      name: "loading...",
-    };
+  computed: {
+    ...mapGetters(["userInfo"]),
   },
   mounted() {
-    this.getInfo();
-  },
-  methods: {
-    getInfo() {
-      getUserInfo().then((res) => {
-        this.name = res.data.name;
-      });
-    },
+    this.$store.dispatch("user/getUserInfo");
   },
 };
 </script>

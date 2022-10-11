@@ -17,7 +17,7 @@ export function mockXHR() {
     });
 
     Mock.setup({
-      timeout: 600,
+      timeout: 1000,
     });
   }
 }

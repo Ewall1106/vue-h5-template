@@ -1,7 +1,9 @@
 import { getUserInfo } from "@/api/user";
 
 const state = {
-  userInfo: {},
+  userInfo: {
+    name: "Loading...",
+  },
 };
 
 const mutations = {
@@ -11,9 +13,9 @@ const mutations = {
 };
 
 const actions = {
-  getUserInfo({ commit, state }) {
+  getUserInfo({ commit }) {
     return new Promise((resolve, reject) => {
-      getUserInfo(state.token)
+      getUserInfo()
         .then((res) => {
           const data = res.data;
           commit("SET_USER_INFO", data);
