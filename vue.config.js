@@ -1,7 +1,7 @@
 "use strict";
 
 const path = require("path");
-const config = require("./src/utils/config");
+const config = require("./config");
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -9,7 +9,7 @@ function resolve(dir) {
 
 const NODE_ENV = process.env.NODE_ENV;
 const { mockUrl } = config[NODE_ENV];
-const isDev = NODE_ENV === "development"
+const isDev = NODE_ENV === "development";
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -41,5 +41,5 @@ module.exports = {
         "@": resolve("src"),
       },
     },
-  }
+  },
 };

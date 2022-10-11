@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const config = require("./config");
+const config = require("../../config");
 const baseURL = config[process.env.NODE_ENV].baseUrl;
 
 const service = axios.create({

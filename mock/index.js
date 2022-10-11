@@ -2,7 +2,7 @@ import Mock from "mockjs";
 
 import user from "./user";
 
-const config = require("../src/utils/config");
+const config = require("../config");
 const baseURL = config[process.env.NODE_ENV].baseUrl;
 
 const mocks = [...user];
